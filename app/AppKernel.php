@@ -19,6 +19,8 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new Blogger\BlogBundle\BlogBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+            new Budget\CalculatorBundle\BudgetCalculatorBundle(),
+            new Main\PagesBundle\MainPagesBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
