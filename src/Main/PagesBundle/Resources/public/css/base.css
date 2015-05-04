@@ -3,12 +3,12 @@ acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, smal
 sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, 
 caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, 
 footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { 
-    border:0;
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
     margin: 0;
-    padding: 0
+    padding: 0;
+    font-family: Arial,  Helvetica,  sans-serif;
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { 
@@ -38,7 +38,6 @@ table {
 
 body {  
     line-height: 1;
-    font-family: Arial,  Helvetica,  sans-serif;
     font-size: 12px; 
     width: 100%; 
     height: 100%; 
@@ -52,7 +51,7 @@ body {
 
 #wrapper {
     margin: 0 auto;
-    width: 1000px;
+    width: 1356px;
 }
 
 #wrapper a {
@@ -65,13 +64,11 @@ body {
 }
 
 #header { 
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 20px;
+    height: 250px;
 }
 
 #header .top {
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 10px;
+    height: 37px;
 }
 
 #header ul.navigation {
@@ -86,13 +83,18 @@ body {
 #header .navigation li a { 
     display: inline-block;
     padding: 10px 15px; 
-    border-left: 1px solid #ccc; 
 }
 
 #header h2 { 
-    font-size: 92px; 
+    font-size: 60px; 
     text-align: center; 
     line-height: 110px; 
+}
+
+#header h3 { 
+    font-size: 42px; 
+    text-align: center; 
+    line-height: 30px; 
 }
 
 #header h2 a { 
@@ -101,47 +103,59 @@ body {
 
 #header h3 { 
     text-align: center; 
-    font-size: 24px; 
-    margin-bottom: 20px; 
+    font-size: 24px;  
     font-weight: normal; 
 }
 
-.main-col { 
-    width: 700px; 
-    display: inline-block; 
-    float: left; 
-    border-right: 1px solid #ccc; 
-    padding: 20px; 
-    margin-bottom: 20px; 
+.content { 
+    min-height: calc(100vh - 360px);
 }
 
-.sidebar { 
-    width: 239px; 
-    padding: 10px; 
-    display: inline-block; 
-}
-
-.main-col a { 
+.content a { 
     color: #E61A2F; 
 }
 
-.main-col h1, .main-col h2 { 
-    line-height: 1.2em; 
-    font-size: 32px; 
-    margin-bottom: 10px; 
+.content h1 { 
+    line-height: 1.3em; 
+    font-size: 42px;  
     font-weight: normal;
     color: #E61A2F; 
 }
 
-.main-col p { 
-    line-height: 1.5em;
-    margin-bottom: 20px; 
+.content h2 { 
+    line-height: 1.2em; 
+    font-size: 32px;  
+    font-weight: normal;
+    color: #E61A2F; 
 }
 
-#footer { 
-    border-top: 1px solid #ccc;
+ .content h3 { 
+    line-height: 1.1em; 
+    font-size: 24px;  
+    font-weight: normal;
+    color: #E61A2F; 
+}
+
+
+.content p { 
+    line-height: 1.5em;
+}
+
+footer { 
     clear: both;
     text-align: center;
     padding: 10px;
-    color: #aaa; 
+    color: #fff;
+    background: #000;
+    height: 100px;
+}
+
+div, ul, li, table, tbody, tfoot, thead, tr, th, td, article, aside, canvas, footer, 
+header, hgroup, menu, nav, output, section, article, aside, footer, h1, h2, h3, h4, h5, h6  { 
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #000;
 }

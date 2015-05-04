@@ -1,3 +1,14 @@
-main_pages_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: MainPagesBundle:Default:index }
+Main_pages_homepage:
+    pattern: /
+    defaults: { _controller: MainPagesBundle:Page:home }
+    
+Main_pages_contact:
+    pattern: /contacto
+    defaults: { _controller: MainPagesBundle:Page:contact }
+    requirements:
+    methods:  [POST]
+
+Main_pages_static:
+    pattern: /{page}
+    defaults: { _controller: MainPagesBundle:Page:static }
+    methods:  [GET]

@@ -6,21 +6,14 @@ BlogBundle_homepage:
         _method:  GET
 
 # src/Blogger/BlogBundle/Resources/config/routing.yml
-BlogBundle_contact:
-    pattern:  /contact
-    defaults: { _controller: BlogBundle:Page:contact }
-    requirements:
-        _method:  GET|POST
-
-# src/Blogger/BlogBundle/Resources/config/routing.yml
 BlogBundle_blog_show:
-    pattern:  /{slug}/{comments}
+    pattern:  /{slug}/{comments}/
     defaults: { _controller: BlogBundle:Blog:show, comments: true }
 #    requirements:
 #        _method:  GET
         
 BlogBundle_comment_create:
-    pattern:  /comment/{blog_id}
+    pattern:  /comment/{blog_id}/
     defaults: { _controller: BlogBundle:Comment:create }
     requirements:
         _method:  POST

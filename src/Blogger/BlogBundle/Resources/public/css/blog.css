@@ -76,6 +76,7 @@ form.blogger ul li {
 .blog .meta { 
     clear: left; 
     margin-bottom: 20px; 
+    background: #fff;
 }
 
 .blog .snippet p.continue { 
@@ -92,6 +93,7 @@ form.blogger ul li {
 .blog .meta p { 
     margin-bottom: 5px; 
     line-height: 1.2em; 
+    text-align: left;
 }
 
 .blog img.large { 
@@ -125,4 +127,17 @@ form.blogger ul li {
 
 .comments .previous-comments { 
     margin-bottom: 20px; 
+}
+
+.main_content { 
+    width: 958px;
+    display: inline-block; 
+    float: left; 
+    padding: 20px; 
+}
+
+.sidebar { 
+    width: 298px; 
+    padding: 10px; 
+    display: inline-block; 
 }

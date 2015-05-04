@@ -1,0 +1,10 @@
+{# src/Blogger/BlogBundle/Resources/views/base.html.twig #}
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <section class="content">
+        {% block content %}
+            Contenido principal
+        {% endblock %}
+    </section>
+{% endblock %}

@@ -1,0 +1,8 @@
+{# src/Main/PagesBundle/Resources/views/Default/contactEmail.txt.twig #}
+{{ enquiry.name  | capitalize }} ha realizado una consulta en el formulario de contacto de
+nzreformas.es el {{ "now" | date("Y-m-d H:i") }}.
+
+Responder a: {{ enquiry.email }}
+Asunto: {{ enquiry.subject }}
+Mensaje:
+{{ enquiry.body }}
