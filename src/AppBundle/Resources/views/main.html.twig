@@ -1,0 +1,10 @@
+{# src/BlogBundle/Resources/views/base.html.twig #}
+{% extends '::base.html.twig' %}
+
+{% block main %}
+    <main class="single">
+        {% block content %}
+            Contenido principal del sitio
+        {% endblock %}
+    </main>
+{% endblock %}

@@ -1,49 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="js" >
     <head>
         <meta http-equiv="Content-Type" content="text/html" charset=utf-8" />
-        <title>{% block title %}NZ Reformas e Interiorismo{% endblock %}</title>
-        {% block stylesheets %}
-            {% stylesheets
-                '@MainPagesBundle/Resources/public/css/*'
-            %}
-            <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
-            {% endstylesheets %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+        <link rel="icon" type="image/vnd.microsoft.icon" href="{{ asset('images/icon/nz.ico') }}"/>
+        <link href='http://fonts.googleapis.com/css?family=Questrial|Sanchez:400italic,400' rel='stylesheet' type='text/css'>
+
+        {% stylesheets
+            '@AppBundle/Resources/public/css/*'
+        %}
+        <link href="{{ asset(asset_url) }}" type="text/css" rel="stylesheet">
+        {% endstylesheets %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        {% block javascripts %}
+            {% javascripts '@AppBundle/Resources/public/js/*' %}
+            <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
         {% endblock %}
-        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+
+        <title>{% block title %}NZ Reformas{% endblock %}</title>
     </head>
     <body>
-        <section id="wrapper"  >
-            <header id="header" >
-                <div class="top" >
-                    <nav >
-                        <ul class="navigation" >
-                            <li ><a href="{{ path('Main_pages_homepage') }}">Inicio</a></li>
-                            <li ><a href="{{ path('BlogBundle_homepage') }}">Blog</a></li>
-                            <li ><a href="{{ path ('Main_pages_static',{'page': 'empresa'}) }}">Empresa</a></li>
-                             <li ><a href="{{ path('Main_pages_contact') }}">Contacto</a></li>
-                        </ul>
-                    </nav>
+
+        <header class="navigation">
+
+            <nav>
+                <div class="logo" >
+                    <img src="{{ asset('images/icon/NZ-Reformas.png') }}" alt="NZ Reformas" title="NZ Reformas" />
+                    <h1>Reformas e Interiorismo</h1>
                 </div>
 
-                {% block header %}
-                    <h2 ><a href="{{ path('Main_pages_homepage') }}">NZ Reformas e Interiorismo</a></h2>
-                    <h3 ><a href="{{ path('Main_pages_homepage') }}">Tu casa tal<br> y como te la imaginas</a></h3>
-                        {% endblock %}
+                <a class="menu-button" href="javascript:void(0)" >
+                    <img src="{{ asset('images/icon/menu.png') }}" alt="Menú" title="Menú" />
+                </a>
 
-            </header>
+                <ul>
+                    <li class="back-button" >
+                        <a href="javascript:void(0)" >
+                            <img src="{{ asset('images/icon/back.png') }}" alt="Atrás" title="Atrás" />
+                        </a>
+                    </li>
+                    <li><a href="{{ path('app_homepage') }}">Inicio</a></li>
+                    <li class="more" ><a href="{{ path ('app_static',{'page': 'proyectos'}) }}" >Proyectos</a>
+                        <ul >
+                            <li><a href="{{ path ('app_static',{'page': 'comunidades'}) }}" >Comunidades</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{ path ('app_static',{'page': 'empresa'}) }}">Empresa</a></li>
+                    <li><a href="{{ path('app_contact') }}">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
 
-            <section class="content" >
-                {% block body %}
-                    Cuerpo
-                {% endblock %}
-            </section>
+        <div class="page-content" >
+            {% block main %}
+                <main class="single">
+                    Contenido
+                </main>
+            {% endblock %}
+        </div>
 
-            <footer >
-                NZ Reformas e Interiorismo 2015
-            </footer>
-        </section>
-
-    {% block javascripts %}{% endblock %}
-</body>
+        <footer class="footer">
+            <main class="contact-info">
+                <section>
+                    <span class="phone" >976 56 55 24</span><br>
+                    <span class="mail" ><a href="mailto:info@nzreformas.es">info@nzreformas.es</a></span>
+                </section>
+                <section>
+                    <span class="address" >Duquesa Villahermosa 115</span><br>
+                    <span class="city" >Zaragoza</span>
+                </section>
+                <section>
+                    <span class="week" >De lunes a viernes</span><br>
+                    <span class="time" >8:00-13:00 16:00-20:00</span>
+                </section>
+            </main>
+            <aside>
+                <section>
+                    <img src="{{ asset('images/icon/navascues-zalaya.png') }}" alt="Construcciones Navascués Zalaya S.L." title="Construcciones Navascués Zalaya S.L." /><br>
+                    <a href="{{ path ('app_static',{'page': 'avisoLegal'}) }}">Aviso Legal</a>
+                </section>
+            </aside>
+        </footer>
+    </body>
 </html>

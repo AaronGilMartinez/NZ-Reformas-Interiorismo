@@ -1,0 +1,107 @@
+@import "../neat/neat-helpers";
+@import "variables";
+
+
+$visual-grid: true !default;
+
+/* GRIDS */
+
+// Neat Overrides
+$grid-columns: 12;
+$max-width: $max-screen;
+
+// Neat Breakpoints
+$mobile-screen-up: new-breakpoint(max-width $mobile-screen 4);
+$tablet-screen-up: new-breakpoint(max-width $tablet-screen 8);
+
+body, html {
+/*    min-width: 320px;*/
+    height: 100%;
+    width: 100%;
+/*    background: $base-background-color; */
+}
+
+figure.img-header {
+    position: relative;
+
+    figcaption {
+        background-color: rgba(255,255,255,0.6);
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        bottom: 0;
+        bottom: 0.3em;
+        font-weight: bold;
+        font-size: 1.3em;
+        padding: 0.2em 0;
+
+        @include media(max-width $normal-screen) {
+            padding: 0.1em 0;
+            bottom: 0.4em;
+            font-weight: normal;
+            font-size: 1em;
+        }
+    }
+}
+
+article {
+    @include clearfix;
+    position: relative;
+    padding: 4em;
+
+        @include media(max-width $normal-screen) {
+            padding: 3em;
+        }
+
+        @include media(max-width $tablet-screen) {
+            padding: 2em;
+        }
+
+        @include media(max-width $mobile-screen) {
+            padding: 1em;
+        }
+}
+
+.page-content{
+    @include outer-container;
+
+    .single {
+        @include span-columns(12);
+
+        @include media($tablet-screen-up) {
+            @include span-columns(8);
+        }
+
+        @include media($mobile-screen-up) {
+            @include span-columns(4);
+        }
+    }
+
+    .primary {
+        @include span-columns(8);
+
+        @include media($tablet-screen-up) {
+            @include span-columns(5);
+        }
+
+        @include media($mobile-screen-up) {
+            @include span-columns(4);
+        }
+
+    }
+
+    .secondary {
+        @include span-columns(4);
+
+        @include media($tablet-screen-up) {
+            @include span-columns(3);
+        }
+
+        @include media($mobile-screen-up) {
+            @include span-columns(4);
+        }
+    }
+}
+
+
+

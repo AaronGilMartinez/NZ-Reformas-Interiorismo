@@ -1,0 +1,82 @@
+{# src/AppBundle/Resources/views/Default/inicio.html.twig #}
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block content %}
+
+    <div class="container" >
+        <div class="slider" >
+            <ul>
+                <li>
+                    <img src="{{ asset('images/presentacion/1.jpg') }}" title="" alt="" />
+                    <div class="content">Slide one</div>
+                </li>
+                <li>
+                    <img src="{{ asset('images/presentacion/2.jpg') }}" title="" alt="" />
+                    <div class="content">Slide Two</div>
+                </li>
+                <li>
+                    <img src="{{ asset('images/presentacion/3.jpg') }}" title="" alt="" />
+                    <div class="content">Slide Three</div>
+                </li>
+                <li>
+                    <img src="{{ asset('images/presentacion/4.jpg') }}" title="" alt="" />
+                    <div class="content">Slide Four</div>
+                </li>
+                <li>
+                    <img src="{{ asset('images/presentacion/5.jpg') }}" title="" alt="" />
+                    <div class="content">Slide Five</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <article>
+        <section>
+            <header>
+                <h2>Reformas en Zaragoza</h2>
+            </header>
+            <ul>
+
+                <li><a href="javascript:void(0)">Pisos integrales</a></li>
+                <li><a href="javascript:void(0)">Baños</a></li>
+                <li><a href="javascript:void(0)">Cocinas</a></li>
+                <li><a href="javascript:void(0)">Rehabilitación de fachadas</a></li>
+                <li><a href="javascript:void(0)">Piscinas</a></li>
+                <li><a href="javascript:void(0)">Patios de comunidades</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <header>
+                <h2>Financiación SIN BANCOS</h2>
+            </header>
+
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nunc diam, rutrum sed 
+                consectetur ac, pretium vitae tortor. Donec eget mauris et dolor tempus dictum. 
+                Praesent suscipit arcu ac ligula blandit mollis. Proin volutpat odio arcu, ac 
+                gravida nisl varius nec. Aenean vehicula ipsum in enim posuere ultrices. Curabitur 
+                ac enim purus. Nullam faucibus a risus in viverra. Pellentesque venenatis mauris ut 
+                nulla ultrices, quis ornare massa maximus. Duis egestas lectus dictum justo 
+                faucibus, sed mattis sapien viverra. Phasellus mollis ante non turpis pellentesque, 
+                ac vehicula eros tincidunt.
+            </p>
+        </section>
+
+        <section>
+            <header>
+                <h2>Presupuesto sin compromiso</h2>
+            </header>
+
+            <p>
+                Curabitur eget velit interdum, convallis urna ut, lacinia ante. Vestibulum lacinia, 
+                nunc sit amet elementum vestibulum, lacus arcu tincidunt sem, non ultrices nisi 
+                libero vel augue. Aliquam et facilisis nisi. Morbi nec nulla efficitur, facilisis 
+                justo eu, fringilla tortor. Pellentesque ultricies fermentum nunc vel rhoncus. Morbi
+                diam lacus, viverra vitae pharetra ac, volutpat accumsan dui. Mauris eget nulla 
+                efficitur, pellentesque ipsum ac, mattis neque. Nunc eget egestas massa. Nullam ut 
+                turpis felis.
+            </p>
+        </section>
+    </article>
+{% endblock %}

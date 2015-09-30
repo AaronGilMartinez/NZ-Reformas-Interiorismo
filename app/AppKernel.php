@@ -17,10 +17,9 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
-            new Blogger\BlogBundle\BlogBundle(),
+            new BlogBundle\BlogBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
-            new Budget\CalculatorBundle\BudgetCalculatorBundle(),
-            new Main\PagesBundle\MainPagesBundle(),
+            new CalculatorBundle\CalculatorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

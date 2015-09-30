@@ -1,0 +1,44 @@
+
+<article>
+    <h3>Categorías</h3>
+    <ul>
+    {% for category in categories %}
+        <li>
+            <a href="{{ path('blog_category_show', { 'slug': category.slug,'page': 1 }) }}" >{{ category.name }}</a>
+        </li>
+            {% else %}
+        No hay categorías
+    {% endfor %}
+    </ul>
+</article>
+
+<article>
+    <h3>Nube de etiquetas</h3>
+    {% for tag in tags %}
+            <a href="{{ path('blog_tag_show', { 'slug': tag.slug,'page': 1 }) }}" ><code>{{ tag.name }}</code></a>
+    {% else %}
+        No hay etiquetas
+    {% endfor %}
+</article>
+
+<article>
+    <h3>Últimos comentarios</h3>
+    <ul>
+        {% for comment in latestComments %}
+            <li >
+                <strong>{{ comment.name }}</strong> :
+                <a href="{{ path('blog_article_show', { 'slug': comment.article.slug }) }}#comment-{{ comment.id }}" >
+                    <em>{{ comment.comment }}</em>
+                </a>
+                <footer>
+                    <a href="{{ path('blog_article_show', { 'slug': comment.article.slug }) }}">
+                        {{ comment.article.title }}
+                    </a> - 
+                    <time>{{ comment.created|created_ago }}</time>
+                </footer>
+            </li>
+        {% else %}
+            <p>No hay comentarios recientes</p>
+        {% endfor %}
+    </ul>
+</article>

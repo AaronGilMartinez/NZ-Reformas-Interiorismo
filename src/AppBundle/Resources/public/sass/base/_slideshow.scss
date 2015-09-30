@@ -1,0 +1,120 @@
+/* SLIDESHOW */
+
+.container {
+    margin: 0 auto;
+    width: 100%;
+    background-color: #fff;
+    height: 600px;
+
+    @include media(max-width $normal-screen) {
+        height: 450px;
+    }
+
+    @include media(max-width $tablet-screen) {
+        height: 300px;
+    }
+
+    @include media(max-width $mobile-screen) {
+        height: 150px;
+    }
+
+    .slider {
+        width: 100%;
+        overflow: hidden;
+        height: 600px;
+        position: relative;
+
+        @include media(max-width $normal-screen) {
+            height: 450px;
+        }
+
+        @include media(max-width $tablet-screen) {
+            height: 300px;
+        }
+
+        @include media(max-width $mobile-screen) {
+            height: 150px;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            width: 500%;
+            height: 100%;
+            top: 0;
+
+            li {
+                padding: 0;
+                margin: 0;
+                width: 16,66666%;
+                overflow: hidden;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                img {
+                    width: 100%;
+                    min-height: 100%;
+                }
+            }
+        }
+
+        .content {
+            z-index: 3;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3em;
+            box-sizing: border-box;
+            background-color: rgba(0, 0, 0, 0.4);
+            color: #fff;
+            line-height: 3em;
+            font-size: 1.5em;
+            padding: 0 3em;
+
+            @include media(max-width $tablet-screen) {
+                padding: 0 2em;
+                height: 2.4em;
+                line-height: 2.4em;
+                font-size: 1.2em;
+            }
+
+            @include media(max-width $mobile-screen) {
+                padding: 0 1em;
+
+
+            }
+        }
+    }
+
+    .nav {
+        width: 150px;
+        margin: 0 auto 100px auto;
+
+        ul {
+            li {
+                float: left;
+
+                a {
+                    display: block;
+                    width: 20px;
+                    height: 20px;
+                    float: left;
+                    margin: 0 5px;
+                    background: #fff;
+                    text-indent: -9999px;
+                    border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    box-shadow: 0px 0px 30px #000;
+                    -webkit-box-shadow: 0px 0px 30px #000;
+
+                    &:active, &:hover {
+                        background: #333;
+                    }
+                }
+            }
+        }
+    }
+
+}

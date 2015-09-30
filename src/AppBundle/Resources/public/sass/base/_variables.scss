@@ -1,0 +1,47 @@
+/* VARIABLES */
+
+//Screen
+$mobile-screen: em(480) !default;
+$tablet-screen: em(768) !default;
+$normal-screen: em(1024) !default;
+$max-screen: em(1980) !default;
+
+// Typography
+$base-font-family: 'Questrial', sans-serif;
+$heading-font-family: 'Sanchez', serif;
+
+// Font Sizes
+$base-font-size: 1em;
+
+// Line height
+$base-line-height: 1.5;
+$heading-line-height: 1.2;
+
+// Other Sizes
+$base-border-radius: 3px;
+$base-spacing: $base-line-height * 1em;
+$small-spacing: $base-spacing / 2;
+$base-z-index: 0;
+
+// Colors
+$red: #E4222E;
+$dark-gray: #333;
+$medium-gray: #888;
+$light-gray: #bbb;
+
+// Font Colors
+$base-background-color: #eee;
+$base-font-color: $dark-gray;
+$action-color: $red;
+
+// Border
+$base-border-color: $light-gray;
+$base-border: 1px solid $base-border-color;
+
+//Menu
+$navigation-height: 80px;
+$navigation-submenu-width: 8em;
+
+// Forms
+$form-box-shadow: inset 0 1px 3px rgba(#000, 0.06);
+$form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($action-color, $lightness: -5%, $alpha: -0.3);

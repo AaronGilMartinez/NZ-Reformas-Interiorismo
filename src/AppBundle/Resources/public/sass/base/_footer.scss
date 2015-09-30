@@ -1,0 +1,104 @@
+/* FOOTER */
+
+.footer {
+    background: darken($dark-gray,15%);
+    padding: $gutter;
+    width: 100%;
+    text-align: center;
+
+    .phone {
+        font-family: $base-font-family;
+        font-style: normal;
+        font-size: 2.4em;
+        line-height: 1.1em;
+        color: $light-gray;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    .mail {
+        line-height: 1em;
+        font-size: 1.5em;
+        font-weight: normal;
+        font-family: $base-font-family;
+        color: $light-gray;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    .address {
+        line-height: 1em;
+        font-size: 1em;
+        font-weight: bold;
+        font-family: $base-font-family;
+        color: $light-gray;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    .city {
+        font-family: $base-font-family;
+        font-style: normal;
+        font-size: 2.75em;
+        line-height: 1em;
+        color: $light-gray;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .week {
+        line-height: 1.1em;
+        font-size: 2em;
+        font-weight: normal;
+        color: $light-gray;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .time {
+        line-height: 1.1em;
+        font-size: 1.6em;
+        font-weight: normal;
+        font-family: $base-font-family;
+        color: $light-gray;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    a, section, p, h3, h4 {
+        color: $light-gray;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    p {
+        font-size:1em;
+        line-height: 1em;
+        margin: 1em 0;
+    }
+
+    section {
+        margin: 1em 0;
+    }
+
+    .contact-info {
+        @include clearfix;
+        padding-bottom: 1em;
+
+        section {
+            @include span-columns(4);
+            @include omega(12n);
+
+            @include media(max-width $tablet-screen) {
+                @include span-columns(12);
+            }
+        }
+    }
+}

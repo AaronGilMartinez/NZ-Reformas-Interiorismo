@@ -1,8 +1,0 @@
-{% extends 'BlogBundle::blog.html.twig' %}
-
-{% block title %}Añadir comentario{% endblock%}
-
-{% block body %}
-    <h1>Añadir comentario al post del blog "{{ comment.blog.title }}"</h1>
-    {% include 'BlogBundle:Comment:form.html.twig' with { 'form': form } %}
-{% endblock %}

@@ -1,3 +1,0 @@
-# src/Blogger/BlogBundle/Resources/config/config.yml
-parameters:
-    main_pages.emails.contact_email: array("admin@nzreformas.es", "since1991a@gmail.com");

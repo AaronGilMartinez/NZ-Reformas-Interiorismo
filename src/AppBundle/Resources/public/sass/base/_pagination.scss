@@ -1,0 +1,51 @@
+/* PAGINATION */
+
+.pagination {  
+    text-align: center;
+    margin: 2em 0;
+
+    ul {
+        display: inline;
+        text-align: center;
+
+        li {
+            display: inline;
+            list-style: none;
+        }
+
+        ul li {
+            display: none;
+
+            &:nth-child(1),
+                &:nth-child(2),
+                &:nth-child(3) {
+                display: inline;
+            }
+
+            @include media($tablet-screen) {
+                display: inline;
+            }
+        }
+
+        li a {
+            @include transition (all 0.2s ease-in-out);
+            color: $base-font-color;
+            outline: none;
+            padding: ($base-spacing / 4) ($gutter / 2);
+            text-decoration: none;
+
+            -webkit-transition:color .3s;
+            -moz-transition:color .3s;
+            -ms-transition:color .3s;
+            -o-transition:color .3s;
+            transition:color .3s;
+
+            &:hover,
+                &:focus,&.active {
+                color: $action-color;
+            }
+
+        }
+    }
+}
+

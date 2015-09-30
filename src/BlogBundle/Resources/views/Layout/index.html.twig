@@ -1,0 +1,46 @@
+{# src/BlogBundle/Resources/views/Layout/index.html.twig #}
+
+{% extends 'BlogBundle::blog.html.twig' %}
+
+{% block title %}NZ Blog{% endblock %}
+
+{% block content %}
+    {% for article in articles %}
+        <article>
+            <img src="{{ asset(['images/blog/', article.image]|join) }}" alt="{{ article.title }} No se ha encontrado la imagen" />
+            <h1><a href="{{ path('blog_article_show', { 'slug': article.slug }) }}">{{ article.title }}</a></h1>    
+            <p>
+                {{ article.article(600) }} ...
+            </p>
+            <hr>
+        </article>
+
+    {% else %}
+        <p>NO hay entradas en NZ Blog</p>
+    {% endfor %}
+
+    {% if paginador.Total() > 1 %}
+        <div class="pagination">
+            <ul>
+                {% if paginador.Start() != 1 %}
+                    <li class="page-prev"><a href="{{ path('blog_homepage',{'page': 1}) }}">1</a></li>
+                {% endif %}
+                {% if paginador.Start() > 2 %}
+                    <li>...</li>
+                {% endif %}
+
+                {% for i in paginador.Start()..paginador.End() %}
+                    <li><a class="{% if i == paginador.Current() %}active{% endif %}" href="{{ path('blog_homepage',{'page': i}) }}" >{{ i }}</a></li>
+                {% endfor %}
+
+                {% if paginador.End() < paginador.Total()-1 %}
+                    <li>...</li>
+                {% endif %}
+                {% if paginador.End() != paginador.Total() %}
+                    <li class="page-prev"><a href="{{ path('blog_homepage',{'page': paginador.Total()}) }}">{{ paginador.Total() }}</a></li>
+                {% endif %}
+            </ul>
+
+        </div>
+    {% endif %}      
+{% endblock %}
