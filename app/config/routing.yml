@@ -4,7 +4,7 @@ app:
 
 calculator:
     resource: "@CalculatorBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /calculador
 
 blog:
     resource: "@BlogBundle/Resources/config/routing.yml"

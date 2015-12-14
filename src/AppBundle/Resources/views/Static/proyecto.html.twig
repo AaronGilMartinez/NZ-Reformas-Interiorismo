@@ -1,0 +1,28 @@
+{# src/AppBundle/Resources/views/Default/baños.html.twig #}
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block keywords %}{{ project.name }}{% endblock %}
+{% block description %}{{ project.description }}{% endblock %}
+
+{% block title %}{{ project.name }}{% endblock %}
+
+{% block content %}
+    <article>
+        <section>
+            <header>
+                <h1>{{ project.name }}</h1>
+            </header>
+            <ul class="galleries" >
+                {% for gallery in project.galleries %}
+                    <li>
+                        <a href="{{ path ('app_gallery',{'project': project.slug,'gallery': gallery.slug}) }}" >
+                            <h2><strong>{{ gallery.title }}</strong><br>
+                                {{ gallery.name }}</h2>
+                            <img src="{{ asset( gallery.image ~ '.jpg')}}" title="{{ gallery.title }}" alt="{{ gallery.title }}" />
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </article>
+{% endblock %}

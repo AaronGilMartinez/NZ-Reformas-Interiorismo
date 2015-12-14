@@ -1,18 +1,32 @@
 {# src/AppBundle/Resources/views/Default/baños.html.twig #}
 {% extends 'AppBundle::main.html.twig' %}
 
-{% block title %}Reformas en Baños{% endblock %}
+{% block keywords %}Proyectos de NZ Reformas{% endblock %}
+{% block description %}Proyectos de NZ Reformas{% endblock %}
+
+{% block title %}Proyectos de NZ Reformas{% endblock %}
 {% block content %}
     <article>
-        <h1>Proyectos</h1>
-        <ul class="gallery">
-            <li class="rounded-gallery-item" >
-                <a href="{{ path ('app_static',{'page': 'comunidades'}) }}" >
-                    <h2>Comunidades</h2>
-                    <img src="/images/proyectos/comunidades/baños.jpg" alt="Imagen no disponible" />
-                </a>
-            </li>
-        </ul>
+        <h1>Proyectos de NZ Reformas</h1>
+        <ul class="projects">
+            {% for project in projects %}
 
+                <li>
+                    <div class="img" >
+                        <a href="{{ path ('app_project',{'project': project.slug}) }}" >
+                            <img src="{{ asset( project.image ~ '.jpg')}}" alt="{{ project.name }}" title="{{ project.name }}" />
+                        </a>
+                    </div>
+                    <div class="text" >
+                        <div class="desc" >
+                            <h2><a href="{{ path ('app_project',{'project': project.slug}) }}" >
+                                    {{ project.name }}
+                                </a></h2>
+                            <p>{{ project.description }}</p>
+                        </div>                       
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
     </article>
 {% endblock %}

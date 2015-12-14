@@ -19,27 +19,34 @@ class SitemapController extends Controller {
 
         // Contact
         $urls[] = array('loc' => $this->get('router')->generate('app_contact'), 'changefreq' => 'weekly', 'priority' => '9.0');
-
-        // Blog
-        $urls[] = array('loc' => $this->get('router')->generate('blog_homepage'), 'changefreq' => 'weekly', 'priority' => '7.0');
-
+        
         // Company
         $urls[] = array('loc' => $this->get('router')->generate('app_static', array('page' => 'empresa')), 'changefreq' => 'weekly', 'priority' => '0.8');
+        
+         // Projects
+        $urls[] = array('loc' => $this->get('router')->generate('app_static', array('page' => 'proyectos')),  'changefreq' => 'weekly', 'priority' => '7.0');
+        
+        // Gallery
+        foreach ($em->getRepository('AppBundle:Project')->findAll() as $project) {
+            $urls[] = array('loc' => $this->get('router')->generate('app_gallery', array('project' => $project->getSlug())), 'priority' => '0.5');
+        }
+        // Blog
+//        $urls[] = array('loc' => $this->get('router')->generate('blog_homepage'), 'changefreq' => 'weekly', 'priority' => '7.0');
 
         // Categories
-        foreach ($em->getRepository('BlogBundle:Category')->findAll() as $category) {
-            $urls[] = array('loc' => $this->get('router')->generate('blog_category_show', array('slug' => $category->getSlug())), 'priority' => '0.6');
-        }
+//        foreach ($em->getRepository('BlogBundle:Category')->findAll() as $category) {
+//            $urls[] = array('loc' => $this->get('router')->generate('blog_category_show', array('slug' => $category->getSlug())), 'priority' => '0.6');
+//        }
 
         // Tags
-        foreach ($em->getRepository('BlogBundle:Tag')->findAll() as $tag) {
-            $urls[] = array('loc' => $this->get('router')->generate('blog_tag_show', array('slug' => $tag->getSlug())), 'priority' => '0.6');
-        }
+//        foreach ($em->getRepository('BlogBundle:Tag')->findAll() as $tag) {
+//            $urls[] = array('loc' => $this->get('router')->generate('blog_tag_show', array('slug' => $tag->getSlug())), 'priority' => '0.6');
+//        }
 
         // Blogs
-        foreach ($em->getRepository('BlogBundle:Blog')->findAll() as $blog) {
-            $urls[] = array('loc' => $this->get('router')->generate('blog_blog_show', array('slug' => $blog->getSlug(), 'comments' => 'false')), 'priority' => '0.5');
-        }
+//        foreach ($em->getRepository('BlogBundle:Blog')->findAll() as $blog) {
+//            $urls[] = array('loc' => $this->get('router')->generate('blog_blog_show', array('slug' => $blog->getSlug(), 'comments' => 'false')), 'priority' => '0.5');
+//        }
 
         return $this->render('AppBundle::sitemap.xml.twig', array(
                     'urls' => $urls,

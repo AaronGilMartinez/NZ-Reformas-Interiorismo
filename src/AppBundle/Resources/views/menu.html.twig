@@ -1,0 +1,56 @@
+<header class="navigation">
+    <nav>
+        <div class="logo" >
+            <img src="{{ asset('bundles/app/images/icon/NZ-Reformas.png')}}" alt="NZ Reformas" title="NZ Reformas" />
+        </div>
+
+        <a class="menu-button" href="javascript:void(0)" >
+            <img src="{{ asset('bundles/app/images/icon/menu.png')}}" alt="Menú" title="Menú" />
+        </a>
+
+        <ul>
+            <li class="back-button" >
+                <img class="NZ" src="{{ asset('bundles/app/images/icon/NZ.png')}}" alt="NZ Reformas" title="NZ Reformas" />
+                <a href="javascript:void(0)" >
+                    <img src="{{ asset('bundles/app/images/icon/left.png')}}" alt="Atrás" title="Atrás" />
+                </a>
+            </li>
+            <li><a href="{{ path('app_homepage') }}">Inicio</a></li>
+            <li class="more" ><a href="{{ path ('app_static',{'page': 'servicios'}) }}" >Servicios</a>
+                <ul>
+                    <li><strong>Comunidades</strong>
+                        <ul>
+                            <li><a href="{{ path ('app_static',{'page': 'ascensores'}) }}" >Ascensores</a></li>
+                            <li><a href="{{ path ('app_static',{'page': 'fachadas'}) }}" >Fachadas</a></li>
+                            <li><a href="{{ path ('app_static',{'page': 'impermeabilizaciones'}) }}" >Impermeabilizaciones</a></li>
+                        </ul>
+                    </li>
+                    <li><strong>Viviendas</strong>
+                        <ul>
+                            <li><a href="{{ path ('app_static',{'page': 'integrales'}) }}" >Integrales</a></li>
+                            <li><a href="{{ path ('app_static',{'page': 'banos'}) }}" >Baños</a></li>
+                            <li><a href="{{ path ('app_static',{'page': 'cocinas'}) }}" >Cocinas</a></li>
+                        </ul>
+
+                    </li>
+                </ul>
+            </li>
+            <li class="more" ><a href="{{ path ('app_static',{'page': 'proyectos'}) }}" >Proyectos</a>
+                <ul >
+                    {% for project in projects %}
+                        <li><a href="{{ path ('app_project',{'project': project.slug }) }}" >{{ project.name }}</a></li>
+                        {% endfor %}
+                </ul>
+            </li>
+            <li><a href="{{ path ('app_static',{'page': 'empresa'}) }}">Empresa</a></li>
+            <li><a href="{{ path('app_contact') }}">Contacto</a></li>
+            <li class="button" ><a href="{{ path('app_contact') }}" >Pedir presupuesto</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="up">
+    <a href="javascript:void(0)" >
+        <img src="{{ asset('bundles/app/images/icon/up.png')}}" alt="Ir arriba" title="Ir arriba" />
+    </a>
+</div>

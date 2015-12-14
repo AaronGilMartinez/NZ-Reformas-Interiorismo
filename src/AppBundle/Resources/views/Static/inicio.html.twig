@@ -1,82 +1,95 @@
 {# src/AppBundle/Resources/views/Default/inicio.html.twig #}
 {% extends 'AppBundle::main.html.twig' %}
 
-{% block content %}
+{% block description %}NZ Reformas e Interiorismo, empresa de reformas en Zaragoza. Pisos integrales,
+    baños, cocinas, locales, comunidades, ... Financiación directa Sin Bancos.{% endblock %}
 
-    <div class="container" >
-        <div class="slider" >
-            <ul>
-                <li>
-                    <img src="{{ asset('images/presentacion/1.jpg') }}" title="" alt="" />
-                    <div class="content">Slide one</div>
-                </li>
-                <li>
-                    <img src="{{ asset('images/presentacion/2.jpg') }}" title="" alt="" />
-                    <div class="content">Slide Two</div>
-                </li>
-                <li>
-                    <img src="{{ asset('images/presentacion/3.jpg') }}" title="" alt="" />
-                    <div class="content">Slide Three</div>
-                </li>
-                <li>
-                    <img src="{{ asset('images/presentacion/4.jpg') }}" title="" alt="" />
-                    <div class="content">Slide Four</div>
-                </li>
-                <li>
-                    <img src="{{ asset('images/presentacion/5.jpg') }}" title="" alt="" />
-                    <div class="content">Slide Five</div>
-                </li>
-            </ul>
+    {% block keywords %}NZ Reformas e Interiorismo{% endblock %}
+
+    {% block title %}NZ Reformas e Interiorismo{% endblock %}
+
+    {% block content %}
+
+        <div class="container" >
+            <div class="slider" >
+                <ul>
+                    <li>
+                        <img src="{{ asset('bundles/app/images/presentacion/reformas-de-pisos.jpg') }}" title="Reformas de pisos" alt="Reformas de pisos" />
+                        <div class="content"><a href="{{ path ('app_project',{'project': 'reformas-de-pisos' }) }}" >Reformas de pisos</a></div>
+                    </li>
+                    <li>
+                        <img src="{{ asset('bundles/app/images/presentacion/reformas-de-baños.jpg') }}" />
+                        <div class="content"><a href="{{ path ('app_project',{'project': 'reformas-de-baños' }) }}" >Reformas de baños</a></div>
+                    </li>
+                    <li>
+                        <img src="{{ asset('bundles/app/images/presentacion/reformas-de-cocinas.jpg') }}" title="Reformas de cocinas" alt="Reformas de cocinas" />
+                        <div class="content"><a href="{{ path ('app_project',{'project': 'reformas-de-cocinas' }) }}" >Reformas de cocinas</a></div>
+                    </li>
+                    <li>
+                        <img src="{{ asset('bundles/app/images/presentacion/reformas-de-comunidades-y-empresas.jpg') }}" title="Reparación de patios" alt="Reparación de patios" />
+                        <div class="content"><a href="{{ path ('app_project',{'project': 'reformas-de-comunidades' }) }}" >Reformas de comunidades y Empresas</a></div>
+                    </li>
+                    <li>
+                        <img src="{{ asset('bundles/app/images/presentacion/oficina.jpg') }}" title="Oficina Construcciones Navascués Zalaya S.L." alt="Oficina Construcciones Navascués Zalaya S.L." />
+                        <div class="content"><a href="{{ path ('app_static',{'page': 'empresa' }) }}" >Nuestra oficina, NZ Reformas forma parte de Construcciones Navascués Zalaya S.L.</a></div>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
 
-    <article>
-        <section>
-            <header>
-                <h2>Reformas en Zaragoza</h2>
-            </header>
-            <ul>
-
-                <li><a href="javascript:void(0)">Pisos integrales</a></li>
-                <li><a href="javascript:void(0)">Baños</a></li>
-                <li><a href="javascript:void(0)">Cocinas</a></li>
-                <li><a href="javascript:void(0)">Rehabilitación de fachadas</a></li>
-                <li><a href="javascript:void(0)">Piscinas</a></li>
-                <li><a href="javascript:void(0)">Patios de comunidades</a></li>
+        <article>
+            <h1>NZ Reformas e Interiorismo</h1>
+            <ul class="projects">
+                <li>
+                    <div class="img" >
+                        <img src="{{ asset('bundles/app/images/icon/home.png') }}" alt="Más de 20 años de experiencia" title="Más de 20 años de experiencia" />
+                    </div>
+                    <div class="text" >
+                        <div class="desc" >
+                            <h2>Más de 20 años de experiencia</h2>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam 
+                                dignissim, diam vel lobortis mattis, quam lorem tincidunt dui, sed 
+                                condimentum turpis nulla ut justo. Vestibulum ante ipsum primis in 
+                                faucibus orci luctus et ultrices posuere cubilia Curae; 
+                        </div>                       
+                    </div>
+                </li>
+                <li>
+                    <div class="img" >
+                        <img src="{{ asset('bundles/app/images/icon/saving.png') }}" alt="Financiación SIN BANCOS" title="Financiación SIN BANCOS" />
+                    </div>
+                    <div class="text" >
+                        <div class="desc" >
+                            <h2>Financiación SIN BANCOS</h2>
+                            <p>
+                                Curabitur eget feugiat augue, id consequat magna. Donec vitae felis 
+                                eget sapien elementum lacinia. Nunc nunc elit, posuere ac 
+                                sollicitudin ac, lobortis eu turpis. Vestibulum aliquet ligula et 
+                                nunc venenatis, nec tristique dolor molestie. Curabitur id congue 
+                                metus. Quisque faucibus mauris mi, eget maximus diam tempus et. 
+                            </p>
+                        </div>                       
+                    </div>
+                </li>
+                <li>
+                    <div class="img" >
+                        <img src="{{ asset('bundles/app/images/icon/budget.png') }}" alt="Presupuesto sin compromiso" title="Presupuesto sin compromiso" />
+                    </div>
+                    <div class="text" >
+                        <div class="desc" >
+                            <h2>Presupuesto sin compromiso</h2>
+                            <p>
+                                Vestibulum mattis velit ut iaculis blandit. Cras tincidunt tempus 
+                                vehicula. Integer mattis efficitur quam, et volutpat est maximus 
+                                eget. Donec dapibus commodo sem, sit amet tristique ante ullamcorper
+                                et. Phasellus ac dignissim nibh, in mattis sem. Pellentesque non 
+                                lacinia velit. Curabitur orci ligula, sollicitudin vitae enim vitae,
+                                interdum pharetra est. Donec auctor quis sapien non iaculis.
+                            </p>
+                        </div>                       
+                    </div>
+                </li>
             </ul>
-        </section>
-
-        <section>
-            <header>
-                <h2>Financiación SIN BANCOS</h2>
-            </header>
-
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nunc diam, rutrum sed 
-                consectetur ac, pretium vitae tortor. Donec eget mauris et dolor tempus dictum. 
-                Praesent suscipit arcu ac ligula blandit mollis. Proin volutpat odio arcu, ac 
-                gravida nisl varius nec. Aenean vehicula ipsum in enim posuere ultrices. Curabitur 
-                ac enim purus. Nullam faucibus a risus in viverra. Pellentesque venenatis mauris ut 
-                nulla ultrices, quis ornare massa maximus. Duis egestas lectus dictum justo 
-                faucibus, sed mattis sapien viverra. Phasellus mollis ante non turpis pellentesque, 
-                ac vehicula eros tincidunt.
-            </p>
-        </section>
-
-        <section>
-            <header>
-                <h2>Presupuesto sin compromiso</h2>
-            </header>
-
-            <p>
-                Curabitur eget velit interdum, convallis urna ut, lacinia ante. Vestibulum lacinia, 
-                nunc sit amet elementum vestibulum, lacus arcu tincidunt sem, non ultrices nisi 
-                libero vel augue. Aliquam et facilisis nisi. Morbi nec nulla efficitur, facilisis 
-                justo eu, fringilla tortor. Pellentesque ultricies fermentum nunc vel rhoncus. Morbi
-                diam lacus, viverra vitae pharetra ac, volutpat accumsan dui. Mauris eget nulla 
-                efficitur, pellentesque ipsum ac, mattis neque. Nunc eget egestas massa. Nullam ut 
-                turpis felis.
-            </p>
-        </section>
-    </article>
-{% endblock %}
+        </article>
+    {% endblock %}

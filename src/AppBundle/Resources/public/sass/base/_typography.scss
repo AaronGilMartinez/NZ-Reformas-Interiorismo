@@ -6,11 +6,11 @@ body {
     font-size: $base-font-size;
     line-height: $base-line-height;
 
-    h1, h2, h3, p {
+    h1,h2,h3, p {
         margin-bottom: 0.5em;
 
-        @include media(max-width $tablet-screen) {
-            margin-bottom: 0.2em;
+        @include media($tablet-screen) {
+            margin-bottom: 0.25em;
         }
     }
 
@@ -30,7 +30,6 @@ body {
 
     a {
         color: black;
-        text-decoration: none;
         &:hover {
             @include transition (all 0.2s ease-in-out);
             color: $action-color;
@@ -58,21 +57,35 @@ body {
 
     h1 {
         font-family: $heading-font-family;
-        font-size: 2em;
+        font-size: 3em;
         font-weight: 700;
+
+        @include media(max-width $tablet-screen) {
+            font-size: 2em;
+            font-weight: 600;
+        }
     }
 
     h2 {
         font-family: $heading-font-family;
-        font-size: 1.75em;
-        font-style: italic;
-        font-weight: 400;
+        font-size: 2em;
+        font-weight: 500;
+
+        @include media(max-width $tablet-screen) {
+            font-size: 1.7em;
+            font-weight: 400;
+        }
     }
 
     h3 {
         font-family: $heading-font-family;
         font-size: 1.5em;
         font-weight: 400;
+
+        @include media(max-width $tablet-screen) {
+            font-size: 1.2em;
+            font-weight: 300;
+        }
     }
 
     code {
@@ -98,9 +111,12 @@ body {
         font-family: $base-font-family;
         font-size: 1.05em;
         line-height: 1.5em;
-        margin-bottom: 1.5em;
         text-align: justify;
-        padding: 1em 0;
+
+        @include media(max-width $tablet-screen) {
+            font-size: 0.9em;
+            line-height: 1.4em;
+        }
 
     }
 
@@ -125,6 +141,10 @@ body {
 
     .author {
         font-family: $base-font-family;
+    }
+
+    .center {
+        text-align: center;
     }
 
 

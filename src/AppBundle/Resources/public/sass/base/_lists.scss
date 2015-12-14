@@ -1,32 +1,315 @@
 /* BASIC LISTS */
 
 ul,ol {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 
-  &%default-ul {
-    list-style-type: disc;
-    margin-bottom: $small-spacing;
-    padding-left: $base-spacing;
-  }
+    &%default-ul {
+        list-style-type: disc;
+        margin-bottom: $small-spacing;
+        padding-left: $base-spacing;
+    }
 
-  &%default-ol {
-    list-style-type: decimal;
-    margin-bottom: $small-spacing;
-    padding-left: $base-spacing;
-  }
+    &%default-ol {
+        list-style-type: decimal;
+        margin-bottom: $small-spacing;
+        padding-left: $base-spacing;
+    }
 }
 
 dl {
-  margin-bottom: $small-spacing;
+    margin-bottom: $small-spacing;
 
-  dt {
-    font-weight: bold;
-    margin-top: $small-spacing;
-  }
+    dt {
+        font-weight: bold;
+        margin-top: $small-spacing;
+    }
 
-  dd {
-    margin: 0;
-  }
+    dd {
+        margin: 0;
+    }
+}
+
+.projects {
+    
+    padding-bottom: 2em;
+    
+    li{
+        width: 100%;
+        position: relative;
+        @include clearfix;
+
+        @include media(max-width $tablet-screen) {
+            padding: 1em 0;
+        }
+
+        &:hover {
+            .img img {
+                @include filter(grayscale(0%));
+            }
+        }
+
+        .img {
+            @include span-columns(4);
+            @include omega;
+            text-align: center;
+            padding: 0 1em;
+
+
+            @include media(max-width $tablet-screen) {
+                @include span-columns(12);
+                @include omega;
+                
+            }
+
+            img {
+                @include filter(grayscale(100%));
+                border-radius: 50%;
+                border: 3px solid black;
+
+                @include media(max-width $tablet-screen) {
+                    @include filter(grayscale(0%));
+                }
+            }
+        }
+
+        .text {
+            @include span-columns(8);
+
+            @include media(max-width $tablet-screen) {
+                @include span-columns(12);
+            }
+
+            .desc {
+                @include media(min-width $tablet-screen) {
+                    @include span-columns(8);
+                    position: absolute;
+                    top: 50%;
+                    @include transform(translatey(-50.001%));
+                }
+
+                p {
+                    margin:0;
+                }
+            }
+        }
+    }
+
+    li:nth-child(even) {
+        .img {
+            float: right;
+        }
+
+        .text {
+            float: right;
+            text-align: right;
+
+            p {
+                text-align: right;
+
+                @include media(max-width $tablet-screen) {
+                    text-align: center;
+                }
+            }
+            @include media(max-width $tablet-screen) {
+                text-align: center;
+            }
+        }
+    } 
+}
+
+
+.galleries {
+
+    li {
+        display: inline-block;
+        max-width: 300px;
+        max-height: 300px;
+        position: relative;
+
+        a{  
+            color: black;
+
+            h2 {
+                left: 50%;
+                bottom: 0;
+                width: 100%;
+                position: absolute;
+                font-family: $heading-font-family;
+                text-align: center;
+                z-index: 5;
+                @include transform(translate(-50.001%,0));
+                background: rgba(255, 255, 255, 0.5);
+                padding: 0.2em;
+                margin: 0;
+            }
+
+            &:hover {
+                color: black;
+            }
+        }
+    }
+}
+
+.gallery {
+    @include outer-container;
+
+    li {
+        display: inline-block;
+        margin: 2em;
+        width: 200px;
+        height: 200px;
+        position: relative;
+
+        @include media(max-width $tablet-screen) {
+            margin: 1em;
+            width: 100px;
+            height: 100px;
+        }
+
+        a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            z-index: 10;
+
+            &:hover .zoom {
+                opacity: 0.3; 
+            }
+
+            .zoom {
+                z-index: 10;
+                opacity: 0;
+                background: white;
+                padding: 50px;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-right: -50%;
+                @include transform(translate(-50.001%, -50.001%));
+                @include transition(opacity 0.5s);
+
+                @include media(max-width $tablet-screen) {
+                    padding: 25px;
+                    opacity: 0.3; 
+                }
+            }
+
+            .thumb {
+                position: absolute;
+                max-width: 200px;
+                max-height: 200px;
+                top: 50%;
+                left: 50%;
+                margin-right: -50%;
+                @include transform(translate(-50.001%, -50.001%));
+
+                @include media(max-width $tablet-screen) {
+                    max-width: 100px;
+                    max-height: 100px;
+                }
+            }
+
+        }
+
+        .overlay {
+            background: rgba(0,0,0,0.7);
+            opacity: 0;
+            position: fixed;
+            overflow: hidden;
+            left: 50.001%;
+            top: 50.001%;
+            width: 0;
+            height: 0;
+            z-index: 100000;
+            @include transform(translate(-50.001%, -50.001%));
+            @include transition(opacity .5s, top .5s);
+
+            &:target {
+                top: 50%;
+                left: 50%;
+                opacity: 1;
+                visibility: visible;
+                width: 100%;
+                height: 100%;
+            }
+
+            .close {
+                height: 40px;
+                width: 40px;
+                margin: 20px;
+                position: absolute;
+                top: 0;
+                right: 0;
+                z-index: 105;
+
+                img {
+                    height: 40px;
+                    width: 40px;
+                    background: rgba(0,0,0,0.3);
+                    border-radius:50%;
+                }
+            }
+
+            img[id^="img-"] {
+                position: absolute;
+                @include calc(max-height, "100% - 60px");
+                @include transform(translate(-50.001%, 0));
+                max-width: 100%;
+                left: 50%;
+                bottom: 60px;
+                z-index: 101;
+
+                @include media(max-width $normal-screen) {
+                    @include transform(translate(-50.001%, -50.001%));
+                    max-height: 100%;
+                    left: 50%;
+                    top: 50%;
+                }
+            }
+
+            .desc {
+                position: absolute;
+                z-index: 105;
+                width: 100%;
+                left: 50%;
+                bottom: 0;
+                margin:0;
+                background: black;
+                @include transform(translate(-50.001%, 0));
+
+                p {
+                    text-align: center;
+                    color: white;
+                    float: left;
+                    margin: 0;
+                    top: 0;
+                    @include calc(width, "100% - 120px");
+                }
+
+                .prev, .next {
+                    height: 60px;
+                    width: 60px;
+                    margin: 0;
+                    float: left;
+
+                    img {
+                        height: 60px;
+                        width: 60px;
+                        padding: 10px;
+
+                    }
+                }
+
+                .next {
+                    float: right;
+
+                }
+            }
+        }
+    }
 }

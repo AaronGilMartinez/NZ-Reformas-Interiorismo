@@ -1,0 +1,23 @@
+{# src/AppBundle/Resources/views/Default/inicio.html.twig #}
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block description %} Prueba description{% endblock %}
+
+{% block keywords %}Gracias{% endblock %}
+
+{% block title %}Gracias{% endblock %}
+
+{% block extra %}<meta name="robots" content="noindex">{% endblock %}
+
+
+{% block content %}
+
+    <article class="center" >
+        <a href="{{ path('app_contact') }}" >
+            <img src="{{ asset('bundles/app/images/icon/gracias.png') }}" title="Gracias" alt="Gracias" />
+        </a>
+        <h2>Su consulta ha sido enviada con éxito. <br>
+            Gracias por ponerse en contacto con nosotros,<br>
+            nos pondremos en contacto con usted en la mayor brevedad posible</h2>
+    </article>
+{% endblock %}

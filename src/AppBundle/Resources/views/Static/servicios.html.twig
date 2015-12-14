@@ -1,0 +1,128 @@
+{# src/AppBundle/Resources/views/Default/empresa.html.twig #}
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block title %}Servicios NZ Reformas{% endblock %}
+{% block content %}
+
+    <article>
+        <h1>Servicios de NZ Reformas</h1>
+        <ul class="projects">
+            <h2>Reformas en comunidades</h2>
+            <li>
+                <div class="img" >
+                    <a href="{{ path ('app_static',{'page': 'ascensores'}) }}" >
+                        <img src="{{ asset('bundles/app/images/proyectos/reformas-de-baños/reformas-de-baños.jpg')}}" alt="Ascensores en comunidades" title="Ascensores en comunidades" />
+                    </a>
+                </div>
+                <div class="text" >
+                    <div class="desc" >
+                        <h3><a href="{{ path ('app_static',{'page': 'ascensores'}) }}" >
+                                Ascensores en comunidades</a></h3>
+                        <p> Ascensores en comunidades, consectetur adipiscing elit. Donec 
+                            id pellentesque metus. Quisque pellentesque posuere pulvinar. 
+                            Nulla in interdum mauris. Maecenas sed nulla a ex vehicula 
+                            viverra vitae non lectus.</p>
+                    </div>                       
+                </div>
+            </li>
+
+            <li>
+                <div class="img" >
+                    <a href="{{ path ('app_static',{'page': 'fachadas'}) }}" >
+                        <img src="{{ asset('bundles/app/images/proyectos/reformas-de-baños/reformas-de-baños.jpg')}}" alt="Rehabilitación de fachadas" title="Rehabilitación de fachadas" />
+                    </a>
+                </div>
+                <div class="text" >
+                    <div class="desc" >
+                        <h3><a href="{{ path ('app_static',{'page': 'fachadas'}) }}" >
+                                Rehabilitación de fachadas
+                            </a></h3>
+                        <p> Rehabilitación de fachadas, consectetur adipiscing elit. Donec 
+                            id pellentesque metus. Quisque pellentesque posuere pulvinar. 
+                            Nulla in interdum mauris. Maecenas sed nulla a ex vehicula 
+                            viverra vitae non lectus.</p>
+                    </div>                       
+                </div>
+            </li>
+
+            <li>
+                <div class="img" >
+                    <a href="{{ path ('app_static',{'page': 'impermeabilizaciones'}) }}" >
+                        <img src="{{ asset('bundles/app/images/proyectos/reformas-de-baños/reformas-de-baños.jpg')}}" alt="Impermeabilizaciones" title="Impermeabilizaciones" />
+                    </a>
+                </div>
+                <div class="text" >
+                    <div class="desc" >
+                        <h3><a href="{{ path ('app_static',{'page': 'impermeabilizaciones'}) }}" >
+                                Impermeabilizaciones
+                            </a></h3>
+                        <p> Impermeabilizaciones, consectetur adipiscing elit. Donec 
+                            id pellentesque metus. Quisque pellentesque posuere pulvinar. 
+                            Nulla in interdum mauris. Maecenas sed nulla a ex vehicula 
+                            viverra vitae non lectus.</p>
+                    </div>                       
+                </div>
+            </li>
+        </ul>
+
+        <ul class="projects" >
+            <h2>Reformas en viviendas</h2>
+            <li>
+                <div class="img" >
+                    <a href="{{ path ('app_static',{'page': 'integrales'}) }}" >
+                        <img src="{{ asset('bundles/app/images/proyectos/reformas-de-baños/reformas-de-baños.jpg')}}" alt="Reformas integrales" title="Reformas integrales" />
+                    </a>
+                </div>
+                <div class="text" >
+                    <div class="desc" >
+                        <h3><a href="{{ path ('app_static',{'page': 'integrales'}) }}" >
+                                Reformas integrales</a></h3>
+                        <p>Reformas integrales, consectetur adipiscing elit. Donec 
+                            id pellentesque metus. Quisque pellentesque posuere pulvinar. 
+                            Nulla in interdum mauris. Maecenas sed nulla a ex vehicula 
+                            viverra vitae non lectus.</p>
+                    </div>                       
+                </div>
+            </li>
+
+            <li>
+                <div class="img" >
+                    <a href="{{ path ('app_static',{'page': 'baños'}) }}" >
+                        <img src="{{ asset('bundles/app/images/proyectos/reformas-de-baños/reformas-de-baños.jpg')}}" alt="Reformas de baños" title="Reformas de baños" />
+                    </a>
+                </div>
+                <div class="text" >
+                    <div class="desc" >
+                        <h3><a href="{{ path ('app_static',{'page': 'baños'}) }}" >
+                                Reformas de baños
+                            </a></h3>
+                        <p> Reformas de baños, consectetur adipiscing elit. Donec 
+                            id pellentesque metus. Quisque pellentesque posuere pulvinar. 
+                            Nulla in interdum mauris. Maecenas sed nulla a ex vehicula 
+                            viverra vitae non lectus.</p>
+                    </div>                       
+                </div>
+            </li>
+
+            <li>
+                <div class="img" >
+                    <a href="{{ path ('app_static',{'page': 'cocinas'}) }}" >
+                        <img src="{{ asset('bundles/app/images/proyectos/reformas-de-baños/reformas-de-baños.jpg')}}" alt="Reformas de cocinas" title="Reformas de cocinas" />
+                    </a>
+                </div>
+                <div class="text" >
+                    <div class="desc" >
+                        <h3><a href="{{ path ('app_static',{'page': 'cocinas'}) }}" >
+                                Reformas de cocinas
+                            </a></h3>
+                        <p> Reformas de cocinas, consectetur adipiscing elit. Donec 
+                            id pellentesque metus. Quisque pellentesque posuere pulvinar. 
+                            Nulla in interdum mauris. Maecenas sed nulla a ex vehicula 
+                            viverra vitae non lectus.</p>
+                    </div>                       
+                </div>
+            </li>
+        </ul>
+    </article>
+
+{% endblock %}

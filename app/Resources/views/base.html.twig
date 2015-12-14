@@ -1,57 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" class="js" >
     <head>
-        <meta http-equiv="Content-Type" content="text/html" charset=utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-        <link rel="icon" type="image/vnd.microsoft.icon" href="{{ asset('images/icon/nz.ico') }}"/>
+        <link rel="icon" type="image/vnd.microsoft.icon" href="{{ asset('bundles/app/images/icon/favicon.ico') }}"/>
         <link href='http://fonts.googleapis.com/css?family=Questrial|Sanchez:400italic,400' rel='stylesheet' type='text/css'>
 
-        {% stylesheets
-            '@AppBundle/Resources/public/css/*'
-        %}
+        {% stylesheets '@AppBundle/Resources/public/css/*' %}
         <link href="{{ asset(asset_url) }}" type="text/css" rel="stylesheet">
         {% endstylesheets %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!--<script src="http://maps.google.com/maps?file=api&amp;v=3&amp;sensor=false&amp;key=AIzaSyCA3AYDNntCXV9MA5TcrUP1RaFVpfqiU38" type="text/javascript"></script>-->
         {% block javascripts %}
             {% javascripts '@AppBundle/Resources/public/js/*' %}
             <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
         {% endblock %}
 
+        <meta name="description" content="{% block description %}NZ Reformas e Interiorismo{% endblock %}">
+
+        <meta name="keywords" content="{% block keywords %}NZ Reformas e Interiorismo{% endblock %}">
+
+        {% block extra %}<!--Aux-block for meta-tags-->{% endblock %}
+
         <title>{% block title %}NZ Reformas{% endblock %}</title>
     </head>
     <body>
-
-        <header class="navigation">
-
-            <nav>
-                <div class="logo" >
-                    <img src="{{ asset('images/icon/NZ-Reformas.png') }}" alt="NZ Reformas" title="NZ Reformas" />
-                    <h1>Reformas e Interiorismo</h1>
-                </div>
-
-                <a class="menu-button" href="javascript:void(0)" >
-                    <img src="{{ asset('images/icon/menu.png') }}" alt="Menú" title="Menú" />
-                </a>
-
-                <ul>
-                    <li class="back-button" >
-                        <a href="javascript:void(0)" >
-                            <img src="{{ asset('images/icon/back.png') }}" alt="Atrás" title="Atrás" />
-                        </a>
-                    </li>
-                    <li><a href="{{ path('app_homepage') }}">Inicio</a></li>
-                    <li class="more" ><a href="{{ path ('app_static',{'page': 'proyectos'}) }}" >Proyectos</a>
-                        <ul >
-                            <li><a href="{{ path ('app_static',{'page': 'comunidades'}) }}" >Comunidades</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="{{ path ('app_static',{'page': 'empresa'}) }}">Empresa</a></li>
-                    <li><a href="{{ path('app_contact') }}">Contacto</a></li>
-                </ul>
-            </nav>
-        </header>
+        
+        {% block mainMenu %}
+            {{ render(controller('AppBundle:page:menu')) }}
+        {% endblock %}
 
         <div class="page-content" >
             {% block main %}
@@ -75,13 +54,32 @@
                     <span class="week" >De lunes a viernes</span><br>
                     <span class="time" >8:00-13:00 16:00-20:00</span>
                 </section>
+                <section class="social">
+                    <a href="https://plus.google.com/+NZREFORMASZaragoza" target="_blank" >
+                        <img src="{{ asset('bundles/app/images/icon/google-plus.png')}}" alt="Google +" title="Google +" />
+                    </a>
+                    <a href="javascript:void(0)" target="_blank" >
+                        <img src="{{ asset('bundles/app/images/icon/facebook.png')}}" alt="Facebook" title="Facebook" />
+                    </a>
+                    <a href="https://twitter.com/nz_reformas" target="_blank" >
+                        <img src="{{ asset('bundles/app/images/icon/twitter.png')}}" alt="Twitter" title="Twitter" />
+                    </a>
+                </section>
             </main>
             <aside>
+                <!--<section>
+                    <div id="map" ></div>
+                </section>-->
                 <section>
-                    <img src="{{ asset('images/icon/navascues-zalaya.png') }}" alt="Construcciones Navascués Zalaya S.L." title="Construcciones Navascués Zalaya S.L." /><br>
+                    <img src="{{ asset('bundles/app/images/icon/navascues-zalaya.png')}}" alt="Construcciones Navascués Zalaya S.L." title="Construcciones Navascués Zalaya S.L." />
+                    <br>
                     <a href="{{ path ('app_static',{'page': 'avisoLegal'}) }}">Aviso Legal</a>
                 </section>
             </aside>
         </footer>
+
+        {% block extraJS %}
+        {% endblock %}
+
     </body>
 </html>

@@ -15,10 +15,9 @@ $mobile-screen-up: new-breakpoint(max-width $mobile-screen 4);
 $tablet-screen-up: new-breakpoint(max-width $tablet-screen 8);
 
 body, html {
-/*    min-width: 320px;*/
     height: 100%;
     width: 100%;
-/*    background: $base-background-color; */
+    background: $base-background-color; 
 }
 
 figure.img-header {
@@ -49,17 +48,18 @@ article {
     position: relative;
     padding: 4em;
 
-        @include media(max-width $normal-screen) {
-            padding: 3em;
-        }
+    @include media(max-width $normal-screen) {
+        padding: 3em;
+    }
 
-        @include media(max-width $tablet-screen) {
-            padding: 2em;
-        }
+    @include media(max-width $tablet-screen) {
+        text-align: center;
+        padding: 2em;
+    }
 
-        @include media(max-width $mobile-screen) {
-            padding: 1em;
-        }
+    @include media(max-width $mobile-screen) {
+        padding: 1em;
+    }
 }
 
 .page-content{

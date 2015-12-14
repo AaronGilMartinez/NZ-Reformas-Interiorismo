@@ -1,4 +1,4 @@
-<<?php
+<?php
 
 // src/BlogBundle/DataFixtures/ORM/ArticleFixtures.php
 
@@ -97,7 +97,7 @@ class ArticleFixtures extends AbstractFixture implements OrderedFixtureInterface
         $article2->setCreated(new \DateTime());
         $article2->setUpdated($article2->getCreated());
         $manager->persist($article2);
-        
+
         $article3 = new Article();
         $article3->setTitle('Green River');
         $article3->setArticle('   Well, take me back down where cool water flow, yeh.
@@ -126,7 +126,7 @@ class ArticleFixtures extends AbstractFixture implements OrderedFixtureInterface
         $article3->setCreated(new \DateTime());
         $article3->setUpdated($article3->getCreated());
         $manager->persist($article3);
-        
+
         $article4 = new Article();
         $article4->setTitle('One');
         $article4->setArticle('   I cant remember anything
@@ -184,7 +184,7 @@ class ArticleFixtures extends AbstractFixture implements OrderedFixtureInterface
         $article4->setCreated(new \DateTime());
         $article4->setUpdated($article4->getCreated());
         $manager->persist($article4);
-        
+
         $article5 = new Article();
         $article5->setTitle('Stuck In The Middle With You');
         $article5->setArticle('   Well I dont know why I came here tonight,
@@ -240,7 +240,7 @@ class ArticleFixtures extends AbstractFixture implements OrderedFixtureInterface
         $article5->setCreated(new \DateTime());
         $article5->setUpdated($article5->getCreated());
         $manager->persist($article5);
-        
+
         $article6 = new Article();
         $article6->setTitle('Folsom Prison Blues');
         $article6->setArticle('   I hear the train a comin
@@ -286,7 +286,7 @@ class ArticleFixtures extends AbstractFixture implements OrderedFixtureInterface
         $article6->setCreated(new \DateTime());
         $article6->setUpdated($article6->getCreated());
         $manager->persist($article6);
-        
+
         $article7 = new Article();
         $article7->setTitle('The Times They Are A-Changin');
         $article7->setArticle('   Come gather round people
@@ -358,7 +358,7 @@ class ArticleFixtures extends AbstractFixture implements OrderedFixtureInterface
         $article7->setCreated(new \DateTime());
         $article7->setUpdated($article7->getCreated());
         $manager->persist($article7);
-        
+
         $article8 = new Article();
         $article8->setTitle('The Joker');
         $article8->setArticle('   Some people call me the space cowboy, yeah
@@ -413,7 +413,7 @@ class ArticleFixtures extends AbstractFixture implements OrderedFixtureInterface
         $article8->setCreated(new \DateTime());
         $article8->setUpdated($article8->getCreated());
         $manager->persist($article8);
-        
+
         $article9 = new Article();
         $article9->setTitle('In the summertime');
         $article9->setArticle(' Chh chh-chh, uh, Chh chh-chh, uh
@@ -505,7 +505,7 @@ class ArticleFixtures extends AbstractFixture implements OrderedFixtureInterface
         $article9->setCreated(new \DateTime());
         $article9->setUpdated($article9->getCreated());
         $manager->persist($article9);
-        
+
         $article10 = new Article();
         $article10->setTitle('');
         $article10->setArticle('');
@@ -519,7 +519,7 @@ class ArticleFixtures extends AbstractFixture implements OrderedFixtureInterface
         $article10->setCreated(new \DateTime());
         $article10->setUpdated($article10->getCreated());
         $manager->persist($article10);
-        
+
         $article11 = new Article();
         $article11->setTitle('');
         $article11->setArticle('');
@@ -533,7 +533,7 @@ class ArticleFixtures extends AbstractFixture implements OrderedFixtureInterface
         $article11->setCreated(new \DateTime());
         $article11->setUpdated($article11->getCreated());
         $manager->persist($article11);
-        
+
         $article12 = new Article();
         $article12->setTitle('');
         $article12->setArticle('');
@@ -547,7 +547,7 @@ class ArticleFixtures extends AbstractFixture implements OrderedFixtureInterface
         $article12->setCreated(new \DateTime());
         $article12->setUpdated($article12->getCreated());
         $manager->persist($article12);
-        
+
         $article13 = new Article();
         $article13->setTitle('');
         $article13->setArticle('');
@@ -561,7 +561,7 @@ class ArticleFixtures extends AbstractFixture implements OrderedFixtureInterface
         $article13->setCreated(new \DateTime());
         $article13->setUpdated($article13->getCreated());
         $manager->persist($article13);
-        
+
         $article14 = new Article();
         $article14->setTitle('');
         $article14->setArticle('');
@@ -575,7 +575,7 @@ class ArticleFixtures extends AbstractFixture implements OrderedFixtureInterface
         $article14->setCreated(new \DateTime());
         $article14->setUpdated($article14->getCreated());
         $manager->persist($article14);
-        
+
         $article15 = new Article();
         $article15->setTitle('');
         $article15->setArticle('');
@@ -589,7 +589,7 @@ class ArticleFixtures extends AbstractFixture implements OrderedFixtureInterface
         $article15->setCreated(new \DateTime());
         $article15->setUpdated($article15->getCreated());
         $manager->persist($article15);
-        
+
         $article16 = new Article();
         $article16->setTitle('');
         $article16->setArticle('');
@@ -603,7 +603,7 @@ class ArticleFixtures extends AbstractFixture implements OrderedFixtureInterface
         $article16->setCreated(new \DateTime());
         $article16->setUpdated($article16->getCreated());
         $manager->persist($article16);
-        
+
         $article17 = new Article();
         $article17->setTitle('');
         $article17->setArticle('');
@@ -617,7 +617,7 @@ class ArticleFixtures extends AbstractFixture implements OrderedFixtureInterface
         $article17->setCreated(new \DateTime());
         $article17->setUpdated($article17->getCreated());
         $manager->persist($article17);
-        
+
         $article18 = new Article();
         $article18->setTitle('');
         $article18->setArticle('');
@@ -631,7 +631,7 @@ class ArticleFixtures extends AbstractFixture implements OrderedFixtureInterface
         $article18->setCreated(new \DateTime());
         $article18->setUpdated($article18->getCreated());
         $manager->persist($article18);
-        
+
         $article19 = new Article();
         $article19->setTitle('');
         $article19->setArticle('');
@@ -645,7 +645,7 @@ class ArticleFixtures extends AbstractFixture implements OrderedFixtureInterface
         $article19->setCreated(new \DateTime());
         $article19->setUpdated($article19->getCreated());
         $manager->persist($article19);
-        
+
         $article20 = new Article();
         $article20->setTitle('');
         $article20->setArticle('');
@@ -659,7 +659,7 @@ class ArticleFixtures extends AbstractFixture implements OrderedFixtureInterface
         $article20->setCreated(new \DateTime());
         $article20->setUpdated($article20->getCreated());
         $manager->persist($article20);
-        
+
         $manager->flush();
 
         $this->addReference('article-1', $article1);
