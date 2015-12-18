@@ -26,14 +26,12 @@ body {
         @include clearfix;
         color: $base-font-color;
         line-height: $base-line-height;
+        margin-bottom: 1em;
     }
 
     a {
-        color: black;
-        &:hover {
-            @include transition (all 0.2s ease-in-out);
-            color: $action-color;
-        }
+        color: $action-color;
+        text-decoration: none;
     }
 
 
@@ -58,11 +56,11 @@ body {
     h1 {
         font-family: $heading-font-family;
         font-size: 3em;
-        font-weight: 700;
+        font-weight: 600;
 
         @include media(max-width $tablet-screen) {
             font-size: 2em;
-            font-weight: 600;
+            font-weight: 500;
         }
     }
 

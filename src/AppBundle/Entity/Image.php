@@ -29,11 +29,6 @@ class Image {
     protected $alt;
 
     /**
-     * @ORM\Column(type="text")
-     */
-    protected $description;
-
-    /**
      * @ORM\ManyToOne(targetEntity="Gallery", inversedBy="images")
      * @ORM\JoinColumn(name="gallery", referencedColumnName="name")
      */
@@ -91,24 +86,6 @@ class Image {
      */
     public function setAlt($alt) {
         $this->alt = $alt;
-    }
-
-    /**
-     * Get description
-     *
-     * @return text 
-     */
-    public function getDescription() {
-        return $this->description;
-    }
-
-    /**
-     * Set description
-     *
-     * @param text $description
-     */
-    public function setDescription($description) {
-        $this->description = $description;
     }
 
     /**

@@ -1,7 +1,8 @@
 <header class="navigation">
     <nav>
         <div class="logo" >
-            <img src="{{ asset('bundles/app/images/icon/NZ-Reformas.png')}}" alt="NZ Reformas" title="NZ Reformas" />
+            <img 
+                <img class="NZ" src="{{ asset('bundles/app/images/icon/NZ-Reformas.png')}}" alt="NZ Reformas" title="NZ Reformas" />
         </div>
 
         <a class="menu-button" href="javascript:void(0)" >
@@ -18,14 +19,13 @@
             <li><a href="{{ path('app_homepage') }}">Inicio</a></li>
             <li class="more" ><a href="{{ path ('app_static',{'page': 'servicios'}) }}" >Servicios</a>
                 <ul>
-                    <li><strong>Comunidades</strong>
+                    <li class="menu-title" ><a href="{{ path ('app_static',{'page': 'Reformas-de-comunidades-en-Zaragoza'}) }}" >Comunidades</a>
                         <ul>
-                            <li><a href="{{ path ('app_static',{'page': 'ascensores'}) }}" >Ascensores</a></li>
-                            <li><a href="{{ path ('app_static',{'page': 'fachadas'}) }}" >Fachadas</a></li>
-                            <li><a href="{{ path ('app_static',{'page': 'impermeabilizaciones'}) }}" >Impermeabilizaciones</a></li>
+                            <li><a href="{{ path ('app_static',{'page': 'Rehabilitación-de-fachadas-en-Zaragoza'}) }}" >Fachadas</a></li>
+                            <li><a href="{{ path ('app_static',{'page': 'Impermeabilizaciones-en-Zaragoza'}) }}" >Impermeabilizaciones</a></li>
                         </ul>
                     </li>
-                    <li><strong>Viviendas</strong>
+                    <li class="menu-title" ><a href="{{ path ('app_static',{'page': 'Reformas-pisos-Zaragoza'}) }}" >Pisos</a>
                         <ul>
                             <li><a href="{{ path ('app_static',{'page': 'integrales'}) }}" >Integrales</a></li>
                             <li><a href="{{ path ('app_static',{'page': 'banos'}) }}" >Baños</a></li>
@@ -42,9 +42,9 @@
                         {% endfor %}
                 </ul>
             </li>
-            <li><a href="{{ path ('app_static',{'page': 'empresa'}) }}">Empresa</a></li>
+            <li><a href="{{ path ('app_static',{'page': 'Empresa-de-reformas-en-Zaragoza'}) }}">Empresa</a></li>
             <li><a href="{{ path('app_contact') }}">Contacto</a></li>
-            <li class="button" ><a href="{{ path('app_contact') }}" >Pedir presupuesto</a></li>
+            <li class="button" ><a href="{{ path('app_static',{'page': 'Presupuestos-de-reformas-en-Zaragoza'}) }}" >Pedir presupuesto</a></li>
         </ul>
     </nav>
 </header>

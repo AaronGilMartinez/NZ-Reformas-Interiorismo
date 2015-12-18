@@ -22,11 +22,6 @@ class Gallery {
     /**
      * @ORM\Column(type="string")
      */
-    protected $title;
-
-    /**
-     * @ORM\Column(type="string")
-     */
     protected $slug;
 
     /**
@@ -71,24 +66,6 @@ class Gallery {
      */
     public function getName() {
         return $this->name;
-    }
-
-    /**
-     * Set title
-     *
-     * @param string $title
-     */
-    public function setTitle($title) {
-        $this->title = $title;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string 
-     */
-    public function getTitle() {
-        return $this->title;
     }
 
     /**

@@ -12,13 +12,12 @@
             <header>
                 <h1>{{ project.name }}</h1>
             </header>
-            <ul class="galleries" >
+            <ul class="rounded-basic" >
                 {% for gallery in project.galleries %}
                     <li>
                         <a href="{{ path ('app_gallery',{'project': project.slug,'gallery': gallery.slug}) }}" >
-                            <h2><strong>{{ gallery.title }}</strong><br>
-                                {{ gallery.name }}</h2>
-                            <img src="{{ asset( gallery.image ~ '.jpg')}}" title="{{ gallery.title }}" alt="{{ gallery.title }}" />
+                            <h3>{{ gallery.name }}</h3>
+                            <img src="{{ asset( gallery.image ~ '.jpg')}}" title="{{ gallery.name }}" alt="{{ gallery.name }}" />
                         </a>
                     </li>
                 {% endfor %}

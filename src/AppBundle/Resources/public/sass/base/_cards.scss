@@ -4,24 +4,25 @@
     @include display(flex);
     @include flex-wrap(wrap);
     @include justify-content(space-between);
+    padding-bottom: 1em;
 
     .card {
         $card-margin: 1em;
         $card-image-hover-opacity: 0.5;
         padding: 0;
-
         @include flex-basis(15em);
         @include flex-grow(1);
         @include transition (all 0.2s ease-in-out);
         border-radius: $base-border-radius;
         border: 1px solid $light-gray;
         box-shadow: 0 2px 4px darken(white, 10%);
-        margin: 0 1em 1.5em 1em;
+        margin: 1em;
         position: relative;
         text-align: center;
         
-        @include media($mobile-screen-up) {
-            margin: 1em 0;
+        
+        @include media(max-width $mobile-screen) {
+            margin: 0.5em 0;
         }
 
         .card-image {

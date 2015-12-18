@@ -1,0 +1,91 @@
+{# src/AppBundle/Resources/views/Default/contact.html.twig #}
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block title %}Presupuestos de reformas en Zaragoza{% endblock %}
+
+{% block content %}
+    <figure class="img-header" >
+        <img src="{{ asset('bundles/app/images/presentacion/oficina.jpg' )}}" alt="Presupuestos de reformas en Zaragoza" title="Presupuestos de reformas en Zaragoza" />
+        <figcaption>Presupuestos de reformas en Zaragoza</figcaption>
+    </figure>
+    <article>
+        <header>
+            <h1>Presupuestos de reformas en Zaragoza para modificar nuestros espacios</h1>
+        </header>
+        <p>
+            En toda remodelación o rehabilitación, ya sea de un negocio particular o de una vivienda
+            , es importante tener en cuenta algunos aspectos como el volumen de inversión a realizar
+            para contemplar realmente el coste que tendrá realizar la adaptación de los espacios. 
+            Por ello es importante solicitar diversos <strong>presupuestos</strong> de reformas en 
+            Zaragoza, para contrastar y así escoger el que mejor se adapte a nuestras posibilidades. 
+        </p>
+
+        <p>
+            Es por ello que en NZ Reformas, se realizan <strong>presupuestos de reformas en Zaragoza
+            </strong>, ajustados a las necesidades y posibilidades del cliente.  De esta manera 
+            podemos realizar y convertir en realidad los proyectos constructivos de nuestros 
+            clientes, sabiendo de antemano del espacio real que disponen y de todas las peticiones 
+            que desean hacer sobre una estancia concreta. Así, de esta manera, se consigue 
+            convertir en realidad la idea inicial que se encuentra en la mente de nuestros clientes.
+            Mejorando sus espacios y haciendo que todo ello acabe siendo un nuevo entorno.
+        </p>
+
+        <p>
+            En NZ Reformas, disponemos de todo lo necesario para convertir un espacio antiguo en uno
+            nuevo, realizando <strong>presupuestos de reformas en Zaragoza</strong>, adaptando todo 
+            lo necesario para que los espacios cumplan con los requisitos que desean los clientes. 
+        </p>
+
+        <p>
+            Y así poder disfrutar de su nuevo hogar u oficina, con los nuevos materiales utilizados,
+            convirtiendo en realidad todos los requisitos que servirán para mejorar las necesidades 
+            de nuestros usuarios para que desarrollen de una mejor manera sus actividades diarias, 
+            tanto a nivel personal como profesional.
+        </p>
+
+        <p>
+            Si estás pensando en realizar una reforma, una rehabilitación o una modificación del 
+            interiorismo para poder realizar un cambio en sus espacios, no dude en realizarnos su 
+            petición a través de nuestra <a href="{{ path('app_contact') }}" >página de contacto</a>
+            , correo electrónico (info@nzreformasintegrales.es) o teléfono (976 56 55 24) y le 
+            proporcionaremos el presupuesto o <strong>presupuestos de reformas en Zaragoza</strong>,
+            así como el asesoramiento que pueda necesitar para proporcionarle todo lo que nuestros 
+            clientes puedan requerir para conseguir su nuevo espacio de trabajo o personal.
+        </p>
+
+        <header>
+            <h3>Solicitar presupuesto</h3>
+        </header>
+
+        {% for flashMessage in app.session.flashbag.get('msg') %}
+            {{ flashMessage }}
+        {% endfor %}
+
+        <form action="{{ path('app_contact') }}" method="post" {{ form_enctype(form) }} class="Contact">
+            {{ form_errors(form) }}
+
+            {{ form_row(form.name, {'label': 'Nombre'}) }}
+            {{ form_row(form.phone, {'label': 'Teléfono / Móvil',
+                'attr': {'placeholder': 'Facilitar su teléfono podría agilizar el proceso. ¡Gracias!'} })}}
+            {{ form_row(form.email, {'label': 'E-mail'}) }}
+            {{ form_row(form.body, {'label': 'Mensaje'}) }}
+
+            {{ form_rest(form) }}
+
+            <p>
+                <em>
+                    De acuerdo con lo estableciso por la Ley Orgánica 15/1999, le informamos que los 
+                    datos obtenidos de este formulario serán incorporados a un fichero bajo la 
+                    responsabilidad de Construcciones Navascués Zalaya S.L. con la finalidad de atender 
+                    sus consultas y remitirle información relacionada que pueda ser de su interés. Puede
+                    ejercer sus derechos de acceso, rectificación, cancelación y oposición mediante un 
+                    escrito a nuestra dirección C/ Duquesa Villahermosa nº115, Local, Zaragoza, Zaragoza
+                    (50009).
+                </em>
+            </p>
+
+            <input type="submit" value="Enviar" />
+        </form>
+    </article>
+
+{% endblock %}

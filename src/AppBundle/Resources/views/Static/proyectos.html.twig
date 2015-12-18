@@ -8,20 +8,20 @@
 {% block content %}
     <article>
         <h1>Proyectos de NZ Reformas</h1>
-        <ul class="projects">
+        <ul class="even-odd">
             {% for project in projects %}
 
                 <li>
-                    <div class="img" >
+                    <div class="img-wrapper" >
                         <a href="{{ path ('app_project',{'project': project.slug}) }}" >
                             <img src="{{ asset( project.image ~ '.jpg')}}" alt="{{ project.name }}" title="{{ project.name }}" />
                         </a>
-                    </div>
-                    <div class="text" >
-                        <div class="desc" >
-                            <h2><a href="{{ path ('app_project',{'project': project.slug}) }}" >
+                    </div>                       
+                    <div class="text-wrapper" >
+                        <div class="text" >
+                            <h3><a href="{{ path ('app_project',{'project': project.slug}) }}" >
                                     {{ project.name }}
-                                </a></h2>
+                                </a></h3>
                             <p>{{ project.description }}</p>
                         </div>                       
                     </div>

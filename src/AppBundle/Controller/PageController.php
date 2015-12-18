@@ -26,12 +26,12 @@ class PageController extends Controller {
 
     public function staticAction($page) {
 
-        if (strcmp($page, "contacto") == 0) {
+        if (strcmp($page, "contacto") == 0 || strcmp($page, "Presupuestos-de-reformas-en-Zaragoza") == 0) {
 
             $enquiry = new Enquiry();
             $form = $this->createForm(new EnquiryType(), $enquiry);
 
-            return $this->render('AppBundle:Static:contacto.html.twig', array(
+            return $this->render('AppBundle:Static:' . $page . '.html.twig', array(
                         'form' => $form->createView()
             ));
         } elseif (strcmp($page, "proyectos") == 0) {

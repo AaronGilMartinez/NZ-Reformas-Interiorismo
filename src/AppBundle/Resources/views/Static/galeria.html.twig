@@ -9,8 +9,7 @@
 
     <article>
         <header>
-            <h1>{{ gallery.title }}</h1>
-            <h2>{{ gallery.name }}</h2>
+            <h1>{{ gallery.name }}</h1>
         </header>
 
         <section>
@@ -27,12 +26,9 @@
                             </a>
                             <div id="pic-{{ loop.index }}" class="overlay" >
                                 <a onclick="location.replace('#close')" class="close" title="Close"><img src="{{ asset('bundles/app/images/icon/close.png')}}" title="Cerrar" alt="Cerrar" ></a>
+                                <a onclick="load('img-{% if loop.first %}{{ loop.length }}{% else %}{{ loop.index - 1 }}{% endif %}')" class="prev" ><img src="{{ asset('bundles/app/images/icon/left.png')}}" title="Anterior" alt="Anterior" ></a>
+                                <a onclick="load('img-{% if loop.last %}1{% else %}{{ loop.index + 1 }}{% endif %}')" class="next" ><img src="{{ asset('bundles/app/images/icon/right.png')}}" title="Siguiente" alt="Siguiente" ></a>
                                 <img id="img-{{ loop.index }}" data-src="{{ asset(image.src ~ '.jpg')}}" title="{{ image.title }}" alt="{{ image.alt }}" />
-                                <div class="desc" >
-                                    <a onclick="load('img-{% if loop.first %}{{ loop.length }}{% else %}{{ loop.index - 1 }}{% endif %}')" class="prev" ><img src="{{ asset('bundles/app/images/icon/left.png')}}" title="Anterior" alt="Anterior" ></a>
-                                    <p>{{ image.description }}</p>
-                                    <a onclick="load('img-{% if loop.last %}1{% else %}{{ loop.index + 1 }}{% endif %}')" class="next" ><img src="{{ asset('bundles/app/images/icon/right.png')}}" title="Siguiente" alt="Siguiente" ></a>
-                                </div>
                             </div>
                     </li>
                 {% endfor %}

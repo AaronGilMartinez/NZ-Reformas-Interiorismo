@@ -8,6 +8,12 @@ app_contact:
     requirements:
     methods:  [POST]
     
+app_contact:
+    pattern: /Presupuestos-de-reformas-en-Zaragoza
+    defaults: { _controller: AppBundle:Page:contact }
+    requirements:
+    methods:  [POST]
+    
 app_sitemap:
     pattern: /sitemap.{_format}
     defaults: { _controller: AppBundle:Sitemap:sitemap , _format: xml }
