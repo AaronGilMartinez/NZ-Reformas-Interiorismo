@@ -1,24 +1,17 @@
 app_homepage:
     pattern: /
     defaults: { _controller: AppBundle:Page:inicio }
+
+app_static:
+    pattern: /{page}
+    defaults: { _controller: AppBundle:Page:static }
+    methods:  [GET]
     
 app_contact:
-    pattern: /contacto
+    pattern: /{page}
     defaults: { _controller: AppBundle:Page:contact }
     requirements:
     methods:  [POST]
-    
-app_contact:
-    pattern: /Presupuestos-de-reformas-en-Zaragoza
-    defaults: { _controller: AppBundle:Page:contact }
-    requirements:
-    methods:  [POST]
-    
-app_sitemap:
-    pattern: /sitemap.{_format}
-    defaults: { _controller: AppBundle:Sitemap:sitemap , _format: xml }
-    requirements: 
-        _format : xml
 
 app_project:
     pattern: /proyectos/{project}
@@ -29,8 +22,9 @@ app_gallery:
     pattern: /proyectos/{project}/{gallery}
     defaults: { _controller: AppBundle:Page:gallery }
     methods:  [GET]
-
-app_static:
-    pattern: /{page}
-    defaults: { _controller: AppBundle:Page:static }
-    methods:  [GET]
+    
+app_sitemap:
+    pattern: /sitemap.{_format}
+    defaults: { _controller: AppBundle:Sitemap:sitemap , _format: xml }
+    requirements: 
+        _format : xml

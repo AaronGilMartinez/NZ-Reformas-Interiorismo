@@ -1,75 +1,55 @@
 /* FOOTER */
 
 .footer {
-    background: darken($dark-gray,15%);
-    padding: $gutter;
+    background: $dark-gray;
     width: 100%;
     text-align: center;
 
-    .phone {
-        font-family: $base-font-family;
-        font-style: normal;
-        font-size: 2.4em;
-        line-height: 1.1em;
+    padding: 3em 3em 1em 3em;
+
+    @include media(max-width $tablet-screen) {
+        padding: 2em 2em 1em 2em;
+    }
+
+    @include media(max-width $mobile-screen) {
+        padding: 1em;
+    }
+
+    .phone, .mail, .street, .time, .city {
         color: $light-gray;
         text-align: center;
         padding: 0;
         margin: 0;
+        line-height: 1em;
+    }
+
+    .phone {
+        font-size: 4em;
+        margin-bottom: 0.5em;
     }
 
     .mail {
-        line-height: 1em;
-        font-size: 1.5em;
-        font-weight: normal;
-        font-family: $base-font-family;
-        color: $light-gray;
-        text-align: center;
-        padding: 0;
-        margin: 0;
+        font-size: 2.5em;
+        margin-bottom: 1em;
     }
 
-    .address {
-        line-height: 1em;
-        font-size: 1em;
-        font-weight: bold;
-        font-family: $base-font-family;
-        color: $light-gray;
-        text-align: center;
-        padding: 0;
-        margin: 0;
+    .street {
+        font-size: 1.8em;
     }
 
     .city {
-        font-family: $base-font-family;
-        font-style: normal;
-        font-size: 2.75em;
-        line-height: 1em;
-        color: $light-gray;
-        text-align: center;
-        padding: 0;
-        margin: 0;
+        font-size: 5em;
+        margin-bottom: 0.4em;
     }
 
-    .week {
-        line-height: 1.1em;
-        font-size: 2em;
-        font-weight: normal;
-        color: $light-gray;
-        text-align: center;
-        padding: 0;
-        margin: 0;
+    .days {
+        font-size: 2.7em;
     }
 
     .time {
-        line-height: 1.1em;
-        font-size: 1.6em;
-        font-weight: normal;
-        font-family: $base-font-family;
-        color: $light-gray;
-        text-align: center;
-        padding: 0;
-        margin: 0;
+        font-size: 2.2em;
     }
+
 
     a, section, p, h3, h4 {
         color: $light-gray;
@@ -100,18 +80,18 @@
         }
     }
 
-    .contact-info {
+    .info {
         @include clearfix;
         padding-bottom: 1em;
 
         section {
-            @include span-columns(3);
-            @include omega(4n);
+            @include span-columns(12);
+            @include omega;
 
-            @include media(max-width $normal-screen) {
-                @include span-columns(6);
-                @include omega(2n);
-            }
+            /*            @include media(max-width $normal-screen) {
+                            @include span-columns(6);
+                            @include omega(2n);
+                        }*/
 
             @include media(max-width $tablet-screen) {
                 @include span-columns(12);
@@ -119,8 +99,64 @@
         }
     }
 
-    #map {
-        width:100%;
-        height:400px;
+    .half-wrapper {
+        @include clearfix;
+        padding-bottom: 2em;
+        border-bottom: 1px dotted $medium-gray;
+
+        h2, h3 {
+            color: $action-color;
+        }
+
+        p {
+            margin: 0;
+            padding: 1em;
+            color: $light-gray;
+        }
+
+        input[type="text"],input[type="email"], textarea {
+            background-color: lighten($dark-gray,15%);
+            color: $light-gray;
+        }
+
+        .half {
+            @include span-columns(6);
+            @include omega(2n);
+
+            @include media(max-width $tablet-screen) {
+                @include span-columns(12);
+                @include omega;
+            }
+        }
+
+        ul.trinity {
+            padding: 1em;
+
+            li {
+                @include clearfix;
+                margin-bottom: 1em;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                img {
+                    @include span-columns(3);
+                    max-width: 128px;
+                    max-height: 128px;
+                }
+
+                .text {
+                    @include span-columns(9);
+                    @include omega;
+                    padding: 1em 0;
+                    h3 {
+                        margin:0;
+                        color: white;
+                    }
+
+                }
+            }
+        }
     }
 }

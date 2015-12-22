@@ -1,0 +1,70 @@
+<footer class="footer">
+    <section class="half-wrapper" >
+        <div class="half" >
+            <h2>
+                ¡Contacta con nosotros!
+            </h2>
+            <ul class="info" >
+                <li> 
+                    <img src="{{ asset('bundles/app/images/icon/phone.png')}}" alt="" title="" />
+                    <span class="phone" >976 56 55 24</span>
+                </li>
+                <li>
+                    <img src="{{ asset('bundles/app/images/icon/mail.png')}}" alt="Correo" title="Correo" />
+                    <span class="mail" ><a href="mailto:info@nzreformas.es">info@nzreformas.es</a></span>
+                </li>
+                <li>
+                    <img src="{{ asset('bundles/app/images/icon/location.png')}}" alt="Ubicación" title="Ubicación" />
+                    <span class="street" >Duquesa Villahermosa 115</span>
+                    <span class="city" >Zaragoza</span>
+                </li>
+                <li>
+                    <img src="{{ asset('bundles/app/images/icon/time.png')}}" alt="Horario" title="Horario" />
+                    <span class="days" >De lunes a viernes</span>
+                    <span class="time" >8:00-13:00 16:00-20:00</span>
+                </li>
+            </ul>
+        </div>
+        <div class="half">
+            <h2>
+                Solicita presupuesto sin compromiso
+            </h2>
+            <p>
+                Si tiene un proyecto que realizar, contáctenos y convertiremos en realidad todas
+                sus ideas y le proporcionaremos el asesoramiento integral necesario para que 
+                pueda desarrollar sus tareas profesionales y personales en los espacios mejor 
+                acondicionados.
+            </p>
+            {% for flashMessage in app.session.flashbag.get('msg') %}
+                {{ flashMessage }}
+            {% endfor %}
+            <form action="{{ path('app_contact',{'page': 'contacto' }) }}" method="post" {{ form_enctype(form) }} class="Contact">
+                {{ form_errors(form) }}
+
+                {{ form_row(form.name, {'label': 'Nombre'}) }}
+                {{ form_row(form.phone, {'label': 'Teléfono / Móvil',
+                'attr': {'placeholder': 'Facilitar su teléfono podría agilizar el proceso. ¡Gracias!'} })}}
+                {{ form_row(form.email, {'label': 'E-mail'}) }}
+                {{ form_row(form.body, {'label': 'Mensaje'}) }}
+
+                {{ form_rest(form) }}
+
+                <input type="submit" value="Enviar" />
+            </form>
+        </div>
+    </section>
+    <section class="social">
+        <a href="https://plus.google.com/+NZREFORMASZaragoza" target="_blank" >
+            <img src="{{ asset('bundles/app/images/icon/google-plus.png')}}" alt="Google +" title="Google +" />
+        </a>
+        <a href="https://www.facebook.com/reformasintegraleszaragozanz/" target="_blank" >
+            <img src="{{ asset('bundles/app/images/icon/facebook.png')}}" alt="Facebook" title="Facebook" />
+        </a>
+        <a href="https://twitter.com/nz_reformas" target="_blank" >
+            <img src="{{ asset('bundles/app/images/icon/twitter.png')}}" alt="Twitter" title="Twitter" />
+        </a>
+    </section>
+    <img src="{{ asset('bundles/app/images/icon/navascues-zalaya.png')}}" alt="Construcciones Navascués Zalaya S.L." title="Construcciones Navascués Zalaya S.L." />
+    <br>
+    <a href="{{ path ('app_static',{'page': 'avisoLegal'}) }}">Aviso Legal</a>   
+</footer>

@@ -7,7 +7,7 @@ $(document).ready(function () {
             $("header.navigation > nav > ul").toggleClass('active');
         }
     });
-    
+
     // Botón de ir arriba
 
     if ($(this).scrollTop() < 200) {
@@ -21,8 +21,14 @@ $(document).ready(function () {
             $('.up').fadeOut();
         }
     });
+
     $('.up > a').click(function () {
         $('html, body').animate({scrollTop: 0}, 500);
+        return false;
+    });
+
+    $('.contact > a').click(function () {
+        $("html, body").animate({scrollTop: $('#contact').offset().top}, 1000);
         return false;
     });
 });

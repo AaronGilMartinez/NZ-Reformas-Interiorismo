@@ -2,7 +2,7 @@
 
 header.navigation {
     @include outer-container;
-    background: darken($dark-gray,15%);
+    background: $dark-gray;
     padding: 0.5em 2em;
 
     @include media(max-width $normal-screen) {
@@ -36,7 +36,7 @@ header.navigation {
     }
 
     nav {
-        background: darken($dark-gray,15%);
+        background: $dark-gray;
 
         .logo {
             float: left;
@@ -93,7 +93,7 @@ header.navigation {
             z-index: 1000;
 
             @include media(max-width $normal-screen) {
-                background: darken($dark-gray,15%);
+                background: $dark-gray;
                 position: fixed;
                 float: none;
                 top: 0;

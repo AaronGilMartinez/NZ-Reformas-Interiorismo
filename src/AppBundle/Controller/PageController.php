@@ -20,33 +20,35 @@ class PageController extends Controller {
         ));
     }
 
+    public function footerAction() {
+
+        $enquiry = new Enquiry();
+        $form = $this->createForm(new EnquiryType(), $enquiry);
+
+        return $this->render('AppBundle::footer.html.twig', array(
+                    'form' => $form->createView()
+        ));
+    }
+
     public function inicioAction() {
+
         return $this->render('AppBundle:Static:inicio.html.twig');
     }
 
     public function staticAction($page) {
 
-        if (strcmp($page, "contacto") == 0 || strcmp($page, "Presupuestos-de-reformas-en-Zaragoza") == 0) {
-
-            $enquiry = new Enquiry();
-            $form = $this->createForm(new EnquiryType(), $enquiry);
-
-            return $this->render('AppBundle:Static:' . $page . '.html.twig', array(
-                        'form' => $form->createView()
-            ));
-        } elseif (strcmp($page, "proyectos") == 0) {
+        if (strcmp($page, "proyectos") == 0) {
 
             $em = $this->getDoctrine()->getManager();
 
             $projects = $em->getRepository('AppBundle:Project')->findAll();
 
             return $this->render('AppBundle:Static:proyectos.html.twig', array(
-                        'projects' => $projects
+                        'projects' => $projects,
             ));
         } else {
-            return $this->render('AppBundle:Static:' . $page . '.html.twig', array(
-                        'page' => $page,
-            ));
+
+            return $this->render('AppBundle:Static:' . $page . '.html.twig');
         }
     }
 
@@ -104,9 +106,7 @@ class PageController extends Controller {
                 return $this->redirect($this->generateUrl('app_static', array('page' => 'gracias')));
             }
 
-            return $this->render('AppBundle:Static:contacto.html.twig', array(
-                        'form' => $form->createView()
-            ));
+            return $this->redirect($request->headers->get('referer'));
         }
     }
 

@@ -1,5 +1,12 @@
 /* VARIABLES */
 
+@font-face {
+    font-family: 'Bradley-Hand';
+    src: url('/bradley-hand.eot'); /* IE9 Compat Modes */
+    src: url('bradley-hand.woff') format('woff'), /* Pretty Modern Browsers */
+        url('bradley-hand.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
 //Screen
 $mobile-screen: em(480) !default;
 $tablet-screen: em(768) !default;
@@ -9,6 +16,9 @@ $max-screen: em(1980) !default;
 // Typography
 $base-font-family: 'Questrial', sans-serif;
 $heading-font-family: 'Sanchez', serif;
+
+// Encabezado logo
+$header-font: 'Bradley-Hand', sans-serif;
 
 // Font Sizes
 $base-font-size: 1em;
@@ -25,7 +35,7 @@ $base-z-index: 0;
 
 // Colors
 $red: #E4222E;
-$dark-gray: #333;
+$dark-gray: #111;
 $medium-gray: #888;
 $light-gray: #bbb;
 

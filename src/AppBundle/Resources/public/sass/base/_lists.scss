@@ -46,7 +46,7 @@ dl {
         @include media(max-width $normal-screen) {
             padding: 1em 0;
         }
-        
+
         @include media(max-width $tablet-screen) {
             padding: 2em 0;
         }
@@ -84,10 +84,10 @@ dl {
                     top: 50%;
                     @include transform(translatey(-50.001%));
                 }
-                
+
                 @include media(min-width $normal-screen) {
                     padding-left: 3em;
-                    
+
                 }
 
                 p {
@@ -110,11 +110,11 @@ dl {
 
             .text {
                 padding-right: 3em;
-                
-                 @include media(max-width $normal-screen) {
+
+                @include media(max-width $normal-screen) {
                     padding-right: 2em;
                 }
-                
+
                 @include media(max-width $tablet-screen) {
                     padding-right: 0;
                 }
@@ -314,6 +314,55 @@ dl {
                 top: 50%;
                 z-index: 101;
             }
+        }
+    }
+}
+
+ul.stacked {
+
+    li {
+        position: relative;
+        overflow-y: hidden;
+        height: 150px;
+        border-bottom: 1px solid $light-gray;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        @include media(max-width $tablet-screen) {
+            height: 100px;
+        }
+
+        .bg-dark {
+            background-color: rgba(0,0,0,0.2);
+            height: 100%;
+            width: 100%;
+
+            h3 {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                @include transform(translate(-50.001%,-50.001%));
+                margin: 0;
+                z-index: 1;
+                color: white;
+                text-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
+                font-size: 3em;
+
+                @include media(max-width $tablet-screen) {
+                    font-size: 2em;
+                }
+            }
+        }
+
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            @include transform(translate(-50.001%,-50.001%));
+            z-index: -1;
+
         }
     }
 }

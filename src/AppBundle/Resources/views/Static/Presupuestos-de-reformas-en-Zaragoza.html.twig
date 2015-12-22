@@ -46,11 +46,12 @@
         <p>
             Si estás pensando en realizar una reforma, una rehabilitación o una modificación del 
             interiorismo para poder realizar un cambio en sus espacios, no dude en realizarnos su 
-            petición a través de nuestra <a href="{{ path('app_contact') }}" >página de contacto</a>
-            , correo electrónico (info@nzreformasintegrales.es) o teléfono (976 56 55 24) y le 
-            proporcionaremos el presupuesto o <strong>presupuestos de reformas en Zaragoza</strong>,
-            así como el asesoramiento que pueda necesitar para proporcionarle todo lo que nuestros 
-            clientes puedan requerir para conseguir su nuevo espacio de trabajo o personal.
+            petición a través de nuestra <a href="{{ path('app_contact',{'page': 'contacto' }) }}" >
+                página de contacto</a>, correo electrónico (info@nzreformasintegrales.es) o teléfono
+            (976 56 55 24) y le proporcionaremos el presupuesto o <strong>presupuestos de reformas 
+                en Zaragoza</strong>, así como el asesoramiento que pueda necesitar para 
+            proporcionarle todo lo que nuestros clientes puedan requerir para conseguir su nuevo
+            espacio de trabajo o personal.
         </p>
 
         <header>
@@ -61,7 +62,7 @@
             {{ flashMessage }}
         {% endfor %}
 
-        <form action="{{ path('app_contact') }}" method="post" {{ form_enctype(form) }} class="Contact">
+        <form action="{{ path('app_contact',{'page': 'contacto' }) }}" method="post" {{ form_enctype(form) }} class="Contact">
             {{ form_errors(form) }}
 
             {{ form_row(form.name, {'label': 'Nombre'}) }}

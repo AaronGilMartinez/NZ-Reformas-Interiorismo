@@ -6,6 +6,7 @@
 
         <link rel="icon" type="image/vnd.microsoft.icon" href="{{ asset('bundles/app/images/icon/favicon.ico') }}"/>
         <link href='http://fonts.googleapis.com/css?family=Questrial|Sanchez:400italic,400' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Architects+Daughter|Rock+Salt' rel='stylesheet' type='text/css'>
 
         {% stylesheets '@AppBundle/Resources/public/css/*' %}
         <link href="{{ asset(asset_url) }}" type="text/css" rel="stylesheet">
@@ -27,7 +28,7 @@
         <title>{% block title %}NZ Reformas{% endblock %}</title>
     </head>
     <body>
-        
+
         {% block mainMenu %}
             {{ render(controller('AppBundle:page:menu')) }}
         {% endblock %}
@@ -40,46 +41,11 @@
             {% endblock %}
         </div>
 
-        <footer class="footer">
-            <main class="contact-info">
-                <section>
-                    <span class="phone" >976 56 55 24</span><br>
-                    <span class="mail" ><a href="mailto:info@nzreformas.es">info@nzreformas.es</a></span>
-                </section>
-                <section>
-                    <span class="address" >Duquesa Villahermosa 115</span><br>
-                    <span class="city" >Zaragoza</span>
-                </section>
-                <section>
-                    <span class="week" >De lunes a viernes</span><br>
-                    <span class="time" >8:00-13:00 16:00-20:00</span>
-                </section>
-                <section class="social">
-                    <a href="https://plus.google.com/+NZREFORMASZaragoza" target="_blank" >
-                        <img src="{{ asset('bundles/app/images/icon/google-plus.png')}}" alt="Google +" title="Google +" />
-                    </a>
-                    <a href="https://www.facebook.com/reformasintegraleszaragozanz/" target="_blank" >
-                        <img src="{{ asset('bundles/app/images/icon/facebook.png')}}" alt="Facebook" title="Facebook" />
-                    </a>
-                    <a href="https://twitter.com/nz_reformas" target="_blank" >
-                        <img src="{{ asset('bundles/app/images/icon/twitter.png')}}" alt="Twitter" title="Twitter" />
-                    </a>
-                </section>
-            </main>
-            <aside>
-                <!--<section>
-                    <div id="map" ></div>
-                </section>-->
-                <section>
-                    <img src="{{ asset('bundles/app/images/icon/navascues-zalaya.png')}}" alt="Construcciones Navascués Zalaya S.L." title="Construcciones Navascués Zalaya S.L." />
-                    <br>
-                    <a href="{{ path ('app_static',{'page': 'avisoLegal'}) }}">Aviso Legal</a>
-                </section>
-            </aside>
-        </footer>
+        {% block footer %}
+            {{ render(controller('AppBundle:page:footer')) }}
+        {% endblock %}
 
         {% block extraJS %}
         {% endblock %}
-
     </body>
 </html>
