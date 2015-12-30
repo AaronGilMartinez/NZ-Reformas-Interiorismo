@@ -14,45 +14,45 @@ class BañoAnselmoClaveFixtures extends AbstractFixture implements OrderedFixtur
     public function load(ObjectManager $manager) {
                 
         $image1 = new Image();
-        $image1->setSrc('bundles/app/images/proyectos/reformas-de-baños/reforma-baño-anselmo-clavé/baño-antes-1');
+        $image1->setSrc('bundles/app/images/proyectos/reformas-de-banos/reforma-bano-anselmo-clave/bano-antes-1');
         $image1->setTitle('Baño antes de la reforma 1');
         $image1->setAlt('Baño antes de la reforma 1');
-        $image1->setGallery($this->getReference('reforma-baño-anselmo-clavé'));
+        $image1->setGallery($this->getReference('reforma-bano-anselmo-clave'));
         $manager->persist($image1);
 
         $image2 = new Image();
-        $image2->setSrc('bundles/app/images/proyectos/reformas-de-baños/reforma-baño-anselmo-clavé/baño-antes-2');
+        $image2->setSrc('bundles/app/images/proyectos/reformas-de-banos/reforma-bano-anselmo-clave/bano-antes-2');
         $image2->setTitle('Baño antes de la reforma 2');
         $image2->setAlt('Baño antes de la reforma 2');
-        $image2->setGallery($this->getReference('reforma-baño-anselmo-clavé'));
+        $image2->setGallery($this->getReference('reforma-bano-anselmo-clave'));
         $manager->persist($image2);
 
         $image3 = new Image();
-        $image3->setSrc('bundles/app/images/proyectos/reformas-de-baños/reforma-baño-anselmo-clavé/baño-después-1');
-        $image3->setTitle('Baño después de la reforma 1');
-        $image3->setAlt('Baño después de la reforma 1');
-        $image3->setGallery($this->getReference('reforma-baño-anselmo-clavé'));
+        $image3->setSrc('bundles/app/images/proyectos/reformas-de-banos/reforma-bano-anselmo-clave/bano-despues-1');
+        $image3->setTitle('Baño despues de la reforma 1');
+        $image3->setAlt('Baño despues de la reforma 1');
+        $image3->setGallery($this->getReference('reforma-bano-anselmo-clave'));
         $manager->persist($image3);
         
         $image4 = new Image();
-        $image4->setSrc('bundles/app/images/proyectos/reformas-de-baños/reforma-baño-anselmo-clavé/baño-después-2');
-        $image4->setTitle('Baño después de la reforma 2');
-        $image4->setAlt('Baño después de la reforma 2');
-        $image4->setGallery($this->getReference('reforma-baño-anselmo-clavé'));
+        $image4->setSrc('bundles/app/images/proyectos/reformas-de-banos/reforma-bano-anselmo-clave/bano-despues-2');
+        $image4->setTitle('Baño despues de la reforma 2');
+        $image4->setAlt('Baño despues de la reforma 2');
+        $image4->setGallery($this->getReference('reforma-bano-anselmo-clave'));
         $manager->persist($image4);
 
         $image5 = new Image();
-        $image5->setSrc('bundles/app/images/proyectos/reformas-de-baños/reforma-baño-anselmo-clavé/baño-después-3');
-        $image5->setTitle('Baño después de la reforma 3');
-        $image5->setAlt('Baño después de la reforma 3');
-        $image5->setGallery($this->getReference('reforma-baño-anselmo-clavé'));
+        $image5->setSrc('bundles/app/images/proyectos/reformas-de-banos/reforma-bano-anselmo-clave/bano-despues-3');
+        $image5->setTitle('Baño despues de la reforma 3');
+        $image5->setAlt('Baño despues de la reforma 3');
+        $image5->setGallery($this->getReference('reforma-bano-anselmo-clave'));
         $manager->persist($image5);
 
         $image6 = new Image();
-        $image6->setSrc('bundles/app/images/proyectos/reformas-de-baños/reforma-baño-anselmo-clavé/baño-después-4');
-        $image6->setTitle('Baño después de la reforma 4');
-        $image6->setAlt('Baño después de la reforma 4');
-        $image6->setGallery($this->getReference('reforma-baño-anselmo-clavé'));
+        $image6->setSrc('bundles/app/images/proyectos/reformas-de-banos/reforma-bano-anselmo-clave/bano-despues-4');
+        $image6->setTitle('Baño despues de la reforma 4');
+        $image6->setAlt('Baño despues de la reforma 4');
+        $image6->setGallery($this->getReference('reforma-bano-anselmo-clave'));
         $manager->persist($image6);
         
         $manager->flush();

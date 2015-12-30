@@ -17,11 +17,11 @@ $(document).ready(function () {
         }
     });
 
-    //Botón de ir arriba
-    
+    // Botón de ir arriba
+
     if ($(this).scrollTop() < 200) {
-            $('.up').fadeOut(0);
-        }
+        $('.up').fadeOut(0);
+    }
 
     $(window).scroll(function () {
         if ($(this).scrollTop() > 200) {
@@ -32,7 +32,7 @@ $(document).ready(function () {
     });
 
     $('.up > a').click(function () {
-        $('html, body').animate({scrollTop: 0}, 800);
+        $('html, body').animate({scrollTop: 0}, 500);
         return false;
     });
 });

@@ -1,40 +1,48 @@
 <footer class="footer">
-    <section class="half-wrapper" >
-        <div class="half" >
+    <div class="footer-wrapper" >
+        <section>
             <h2>
                 ¡Contacta con nosotros!
             </h2>
-            <ul class="info" >
+            <ul>
                 <li> 
-                    <img src="{{ asset('bundles/app/images/icon/phone.png')}}" alt="" title="" />
-                    <span class="phone" >976 56 55 24</span>
+                    <a href="tel:976565524" >
+                        <span class="phone" >976 56 55 24</span>
+                    </a>
                 </li>
                 <li>
-                    <img src="{{ asset('bundles/app/images/icon/mail.png')}}" alt="Correo" title="Correo" />
-                    <span class="mail" ><a href="mailto:info@nzreformas.es">info@nzreformas.es</a></span>
+                    <a href="mailto:info@nzreformas.es">
+                        <span class="mail" >info@nzreformas.es</span>
+                    </a>
                 </li>
                 <li>
-                    <img src="{{ asset('bundles/app/images/icon/location.png')}}" alt="Ubicación" title="Ubicación" />
-                    <span class="street" >Duquesa Villahermosa 115</span>
-                    <span class="city" >Zaragoza</span>
+                    <a href="https://www.google.com/maps?cid=11812223659264856053&hl=es" >
+                        <span class="street1" >Calle Duquesa Villahermosa</span><br>
+                        <span class="street2" >115 Local, Zaragoza</span>
+                    </a>
                 </li>
                 <li>
-                    <img src="{{ asset('bundles/app/images/icon/time.png')}}" alt="Horario" title="Horario" />
-                    <span class="days" >De lunes a viernes</span>
-                    <span class="time" >8:00-13:00 16:00-20:00</span>
+                    <span class="time1" >Horario</span><br>
+                    <span class="time1" >De lunes a viernes</span><br>
+                    <span class="time2" >8:00-13:00 16:00-20:00</span>
+                </li>
+                <li class="social">
+                    <a href="https://plus.google.com/+NZREFORMASZaragoza" target="_blank" >
+                        <img src="{{ asset('bundles/app/images/icon/google-plus.png')}}" alt="Google +" title="Google +" />
+                    </a>
+                    <a href="https://www.facebook.com/reformasintegraleszaragozanz/" target="_blank" >
+                        <img src="{{ asset('bundles/app/images/icon/facebook.png')}}" alt="Facebook" title="Facebook" />
+                    </a>
+                    <a href="https://twitter.com/nz_reformas" target="_blank" >
+                        <img src="{{ asset('bundles/app/images/icon/twitter.png')}}" alt="Twitter" title="Twitter" />
+                    </a>
                 </li>
             </ul>
-        </div>
-        <div class="half">
+        </section>
+        <section id="contact" >
             <h2>
-                Solicita presupuesto sin compromiso
+                Presupuesto sin compromiso
             </h2>
-            <p>
-                Si tiene un proyecto que realizar, contáctenos y convertiremos en realidad todas
-                sus ideas y le proporcionaremos el asesoramiento integral necesario para que 
-                pueda desarrollar sus tareas profesionales y personales en los espacios mejor 
-                acondicionados.
-            </p>
             {% for flashMessage in app.session.flashbag.get('msg') %}
                 {{ flashMessage }}
             {% endfor %}
@@ -51,20 +59,33 @@
 
                 <input type="submit" value="Enviar" />
             </form>
-        </div>
-    </section>
-    <section class="social">
-        <a href="https://plus.google.com/+NZREFORMASZaragoza" target="_blank" >
-            <img src="{{ asset('bundles/app/images/icon/google-plus.png')}}" alt="Google +" title="Google +" />
-        </a>
-        <a href="https://www.facebook.com/reformasintegraleszaragozanz/" target="_blank" >
-            <img src="{{ asset('bundles/app/images/icon/facebook.png')}}" alt="Facebook" title="Facebook" />
-        </a>
-        <a href="https://twitter.com/nz_reformas" target="_blank" >
-            <img src="{{ asset('bundles/app/images/icon/twitter.png')}}" alt="Twitter" title="Twitter" />
-        </a>
-    </section>
+        </section>
+        <section>
+            <nav>
+                <img class="NZ" src="{{ asset('bundles/app/images/icon/nz.png')}}" alt="NZ Reformas" title="NZ Reformas" />
+                <ul>
+                    <li><a href="{{ path('app_homepage') }}">Inicio</a></li>
+                    <li><a href="{{ path ('app_static',{'page': 'servicios'}) }}" >Servicios</a>
+                    <li><a href="{{ path ('app_static',{'page': 'proyectos'}) }}" >Proyectos</a>
+                    <li><a href="{{ path ('app_static',{'page': 'empresa-de-reformas-en-zaragoza'}) }}">Empresa</a></li>
+                    <li><a  href="{{ path ('app_contact') }}" >Contacto</a></li>
+                </ul>
+            </nav>
+        </section>
+    </div>
+    <div class="GMap" >
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2981.451360712007!2d-0.9107506845661626!3d41.64598897924126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa3ed72d591f24ff5!2sNZ+Reformas+e+Interiorismo!5e0!3m2!1ses!2sus!4v1451376612956" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
     <img src="{{ asset('bundles/app/images/icon/navascues-zalaya.png')}}" alt="Construcciones Navascués Zalaya S.L." title="Construcciones Navascués Zalaya S.L." />
-    <br>
-    <a href="{{ path ('app_static',{'page': 'avisoLegal'}) }}">Aviso Legal</a>   
+    <ul>
+        <li>
+            <a href="{{ path ('app_static',{'page': 'aviso-legal'}) }}">Aviso Legal</a>
+        </li>
+        <li>
+            <a href="{{ path ('app_static',{'page': 'politica-cookies'}) }}">Política de cookies</a>
+        </li>
+        <li>
+            <a href="{{ path ('app_sitemap') }}">Sitemap</a>
+        </li>
+    </ul>
 </footer>

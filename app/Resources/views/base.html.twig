@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" class="js" >
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta name="robots" content="noindex" >
 
         <link rel="icon" type="image/vnd.microsoft.icon" href="{{ asset('bundles/app/images/icon/favicon.ico') }}"/>
         <link href='http://fonts.googleapis.com/css?family=Questrial|Sanchez:400italic,400' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Architects+Daughter|Rock+Salt' rel='stylesheet' type='text/css'>
 
         {% stylesheets '@AppBundle/Resources/public/css/*' %}
         <link href="{{ asset(asset_url) }}" type="text/css" rel="stylesheet">
@@ -19,9 +19,9 @@
             {% endjavascripts %}
         {% endblock %}
 
-        <meta name="description" content="{% block description %}NZ Reformas e Interiorismo{% endblock %}">
+        <meta name="description" content="{% block description %}{% endblock %}">
 
-        <meta name="keywords" content="{% block keywords %}NZ Reformas e Interiorismo{% endblock %}">
+        <meta name="keywords" content="{% block keywords %}{% endblock %}">
 
         {% block extra %}<!--Aux-block for meta-tags-->{% endblock %}
 

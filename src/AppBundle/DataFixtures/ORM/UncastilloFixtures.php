@@ -21,7 +21,7 @@ class UncastilloFixtures extends AbstractFixture implements OrderedFixtureInterf
         $manager->persist($image1);
 
         $image2 = new Image();
-        $image2->setSrc('bundles/app/images/proyectos/reformas-de-comunidades/bajada-ascensor-cota-0-uncastillo/escalera-derecha-después');
+        $image2->setSrc('bundles/app/images/proyectos/reformas-de-comunidades/bajada-ascensor-cota-0-uncastillo/escalera-derecha-despues');
         $image2->setTitle('Escalera derecha después de la reforma');
         $image2->setAlt('Escalera derecha después de la reforma');
         $image2->setGallery($this->getReference('bajada-ascensor-cota-0-uncastillo'));
@@ -35,7 +35,7 @@ class UncastilloFixtures extends AbstractFixture implements OrderedFixtureInterf
         $manager->persist($image3);
 
         $image4 = new Image();
-        $image4->setSrc('bundles/app/images/proyectos/reformas-de-comunidades/bajada-ascensor-cota-0-uncastillo/escalera-izquierda-después');
+        $image4->setSrc('bundles/app/images/proyectos/reformas-de-comunidades/bajada-ascensor-cota-0-uncastillo/escalera-izquierda-despues');
         $image4->setTitle('Escalera izquieda después de la reforma');
         $image4->setAlt('Escalera izquieda después de la reforma');
         $image4->setGallery($this->getReference('bajada-ascensor-cota-0-uncastillo'));
@@ -49,7 +49,7 @@ class UncastilloFixtures extends AbstractFixture implements OrderedFixtureInterf
         $manager->persist($image5);
 
         $image6 = new Image();
-        $image6->setSrc('bundles/app/images/proyectos/reformas-de-comunidades/bajada-ascensor-cota-0-uncastillo/rellano-izquierda-después');
+        $image6->setSrc('bundles/app/images/proyectos/reformas-de-comunidades/bajada-ascensor-cota-0-uncastillo/rellano-izquierda-despues');
         $image6->setTitle('Rellano izquierda después de la reforma');
         $image6->setAlt('Rellano izquierda después de la reforma');
         $image6->setGallery($this->getReference('bajada-ascensor-cota-0-uncastillo'));
@@ -63,7 +63,7 @@ class UncastilloFixtures extends AbstractFixture implements OrderedFixtureInterf
         $manager->persist($image7);
 
         $image8 = new Image();
-        $image8->setSrc('bundles/app/images/proyectos/reformas-de-comunidades/bajada-ascensor-cota-0-uncastillo/rellano-derecha-después');
+        $image8->setSrc('bundles/app/images/proyectos/reformas-de-comunidades/bajada-ascensor-cota-0-uncastillo/rellano-derecha-despues');
         $image8->setTitle('Rellano derecha después de la reforma');
         $image8->setAlt('Rellano derecha después de la reforma');
         $image8->setGallery($this->getReference('bajada-ascensor-cota-0-uncastillo'));

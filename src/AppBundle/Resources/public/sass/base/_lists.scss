@@ -137,17 +137,23 @@ dl {
 
 .rounded-basic {
     margin: 2em 0;
+    text-align: center;
 
     @include media(max-width $tablet-screen) {
         margin: 1em 0;
     }
 
+    p {
+        text-align: center;
+    }
+
     li {
         display: inline-block;
+        position: relative;
         max-width: 300px;
         max-height: 300px;
-        position: relative;
         margin: 2em;
+
         @include media(max-width $tablet-screen) {
             margin: 1em 0;
         }
@@ -277,7 +283,7 @@ dl {
                 img {
                     height: 64px;
                     width: 64px;
-                    background: rgba(0,0,0,0.4);
+                    background: rgba(0,0,0,0.5);
                     border-radius:50%;
 
                     @include media(max-width $tablet-screen) {
@@ -324,18 +330,14 @@ ul.stacked {
         position: relative;
         overflow-y: hidden;
         height: 150px;
-        border-bottom: 1px solid $light-gray;
-
-        &:last-child {
-            border-bottom: none;
-        }
+        border-top: 1px solid $medium-gray;
 
         @include media(max-width $tablet-screen) {
             height: 100px;
         }
 
-        .bg-dark {
-            background-color: rgba(0,0,0,0.2);
+        .bg {
+            background-color: rgba(255,255,255,0.3);
             height: 100%;
             width: 100%;
 
@@ -346,9 +348,9 @@ ul.stacked {
                 @include transform(translate(-50.001%,-50.001%));
                 margin: 0;
                 z-index: 1;
-                color: white;
-                text-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
-                font-size: 3em;
+                color: black;
+                font-size: 4em;
+                font-family: $base-font-family;
 
                 @include media(max-width $tablet-screen) {
                     font-size: 2em;
@@ -364,5 +366,42 @@ ul.stacked {
             z-index: -1;
 
         }
+    }
+}
+
+ul.trinity {
+    padding: 2em;
+    @include clearfix;
+    @include radial-gradient(lighten($light-gray,20%), $light-gray);
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+    -webkit-box-shadow: inset  0px 0px 10px 1px rgba(0,0,0,0.3);
+    -moz-box-shadow: inset 0px 0px 10px 1px rgba(0,0,0,0.3);
+    box-shadow: inset 0px 0px 10px 1px rgba(0,0,0,0.3);
+
+    @include media(max-width $mobile-screen) {
+        padding: 1em;
+    }
+
+    li {
+        @include span-columns (4);
+        @include omega(3n);
+        margin-bottom: 1em;
+
+        @include media(max-width $tablet-screen) {
+            @include span-columns (12);
+            @include omega;
+        }
+
+        h3 {
+            margin: 0;
+        }
+    }
+}
+
+.cookies {
+    li {
+        display: inline;
+        margin: 2em;  
     }
 }

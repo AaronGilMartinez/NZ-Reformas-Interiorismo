@@ -46,6 +46,14 @@ class PageController extends Controller {
             return $this->render('AppBundle:Static:proyectos.html.twig', array(
                         'projects' => $projects,
             ));
+        } elseif (strcmp($page, "contacto") == 0) {
+
+            $enquiry = new Enquiry();
+            $form = $this->createForm(new EnquiryType(), $enquiry);
+
+            return $this->render('AppBundle:Static:contacto.html.twig', array(
+                        'form' => $form->createView()
+            ));
         } else {
 
             return $this->render('AppBundle:Static:' . $page . '.html.twig');
@@ -70,7 +78,7 @@ class PageController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
 
-        $galleryBySlug = $em->getRepository('AppBundle:gallery')->findOneBySlug($gallery);
+        $galleryBySlug = $em->getRepository('AppBundle:Gallery')->findOneBySlug($gallery);
 
         if ($galleryBySlug) {
 

@@ -1,0 +1,75 @@
+/* CARDS */
+
+.cards {
+    @include display(flex);
+    @include flex-wrap(wrap);
+    @include justify-content(space-between);
+    padding-bottom: 1em;
+
+    .card, .rounded {
+        $card-margin: 1em;
+        $card-image-hover-opacity: 0.5;
+        padding: 0;
+        @include flex-basis(15em);
+        @include flex-grow(1);
+        @include transition (all 0.2s ease-in-out);
+        border-radius: $base-border-radius;
+        border: 1px solid $light-gray;
+        box-shadow: 0 2px 4px darken(white, 10%);
+        margin: 1em;
+        position: relative;
+        text-align: center;
+        
+        @include media(max-width $mobile-screen) {
+            margin: 0.5em 0;
+        }
+        
+        rounded {
+            border-radius: 50%;
+        }
+
+        .card-image {
+            background-color: $light-gray;
+
+            img {
+                @include transition (all 0.2s ease-in-out);
+                border-top-left-radius: $base-border-radius;
+                border-top-right-radius: $base-border-radius;
+                padding: 1em;
+                opacity: $card-image-hover-opacity;
+            }
+        }
+
+        header {
+            @include transition (all 0.2s ease-in-out);
+            background-color: $base-background-color;
+            border-bottom: 1px solid $light-gray;
+            border-radius: $base-border-radius $base-border-radius 0 0;
+            font-weight: bold;
+            line-height: 1.5em;
+            padding: ($base-spacing / 3) ($base-spacing / 2);
+            margin: 0;
+        }
+
+        p {
+            text-align: center;
+            line-height: 1.5em;
+            padding: ($base-spacing / 2) ($base-spacing / 2);
+
+        }
+        &:focus,
+            &:hover {
+            img {
+                opacity: 1;
+            }
+        }
+
+        &:active {
+            background-color: $base-background-color;
+
+            .card-header {
+                background-color: lighten($light-gray, 20%);
+            }
+        }
+    }
+}

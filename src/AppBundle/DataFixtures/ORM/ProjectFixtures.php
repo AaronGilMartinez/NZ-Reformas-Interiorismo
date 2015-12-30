@@ -19,7 +19,7 @@ class ProjectFixtures extends AbstractFixture implements OrderedFixtureInterface
         $project1->setDescription('Gestión de reformas en comunidades y reparación de edificios. '
                 . 'Desarrollamos desde grandes proyectos, a modificaciones sencillas en los que la '
                 . 'redistribución del espacio sea mínima. Proponemos diferentes modelos de pago, '
-                . 'conforme a las necesidades del cliente');
+                . 'conforme a las necesidades del cliente.');
         $manager->persist($project1);
 
         $project2 = new Project();
@@ -33,7 +33,7 @@ class ProjectFixtures extends AbstractFixture implements OrderedFixtureInterface
 
         $project3 = new Project();
         $project3->setName('Reformas de baños');
-        $project3->setImage('bundles/app/images/proyectos/reformas-de-baños/reformas-de-baños');
+        $project3->setImage('bundles/app/images/proyectos/reformas-de-banos/reformas-de-banos');
         $project3->setDescription('Reformas de baños, baños sencillos y modernos. Trabajamos con '
                 . 'gran variedad de firmas de sanitarios, acabados y complementos, que nos permiten '
                 . 'adaptar el espacio del baño a cualquier requisito tanto económico como funcional.');
@@ -53,7 +53,7 @@ class ProjectFixtures extends AbstractFixture implements OrderedFixtureInterface
 
         $this->addReference('comunidades', $project1);
         $this->addReference('pisos', $project2);
-        $this->addReference('baños', $project3);
+        $this->addReference('banos', $project3);
         $this->addReference('cocinas', $project4);
     }
 

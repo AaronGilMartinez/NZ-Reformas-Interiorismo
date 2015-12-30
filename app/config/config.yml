@@ -37,11 +37,19 @@ assetic:
         yui_js:
             jar: "%kernel.root_dir%/Resources/java/yuicompressor.jar"
 
+        jpegoptim:
+            bin: "%kernel.root_dir%/Resources/jpegoptim"
+            apply_to: "\.jpg$"
+            strip_all: true
+            max: 20
+    twig:
+        functions:
+            jpegoptim: ~
+            
 # Twig Configuration
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-
 
 # Doctrine Configuration
 doctrine:

@@ -1,12 +1,5 @@
 /* VARIABLES */
 
-@font-face {
-    font-family: 'Bradley-Hand';
-    src: url('/bradley-hand.eot'); /* IE9 Compat Modes */
-    src: url('bradley-hand.woff') format('woff'), /* Pretty Modern Browsers */
-        url('bradley-hand.ttf')  format('truetype'); /* Safari, Android, iOS */
-}
-
 //Screen
 $mobile-screen: em(480) !default;
 $tablet-screen: em(768) !default;
@@ -34,7 +27,7 @@ $small-spacing: $base-spacing / 2;
 $base-z-index: 0;
 
 // Colors
-$red: #E4222E;
+$action-color: #E4222E;
 $dark-gray: #111;
 $medium-gray: #888;
 $light-gray: #bbb;
@@ -42,7 +35,7 @@ $light-gray: #bbb;
 // Font Colors
 $base-background-color: #eee;
 $base-font-color: $dark-gray;
-$action-color: $red;
+$action-color: $action-color;
 
 // Border
 $base-border-color: $light-gray;

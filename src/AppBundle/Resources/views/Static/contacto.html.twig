@@ -1,0 +1,129 @@
+{# src/AppBundle/Resources/views/Default/contact.html.twig #}
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block title %}Contacto{% endblock %}
+
+{% block content %}
+    <article>
+        <header>
+            <h1>Contacto</h1>
+            <h2>¿Cómo realizamos los proyectos en NZ Reformas?</h2>
+        </header>
+        <p>
+            En el proceso de cualquier reforma se siguen las diferentes etapas. Primero el cliente 
+            contacta con  nosotros ya sea por la información de contacto, o el formulario de abajo. 
+            Una vez tomados los datos del cliente (solo es el nombre, telefono y la dirección), se 
+            fija una fecha y una hora para que nuestros especialistas tomen medidas del 
+            emplazamiento a reformar. Después se plantea un presupuesto partiendo de las calidades 
+            elegidas por el cliente, que en caso de no tener claro, se eligen calidades medias. Acto
+            seguido se presenta el presupuesto al cliente y se explica detalladamente cada apartado, 
+            en este punto se barajan varias opciones,se aclaran dudas, y se hacen modificaciones.
+        </p>
+        <p>
+            No hay costes por el asesoramiento, y hasta que el que el presupuesto no es aprobado por
+            el cliente no hay compromisos. Una vez aprobado el presupuesto, se inician los trámites 
+            necesarios para la obra (licencias y permisos), de los cuales nos encargamos nosotros. 
+            Entonces comienza la obra, la cual se lleva a cabo con la mayor brevedad posible, y 
+            ocasionando "las menores molestias posibles".
+        </p>
+        <p>
+            Hay que tener en cuenta que ajustamos cada presupuesto al máximo. Además disponemos de 
+            diferentes métodos de pago en plazos, acordes a la posibilidades del cliente, y de forma
+            financiada, sin bancos. Esto supone una diferencia sustancial, se pueden plantear 
+            mejoras que no se tenian en cuenta por su elevado coste. Por esta razón es tan importante
+            una planificación exacta, y nuestros especialistas han de visitar cada reforma para 
+            evitar cualquier imprevisto.
+        <p>
+            Pulsa los iconos ver dónde estamos, llamar, o enviar un correo electrónico. 
+        </p>
+        <div class="cards" >
+            <div class="card" >
+                <a href="https://www.google.com/maps/place/NZ+Reformas+e+Interiorismo/@41.645989,-0.908562,17z/data=!3m1!4b1!4m2!3m1!1s0x0:0xa3ed72d591f24ff5?hl=es" target="_blank" >
+                    <div class="card-image">
+                        <img src="{{ asset('bundles/app/images/icon/place.png' )}}" alt="Ubicación" title="Ubicación" />
+                    </div>
+                </a>
+                <header>Dirección</header>
+                <p>
+                    Calle Duquesa Villahermosa 115<br>
+                    50009 Zaragoza
+                </p>
+            </div>
+            <div class="card" >
+                <a href="tel:+34696974756">
+                    <div class="card-image">
+                        <img src="{{ asset('bundles/app/images/icon/phone.png' )}}" alt="Llamar" title="Llamar" />
+                    </div>
+                </a>
+                <header>¡Llámanos!</header>
+                <p>
+                    Teléfono/Fax 976 56 55 24<br>
+                    Móvil 696 97 47 56<br>
+                </p>
+
+            </div>
+            <div class="card" >
+                <a href="mailto:info@nzreformas.es" >
+                    <div class="card-image">
+                        <img src="{{ asset('bundles/app/images/icon/mail.png' )}}" alt="Correo" title="Correo" />
+                    </div>
+                </a>
+                <header>Correo</header>
+                <p>
+                    info@nzreformas.es
+                </p>
+            </div>
+            <div class="card" >
+                <a href="javascript:void(0)" >
+                    <div class="card-image">
+                        <img src="{{ asset('bundles/app/images/icon/time.png' )}}" alt="Horario" title="Horario" />
+                    </div>
+                </a>
+                <header>Horario</header>
+                <p>
+                    De lunes a viernes<br>
+                    8:00–13:00  16:00–20:00
+                </p>
+            </div>
+        </div>
+        <header>
+            <h3>Formulario de contacto</h3>
+        </header>
+
+        <p>
+            Si lo prefiere puede ponerse en contacto con nosotros rellenando el formulario de 
+            abajo, nos pondremos en contacto con usted lo antes posible. ¡Gracias!
+        </p>
+
+        {% for flashMessage in app.session.flashbag.get('msg') %}
+            {{ flashMessage }}
+        {% endfor %}
+
+        <form action="{{ path('app_contact',{'page': 'contacto' }) }}" method="post" {{ form_enctype(form) }} class="Contact">
+            {{ form_errors(form) }}
+
+            {{ form_row(form.name, {'label': 'Nombre'}) }}
+            {{ form_row(form.phone, {'label': 'Teléfono / Móvil',
+                'attr': {'placeholder': 'Facilitar su teléfono podría agilizar el proceso. ¡Gracias!'} })}}
+            {{ form_row(form.email, {'label': 'E-mail'}) }}
+            {{ form_row(form.body, {'label': 'Mensaje'}) }}
+
+            {{ form_rest(form) }}
+
+            <p>
+                <em>
+                    De acuerdo con lo estableciso por la Ley Orgánica 15/1999, le informamos que los 
+                    datos obtenidos de este formulario serán incorporados a un fichero bajo la 
+                    responsabilidad de Construcciones Navascués Zalaya S.L. con la finalidad de atender 
+                    sus consultas y remitirle información relacionada que pueda ser de su interés. Puede
+                    ejercer sus derechos de acceso, rectificación, cancelación y oposición mediante un 
+                    escrito a nuestra dirección C/ Duquesa Villahermosa nº115, Local, Zaragoza, Zaragoza
+                    (50009).
+                </em>
+            </p>
+
+            <input type="submit" value="Enviar" />
+        </form>
+    </article>
+
+{% endblock %}

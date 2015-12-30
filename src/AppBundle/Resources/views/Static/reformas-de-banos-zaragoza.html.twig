@@ -1,0 +1,42 @@
+{# src/AppBundle/Resources/views/Default/empresa.html.twig #}
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block title %}Reformas de baños{% endblock %}
+{% block content %}
+
+    <figure class="img-header" >
+        <img src="{{ asset('bundles/app/images/servicios/reformas-de-banos-zaragoza.jpg') }}" alt="Reformas de baños" title="Reformas de baños" />
+        <figcaption>Reformas de baños</figcaption>
+    </figure>
+    <article>
+        <h1>Reformas de baños</h1>    
+        <p>
+            En NZ Reformas tenemos muy en cuenta el diseño de espacios en reformas, sobre todo en 
+            <strong>reformas de baños</strong>. Es en esta zona de las viviendas donde más hay que 
+            cuidar el espacio, así que aportamos soluciones simples y diseños de baños modernos.
+        </p>
+        <p>
+            Disponemos de gran variedad de firmas de sanitarios, acabados y complementos. Pero la 
+            diferencia la marca, la selección de los más adecuados. Por supuesto la elección es del 
+            cliente, y bajo nuestro asesoramiento se puede realizar el plan de reforma más acertado. 
+            Planteando una idea, o partiendo de cero en una <strong>reforma de baño</strong>, el 
+            diseño del mobiliario junto al acabado, y los materiales apropiados pueden hacer mucho.
+        </p>
+        <p>
+            El precio no es un problema, ajustamos cada presupuesto al máximo sin dejar de lado la 
+            calidad. Además contamos con diferentes métodos de pago en plazos, acordes a la 
+            posibilidades del cliente, de forma financiada, sin bancos. Esto supone una diferencia 
+            sustancial, se pueden implementar mejoras que no se tenian pensadas por su elevado coste
+            . Por esta razón es muy importante una planificación exacta, para evitar cualquier 
+            imprevisto.
+        </p>
+        <p>
+            De modo que no dude en consultarnos, aclararemos cualquier duda. Y si quiere, puede 
+            solicitar presupuesto para una <strong>reforma de baño</strong>, no conlleva compromiso 
+            y es gratis. Realizaremos un proyecto de reforma integral a su gusto. Contáctenos a 
+            través de nuestra 
+            <a href="{{ path ('app_contact') }}" >página de contacto</a>, correo
+            electrónico (info@nzreformas.es) o teléfono (976 56 55 24).
+        </p>
+    </article>
+{% endblock %}

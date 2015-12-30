@@ -70,14 +70,14 @@ class JuanCarlosIFixtures extends AbstractFixture implements OrderedFixtureInter
         $manager->persist($image8);
 
         $image9 = new Image();
-        $image9->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-suelo-puertas-juan-carlos-i/transición-1');
+        $image9->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-suelo-puertas-juan-carlos-i/transicion-1');
         $image9->setTitle('Transición de suelos 1');
         $image9->setAlt('Transición de suelos 1');
         $image9->setGallery($this->getReference('reforma-suelo-puertas-juan-carlos-i'));
         $manager->persist($image9);
         
         $image10 = new Image();
-        $image10->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-suelo-puertas-juan-carlos-i/transición-2');
+        $image10->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-suelo-puertas-juan-carlos-i/transicion-2');
         $image10->setTitle('Transición de suelos 2');
         $image10->setAlt('Transición de suelos 2');
         $image10->setGallery($this->getReference('reforma-suelo-puertas-juan-carlos-i'));

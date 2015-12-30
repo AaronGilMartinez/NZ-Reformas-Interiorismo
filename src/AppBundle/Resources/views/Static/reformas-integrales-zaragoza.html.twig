@@ -1,0 +1,44 @@
+{# src/AppBundle/Resources/views/Default/empresa.html.twig #}
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block title %}Reformas integrales en Zaragoza{% endblock %}
+{% block content %}
+
+    <figure class="img-header" >
+        <img src="{{ asset('bundles/app/images/servicios/reformas-integrales-zaragoza.jpg')}}" alt="Reformas integrales en Zaragoza" title="Reformas integrales en Zaragoza" />
+        <figcaption>Reformas integrales en Zaragoza</figcaption>
+    </figure>
+    <article>
+        <h1>Reformas integrales en Zaragoza</h1>    
+        <p>
+            Los proyectos más solicitados son las <strong>reformas integrales</strong>, y en NZ 
+            Reformas nos preocupamos por la realización de cada proyecto de forma que cada área 
+            desarrolle su máximo potencial. La reforma de una vivienda puede variar desde 
+            intervenciones pequeñas, como puede ser un cambio de puertas, hasta reformas de pisos 
+            integrales dónde se modifica toda la vivienda.
+        </p>
+        <p>
+            Lo más importante en las <strong>reformas integrales</strong> es la elección de la 
+            distribución de espacios, un pequeño cambio en un tabique puede mejorar mucho la calidad
+            de vida. Una vivienda refleja la personalidad de las personas que viven en ella, y es 
+            importante a la hora de realizar reformas la participación del cliente, la elección de 
+            cada variación bajo nuestro asesoramiento.
+        </p>
+        <p>
+            El precio no es un problema, ajustamos cada presupuesto al máximo sin dejar de lado la 
+            calidad. Además disponemos de diferentes métodos de pago en plazos, acordes a la 
+            posibilidades del cliente, de forma financiada, sin bancos. Esto supone una diferencia 
+            sustancial, se pueden implementar mejoras que no se tenian pensadas por su elevado coste. 
+            Por esta razón es muy importante una planificación exacta, y nuestros especialistas han
+            de visitar cada vivienda para evitar cualquier imprevisto.
+        </p>
+        <p>
+            De modo que no dude en consultarnos, aclararemos cualquier duda. Y si quiere, puede 
+            solicitar presupuesto para una <strong>reforma integral</strong>, no conlleva 
+            compromiso y es gratis. Realizaremos un proyecto de reforma integral a su gusto.
+            Contáctenos a través de nuestra 
+            <a href="{{ path ('app_contact') }}" >página de contacto</a>, correo
+            electrónico (info@nzreformas.es) o teléfono (976 56 55 24).
+        </p>
+    </article>
+{% endblock %}

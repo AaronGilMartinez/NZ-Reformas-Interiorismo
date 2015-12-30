@@ -2,7 +2,7 @@
     <nav>
         <div class="logo" >
             <img 
-                <img class="NZ" src="{{ asset('bundles/app/images/icon/NZ-Reformas.png')}}" alt="NZ Reformas" title="NZ Reformas" />
+                <img class="NZ" src="{{ asset('bundles/app/images/icon/nz.png')}}" alt="NZ Reformas" title="NZ Reformas" />
         </div>
 
         <a class="menu-button" href="javascript:void(0)" >
@@ -11,7 +11,7 @@
 
         <ul>
             <li class="back-button" >
-                <img class="NZ" src="{{ asset('bundles/app/images/icon/NZ.png')}}" alt="NZ Reformas" title="NZ Reformas" />
+                <img class="NZ" src="{{ asset('bundles/app/images/icon/nz.png')}}" alt="NZ Reformas" title="NZ Reformas" />
                 <a href="javascript:void(0)" >
                     <img src="{{ asset('bundles/app/images/icon/left.png')}}" alt="Atrás" title="Atrás" />
                 </a>
@@ -19,19 +19,18 @@
             <li><a href="{{ path('app_homepage') }}">Inicio</a></li>
             <li class="more" ><a href="{{ path ('app_static',{'page': 'servicios'}) }}" >Servicios</a>
                 <ul>
-                    <li class="menu-title" ><a href="{{ path ('app_static',{'page': 'Reformas-de-comunidades-en-Zaragoza'}) }}" >Comunidades</a>
+                    <li class="menu-title" ><a href="{{ path ('app_static',{'page': 'reformas-de-comunidades-en-zaragoza'}) }}" >Comunidades</a>
                         <ul>
-                            <li><a href="{{ path ('app_static',{'page': 'Rehabilitacion-de-fachadas-en-Zaragoza'}) }}" >Fachadas</a></li>
-                            <li><a href="{{ path ('app_static',{'page': 'Impermeabilizaciones-en-Zaragoza'}) }}" >Impermeabilizaciones</a></li>
+                            <li><a href="{{ path ('app_static',{'page': 'rehabilitacion-de-fachadas-en-zaragoza'}) }}" >Fachadas</a></li>
+                            <li><a href="{{ path ('app_static',{'page': 'impermeabilizaciones-en-zaragoza'}) }}" >Impermeabilizaciones</a></li>
                         </ul>
                     </li>
-                    <li class="menu-title" ><a href="{{ path ('app_static',{'page': 'Reformas-pisos-Zaragoza'}) }}" >Pisos</a>
+                    <li class="menu-title" ><a href="{{ path ('app_static',{'page': 'reformas-pisos-zaragoza'}) }}" >Pisos</a>
                         <ul>
-                            <li><a href="{{ path ('app_static',{'page': 'integrales'}) }}" >Integrales</a></li>
-                            <li><a href="{{ path ('app_static',{'page': 'banos'}) }}" >Baños</a></li>
-                            <li><a href="{{ path ('app_static',{'page': 'cocinas'}) }}" >Cocinas</a></li>
+                            <li><a href="{{ path ('app_static',{'page': 'reformas-integrales-zaragoza'}) }}" >Integrales</a></li>
+                            <li><a href="{{ path ('app_static',{'page': 'reformas-de-banos-zaragoza'}) }}" >Baños</a></li>
+                            <li><a href="{{ path ('app_static',{'page': 'reformas-de-cocinas-zaragoza'}) }}" >Cocinas</a></li>
                         </ul>
-
                     </li>
                 </ul>
             </li>
@@ -42,9 +41,9 @@
                         {% endfor %}
                 </ul>
             </li>
-            <li><a href="{{ path ('app_static',{'page': 'Empresa-de-reformas-en-Zaragoza'}) }}">Empresa</a></li>
-            <li class="contact" ><a href="javascript:void(0)" >Contacto</a></li>
-            <li class="button" ><a href="{{  path('app_contact',{'page': 'Presupuestos-de-reformas-en-Zaragoza'}) }}" >Pedir presupuesto</a></li>
+            <li><a href="{{ path ('app_static',{'page': 'empresa-de-reformas-en-zaragoza'}) }}">Empresa</a></li>
+            <li ><a href="{{ path ('app_contact') }}" >Contacto</a></li>
+            <li class="button" ><a href="{{  path ('app_contact') }}" >Pedir presupuesto</a></li>
         </ul>
     </nav>
 </header>

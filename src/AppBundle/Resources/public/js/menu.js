@@ -26,9 +26,4 @@ $(document).ready(function () {
         $('html, body').animate({scrollTop: 0}, 500);
         return false;
     });
-
-    $('.contact > a').click(function () {
-        $("html, body").animate({scrollTop: $('#contact').offset().top}, 1000);
-        return false;
-    });
 });
