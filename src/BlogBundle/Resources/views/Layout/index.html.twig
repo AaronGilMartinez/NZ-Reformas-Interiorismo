@@ -1,46 +1,52 @@
-{# src/BlogBundle/Resources/views/Layout/index.html.twig #}
-
 {% extends 'BlogBundle::blog.html.twig' %}
+{% import "AppBundle:Static:share.html.twig" as share %}
 
-{% block title %}NZ Blog{% endblock %}
+{% block title %}NZ Blog | NZ Reformas{% endblock %}
 
 {% block content %}
-    {% for article in articles %}
-        <article>
-            <img src="{{ asset(['images/blog/', article.image]|join) }}" alt="{{ article.title }} No se ha encontrado la imagen" />
-            <h1><a href="{{ path('blog_article_show', { 'slug': article.slug }) }}">{{ article.title }}</a></h1>    
-            <p>
-                {{ article.article(600) }} ...
-            </p>
-            <hr>
-        </article>
+    <article>
 
-    {% else %}
-        <p>NO hay entradas en NZ Blog</p>
-    {% endfor %}
+        <header>
+            <h1>
+                <a href="{{ path('blog_homepage',{ 'page': 1 }) }}">NZ Blog</a>
+            </h1>
+        </header>
 
-    {% if paginador.Total() > 1 %}
-        <div class="pagination">
-            <ul>
-                {% if paginador.Start() != 1 %}
-                    <li class="page-prev"><a href="{{ path('blog_homepage',{'page': 1}) }}">1</a></li>
-                {% endif %}
-                {% if paginador.Start() > 2 %}
-                    <li>...</li>
-                {% endif %}
+        {% for article in articles %}
+            <section>
+                <h2><a href="{{ path('blog_article_show', { 'slug': article.slug }) }}">{{ article.title }}</a></h2>    
+                <img src="{{ asset( ['bundles/blog/images/articles/', article.image] | join) }}" alt="{{ article.title }} No se ha encontrado la imagen" />
+                {{ [article.article(300)] | join | raw }} ...
+                <hr>
+            </section>
+        {% else %}
+            <p>No hay entradas en NZ Blog</p>
+        {% endfor %}
 
-                {% for i in paginador.Start()..paginador.End() %}
-                    <li><a class="{% if i == paginador.Current() %}active{% endif %}" href="{{ path('blog_homepage',{'page': i}) }}" >{{ i }}</a></li>
-                {% endfor %}
+        {% if paginador.Total() > 1 %}
+            <div class="pagination">
+                <ul>
+                    {% if paginador.Start() != 1 %}
+                        <li class="page-prev"><a href="{{ path('blog_homepage',{'page': 1}) }}">1</a></li>
+                        {% endif %}
+                        {% if paginador.Start() > 2 %}
+                        <li>...</li>
+                        {% endif %}
 
-                {% if paginador.End() < paginador.Total()-1 %}
-                    <li>...</li>
-                {% endif %}
-                {% if paginador.End() != paginador.Total() %}
-                    <li class="page-prev"><a href="{{ path('blog_homepage',{'page': paginador.Total()}) }}">{{ paginador.Total() }}</a></li>
-                {% endif %}
-            </ul>
+                    {% for i in paginador.Start()..paginador.End() %}
+                        <li><a class="{% if i == paginador.Current() %}active{% endif %}" href="{{ path('blog_homepage',{'page': i}) }}" >{{ i }}</a></li>
+                        {% endfor %}
 
-        </div>
-    {% endif %}      
+                    {% if paginador.End() < paginador.Total()-1 %}
+                        <li>...</li>
+                        {% endif %}
+                        {% if paginador.End() != paginador.Total() %}
+                        <li class="page-prev"><a href="{{ path('blog_homepage',{'page': paginador.Total()}) }}">{{ paginador.Total() }}</a></li>
+                        {% endif %}
+                </ul>
+            </div>
+        {% endif %}
+        {{ share.social( app.request.uri ) }}
+
+    </article>
 {% endblock %}

@@ -28,6 +28,11 @@ class Project {
      * @ORM\Column(type="string")
      */
     protected $image;
+    
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $introduction;
 
     /**
      * @ORM\Column(type="text")
@@ -117,6 +122,24 @@ class Project {
      */
     public function getImage() {
         return $this->image;
+    }
+    
+    /**
+     * Get introduction
+     *
+     * @return
+     */
+    public function getIntroduction() {
+        return $this->introduction;
+    }
+
+    /**
+     * Set introduction
+     *
+     * @param text $introduction
+     */
+    public function setIntroduction($introduction) {
+        $this->introduction = $introduction;
     }
 
     /**

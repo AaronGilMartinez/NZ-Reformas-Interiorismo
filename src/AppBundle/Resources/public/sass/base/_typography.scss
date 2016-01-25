@@ -1,5 +1,7 @@
 /* TYPOGRAPHY */
 
+
+
 body {
     color: $base-font-color;
     font-family: $base-font-family;
@@ -8,22 +10,26 @@ body {
 
     hr {
         border-bottom: 1px solid $light-gray;
-        border-left: none;
-        border-right: none;
-        border-top: none;
-        margin: $base-spacing 0;
     }
 
     p {
         @include clearfix;
         color: $base-font-color;
+        font-family: $base-font-family;
         line-height: $base-line-height;
         padding: 1em 0;
+        font-size: 1.1em;
+        line-height: 1.5em;
+        text-align: justify;
 
         @include media(max-width $tablet-screen) {
-            padding: 0.5em 0;
+            @include span-columns(12);
+            font-size: 1em;
+            line-height: 1.4em;
+            float: none;
         }
     }
+
 
     a {
         color: $action-color;
@@ -57,7 +63,14 @@ body {
 
 
         @include media(max-width $tablet-screen) {
-            font-size: 2.4em;
+            font-size: 2em;
+            font-weight: 500;
+            margin-bottom: 0.2em;
+
+        }
+
+        @include media(max-width mobile-screen) {
+            font-size: 2em;
             font-weight: 500;
             margin-bottom: 0.2em;
 
@@ -66,7 +79,7 @@ body {
 
     h2 {
         font-family: $heading-font-family;
-        font-size: 2em;
+        font-size: 1.6em;
         font-weight: 500;
         margin-bottom: 1em;
 
@@ -78,25 +91,37 @@ body {
 
     h3 {
         font-family: $heading-font-family;
-        font-size: 1.5em;
+        font-size: 1.3em;
         font-weight: 400;
-        margin-bottom: 0.8em;
+        margin-bottom: 0.5em;
 
         @include media(max-width $tablet-screen) {
             font-size: 1.2em;
             font-weight: 300;
+            margin-bottom: 0.25em;
         }
     }
 
     code {
-        background: #F7F7F7;
+        background: white;
         border-radius: $base-border-radius * 1.5;
-        border: 1px solid #E0E0E0;
-        font-size: 0.7em;
+        border: 1px solid $medium-gray;
+        font-size: 0.9em;
         font-style: normal;
         padding: 0.1em 0.4em;
+        margin: 0.1em;
         white-space: nowrap;
         color: $base-font-color;
+        float: left;
+
+        @include media(max-width $tablet-screen){
+            white-space: normal;
+            float: none;
+        }
+
+        a {
+            color: $dark-gray;   
+        }
     }
 
     date {
@@ -105,19 +130,6 @@ body {
         font-size: 0.9em;
         font-style: italic;
         margin-bottom: 0.3em;
-    }
-
-    p {
-        font-family: $base-font-family;
-        font-size: 1.05em;
-        line-height: 1.5em;
-        text-align: justify;
-
-        @include media(max-width $tablet-screen) {
-            font-size: 0.9em;
-            line-height: 1.4em;
-        }
-
     }
 
     .read-more {
@@ -145,6 +157,11 @@ body {
 
     .center {
         text-align: center;
+
+        * {
+            text-align: center;
+
+        }
     }
 
     .news{

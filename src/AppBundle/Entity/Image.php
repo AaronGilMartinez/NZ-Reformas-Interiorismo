@@ -33,6 +33,11 @@ class Image {
      * @ORM\JoinColumn(name="gallery", referencedColumnName="name")
      */
     protected $gallery;
+    
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $description = null;
 
     /**
      * Get src
@@ -105,5 +110,22 @@ class Image {
     public function setGallery(\AppBundle\Entity\Gallery $gallery) {
         $this->gallery = $gallery;
     }
+    
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription() {
+        return $this->description;
+    }
 
+    /**
+     * Set alt
+     *
+     * @param string $description
+     */
+    public function setDescription($description) {
+        $this->description = $description;
+    }
 }

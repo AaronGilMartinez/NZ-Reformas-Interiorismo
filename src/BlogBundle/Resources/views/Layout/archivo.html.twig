@@ -1,0 +1,37 @@
+<section>
+            <h3>Archivo</h3>
+            {% set year = '0'%}
+            <ul class="archivo">
+                {% for article in articles %}
+                    {% if article.created | date('Y') != year %}
+                        {% if year != '0' %}
+                        </ul>y
+                        </li>y
+                    {% endif %}
+                    {% set year = article.created | date('Y') %}
+                    <li>AÑO: {{ year }}
+                        {% set month = article.created | date('M') %}
+                        <ul>
+                            <li>{{ month }}
+                                <ul>
+                                    <li>{{ article.id }}</li>
+                                    {% else %}
+                                        {% if article.created | date('M') != month %}
+                                            {% if month != '0' %}
+                                        </ul>m
+                                    </li>m
+                                {% endif %}
+                                <ul>
+                                    <li>   
+                                        {% set month = article.created | date('M') %}
+                                        {{ month }}
+                                        <ul>
+                                            <li>{{ article.id }}</li>
+                                            {% endif %}
+                                        <li>{{ article.id }}</li>
+                                        {% endif %}
+                                    {% else %}
+                                    <p>No hay artículos</p>
+                                {% endfor %}
+                            </ul>
+                            </section>

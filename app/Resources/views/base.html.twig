@@ -1,51 +1,43 @@
 <!DOCTYPE html>
-<html lang="en" class="js" >
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-        <meta name="robots" content="noindex" >
-
-        <link rel="icon" type="image/vnd.microsoft.icon" href="{{ asset('bundles/app/images/icon/favicon.ico') }}"/>
-        <link href='http://fonts.googleapis.com/css?family=Questrial|Sanchez:400italic,400' rel='stylesheet' type='text/css'>
-
-        {% stylesheets '@AppBundle/Resources/public/css/*' %}
-        <link href="{{ asset(asset_url) }}" type="text/css" rel="stylesheet">
-        {% endstylesheets %}
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <!--<script src="http://maps.google.com/maps?file=api&amp;v=3&amp;sensor=false&amp;key=AIzaSyCA3AYDNntCXV9MA5TcrUP1RaFVpfqiU38" type="text/javascript"></script>-->
-        {% block javascripts %}
-            {% javascripts '@AppBundle/Resources/public/js/*' %}
-            <script src="{{ asset_url }}"></script>
+{% spaceless %}
+    <html lang="es" >
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+            <meta name="robots" content="noindex" >
+            <link rel="icon" type="image/vnd.microsoft.icon" href="{{ asset('bundles/app/images/icon/favicon.ico') }}"/>
+            <title>{% block title %}{% endblock %}</title>
+            <meta name="description" content="{% block description %}{% endblock %}">
+            <link href='http://fonts.googleapis.com/css?family=Questrial|Sanchez:400italic,400' rel='stylesheet' type='text/css'>
+            {% stylesheets '@AppBundle/Resources/public/css/*.css' %}
+            <link href="{{ asset(asset_url) }}" type="text/css" rel="stylesheet">
+            {% endstylesheets %}
+            <script async src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+            {% javascripts '@AppBundle/Resources/public/js/min.js' %}
+            <script async src="{{ asset_url }}"></script>
             {% endjavascripts %}
-        {% endblock %}
-
-        <meta name="description" content="{% block description %}{% endblock %}">
-
-        <meta name="keywords" content="{% block keywords %}{% endblock %}">
-
-        {% block extra %}<!--Aux-block for meta-tags-->{% endblock %}
-
-        <title>{% block title %}NZ Reformas{% endblock %}</title>
-    </head>
-    <body>
-
-        {% block mainMenu %}
-            {{ render(controller('AppBundle:page:menu')) }}
-        {% endblock %}
-
-        <div class="page-content" >
-            {% block main %}
-                <main class="single">
-                    Contenido
-                </main>
+            {% block extra %}
             {% endblock %}
-        </div>
+        </head>
+        <body>
 
-        {% block footer %}
+            {{ render(controller('AppBundle:Page:menu')) }}
+
+            <div class="page-content" >
+                {% block main %}
+                    <main class="single">
+                        Contenido
+                    </main>
+                {% endblock %}
+            </div>
+
             {{ render(controller('AppBundle:page:footer')) }}
-        {% endblock %}
 
-        {% block extraJS %}
-        {% endblock %}
-    </body>
-</html>
+            <script type="text/javascript" >
+                {% block extraJS %}
+                {% endblock %}
+            </script>
+
+        </body>
+    </html>
+{% endspaceless %}

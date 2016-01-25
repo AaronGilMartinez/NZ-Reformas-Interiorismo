@@ -65,16 +65,17 @@
                 <img class="NZ" src="{{ asset('bundles/app/images/icon/nz.png')}}" alt="NZ Reformas" title="NZ Reformas" />
                 <ul>
                     <li><a href="{{ path('app_homepage') }}">Inicio</a></li>
-                    <li><a href="{{ path ('app_static',{'page': 'servicios'}) }}" >Servicios</a>
-                    <li><a href="{{ path ('app_static',{'page': 'proyectos'}) }}" >Proyectos</a>
-                    <li><a href="{{ path ('app_static',{'page': 'empresa-de-reformas-en-zaragoza'}) }}">Empresa</a></li>
-                    <li><a  href="{{ path ('app_contact') }}" >Contacto</a></li>
+                    <li><a href="{{ path ('app_static',{'page': 'servicios'}) }}" >Servicios</a></li>
+                    <li><a href="{{ path ('app_static',{'page': 'proyectos'}) }}" >Proyectos</a></li>
+                    <li><a href="{{ path ('app_static',{'page': 'empresa'}) }}">Empresa</a></li>
+                    <li><a href="{{ path('blog_homepage',{'page': '1' }) }}">Blog</a></li>
+                    <li><a href="{{ path ('app_contact') }}" >Contacto</a></li>
                 </ul>
             </nav>
         </section>
     </div>
     <div class="GMap" >
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2981.451360712007!2d-0.9107506845661626!3d41.64598897924126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa3ed72d591f24ff5!2sNZ+Reformas+e+Interiorismo!5e0!3m2!1ses!2sus!4v1451376612956" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2981.451360712007!2d-0.9107506845661626!3d41.64598897924126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa3ed72d591f24ff5!2sNZ+Reformas+e+Interiorismo!5e0!3m2!1ses!2sus!4v1451376612956" frameborder="0" allowfullscreen></iframe>
     </div>
     <img src="{{ asset('bundles/app/images/icon/navascues-zalaya.png')}}" alt="Construcciones Navascués Zalaya S.L." title="Construcciones Navascués Zalaya S.L." />
     <ul>
@@ -85,7 +86,7 @@
             <a href="{{ path ('app_static',{'page': 'politica-cookies'}) }}">Política de cookies</a>
         </li>
         <li>
-            <a href="{{ path ('app_sitemap') }}">Sitemap</a>
+            <a href="{{ path ('app_sitemap') }}" target="_blank" >Sitemap</a>
         </li>
     </ul>
 </footer>

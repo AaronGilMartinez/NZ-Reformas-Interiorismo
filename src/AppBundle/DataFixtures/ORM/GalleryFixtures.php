@@ -16,25 +16,25 @@ class GalleryFixtures extends AbstractFixture implements OrderedFixtureInterface
 
         $gallery1 = new Gallery();
         $gallery1->setName('Bajada del ascensor a cota cero Uncastillo');
-        $gallery1->setImage('bundles/app/images/proyectos/reformas-de-comunidades/bajada-ascensor-cota-0-uncastillo/bajada-ascensor-cota-0-uncastillo');
+        $gallery1->setImage('bundles/app/images/proyectos/rehabilitacion-de-edificios/bajada-ascensor-cota-0-uncastillo/bajada-ascensor-cota-0-uncastillo');
         $gallery1->setDescription('');
-        $gallery1->setProject($this->getReference('comunidades'));
+        $gallery1->setProject($this->getReference('edificios'));
         $manager->persist($gallery1);
 
 
         $gallery2 = new Gallery();
-        $gallery2->setName('Rehabilitación de fachadas Cambril Playazul');
-        $gallery2->setImage('bundles/app/images/proyectos/reformas-de-comunidades/rehabilitacion-fachada-cambrils-playazul/rehabilitacion-fachada-cambrils-playazul');
+        $gallery2->setName('Rehabilitación de fachadas Cambrils Playazul');
+        $gallery2->setImage('bundles/app/images/proyectos/rehabilitacion-de-edificios/rehabilitacion-fachada-cambrils-playazul/rehabilitacion-fachada-cambrils-playazul');
         $gallery2->setDescription('');
-        $gallery2->setProject($this->getReference('comunidades'));
+        $gallery2->setProject($this->getReference('edificios'));
         $manager->persist($gallery2);
 
 
         $gallery3 = new Gallery();
         $gallery3->setName('Reparación de patio Colegio Salesianos');
-        $gallery3->setImage('bundles/app/images/proyectos/reformas-de-comunidades/reparacion-patio-colegio-salesianos/reparacion-patio-colegio-salesianos');
+        $gallery3->setImage('bundles/app/images/proyectos/rehabilitacion-de-edificios/reparacion-patio-colegio-salesianos/reparacion-patio-colegio-salesianos');
         $gallery3->setDescription('');
-        $gallery3->setProject($this->getReference('comunidades'));
+        $gallery3->setProject($this->getReference('edificios'));
         $manager->persist($gallery3);
 
 
@@ -74,6 +74,34 @@ class GalleryFixtures extends AbstractFixture implements OrderedFixtureInterface
         $gallery8->setProject($this->getReference('pisos'));
         $manager->persist($gallery8);
 
+        $gallery9 = new Gallery();
+        $gallery9->setName('Reforma de cocina Residencial Paraiso');
+        $gallery9->setImage('bundles/app/images/proyectos/reformas-de-cocinas/reforma-cocina-residencial-paraiso/reforma-cocina-residencial-paraiso');
+        $gallery9->setDescription('');
+        $gallery9->setProject($this->getReference('cocinas'));
+        $manager->persist($gallery9);
+
+        $gallery10 = new Gallery();
+        $gallery10->setName('Reforma de baño Oceáno Atlántico');
+        $gallery10->setImage('bundles/app/images/proyectos/reformas-de-banos/reforma-bano-oceano-atlantico/reforma-bano-oceano-atlantico');
+        $gallery10->setDescription('');
+        $gallery10->setProject($this->getReference('banos'));
+        $manager->persist($gallery10);
+
+        $gallery11 = new Gallery();
+        $gallery11->setName('Reforma de baño María Lostal');
+        $gallery11->setImage('bundles/app/images/proyectos/reformas-de-banos/reforma-bano-maria-lostal/reforma-bano-maria-lostal');
+        $gallery11->setDescription('');
+        $gallery11->setProject($this->getReference('banos'));
+        $manager->persist($gallery11);
+        
+        $gallery12 = new Gallery();
+        $gallery12->setName('Reforma de cocina Oceáno Atlántico');
+        $gallery12->setImage('bundles/app/images/proyectos/reformas-de-cocinas/reforma-cocina-oceano-atlantico/reforma-cocina-oceano-atlantico');
+        $gallery12->setDescription('');
+        $gallery12->setProject($this->getReference('cocinas'));
+        $manager->persist($gallery12);
+
         $manager->flush();
 
         $this->addReference("bajada-ascensor-cota-0-uncastillo", $gallery1);
@@ -84,6 +112,10 @@ class GalleryFixtures extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference("reforma-cocina-anselmo-clave", $gallery6);
         $this->addReference("reforma-integral-oceano-atlantico", $gallery7);
         $this->addReference("reforma-suelo-puertas-juan-carlos-i", $gallery8);
+        $this->addReference("reforma-cocina-residencial-paraiso", $gallery9);
+        $this->addReference("reforma-bano-oceano-atlantico", $gallery10);
+        $this->addReference("reforma-bano-maria-lostal", $gallery11);
+        $this->addReference("reforma-cocina-oceano-atlantico", $gallery12);
     }
 
     public function getOrder() {

@@ -17,6 +17,7 @@ class BañoAnselmoClaveFixtures extends AbstractFixture implements OrderedFixtur
         $image1->setSrc('bundles/app/images/proyectos/reformas-de-banos/reforma-bano-anselmo-clave/bano-antes-1');
         $image1->setTitle('Baño antes de la reforma 1');
         $image1->setAlt('Baño antes de la reforma 1');
+        $image1->setDescription('Antes');
         $image1->setGallery($this->getReference('reforma-bano-anselmo-clave'));
         $manager->persist($image1);
 
@@ -24,6 +25,7 @@ class BañoAnselmoClaveFixtures extends AbstractFixture implements OrderedFixtur
         $image2->setSrc('bundles/app/images/proyectos/reformas-de-banos/reforma-bano-anselmo-clave/bano-antes-2');
         $image2->setTitle('Baño antes de la reforma 2');
         $image2->setAlt('Baño antes de la reforma 2');
+        $image2->setDescription('Antes');
         $image2->setGallery($this->getReference('reforma-bano-anselmo-clave'));
         $manager->persist($image2);
 
@@ -31,6 +33,7 @@ class BañoAnselmoClaveFixtures extends AbstractFixture implements OrderedFixtur
         $image3->setSrc('bundles/app/images/proyectos/reformas-de-banos/reforma-bano-anselmo-clave/bano-despues-1');
         $image3->setTitle('Baño despues de la reforma 1');
         $image3->setAlt('Baño despues de la reforma 1');
+        $image3->setDescription('Después');
         $image3->setGallery($this->getReference('reforma-bano-anselmo-clave'));
         $manager->persist($image3);
         
@@ -38,6 +41,7 @@ class BañoAnselmoClaveFixtures extends AbstractFixture implements OrderedFixtur
         $image4->setSrc('bundles/app/images/proyectos/reformas-de-banos/reforma-bano-anselmo-clave/bano-despues-2');
         $image4->setTitle('Baño despues de la reforma 2');
         $image4->setAlt('Baño despues de la reforma 2');
+        $image4->setDescription('Después');
         $image4->setGallery($this->getReference('reforma-bano-anselmo-clave'));
         $manager->persist($image4);
 
@@ -45,6 +49,7 @@ class BañoAnselmoClaveFixtures extends AbstractFixture implements OrderedFixtur
         $image5->setSrc('bundles/app/images/proyectos/reformas-de-banos/reforma-bano-anselmo-clave/bano-despues-3');
         $image5->setTitle('Baño despues de la reforma 3');
         $image5->setAlt('Baño despues de la reforma 3');
+        $image5->setDescription('Después');
         $image5->setGallery($this->getReference('reforma-bano-anselmo-clave'));
         $manager->persist($image5);
 
@@ -52,6 +57,7 @@ class BañoAnselmoClaveFixtures extends AbstractFixture implements OrderedFixtur
         $image6->setSrc('bundles/app/images/proyectos/reformas-de-banos/reforma-bano-anselmo-clave/bano-despues-4');
         $image6->setTitle('Baño despues de la reforma 4');
         $image6->setAlt('Baño despues de la reforma 4');
+        $image6->setDescription('Después');
         $image6->setGallery($this->getReference('reforma-bano-anselmo-clave'));
         $manager->persist($image6);
         

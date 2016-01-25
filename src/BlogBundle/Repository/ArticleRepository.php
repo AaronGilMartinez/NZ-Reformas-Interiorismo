@@ -1,7 +1,5 @@
 <?php
 
-// src/BlogBundle/Repository/BlogRepository.php
-
 namespace BlogBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
@@ -79,6 +77,13 @@ class ArticleRepository extends EntityRepository {
             'paginated' => $paginated,
             'current_page' => $page
         );
+    }
+
+    public function getArticlesOrderedByDate() {
+        $articles = $this->createQueryBuilder('a')
+                ->OrderBy('a.created', 'DESC');
+        
+        return $articles->getQuery()->getResult();
     }
 
 }

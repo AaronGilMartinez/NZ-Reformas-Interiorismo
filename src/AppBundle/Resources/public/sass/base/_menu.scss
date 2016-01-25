@@ -1,46 +1,64 @@
 /* MENU */
 
 header.navigation {
-    @include outer-container;
-    background: $dark-gray;
-    padding: 0.5em 2em;
-
-    @include media(max-width $normal-screen) {
-        padding: 0.5em 1em;
-    }
-
-    @include media(max-width $tablet-screen) {
-        padding: 0.5em;
-    }
-
-    a {
+    .info {
+        background: lighten($dark-gray,15%);
+        width: 100%;
+        padding: 0.5em 2em 0 2em;
+        text-align: right;
         color: $light-gray;
-        z-index: 2000;
-        text-decoration: none;
+        position: relative;
 
-        &:hover, &.active {
-            color: white;
-        }
+        @include media(max-width $tablet-screen){
+            display: none;
+        } 
 
-    }
+        section {
+            display: inline-block;
+            padding: 0 1em;
 
-    li {
-        line-height: 1em;
-        padding: 1em;
-
-        &.menu-title > a {
-            text-decoration: underline;
-        }
-
-        &.menu-title ul {
-            margin-top: 1em;
+            a{
+                color: white;
+                img {
+                    height: 24px;
+                    padding: 0 0.5em;
+                }
+            }
         }
     }
 
     nav {
+        @include outer-container;
         background: $dark-gray;
+        padding: 0.5em 2em;
+        border-bottom: 1px solid $medium-gray;
+        border-top: 1px solid $medium-gray;
 
-        .logo {
+        @include media(max-width $normal-screen) {
+            padding: 0.5em 1em;
+        }
+
+        @include media(max-width $tablet-screen) {
+            padding: 0.5em;
+        }
+
+        a {
+            color: $light-gray;
+            z-index: 2000;
+            text-decoration: none;
+
+            &:hover, &.active {
+                color: white;
+            }
+
+        }
+
+        li {
+            line-height: 1em;
+            padding: 1em;
+        }
+
+        .nz {
             float: left;
             display: inline;
 
@@ -104,12 +122,18 @@ header.navigation {
                 height: 100%;
                 padding: 2em 3em;
                 overflow-y: auto;
-
-                -webkit-box-shadow: 1px 0px 10px 0px rgba(0,0,0,0.5);
-                -moz-box-shadow: 1px 0px 10px 0px rgba(0,0,0,0.5);
-                box-shadow: 1px 0px 10px 0px rgba(0,0,0,0.5);
+                border-right: solid 1px $light-gray;
 
                 @include transition(left 200ms ease);
+
+                @include media(max-width $tablet-screen) {
+                    padding: 2em;
+                }
+
+                @include media(max-width $mobile-screen) {
+                    padding: 2em;
+                    width: 100%;
+                }
 
                 &.active {
                     left: 0;
@@ -122,12 +146,8 @@ header.navigation {
 
                 @include media(max-width $normal-screen) {
                     display: block;
-                    margin-bottom: 1em;
+                    margin-bottom: 3px;
                     background: lighten($dark-gray,10%);
-
-                    &last-child {
-                        border-bottom: none;
-                    }
                 }
 
                 @include media(min-width $normal-screen) {
@@ -165,7 +185,7 @@ header.navigation {
                     margin-left: 1em;
 
                     @include media(max-width $normal-screen) {
-                        margin: 0;
+                        margin: 1em 0 0 0;
                     }
 
                     &:hover {
@@ -209,7 +229,7 @@ header.navigation {
                         }
 
                         @include media(max-width $normal-screen) {
-                            margin-bottom: 1em;
+                            margin-bottom: 3px;
                             display: block;
                             height: 100%;
                             background: lighten($dark-gray,15%);
@@ -268,10 +288,6 @@ header.navigation {
     margin: 3em;
     z-index: 20;
     padding: 0;
-
-    @include media(max-width $normal-screen) {
-        margin: 2em;
-    }
 
     @include media(max-width $tablet-screen) {
         margin: 1em;

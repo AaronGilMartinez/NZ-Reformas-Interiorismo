@@ -1,9 +1,8 @@
-{# src/AppBundle/Resources/views/Default/baños.html.twig #}
 {% extends 'AppBundle::main.html.twig' %}
+{% import "AppBundle:Static:share.html.twig" as share %}
 
-{% block keywords %}{{ gallery.name }}{% endblock %}
+{% block title %}{{ gallery.name }} | NZ Reformas{% endblock %}
 {% block description %}{{ gallery.description }}{% endblock %}
-{% block title %}{{ gallery.name }}{% endblock %}
 
 {% block content %}
     <article>
@@ -28,22 +27,25 @@
                                 <a onclick="load('img-{% if loop.first %}{{ loop.length }}{% else %}{{ loop.index - 1 }}{% endif %}')" class="prev" ><img src="{{ asset('bundles/app/images/icon/left.png')}}" title="Anterior" alt="Anterior" ></a>
                                 <a onclick="load('img-{% if loop.last %}1{% else %}{{ loop.index + 1 }}{% endif %}')" class="next" ><img src="{{ asset('bundles/app/images/icon/right.png')}}" title="Siguiente" alt="Siguiente" ></a>
                                 <img id="img-{{ loop.index }}" data-src="{{ asset(image.src ~ '.jpg')}}" title="{{ image.title }}" alt="{{ image.alt }}" />
+                                {% if image.description %}
+                                    <div class="img-desc" >
+                                        {{ image.description | capitalize }}
+                                    </div>
+                                {% endif%}
                             </div>
                     </li>
                 {% endfor %}
             </ul>
         </section>
-
+        {{ share.social( app.request.uri ) }}
     </article>
 {% endblock %}
 
 {% block extraJS %}
-    <script>
-        function load(myimg) { // load larger img
-            var img = document.getElementById(myimg); // get img id
-            img.src = img.getAttribute("data-src"); // switch "data-src" to "src" on corresponding img
-            id = myimg.replace(/^\D+/g, ''); // get number id from img id ("#img-1")
-            location.replace('#pic-' + id); // go to hashed url without affecting browser history
-        }
-    </script>
+    function load(myimg) { // load larger img
+    var img = document.getElementById(myimg); // get img id
+    img.src = img.getAttribute("data-src"); // switch "data-src" to "src" on corresponding img
+    id = myimg.replace(/^\D+/g, ''); // get number id from img id ("#img-1")
+    location.replace('#pic-' + id); // go to hashed url without affecting browser history
+    }
 {% endblock %}

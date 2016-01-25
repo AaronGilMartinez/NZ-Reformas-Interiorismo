@@ -1,100 +1,105 @@
-{# src/AppBundle/Resources/views/Default/empresa.html.twig #}
 {% extends 'AppBundle::main.html.twig' %}
 
-{% block title %}Servicios NZ Reformas{% endblock %}
+{% block title %}Servicios | NZ Reformas{% endblock %}
+{% block description %}NZ Reformas ofrece servicios para la realización proyectos de reformas. Presupuestos sin 
+    compromiso y ajustados a las necesidades del cliente.{% endblock %}
+
 {% block content %}
 
     <article>
         <header>
             <h1>Servicios</h1>
-            <h2>Presupuestos de reformas en Zaragoza para modificar nuestros espacios</h2>
+            <h2>¿Cómo realizamos los proyectos en NZ Reformas?</h2>
         </header>
         <p>
-            En toda remodelación o rehabilitación, ya sea de un negocio particular o de una vivienda
-            , es importante tener en cuenta algunos aspectos como el volumen de inversión a realizar
-            para contemplar realmente el coste que tendrá realizar la adaptación de los espacios. 
-            Por ello es importante solicitar diversos <strong>presupuestos</strong> de reformas en 
-            Zaragoza, para contrastar y así escoger el que mejor se adapte a nuestras posibilidades. 
+            En el proceso de cualquier reforma se siguen las diferentes etapas. Primero el cliente 
+            contacta con  nosotros ya sea por la información de contacto, o el formulario de abajo. 
+            Una vez tomados los datos del cliente (solo es el nombre, telefono y la dirección), se 
+            fija una fecha y una hora para que nuestros especialistas tomen medidas del 
+            emplazamiento a reformar. Después se plantea un presupuesto partiendo de las calidades 
+            elegidas por el cliente, que en caso de no tener claro, se opta por calidades medias. 
+            Acto seguido se presenta el presupuesto al cliente y se explica detalladamente cada 
+            apartado, en este punto se barajan varias opciones, se aclaran dudas, y se hacen 
+            modificaciones.
         </p>
         <p>
-            Es por ello que en NZ Reformas, se realizan <strong>presupuestos de reformas en Zaragoza
-            </strong>, ajustados a las necesidades y posibilidades del cliente.  De esta manera 
-            podemos realizar y convertir en realidad los proyectos constructivos de nuestros 
-            clientes, sabiendo de antemano del espacio real que disponen y de todas las peticiones 
-            que desean hacer sobre una estancia concreta. Así, de esta manera, se consigue 
-            convertir en realidad la idea inicial que se encuentra en la mente de nuestros clientes.
-            Mejorando sus espacios y haciendo que todo ello acabe siendo un nuevo entorno.
+            No hay costes por el asesoramiento, y hasta que el que el presupuesto no es aprobado por
+            el cliente no hay compromisos. Una vez aprobado el presupuesto, se inician los trámites 
+            necesarios para la obra (licencias y permisos), los cuales gestionaremos nosotros. 
+            Entonces comienza la obra, la cual se lleva a cabo con la mayor brevedad posible, y 
+            ocasionando las menores molestias posibles.
         </p>
         <p>
-            En NZ Reformas, disponemos de todo lo necesario para convertir un espacio antiguo en uno
-            nuevo, realizando <strong>presupuestos de reformas en Zaragoza</strong>, adaptando todo 
-            lo necesario para que los espacios cumplan con los requisitos que desean los clientes. 
+            Hay que tener en cuenta que ajustamos cada presupuesto al máximo. Además disponemos de 
+            diferentes métodos de pago en plazos, acordes a la posibilidades del cliente, 
+            financiación directa "Sin Bancos". Esto supone una diferencia sustancial, se pueden 
+            plantear mejoras que no se tenian en cuenta por su elevado coste. Por esta razón es tan 
+            importante una planificación exacta, y nuestros especialistas han de visitar cada 
+            reforma para evitar cualquier imprevisto.
         </p>
-        <p>
-            Y así poder disfrutar de su nuevo hogar u oficina, con los nuevos materiales utilizados,
-            convirtiendo en realidad todos los requisitos que servirán para mejorar las necesidades 
-            de nuestros usuarios para que desarrollen de una mejor manera sus actividades diarias, 
-            tanto a nivel personal como profesional.
-        </p>
-        <p>
-            Si estás pensando en realizar una reforma, una rehabilitación o una modificación del 
-            interiorismo para poder realizar un cambio en sus espacios, no dude en realizarnos su 
-            petición a través de nuestra <a href="{{ path ('app_contact') }}" >
-                página de contacto </a>, correo electrónico (info@nzreformasintegrales.es) o 
-            teléfono (976 56 55 24) y le proporcionaremos el presupuesto o <strong>presupuestos de 
-                reformas en Zaragoza</strong>, así como el asesoramiento que pueda necesitar para 
-            proporcionarle todo lo que nuestros clientes puedan requerir para conseguir su nuevo 
-            espacio de trabajo o personal.
-        </p>
-        <ul class="rounded-basic">
-            <a href="{{ path ('app_static',{'page': 'reformas-de-comunidades-en-zaragoza'}) }}" >
-                <h2>Reformas en comunidades</h2>
-            </a>
-            <p>
-                Gestión de reformas en comunidades y reparación de edificios. Desarrollamos desde 
-                grandes proyectos, a modificaciones sencillas en los que la redistribución del 
-                espacio sea mínima. Proponemos diferentes modelos de pago, conforme a las 
-                necesidades del cliente.
-            </p>
+        <ul class="grid">
             <li>
-                <a href="{{ path ('app_static',{'page': 'rehabilitacion-de-fachadas-en-zaragoza'}) }}" >
-                    <img src="{{ asset('bundles/app/images/servicios/rehabilitacion-de-fachadas-zaragoza-thumb.jpg')}}" alt="Rehabilitación de fachadas" title="Rehabilitación de fachadas" />
-                    <h3>Rehabilitación de fachadas</h3>
-                </a>
+                <img src="{{ asset('bundles/app/images/servicios/todo-tipo-de-reformas.jpg')}}" alt="Todo tipo de reformas" title="Todo tipo de reformas" />
+                <section>
+                    <h3>Todo tipo de reformas</h3>
+                    <p>No importa si quiere reformar su vivienda, su negocio o comunidad de vecinos.</p>
+                </section>
             </li>
             <li>
-                <a href="{{ path ('app_static',{'page': 'impermeabilizaciones-en-zaragoza'}) }}" >
-                    <img src="{{ asset('bundles/app/images/servicios/impermeabilizaciones-en-zaragoza-thumb.jpg')}}" alt="Impermeabilizaciones" title="Impermeabilizaciones" />
-                    <h3>Impermeabilizaciones</h3>               
-                </a>
-            </li>
-        </ul>
-        <ul class="rounded-basic" >
-            <a href="{{ path ('app_static',{'page': 'reformas-pisos-zaragoza'}) }}" >                
-                <h2>Reformas en pisos</h2>
-            </a>
-            <p>
-                Reformas de pisos, y diseño de espacios interiores. Planificamos el proyecto de 
-                reforma, realizando un estudio previo para sacar el mayor partido a la distribución 
-                del espacio según las necesidades de uso, y la solución más asequible.
-            </p>
-            <li>
-                <a href="{{ path ('app_static',{'page': 'reformas-integrales-zaragoza'}) }}" >
-                    <img src="{{ asset('bundles/app/images/servicios/reformas-integrales-zaragoza-thumb.jpg')}}" alt="Reformas integrales" title="Reformas integrales" />
-                    <h3>Reformas integrales</h3>
-                </a>
+                <img src="{{ asset('bundles/app/images/servicios/presupuesto-sin-compromiso.jpg')}}" alt="Presupuesto sin compromiso" title="Presupuesto sin compromiso" />
+                <section>
+                    <h3>Presupuesto sin compromiso</h3>
+                    <p>Puede pedir presupuesto sin compromiso y no tendra ningún coste.</p>
+                </section>
             </li>
             <li>
-                <a href="{{ path ('app_static',{'page': 'reformas-de-banos-zaragoza'}) }}" >
-                    <img src="{{ asset('bundles/app/images/servicios/reformas-de-banos-zaragoza-thumb.jpg')}}" alt="Reformas de baños" title="Reformas de baños" />
-                    <h3>Reformas de baños</h3>
-                </a>
+                <img src="{{ asset('bundles/app/images/servicios/atencion-personalizada.jpg')}}" alt="Atención personalizada" title="Atención personalizada" />
+                <section>
+                    <h3>Atención personalizada</h3>
+                    <p>Estudiaremos de forma detallada el proyecto de reforma deseada.</p>
+                </section>
             </li>
             <li>
-                <a href="{{ path ('app_static',{'page': 'reformas-de-cocinas-zaragoza'}) }}" >
-                    <img src="{{ asset('bundles/app/images/servicios/reformas-de-cocinas-zaragoza-thumb.jpg')}}" alt="Reformas de cocinas" title="Reformas de cocinas" />
-                    <h3>Reformas de cocinas</h3>
-                </a>
+                <img src="{{ asset('bundles/app/images/servicios/desde-1992.jpg')}}" alt="Desde 1992" title="Desde 1992" />
+                <section>
+                    <h3>Desde 1992</h3>
+                    <p>Ofrecemos nuestra experiencia como mejor aval para realizar su proyecto con nosotros.</p>
+                </section>
+            </li>
+            <li>
+                <img src="{{ asset('bundles/app/images/servicios/solucion-a-medida.jpg')}}" alt="Solución a medida" title="Solución a medida" />
+                <section>
+                    <h3>Previsión del resultado final</h3>
+                    <p>Plantearemos diferentes soluciones al proyecto mediante simulación 3D.</p>
+                </section>
+            </li>
+            <li>
+                <img src="{{ asset('bundles/app/images/servicios/gran-variedad.jpg')}}" alt="Gran variedad" title="Gran variedad" />
+                <section>
+                    <h3>La elección es suya</h3>
+                    <p>Bajo nuestro asesoramiento se realizará la solución de proyecto más adecuada.</p>
+                </section>
+            </li>
+            <li>
+                <img src="{{ asset('bundles/app/images/servicios/sin-preocupaciones.jpg')}}" alt="Sin preocupaciones" title="Sin preocupaciones" />
+                <section>
+                    <h3>Sin preocupaciones</h3>
+                    <p>Nos encargamos de la gestión de los trámites legales necesarios.</p>
+                </section>
+            </li>
+            <li>
+                <img src="{{ asset('bundles/app/images/servicios/sin-molestias.jpg')}}" alt="Sin molestias" title="Sin molestias" />
+                <section>
+                    <h3>Sin molestias</h3>
+                    <p>Rapidez en la coordinación y ejecución de la obra.</p>
+                </section>
+            </li>
+            <li>
+                <img src="{{ asset('bundles/app/images/servicios/facilidad-de-pago.jpg')}}" alt="Facilidad de pago" title="Facilidad de pago" />
+                <section>
+                    <h3>Facilidad de pago</h3>
+                    <p>Dispone de diferentes varios métodos de pago, financiación directa "Sin Bancos".</p>
+                </section>
             </li>
         </ul>
     </article>

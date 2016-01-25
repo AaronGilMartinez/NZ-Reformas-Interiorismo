@@ -1,7 +1,7 @@
 {# src/BlogBundle/Resources/views/Comment/index.html.twig #}
 
 {% for comment in comments %}
-    <article id="comment-{{ comment.id }}" class="comment">
+    <div id="{{ comment.id }}" class="comment">
         <header>
             <h3>
                 {{ comment.name }}:
@@ -11,7 +11,10 @@
         <footer class="comment-detail">
             Comentado <time>{{ comment.created|created_ago }}</time>
         </footer>
-    </article>
+        {% if not loop.last %}
+            <hr>
+        {% endif %}
+    </div>
 {% else %}
-    <p>No hay comentarios en este post. Sé el primero en comentar ...</p>
+    <p>No hay comentarios en este artículo. ¡Sé el primero en comentar!</p>
 {% endfor %}

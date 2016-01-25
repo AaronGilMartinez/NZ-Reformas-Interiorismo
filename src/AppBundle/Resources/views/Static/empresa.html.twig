@@ -1,0 +1,39 @@
+{% extends 'AppBundle::main.html.twig' %}
+{% import "AppBundle:Static:share.html.twig" as share %}
+
+{% block title %}Empresa | NZ Reformas{% endblock %}
+{% block description %}NZ Reformas e Interiorismo, es mucho más que una empresa de reformas. Planteamos cada proyecto, 
+    como si fuera la renovación de nuestro hogar.{% endblock %}
+
+{% block content %}
+    <figure class="img-header" >
+        <img class="resized" src="{{ asset('bundles/app/images/presentacion/oficina-high.jpg')}}" title="Empresa de reformas en Zaragoza" alt="Empresa de reformas en Zaragoza" />
+        <figcaption>Nuestra oficina Construcciones Navascués Zalaya</figcaption>
+    </figure>
+    <article>
+        <h1>Empresa</h1>
+        <p>
+            NZ Reformas e Interiorismo es una empresa de reformas que forma parte de Construcciones 
+            Navascués Zalaya, como sociedad limitada. Contamos con más de 20 años de experiencia en 
+            edificación y reformas de cualquier tipo, lo que nos permite ofertar a nuestros clientes
+            , además de un precio competitivo, una ejecución programada de los trabajos, acorde a 
+            las necesidades del proyecto, así como una financiación directa “Sin  bancos”. Disponemos
+            de un gran equipo humano, altamente cualificado y con gran profesionalidad, que se 
+            implican al máximo día a día para obtener los mejores resultados , y para conseguir la 
+            satisfacción del cliente.
+        </p>
+        <p>
+            Puede consultarnos sin ningún problema, y solicitar presupuesto sin costes ni 
+            compromisos. Si quiere ponerse en contacto con nosotros puede llamar por teléfono al 
+            <strong>976
+                56 55 24</strong> , enviar un e-mail a <strong>info@nzreformas.es</strong>, desde nuestra 
+            <a href="{{  path ('app_contact') }}" >página de contacto</a> o si decide visitarnos
+            a nuestra ubicación que no le confunda el letrero de Construcciones Navascués Zalaya 
+            S.L. (la foto de arriba), estamos en <strong>Calle Duquesa Villahermosa 115</strong>, es un local de 
+            Zaragoza.
+        </p>
+        
+        {{ share.social( app.request.uri ) }}
+        
+    </article>
+{% endblock %}

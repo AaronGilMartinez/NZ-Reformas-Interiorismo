@@ -1,34 +1,34 @@
 {# src/BlogBundle/Resouces/views/Blog/article.html.twig #}
 {% extends 'BlogBundle::blog.html.twig' %}
+{% import "AppBundle:Static:share.html.twig" as share %}
 
 {% block title %}{{ article.title }}{% endblock %}
 
-{% block main %}
-    <main class="single" >
-        <article>
+{% block content %}
+    <article>
+        <section>
             <header>
                 <h1>{{ article.title }}</h1>
-                <h2><a href="{{ path('blog_category_show', { 'slug': category.slug,'page': 1 }) }}" >{{ category.name }}</a></h2>
-                <date>Creado el {{ article.created|date('l, F j, Y') }}</date>
+                <date>Publicado el {{ article.created | date('d/m/Y') }}</date>
             </header>
-            <img src="{{ asset(['images/blog/', article.image]|join) }}" alt="{{ article.title }} No se ha encontrado la imagen" />
-            <p>
-                {{ article.article | nl2br }}
-            </p>
-            <footer>
-                <address>{{ article.author }}</address>
-                {% for tag in tags %}
-                    <a href="{{ path('blog_tag_show', { 'slug': tag.slug,'page': 1 }) }}" ><code>{{ tag.name }}</code></a>
-                        {% else %}
-                    No hay etiquetas
-                {% endfor %}
-            </footer>
-            <section>
-                <h2>Comentarios</h2>
-                {% include 'BlogBundle:Comment:index.html.twig' with { 'comments': comments } %}
+            <img src="{{ asset( ['bundles/blog/images/articles/', article.image] | join) }}" alt="{{ article.title }}" title="{{ article.title }}" />
+            {{ article.article | raw }}
+            <h3>Categoria</h3>
+            <h3><a href="{{ path('blog_catag_show', { 'slug': category.slug,'page': 1 }) }}" >{{ category.name }}</a></h3>
+            <h3>Etiquetas</h3>
+            {% for tag in tags %}
+                <a href="{{ path('blog_catag_show', { 'slug': tag.slug,'page': 1 }) }}" ><code>{{ tag.name }}</code></a>
+                    {% else %}
+                No hay etiquetas
+            {% endfor %}
+            {{ share.social( app.request.uri ) }}
+        </section>
+        <section>
+            <h2>Comentarios</h2>
+            {% include 'BlogBundle:Comment:index.html.twig' with { 'comments': comments } %}
 
-                {% render controller('BlogBundle:Comment:new' , { 'article_id': article.id }) %}
-            </section>
-        </article>
-    </main>
+            {% render controller('BlogBundle:Comment:new' , { 'slug': article.slug }) %}
+        </section>
+    </article>
+
 {% endblock %}

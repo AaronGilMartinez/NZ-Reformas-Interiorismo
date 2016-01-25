@@ -15,9 +15,11 @@ class PageController extends Controller {
 
         $projects = $em->getRepository('AppBundle:Project')->findAll();
 
-        return $this->render('AppBundle::menu.html.twig', array(
-                    'projects' => $projects
+        $response = $this->render('AppBundle::menu.html.twig', array(
+            'projects' => $projects
         ));
+
+        return $response;
     }
 
     public function footerAction() {
@@ -25,14 +27,18 @@ class PageController extends Controller {
         $enquiry = new Enquiry();
         $form = $this->createForm(new EnquiryType(), $enquiry);
 
-        return $this->render('AppBundle::footer.html.twig', array(
+        $response = $this->render('AppBundle::footer.html.twig', array(
                     'form' => $form->createView()
         ));
+
+        return $response;
     }
 
     public function inicioAction() {
 
-        return $this->render('AppBundle:Static:inicio.html.twig');
+        $response = $this->render('AppBundle:Static:inicio.html.twig');
+
+        return $response;
     }
 
     public function staticAction($page) {
@@ -43,21 +49,21 @@ class PageController extends Controller {
 
             $projects = $em->getRepository('AppBundle:Project')->findAll();
 
-            return $this->render('AppBundle:Static:proyectos.html.twig', array(
-                        'projects' => $projects,
-            ));
+            $response = $this->render('AppBundle:Static:proyectos.html.twig', array(
+                'projects' => $projects));
         } elseif (strcmp($page, "contacto") == 0) {
 
             $enquiry = new Enquiry();
             $form = $this->createForm(new EnquiryType(), $enquiry);
 
-            return $this->render('AppBundle:Static:contacto.html.twig', array(
-                        'form' => $form->createView()
-            ));
+            $response = $this->render('AppBundle:Static:contacto.html.twig', array(
+                'form' => $form->createView()));
         } else {
 
-            return $this->render('AppBundle:Static:' . $page . '.html.twig');
+            $response = $this->render('AppBundle:Static:' . $page . '.html.twig');
         }
+
+        return $response;
     }
 
     public function projectAction($project) {
@@ -68,9 +74,10 @@ class PageController extends Controller {
 
         if ($projectBySlug) {
 
-            return $this->render('AppBundle:Static:proyecto.html.twig', array(
-                        'project' => $projectBySlug,
-            ));
+            $response = $this->render('AppBundle:Static:proyecto.html.twig', array(
+                'project' => $projectBySlug));
+
+            return $response;
         }
     }
 
@@ -82,9 +89,10 @@ class PageController extends Controller {
 
         if ($galleryBySlug) {
 
-            return $this->render('AppBundle:Static:galeria.html.twig', array(
-                        'gallery' => $galleryBySlug,
-            ));
+            $response = $this->render('AppBundle:Static:galeria.html.twig', array(
+                'gallery' => $galleryBySlug));
+
+            return $response;
         }
     }
 
@@ -98,11 +106,11 @@ class PageController extends Controller {
             $form->bind($request);
 
             if ($form->isValid()) {
-
                 $message = \Swift_Message::newInstance()
                         ->setSubject('Formulario de contacto de www.nzreformas.es')
                         ->setFrom($enquiry->getEmail())
-                        ->setTo(array("admin@nzreformas.es"))
+                        ->setTo("info@nzreformas.es")
+                        ->setCc("admin@nzreformas.es")
                         ->setBody($this->renderView('AppBundle:Static:contactEmail.txt.twig', array('enquiry' => $enquiry)));
 
                 $this->get('mailer')->send($message);

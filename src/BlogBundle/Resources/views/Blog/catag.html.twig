@@ -1,0 +1,45 @@
+{% extends 'BlogBundle::blog.html.twig' %}
+
+{% block title %}{{ catag.name }} | NZ Reformas{% endblock %}
+
+{% block content %}
+    <article>
+        <header>
+            <h1>{{ catag.name }}</h1>
+        </header>
+        {% for article in articles %}
+            <section>
+                <h3><a href="{{ path('blog_article_show', { 'slug': article.slug }) }}">{{ article.title }}</a></h3>
+                {{ [article.article(300)] | join | raw }}... <a href="{{ path('blog_article_show', { 'slug': article.slug }) }}" class="read-more" >Leer más</a>
+                <hr>
+            </section>
+
+        {% else %}
+            <p>NO hay entradas en NZ Blog relacionadas con <strong>{{ catag.name }}</strong></p>
+        {% endfor %}
+        {% if paginador.Total() > 1 %}
+            <div class="pagination">
+                <ul>
+                    {% if paginador.Start() != 1 %}
+                        <li class="page-prev"><a href="{{ path('blog_catag_show', { 'slug': catag.slug,'page': 1 }) }}">1</a></li>
+                        {% endif %}
+                        {% if paginador.Start() > 2 %}
+                        <li>...</li>
+                        {% endif %}
+
+                    {% for i in paginador.Start()..paginador.End() %}
+                        <li><a class="{% if i == paginador.Current() %}active{% endif %}" href="{{ path('blog_catag_show', { 'slug': catag.slug,'page': i }) }}" >{{ i }}</a></li>
+                        {% endfor %}
+
+                    {% if paginador.End() < paginador.Total()-1 %}
+                        <li>...</li>
+                        {% endif %}
+                        {% if paginador.End() != paginador.Total() %}
+                        <li class="page-prev"><a href="{{ path('blog_catag_show', { 'slug': catag.slug,'page': paginador.Total() }) }}">{{ paginador.Total() }}</a></li>
+                        {% endif %}
+                </ul>
+
+            </div>
+        {% endif %}
+    </article>
+{% endblock %}

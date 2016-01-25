@@ -32,17 +32,12 @@ class Article {
     protected $slug;
 
     /**
-     * @ORM\Column(type="string", length=100)
-     */
-    protected $author;
-
-    /**
      * @ORM\Column(type="text")
      */
     protected $article;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string")
      */
     protected $image;
     
@@ -105,26 +100,6 @@ class Article {
 
     public function __toString() {
         return $this->getTitle();
-    }
-
-    /**
-     * Set author
-     *
-     * @param string $author
-     * 
-     */
-    public function setAuthor($author) {
-        $this->author = $author;
-    }
-
-    /**
-     * Get author
-     *
-     * @return string 
-     * 
-     */
-    public function getAuthor() {
-        return $this->author;
     }
 
     /**
@@ -240,12 +215,9 @@ class Article {
      * Set updated
      *
      * @param \DateTime $updated
-     * @return Article
      */
     public function setUpdated($updated) {
         $this->updated = $updated;
-
-        return $this;
     }
 
     /**
@@ -263,13 +235,6 @@ class Article {
 
     public function getComments() {
         return $this->comments;
-    }
-
-    /**
-     * @ORM\preUpdate
-     */
-    public function setUpdatedValue() {
-        $this->setUpdated(new \DateTime());
     }
 
     /**

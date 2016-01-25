@@ -1,11 +1,8 @@
 {# src/BlogBundle/Resources/views/blog.html.twig #}
 {% extends '::base.html.twig' %}
 
-
 {% block main %}
-    <h1>
-        <a href="{{ path('blog_homepage',{ 'page': 1 }) }}">LOGO NZ Blog</a>
-    </h1>
+
     <main class="primary" >
         {% block content %}
             Contenido principal del Blog
@@ -13,7 +10,7 @@
     </main>
     <aside class="secondary" >
         {% block sidebar %}
-            {{ render(controller('BlogBundle:sidebar:show')) }}
+            {{ render(controller('BlogBundle:Sidebar:show')) }}
         {% endblock %}
     </aside>
 {% endblock %}

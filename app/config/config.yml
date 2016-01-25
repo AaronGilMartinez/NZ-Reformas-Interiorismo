@@ -5,7 +5,7 @@ imports:
     - { resource: @AppBundle/Resources/config/config.yml }
     
 framework:
-    #esi:             ~
+    esi:             true
     #translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
@@ -26,25 +26,22 @@ framework:
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
-    use_controller: false
+    use_controller: true
     bundles:        [AppBundle]
-    #java: /usr/bin/java
     filters:
         cssrewrite: ~
         sass: ~
-        yui_css:
-            jar: "%kernel.root_dir%/Resources/java/yuicompressor.jar"
-        yui_js:
-            jar: "%kernel.root_dir%/Resources/java/yuicompressor.jar"
-
         jpegoptim:
-            bin: "%kernel.root_dir%/Resources/jpegoptim"
+            bin: "%kernel.root_dir%/Resources/jpegoptim/jpegoptim.exe"
+            max: 60
             apply_to: "\.jpg$"
-            strip_all: true
-            max: 20
+        uglifyjs2:
+            bin: "%kernel.root_dir%/Resources/uglifyjs/uglifyjs"
+        uglifycss:
+            bin: "%kernel.root_dir%/Resources/uglifycss/uglifycss"
     twig:
         functions:
-            jpegoptim: ~
+            jpegoptim: { output: images-opt/*.jpg }
             
 # Twig Configuration
 twig:
@@ -70,11 +67,19 @@ doctrine:
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        auto_mapping: true
+        entity_managers:
+            default:
+                auto_mapping: true
+                dql:
+                    datetime_functions:
+                        MONTH: DoctrineExtensions\Query\Mysql\Month
+                        YEAR: DoctrineExtensions\Query\Mysql\Year
 
 swiftmailer:
     transport: "%mailer_transport%"
     host:      "%mailer_host%"
+    port:      25
+    encryption: null
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }

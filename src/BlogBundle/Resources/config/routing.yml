@@ -1,38 +1,31 @@
-## src/BlogBundle/Resources/config/routing.yml
-#blog_homepage:
-#    pattern:  /pagina/{page}
-#    defaults:
-#        _controller: BlogBundle:Front:index
-#    requirements:
-#        _method:  GET
-#        page: \d+
-#
-#blog_article_show:
-#    pattern:  /articulo/{slug}
-#    defaults: 
-#        _controller: BlogBundle:Article:show
-#        comments: true
-#    requirements:
-#       _method:  GET
-#       
-#blog_category_show:
-#    pattern:  /categoría/{slug}/pagina/{page}
-#    defaults:  
-#        _controller: BlogBundle:Category:show
-#    requirements:
-#       _method:  GET
-#
-#blog_tag_show:
-#    pattern:  /etiqueta/{slug}/pagina/{page}
-#    defaults:
-#        _controller: BlogBundle:Tag:show
-#    requirements:
-#       _method:  GET
-#        
-#blog_comment_create:
-#    pattern:  /comment/{article_id}/
-#    defaults:
-#        _controller: BlogBundle:Comment:create
-#    requirements:
-#        _method:  POST
-#        article_id: \d+
+# src/BlogBundle/Resources/config/routing.yml
+blog_homepage:
+    pattern: /{page}
+    defaults:
+        _controller: BlogBundle:Front:index
+    requirements:
+        _method: GET
+        page: \d+
+
+blog_article_show:
+    pattern: /{slug}
+    defaults: 
+        _controller: BlogBundle:Article:show
+        comments: true
+    requirements:
+       _method: GET
+       
+blog_catag_show:
+    pattern: /{slug}/{page}
+    defaults:  
+        _controller: BlogBundle:Catag:show
+    requirements:
+       _method: GET
+        
+blog_comment_create:
+    pattern: /{slug}#
+    defaults:
+        _controller: BlogBundle:Comment:create
+    requirements:
+        _method:  POST
+        article_id: \d+

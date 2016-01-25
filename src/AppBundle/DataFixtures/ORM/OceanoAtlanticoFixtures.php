@@ -17,6 +17,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image1->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/entrada-1-antes');
         $image1->setTitle('Entrada antes de la reforma 1');
         $image1->setAlt('Entrada antes de la reforma 1');
+        $image1->setDescription('Antes');
         $image1->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image1);
 
@@ -24,6 +25,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image2->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/entrada-1-despues');
         $image2->setTitle('Entrada después de la reforma 1');
         $image2->setAlt('Entrada después de la reforma 1');
+        $image2->setDescription('Después');
         $image2->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image2);
 
@@ -31,6 +33,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image3->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/entrada-2-antes');
         $image3->setTitle('Entrada antes de la reforma 2');
         $image3->setAlt('Entrada antes de la reforma 2');
+        $image3->setDescription('Antes');
         $image3->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image3);
 
@@ -38,6 +41,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image4->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/entrada-2-despues');
         $image4->setTitle('Entrada después de la reforma 2');
         $image4->setAlt('Entrada después de la reforma 2');
+        $image4->setDescription('Después');
         $image4->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image4);
 
@@ -45,6 +49,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image5->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/pasillo-antes');
         $image5->setTitle('Pasillo antes de la reforma');
         $image5->setAlt('Pasillo antes de la reforma');
+        $image5->setDescription('Antes');
         $image5->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image5);
 
@@ -52,6 +57,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image6->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/pasillo-despues');
         $image6->setTitle('Pasillo después de la reforma');
         $image6->setAlt('Pasillo después de la reforma');
+        $image6->setDescription('Después');
         $image6->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image6);
 
@@ -59,6 +65,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image7->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/salon-antes');
         $image7->setTitle('Salón antes de la reforma');
         $image7->setAlt('Salón antes de la reforma');
+        $image7->setDescription('Antes');
         $image7->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image7);
 
@@ -66,6 +73,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image8->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/salon-despues');
         $image8->setTitle('Salón después de la reforma');
         $image8->setAlt('Salón después de la reforma');
+        $image8->setDescription('Después');
         $image8->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image8);
 
@@ -73,6 +81,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image9->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/armario-antes');
         $image9->setTitle('Armario antes de la reforma');
         $image9->setAlt('Armario antes de la reforma');
+        $image9->setDescription('Antes');
         $image9->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image9);
 
@@ -80,6 +89,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image10->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/armario-despues');
         $image10->setTitle('Armario después de la reforma');
         $image10->setAlt('Armario después de la reforma');
+        $image10->setDescription('Después');
         $image10->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image10);
 
@@ -87,6 +97,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image11->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/habitacion-1-antes');
         $image11->setTitle('Habitación antes de la reforma 1');
         $image11->setAlt('Habitación antes de la reforma 1');
+        $image11->setDescription('Antes');
         $image11->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image11);
 
@@ -94,13 +105,15 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image12->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/habitacion-1-despues');
         $image12->setTitle('Habitación después de la reforma 1');
         $image12->setAlt('Habitación después de la reforma 1');
+        $image12->setDescription('Después');
         $image12->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image12);
 
         $image13 = new Image();
         $image13->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/habitacion-2-antes');
-        $image13->setTitle('Habitación después de la reforma 2');
-        $image13->setAlt('Habitación después de la reforma 2');
+        $image13->setTitle('Habitación antes de la reforma 2');
+        $image13->setAlt('Habitación antes de la reforma 2');
+        $image13->setDescription('Antes');
         $image13->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image13);
 
@@ -108,6 +121,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image14->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/habitacion-2-despues');
         $image14->setTitle('Habitación después de la reforma 2');
         $image14->setAlt('Habitación después de la reforma 2');
+        $image14->setDescription('Después');
         $image14->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image14);
 
@@ -115,6 +129,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image15->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/cocina-1-antes');
         $image15->setTitle('Cocina antes de la reforma 1');
         $image15->setAlt('Cocina antes de la reforma 1');
+        $image15->setDescription('Antes');
         $image15->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image15);
 
@@ -122,6 +137,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image16->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/cocina-1-despues');
         $image16->setTitle('Cocina después de la reforma 1');
         $image16->setAlt('Cocina después de la reforma 1');
+        $image16->setDescription('Después');
         $image16->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image16);
 
@@ -129,6 +145,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image17->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/cocina-2-antes');
         $image17->setTitle('Cocina antes de la reforma 2');
         $image17->setAlt('Cocina antes de la reforma 2');
+        $image17->setDescription('Antes');
         $image17->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image17);
 
@@ -136,13 +153,15 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image18->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/cocina-2-despues');
         $image18->setTitle('Cocina después de la reforma 2');
         $image18->setAlt('Cocina después de la reforma 2');
+        $image18->setDescription('Después');
         $image18->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image18);
 
         $image19 = new Image();
         $image19->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/cocina-3-antes');
         $image19->setTitle('Cocina antes de la reforma 3');
-        $image19->setAlt('Cocina antes de la reforma ');
+        $image19->setAlt('Cocina antes de la reforma 3');
+        $image19->setDescription('Antes');
         $image19->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image19);
 
@@ -150,6 +169,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image20->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/cocina-3-despues');
         $image20->setTitle('Cocina después de la reforma 3');
         $image20->setAlt('Cocina después de la reforma 3');
+        $image20->setDescription('Después');
         $image20->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image20);
 
@@ -157,6 +177,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image21->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/dormitorio-1-antes');
         $image21->setTitle('Dormitorio antes de la reforma 1');
         $image21->setAlt('Dormitorio antes de la reforma 1');
+        $image21->setDescription('Antes');
         $image21->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image21);
 
@@ -164,6 +185,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image22->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/dormitorio-1-despues');
         $image22->setTitle('Dormitorio después de la reforma 1');
         $image22->setAlt('Dormitorio después de la reforma 1');
+        $image22->setDescription('Después');
         $image22->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image22);
 
@@ -171,6 +193,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image23->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/dormitorio-2-antes');
         $image23->setTitle('Dormitorio antes de la reforma 2');
         $image23->setAlt('Dormitorio antes de la reforma 2');
+        $image23->setDescription('Antes');
         $image23->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image23);
 
@@ -178,6 +201,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image24->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/dormitorio-2-despues');
         $image24->setTitle('Dormitorio después de la reforma 2');
         $image24->setAlt('Dormitorio después de la reforma 2');
+        $image24->setDescription('Después');
         $image24->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image24);
 
@@ -185,6 +209,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image25->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/bano-1p-antes');
         $image25->setTitle('Baño antes de la reforma, desde pasillo 1');
         $image25->setAlt('Baño antes de la reforma, desde pasillo 1');
+        $image25->setDescription('Antes');
         $image25->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image25);
 
@@ -192,6 +217,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image26->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/bano-1p-despues');
         $image26->setTitle('Baño después de la reforma, desde pasillo 1');
         $image26->setAlt('Baño después de la reforma, desde pasillo 1');
+        $image26->setDescription('Después');
         $image26->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image26);
 
@@ -199,6 +225,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image27->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/bano-2i-antes');
         $image27->setTitle('Baño antes de la reforma, desde izquierda 2');
         $image27->setAlt('Baño antes de la reforma, desde izquierda 2');
+        $image27->setDescription('Antes');
         $image27->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image27);
 
@@ -206,6 +233,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image28->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/bano-2i-despues');
         $image28->setTitle('Baño después de la reforma, desde izquierda 2');
         $image28->setAlt('Baño después de la reforma, desde izquierda 2');
+        $image28->setDescription('Después');
         $image28->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image28);
 
@@ -213,6 +241,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image29->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/bano-2p-antes');
         $image29->setTitle('Baño antes de la reforma, desde pasillo 2');
         $image29->setAlt('Baño antes de la reforma, desde pasillo 2');
+        $image29->setDescription('Antes');
         $image29->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image29);
 
@@ -220,6 +249,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image30->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/bano-2p-despues');
         $image30->setTitle('Baño después de la reforma, desde pasillo 2');
         $image30->setAlt('Baño después de la reforma, desde pasillo 2');
+        $image30->setDescription('Después');
         $image30->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image30);
 
@@ -227,6 +257,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image31->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/bano-2d-despues');
         $image31->setTitle('Baño después de la reforma, desde derecha 2');
         $image31->setAlt('Baño después de la reforma, desde derecha 2');
+        $image31->setDescription('Después');
         $image31->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image31);
 
@@ -234,6 +265,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image32->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/cocina-4-despues');
         $image32->setTitle('Cocina después de la reforma 4');
         $image32->setAlt('Cocina después de la reforma 4');
+        $image32->setDescription('Después');
         $image32->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image32);
 
@@ -241,6 +273,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image33->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/cocina-5-despues');
         $image33->setTitle('Cocina después de la reforma 5');
         $image33->setAlt('Cocina después de la reforma 5');
+        $image33->setDescription('Después');
         $image33->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image33);
 
@@ -248,6 +281,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image34->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/cocina-6-despues');
         $image34->setTitle('Cocina después de la reforma 6');
         $image34->setAlt('Cocina después de la reforma 6');
+        $image34->setDescription('Después');
         $image34->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image34);
 
@@ -255,6 +289,7 @@ class OceanoAtlanticoFixtures extends AbstractFixture implements OrderedFixtureI
         $image35->setSrc('bundles/app/images/proyectos/reformas-de-pisos/reforma-integral-oceano-atlantico/cocina-7-despues');
         $image35->setTitle('Cocina después de la reforma 7');
         $image35->setAlt('Cocina después de la reforma 7');
+        $image35->setDescription('Después');
         $image35->setGallery($this->getReference('reforma-integral-oceano-atlantico'));
         $manager->persist($image35);
 

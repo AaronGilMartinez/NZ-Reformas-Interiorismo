@@ -13,8 +13,8 @@ use BlogBundle\Form\CommentType;
  */
 class CommentController extends Controller {
 
-    public function newAction($article_id) {
-        $article = $this->getArticle($article_id);
+    public function newAction($slug) {
+        $article = $this->getArticle($slug);
 
         $comment = new Comment();
         $comment->setArticle($article);
@@ -26,8 +26,8 @@ class CommentController extends Controller {
         ));
     }
 
-    public function createAction($article_id) {
-        $article = $this->getArticle($article_id);
+    public function createAction($slug) {
+        $article = $this->getArticle($slug);
 
         $comment = new Comment();
         $comment->setArticle($article);
@@ -41,9 +41,9 @@ class CommentController extends Controller {
             $em->persist($comment);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('BlogBundle_article_show', array(
+            return $this->redirect($this->generateUrl('blog_article_show', array(
                         'slug' => $comment->getArticle()->getSlug())) .
-                        '#comment-' . $comment->getId()
+                        '#' . $comment->getId()
         );
         }
 
@@ -53,16 +53,14 @@ class CommentController extends Controller {
         ));
     }
 
-    protected function getArticle($article_id) {
-        $em = $this->getDoctrine()
-                ->getManager();
-
-        $article = $em->getRepository('BlogBundle:Article')->find($article_id);
+    protected function getArticle($slug) {
+        
+       $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository('BlogBundle:Article')->findOneBy(array('slug' => $slug));
 
         if (!$article) {
-            throw $this->createNotFoundException('No se encuentra el post.');
+            throw $this->createNotFoundException('No se encuentra el artículo.');
         }
-
         return $article;
     }
 
