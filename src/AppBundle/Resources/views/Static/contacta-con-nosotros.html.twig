@@ -1,0 +1,160 @@
+{% extends 'AppBundle::main.html.twig' %}
+{% import "AppBundle:Static:share.html.twig" as share %}
+
+{% block title %}Contacto | NZ Reformas{% endblock %}
+{% block description %}Si quiere contactar con nosotros, no dude en llamarnos, enviar un email o visitar nuestra 
+    ubicación. Si lo prefiere puede contactar desde esta página.{% endblock %}
+
+    {% block content %}
+        <article>
+            <header>
+                <nav class="breadcrumbs">
+                    <a href="{{ path('app_homepage') }}">Inicio</a>
+                </nav>
+                <h1>Contacto</h1>
+            </header>
+            <section class="entrada" >
+                <div class="info" >
+                    <span class="title" >Tu casa <br>tal y como la imaginas</span><br>
+                    <span class="phone" >976 56 55 24</span><br>
+                    <span class="email" >info@nzreformas.es</span><br>
+                    <span class="subtitle" >¡Pide presupuesto sin compromiso!</span>
+                </div>
+                <div class="form" >
+                    {% for flashMessage in app.session.flashbag.get('msg') %}
+                        {{ flashMessage }}
+                    {% endfor %}
+                    <form action="{{ path('app_contact',{'page': 'contacta-con-nosotros' }) }}" method="post" >
+                        {{ form_errors(form) }}
+                        {{ form_row(form.name) }}
+                        {{ form_row(form.phone, {
+                        'attr': {'placeholder': 'Facilitar su teléfono podría agilizar el proceso. ¡Gracias!'} })}}
+                        {{ form_row(form.email) }}
+                        <div class="asunto">
+                            {{ form_row(form.subject, {
+                    'attr': { 
+                        'placeholder': 'Si ves este campo, dejálo en blanco',
+                    } })}}
+                        </div>
+                        {{ form_row(form.body) }}
+                        <div class="accept">
+                            {{ form_widget(form.compliance) }}
+                            <label for="enquiry_compliance" class="required">He leído y acepto el 
+                                <a href="{{ path('app_static',{'page': 'aviso-legal' }) }}" target="_blank" >Aviso Legal</a> y la 
+                                <a href="{{ path('app_static',{'page': 'politica-privacidad' }) }}" target="_blank" >Política de Protección de Datos</a>
+                            </label>
+                        </div>
+                        {{ form_rest(form) }}
+                        <input type="submit" value="Enviar" />
+                    </form>
+                </div>
+                <div class="compliance">
+                    <p>
+                        Le informamos que los datos que nos remita a través de este formulario electrónico
+                        quedarán incorporados en los sistemas de información de CONSTRUCCIONES NAVASCUES
+                        ZALAYA S.L. (NZ REFORMAS). Dicha comunicación se utilizará exclusivamente para 
+                        atender su petición. Mediante la indicación de sus datos, y de conformidad con 
+                        lo establecido en el artículo 6 de la L.O.P.D., Ud. otorga su consentimiento 
+                        inequívoco a CONSTRUCCIONES NAVASCUES ZALAYA S.L. (NZ REFORMAS), para que proceda,
+                        en cumplimiento de los fines mencionados en el apartado anterior, al tratamiento
+                        de los datos personales facilitados. No obstante, en cualquier momento usted 
+                        podrá ejercitar los derechos de acceso, rectificación, oposición y, en su caso,
+                        cancelación, en: CONSTRUCCIONES NAVASCUES ZALAYA S.L. POL. IND. EL PORTAZGO 
+                        NAVES 58-59 - 50011 - ZARAGOZA - ZARAGOZA o al email: ncgrupo@telefonica.net
+                    </p>
+                </div>
+            </section>
+        </article>
+    {% endblock %}
+
+    {% block footer %}
+        <footer class="footer">
+            <div class="footer-wrapper" >
+                <section>
+                    <div class="address" >
+                        <span>
+                            <a href="https://goo.gl/maps/9L8J356ybqR2" >
+                                Polígono el Portazgo<br>Naves 58-59, Zaragoza
+                            </a><br>
+                            De lunes a viernes<br>8:00-20:00<br>
+                            <a href="https://plus.google.com/b/110808223280994501725/110808223280994501725/about?gmbpt=true&hl=es" target="_blank" >
+                                <img src="{{ asset('bundles/app/images/icon/google-plus.png')}}" alt="Google +" title="Google +" />
+                            </a>
+                        </span>
+                    </div>
+                    <div class="GMap" >
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2980.182725580301!2d-0.9515176845653017!3d41.673396979238845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x176c9b4f4dfbc9ea!2sNZ+Reformas!5e0!3m2!1ses!2ses!4v1534841478614" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
+                </section>
+                <section>
+                    <div class="address" >
+                        <a href="https://goo.gl/maps/j5yDMNDtMWy" >
+                            Calle Duquesa Villahermosa<br>115 Local, Zaragoza
+                        </a><br>
+                        <a href="https://plus.google.com/+NZREFORMASZaragoza" target="_blank" >
+                            <img src="{{ asset('bundles/app/images/icon/google-plus.png')}}" alt="Google +" title="Google +" />
+                        </a>
+                        <a href="https://www.facebook.com/nzreformaszaragoza/?fref=ts" target="_blank" >
+                            <img src="{{ asset('bundles/app/images/icon/facebook.png')}}" alt="Facebook" title="Facebook" />
+                        </a>
+                        <a href="https://twitter.com/nz_reformas" target="_blank" >
+                            <img src="{{ asset('bundles/app/images/icon/twitter.png')}}" alt="Twitter" title="Twitter" />
+                        </a>
+                    </div>
+                    <div class="GMap" >
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2981.4514116140545!2d-0.9107889845661398!3d41.64598787924137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa3ed72d591f24ff5!2sNZ+Reformas+Integrales+Zaragoza!5e0!3m2!1ses!2ses!4v1534841513287" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
+                </section>
+                <section class="navigation">
+                    <nav>
+                        <ul>
+                            <li><a href="{{ path('app_homepage') }}">Inicio</a></li>
+                            <li><a href="{{ path ('app_static',{'page': 'servicios'}) }}" >Servicios</a></li>
+                            <li class="new" ><a href="{{ path ('app_static',{'page': 'proyectos'}) }}" >Proyectos</a></li>
+                            <li><a href="{{ path ('app_static',{'page': 'exposicion' }) }}">Exposición</a></li>
+                            <li><a href="{{ path ('app_static',{'page': 'empresa'}) }}">Empresa</a></li>
+                            <li><a href="{{ path('blog_homepage',{'page': '1' }) }}">Blog</a></li>
+                            <li><a href="{{ path ('app_static',{'page': 'contacta-con-nosotros'}) }}" >Contacto</a></li>
+                        </ul>
+                    </nav>
+                </section>
+                <ul>
+                    <li>
+                        <a href="{{ path ('app_static',{'page': 'aviso-legal'}) }}" target="_blank" >Aviso Legal</a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path ('app_static',{'page': 'politica-privacidad'}) }}" target="_blank" >Política de privacidad</a>
+                    </li>
+                    <li>
+                        <a href="{{ path ('app_static',{'page': 'politica-cookies'}) }}" target="_blank" >Política de cookies</a>
+                    </li>
+                    <li>
+                        <a href="{{ path ('app_sitemap') }}" target="_blank" >Sitemap</a>
+                    </li>
+                </ul>
+                <img src="{{ asset('bundles/app/images/icon/navascues-zalaya.png')}}" alt="Construcciones Navascués Zalaya S.L." title="Construcciones Navascués Zalaya S.L." />
+            </div>
+        </footer>
+    {% endblock %}
+
+    {% block extraJS %}
+        <!-- Google Code for Visita pagina contacto Conversion Page -->
+        <script type="text/javascript">
+            /* <![CDATA[ */
+            var google_conversion_id = 1001147318;
+            var google_conversion_language = "en";
+            var google_conversion_format = "3";
+            var google_conversion_color = "ffffff";
+            var google_conversion_label = "UD2tCP2LrG0Qtpex3QM";
+            var google_remarketing_only = false;
+            /* ]]> */
+        </script>
+        <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+        </script>
+        <noscript>
+        <div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/1001147318/?label=UD2tCP2LrG0Qtpex3QM&amp;guid=ON&amp;script=0"/>
+        </div>
+        </noscript>
+    {% endblock %}

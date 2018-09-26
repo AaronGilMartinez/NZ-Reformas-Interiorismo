@@ -1,0 +1,30 @@
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block extra %}<meta name="robots" content="noindex">{% endblock %}
+{% block title %}Etiqueta nueva | NZ Reformas{% endblock %}
+
+{% block content %}
+    <article>
+         <nav class="breadcrumbs">
+            <a href="{{ path('app_homepage') }}">Inicio</a>
+            <a href="{{ path('backend_homepage') }}" >Panel de control</a>
+            <a href="{{ path('backend_tags',{'page': 1}) }}" >Etiquetas</a>
+        </nav>
+        <h1>Etiqueta nueva</h1>
+        {{ form_start(formulario) }}
+        {% if form_errors(formulario) %}
+            <div class="alert alert-danger" role="alert" >{{ form_errors(formulario) }}</div>
+        {% endif %}
+        <ul>
+            <li>{{ form_row(formulario.name) }}</li>
+            <li>{{ form_row(formulario.slug) }}</li>
+            <li>{{ form_row(formulario.title) }}</li>
+            <li>{{ form_row(formulario.description) }}</li>
+            <li><button type="submit" >Guardar</button></li>
+        </ul>
+        {{ form_end(formulario) }}
+        <footer>
+            <a href="{{ path('app_back') }}" >Atrás</a>
+        </footer>
+    </article>
+{% endblock %}

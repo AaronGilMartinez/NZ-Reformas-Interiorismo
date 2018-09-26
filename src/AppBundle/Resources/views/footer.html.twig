@@ -1,92 +1,110 @@
 <footer class="footer">
     <div class="footer-wrapper" >
         <section>
-            <h2>
-                ¡Contacta con nosotros!
-            </h2>
-            <ul>
-                <li> 
-                    <a href="tel:976565524" >
-                        <span class="phone" >976 56 55 24</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="mailto:info@nzreformas.es">
-                        <span class="mail" >info@nzreformas.es</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.google.com/maps?cid=11812223659264856053&hl=es" >
-                        <span class="street1" >Calle Duquesa Villahermosa</span><br>
-                        <span class="street2" >115 Local, Zaragoza</span>
-                    </a>
-                </li>
-                <li>
-                    <span class="time1" >Horario</span><br>
-                    <span class="time1" >De lunes a viernes</span><br>
-                    <span class="time2" >8:00-13:00 16:00-20:00</span>
-                </li>
-                <li class="social">
-                    <a href="https://plus.google.com/+NZREFORMASZaragoza" target="_blank" >
-                        <img src="{{ asset('bundles/app/images/icon/google-plus.png')}}" alt="Google +" title="Google +" />
-                    </a>
-                    <a href="https://www.facebook.com/reformasintegraleszaragozanz/" target="_blank" >
-                        <img src="{{ asset('bundles/app/images/icon/facebook.png')}}" alt="Facebook" title="Facebook" />
-                    </a>
-                    <a href="https://twitter.com/nz_reformas" target="_blank" >
-                        <img src="{{ asset('bundles/app/images/icon/twitter.png')}}" alt="Twitter" title="Twitter" />
-                    </a>
-                </li>
-            </ul>
-        </section>
-        <section id="contact" >
-            <h2>
-                Presupuesto sin compromiso
-            </h2>
-            {% for flashMessage in app.session.flashbag.get('msg') %}
-                {{ flashMessage }}
-            {% endfor %}
-            <form action="{{ path('app_contact',{'page': 'contacto' }) }}" method="post" {{ form_enctype(form) }} class="Contact">
-                {{ form_errors(form) }}
+            <div class="info" >
+                <span class="title" >Tu casa <br>tal y como la imaginas</span><br>
+                <span class="phone" >976 56 55 24</span><br>
+                <span class="email" >info@nzreformas.es</span><br>
+                <span class="subtitle" >¡Pide presupuesto sin compromiso!</span>
+            </div>
+            <div class="form" >
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                    {{ flashMessage }}
+                {% endfor %}
+                <form action="{{ path ('app_contact',{'page': 'contacta-con-nosotros' }) }}" method="post" class="Contact">
+                    {{ form_errors(form) }}
 
-                {{ form_row(form.name, {'label': 'Nombre'}) }}
-                {{ form_row(form.phone, {'label': 'Teléfono / Móvil',
-                'attr': {'placeholder': 'Facilitar su teléfono podría agilizar el proceso. ¡Gracias!'} })}}
-                {{ form_row(form.email, {'label': 'E-mail'}) }}
-                {{ form_row(form.body, {'label': 'Mensaje'}) }}
-
-                {{ form_rest(form) }}
-
-                <input type="submit" value="Enviar" />
-            </form>
+                    {{ form_row(form.name) }}
+                    {{ form_row(form.phone, {
+                        'attr': {'placeholder': 'Facilitar su teléfono podría agilizar el proceso. ¡Gracias!'} })}}
+                    {{ form_row(form.email) }}
+                    <div class="asunto">
+                        {{ form_row(form.subject, {
+                    'attr': { 
+                        'placeholder': 'Si ves este campo, dejálo en blanco',
+                    } })}}
+                    </div>
+                    {{ form_row(form.body) }}
+                    <div>
+                        {{ form_widget(form.compliance) }}
+                        <label for="enquiry_compliance" class="required">He leído y acepto el 
+                            <a href="{{ path('app_static',{'page': 'aviso-legal' }) }}" target="_blank" >Aviso Legal</a> y la 
+                            <a href="{{ path('app_static',{'page': 'politica-privacidad' }) }}" target="_blank" >Política de Privacidad</a>
+                        </label>
+                    </div>
+                    {{ form_rest(form) }}
+                    <input type="submit" value="Enviar" />
+                </form>
+            </div>
         </section>
         <section>
+            <div class="address" >
+                <span>
+                    <a href="https://goo.gl/maps/9L8J356ybqR2" target="_blank" >
+                        Polígono el Portazgo<br>Naves 58-59, Zaragoza
+                    </a><br>
+                    De lunes a viernes<br>8:00-20:00<br>
+                    <a href="https://plus.google.com/b/110808223280994501725/110808223280994501725/about?gmbpt=true&hl=es" target="_blank" >
+                        <img src="{{ asset('bundles/app/images/icon/google-plus.png')}}" alt="Google +" title="Google +" />
+                    </a>
+                </span>
+            </div>
+            <div class="GMap" >
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2980.182725580301!2d-0.9515176845653017!3d41.673396979238845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x176c9b4f4dfbc9ea!2sNZ+Reformas!5e0!3m2!1ses!2ses!4v1534841478614" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </section>
+        <section>
+            <div class="address" >
+                <a href="https://goo.gl/maps/j5yDMNDtMWy" target="_blank">
+                    Calle Duquesa Villahermosa<br>115 Local, Zaragoza
+                </a><br>
+                <a href="https://plus.google.com/+NZREFORMASZaragoza" target="_blank" >
+                    <img src="{{ asset('bundles/app/images/icon/google-plus.png')}}" alt="Google +" title="Google +" />
+                </a>
+                <a href="https://www.facebook.com/nzreformaszaragoza/?fref=ts" target="_blank" >
+                    <img src="{{ asset('bundles/app/images/icon/facebook.png')}}" alt="Facebook" title="Facebook" />
+                </a>
+                <a href="https://twitter.com/nz_reformas" target="_blank" >
+                    <img src="{{ asset('bundles/app/images/icon/twitter.png')}}" alt="Twitter" title="Twitter" />
+                </a>
+            </div>
+            <div class="GMap" >
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2981.4514116140545!2d-0.9107889845661398!3d41.64598787924137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa3ed72d591f24ff5!2sNZ+Reformas+Integrales+Zaragoza!5e0!3m2!1ses!2ses!4v1534841513287" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </section>
+        <section class="navigation">
             <nav>
-                <img class="NZ" src="{{ asset('bundles/app/images/icon/nz.png')}}" alt="NZ Reformas" title="NZ Reformas" />
                 <ul>
                     <li><a href="{{ path('app_homepage') }}">Inicio</a></li>
                     <li><a href="{{ path ('app_static',{'page': 'servicios'}) }}" >Servicios</a></li>
-                    <li><a href="{{ path ('app_static',{'page': 'proyectos'}) }}" >Proyectos</a></li>
+                    <li class="new" ><a href="{{ path ('app_static',{'page': 'proyectos'}) }}" >Proyectos</a></li>
+                    <li><a href="{{ path ('app_static',{'page': 'exposicion' }) }}">Exposición</a></li>
                     <li><a href="{{ path ('app_static',{'page': 'empresa'}) }}">Empresa</a></li>
                     <li><a href="{{ path('blog_homepage',{'page': '1' }) }}">Blog</a></li>
-                    <li><a href="{{ path ('app_contact') }}" >Contacto</a></li>
+                    <li><a href="{{ path ('app_static',{'page': 'contacta-con-nosotros' }) }}" >Contacto</a></li>
                 </ul>
             </nav>
         </section>
+        <ul>
+            <li>
+                <a href="{{ path ('app_static',{'page': 'aviso-legal'}) }}" target="_blank" >Aviso Legal</a>
+            </li>
+
+            <li>
+                <a href="{{ path ('app_static',{'page': 'politica-privacidad'}) }}" target="_blank" >Política de privacidad</a>
+            </li>
+            <li>
+                <a href="{{ path ('app_static',{'page': 'politica-cookies'}) }}" target="_blank" >Política de cookies</a>
+            </li>
+            <li>
+                <a href="{{ path ('app_sitemap') }}" target="_blank" >Sitemap</a>
+            </li>
+            <li>
+                <img src="{{ asset('bundles/app/images/icon/navascues-zalaya.png')}}" alt="Construcciones Navascués Zalaya S.L." title="Construcciones Navascués Zalaya S.L." />
+            </li>
+            <li>
+                {% include 'BackendBundle:User:login.html.twig' %}
+            </li>
+        </ul>
     </div>
-    <div class="GMap" >
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2981.451360712007!2d-0.9107506845661626!3d41.64598897924126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa3ed72d591f24ff5!2sNZ+Reformas+e+Interiorismo!5e0!3m2!1ses!2sus!4v1451376612956" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <img src="{{ asset('bundles/app/images/icon/navascues-zalaya.png')}}" alt="Construcciones Navascués Zalaya S.L." title="Construcciones Navascués Zalaya S.L." />
-    <ul>
-        <li>
-            <a href="{{ path ('app_static',{'page': 'aviso-legal'}) }}">Aviso Legal</a>
-        </li>
-        <li>
-            <a href="{{ path ('app_static',{'page': 'politica-cookies'}) }}">Política de cookies</a>
-        </li>
-        <li>
-            <a href="{{ path ('app_sitemap') }}" target="_blank" >Sitemap</a>
-        </li>
-    </ul>
 </footer>

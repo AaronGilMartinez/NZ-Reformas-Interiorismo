@@ -1,0 +1,116 @@
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block title %}Panel de control | NZ Reformas{% endblock %}
+{% block extra %}<meta name="robots" content="noindex">{% endblock %}
+
+{% block content %}
+    <article class="center" >
+         <nav class="breadcrumbs">
+            <a href="{{ path('app_homepage') }}">Inicio</a>
+        </nav>
+        <header>
+            <h1>Panel de control</h1>
+        </header>
+        <div class="flex-boxes">
+            <div class="flex-box flex-box-medium">
+                <h1 class="flex-title"><a href="{{ path('backend_projects',{'page': 1}) }}" >Proyectos</a></h1>
+                <ul>
+                    {% for project in projects %}
+                        <li>
+                            <a href="{{ path('backend_project_show', { 'id': project.id }) }}" >{{ project.name }}</a>
+                        </li>            
+                    {% else %}
+                        <li>    
+                            No se han encontrado proyectos
+                        </li>
+                    {% endfor %}
+                    <li>
+                        <b><a href="{{ path('backend_project_new') }}" >Añadir proyecto</a></b>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex-box flex-box-big">
+                <h1 class="flex-title"><a href="{{ path('backend_galleries',{'page': 1}) }}" >Galerías</a></h1>
+                <ul>
+                    {% for gallery in galleries %}
+                        <li>
+                            <a href="{{ path('backend_gallery_show', { 'id': gallery.id }) }}" >{{ gallery.name }}</a>
+                        </li>            
+                    {% else %}
+                        <li>    
+                            No se han encontrado galerías
+                        </li>
+                    {% endfor %}
+                    <li>
+                        <b><a href="{{ path('backend_gallery_new') }}" >Añadir galería</a></b>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex-box">
+                <h1 class="flex-title"><a href="{{ path('backend_categories',{'page': 1}) }}" >Categorías</a></h1>
+                <ul>
+                    {% for category in categories %}
+                        <li>
+                            <a href="{{ path('backend_category_show', { 'id': category.id }) }}" >{{ category.name }}</a>
+                        </li>            
+                    {% else %}
+                        <li>    
+                            No se han encontrado categorías
+                        </li>
+                    {% endfor %}
+                    <li>
+                        <b><a href="{{ path('backend_category_new') }}" >Añadir categoría</a></b>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex-box">
+                <h1 class="flex-title"><a href="{{ path('backend_tags',{'page': 1}) }}" >Etiquetas</a></h1>
+                <ul>
+                    <li>
+                        <b><a href="{{ path('backend_tag_new') }}" >Añadir etiqueta</a></b>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex-box flex-box-big">
+                <h1 class="flex-title"><a href="{{ path('backend_articles',{'page': 1}) }}" >Artículos</a></h1>
+                <ul>
+                    {% for article in articles %}
+                        <li>
+                            <a href="{{ path('backend_article_show', { 'id': article.id }) }}" >{{ article.name }}</a>
+                        </li>            
+                    {% else %}
+                        <li>    
+                            No se han encontrado artículos
+                        </li>
+                    {% endfor %}
+                    <li>
+                        <b><a href="{{ path('backend_article_new') }}" >Añadir artículo</a></b>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex-box flex-box-total">
+                <h1 class="flex-title"><a href="{{ path('backend_comments',{'page': 1}) }}" >Comentarios</a></h1>
+            </div>
+            <div class="flex-box flex-box-total">
+                <h1 class="flex-title"><a href="{{ path('backend_enquiries',{'page': 1}) }}" >Consultas</a></h1>
+                <ul>
+                    {% for enquiry in enquiries %}
+                        <li>
+                            <a href="{{ path('backend_enquiry_show', { 'id': enquiry.id }) }}" >{{ enquiry.name }}</a>
+                        </li>            
+                    {% else %}
+                        <li>    
+                            No se han encontrado consultas
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% if is_granted('ROLE_ADMIN')%}
+                <div class="flex-box flex-box-total">
+                    <h1 class="flex-title"><a href="{{ path('backend_users') }}" >Usuarios</a></h1>
+                </div>
+            {% endif %}
+        </div>
+    </article>
+
+{% endblock %}

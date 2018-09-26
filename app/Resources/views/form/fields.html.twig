@@ -1,0 +1,15 @@
+{# src/Acme/DemoBundle/Resources/views/Form/fields.html.twig #}
+{% extends 'form_div_layout.html.twig' %}
+
+{% block file_widget %}
+    {% spaceless %}
+        {% if image_url is not null %}
+            {#<canvas height="0" width="0">
+            </canvas>#}
+            <img class="thumb" src="/{{ image_url }}" />
+        {% else %}
+            <img class="thumb" src="{{ asset('bundles/app/images/icon/picture.png')}}" alt="your image" />
+        {% endif %}
+        {{ block('form_widget') }}
+    {% endspaceless %}
+{% endblock %}

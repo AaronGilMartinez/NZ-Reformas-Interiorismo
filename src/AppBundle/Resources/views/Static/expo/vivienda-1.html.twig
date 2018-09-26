@@ -1,0 +1,111 @@
+{% extends 'AppBundle::main.html.twig' %}
+{% import "AppBundle:Static:share.html.twig" as share %}
+
+{% block title %}Vivienda 1 | NZ Reformas{% endblock %}
+{% block description %}{% endblock %}
+
+{% block content %}
+    <article>
+        <nav class="breadcrumbs">
+            <a href="{{ path('app_homepage') }}">Inicio</a>
+            <a href="{{ path ('app_static',{'page': 'exposicion-de-reformas' }) }}">Exposición</a>
+        </nav>
+        <section class="zona-expo" id="vivienda-1">
+            <header>
+                <h1>Vivienda 1</h1>
+            </header>
+            <p>
+                En esta vivienda se puede apreciar una combinación de estilo industrial y urbano. 
+                Quitando escasas muestras de colores vivos, predominan los tonos grises y marrones 
+                apagados, cuya presencia se refuerza mediante luz indirecta con apliques 
+                personalizados.
+            </p>
+            <p>
+                En la vivienda encontramos una cocina con una gama de colores grises, con isla y 
+                zona de lavandería. Separado de la cocina mediante un biombo de madera aparece el 
+                dormitorio. Este cuenta con un frente revestido totalmente mediante baldosa que 
+                imita el acabado del ladrillo, indispensable en este estilo. A su vez, en la 
+                estancia del armario-vestidor cobra protagonismo la imagen de una ciudad, conseguida
+                gracias al papel decorativo. Se puede aportar cualquier imagen, hecha a la medida 
+                deseada.
+            </p>
+            <p>
+                El baño es la zona más destacable de la casa, observándose varias características de 
+                gran interés: conforme entramos a este espacio nos llama la atención la pared de baldosa
+                hexagonal, la cual aporta color y originalidad. Otro detalle poco común es la grifería, 
+                empotrada en la pared y no en la poza. Estos elementos, junto con el inodoro suspendido 
+                con pulsador empotrado transmiten homogeneidad. Si nos fijamos en el suelo, este se ha 
+                realizado en microcemento, creando una superficie continua en todo el baño en el que se 
+                prescinde de plato de ducha gracias al acabado impermeable y sin juntas del material. 
+            </p>
+            {% include "AppBundle:Static/expo/galerias:vivienda-1.html.twig" %}
+            <nav>
+                <a class="left" href="{{ path ('app_static',{'page': 'exposicion-de-reformas' }) }}">
+                    <button type="button">Volver al mapa</button>
+                </a>
+                <a class="right" href="{{ path ('app_expo',{'page': 'vivienda-2' }) }}">
+                    <button type="button">Vivienda 2</button>
+                </a>
+            </nav>
+        </section>
+    </article>
+{% endblock %}
+
+{% block extraJS %}
+    <script type="text/javascript" >
+
+        function load(myimg) { // load larger img
+            var img = document.getElementById(myimg); // get img id
+            img.src = img.getAttribute("data-src"); // switch "data-src" to "src" on corresponding img
+            id = myimg.replace(/^\D+/g, ''); // get number id from img id ("#img-1") ready for arrow key nav
+            location.replace('#pic-' + id); // go to hashed url without affecting browser history
+            document.onkeydown = galleryNav; // start arrow key nav
+        }
+
+        var id = window.location.hash.substr(1).replace(/^\D+/g, ''); // get hash from url ("#pic-1") and get number id
+
+        if (id) {
+            load('img-' + id);
+        } // load larger img
+
+        function closeX() {
+            id = null;
+            location.replace('#close');
+        } // close larger img
+
+        function keyCheck(keyCodeNum) { /* #### - keyboard nav controls - #### */
+            var count = 0;
+            var num = document.getElementsByClassName('thumb');
+            for (var i = 0; i < num.length; i++) {
+                if (num[i].id.startsWith('img-')) {
+                    count++;
+                } // count big pics (".big-img") in #gallery
+            }
+            switch (keyCodeNum) { // setup key code actions
+                case 27: // esc key
+                    closeX();
+                    break;
+                case 37: // left key
+                    id--;
+                    id < 1 ? load('img-' + count) : load('img-' + id);
+                    break;
+                case 39: // right key
+                    id++;
+                    id > count ? load('img-1') : load('img-' + id);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        function galleryNav(event) { // tie keyboard nav controls to arrow key presses
+            var keyDown = event || window.event,
+                    key = (keyDown.which) ? keyDown.which : keyDown.keyCode;
+            if ((window.location.hash.substr(1)) !== 'close') {
+                keyCheck(key);
+            }
+            return false;
+        }
+
+    </script>
+{% endblock %}

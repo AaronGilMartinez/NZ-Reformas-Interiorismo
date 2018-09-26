@@ -14,47 +14,109 @@ class Image {
 
     /**
      * @ORM\Id
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $src;
+    protected $id;
 
     /**
      * @ORM\Column(type="string")
      */
-    protected $title;
+    protected $file;
 
     /**
      * @ORM\Column(type="string")
      */
-    protected $alt;
-
+    protected $path;
+    
     /**
-     * @ORM\ManyToOne(targetEntity="Gallery", inversedBy="images")
-     * @ORM\JoinColumn(name="gallery", referencedColumnName="name")
+     * @ORM\Column(type="integer", nullable=true)
      */
-    protected $gallery;
+    protected $format;
     
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    protected $description = null;
+    protected $title;
 
     /**
-     * Get src
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $alt;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $description;
+    
+    public function __toString(){
+        return $this->getSrc();
+    }
+    
+    public function getSrc(){
+        return $this->path . $this->file;
+    }
+    
+    public function getThumb(){
+        return $this->path . str_replace('.', '-thumb.', $this->file);
+    }
+    
+    public function getId() {
+        return $this->id;
+    }
+    
+    /**
+     * Get file
      *
      * @return string 
      */
-    public function getSrc() {
-        return $this->src;
+    public function getFile() {
+        return $this->file;
     }
 
     /**
-     * Set name
+     * Set file
      *
-     * @param string $src
+     * @param string $file
      */
-    public function setSrc($src) {
-        $this->src = $src;
+    public function setFile($file) {
+        $this->file = $file;
+    }
+    
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath() {
+        return $this->path;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     */
+    public function setPath($path) {
+        $this->path = $path;
+    }
+    
+    /**
+     * Get format
+     *
+     * @return integer 
+     */
+    public function getFormat() {
+        return $this->format;
+    }
+
+    /**
+     * Set format
+     *
+     * @param integer $format
+     */
+    public function setFormat($format) {
+        $this->format = $format;
     }
 
     /**
@@ -93,24 +155,6 @@ class Image {
         $this->alt = $alt;
     }
 
-    /**
-     * Get gallery
-     * 
-     * @return \AppBundle\Entity\Gallery 
-     */
-    public function getGallery() {
-        return $this->gallery;
-    }
-
-    /**
-     * Add gallery
-     * 
-     * @param \AppBundle\Entity\Gallery $gallery
-     */
-    public function setGallery(\AppBundle\Entity\Gallery $gallery) {
-        $this->gallery = $gallery;
-    }
-    
     /**
      * Get description
      *

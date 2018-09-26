@@ -1,0 +1,50 @@
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block extra %}<meta name="robots" content="noindex">{% endblock %}
+{% block title %}Usuarios | NZ Reformas{% endblock %}
+
+{% block content %}
+    <article>
+        <header>
+            <nav class="breadcrumbs">
+                <a href="{{ path('app_homepage') }}">Inicio</a>
+                <a href="{{ path('backend_homepage') }}" >Panel de control</a>
+            </nav>
+            <h1>Usuarios</h1>
+        </header>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Pivilegios</th>
+                    <th>E-Mail</th>
+                    <th>Última sesión</th>
+                    <th><a href="{{ path('backend_user_register') }}" >Añadir usuario</a></th>
+                </tr>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.roles | first }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.last | date ( "h:m:s - d/m/y" ) }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('backend_user_edit', { 'id': user.id }) }}" >Editar</a>
+                                </li>
+                                <li>
+                                    <a class="confirmation" href="{{ path('backend_user_remove', { 'id': user.id }) }}" >Eliminar</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5">No se han encontrado usuarios</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </article>
+{% endblock %}

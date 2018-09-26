@@ -1,0 +1,36 @@
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block title %}Obras realizadas | NZ Reformas{% endblock %}
+{% block description %}Realizamos todo tipo de obras de reformas e interiorismo: viviendas, locales comerciales, 
+    oficinas, comunidades de vecinos y grandes superficies.{% endblock %}
+
+    {% block content %}
+        <article>
+            <nav class="breadcrumbs">
+                <a href="{{ path('app_homepage') }}">Inicio</a>
+            </nav>
+            <h1>Obras realizadas</h1>
+            {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')%}
+                <a href="{{ path('backend_Work_new') }}" ><b>Añadir obra</b></a>
+            {% endif %}
+            <ul class="even-odd">
+                {% for Work in Works %}
+                    <li>
+                        <div class="img-wrapper" >
+                            <a href="{{ path ('app_Work',{'Work': Work.slug}) }}" >
+                                <img src="{{ asset( Work.image.src )}}" alt="{{ Work.name }}" title="{{ Work.name }}" />
+                            </a>
+                        </div>                       
+                        <div class="text-wrapper" >
+                            <div class="text" >
+                                <h3><a href="{{ path ('app_Work',{'Work': Work.slug}) }}" >
+                                        {{ Work.name }}
+                                    </a></h3>
+                                <p>{{ Work.introduction }}</p>
+                            </div>                       
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </article>
+    {% endblock %}

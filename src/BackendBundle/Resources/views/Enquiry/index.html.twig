@@ -1,0 +1,82 @@
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block extra %}<meta name="robots" content="noindex">{% endblock %}
+{% block title %}Consultas | NZ Reformas{% endblock %}
+
+
+{% block content %}
+    <article>
+         <nav class="breadcrumbs">
+                <a href="{{ path('app_homepage') }}">Inicio</a>
+                <a href="{{ path('backend_homepage') }}" >Panel de control</a>
+            </nav>
+        <header>
+            <h1>Consultas</h1>
+        </header>
+        <a href="{{ path('backend_enquiry_excel') }}" >Exportar Excel</a>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Fecha</th>
+                    <th>URL</th>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th>E-Mail</th>
+                    <th>Mensaje</th>
+                    <th>Acciones</th>
+                </tr>
+                {% for enquiry in enquiries %}
+                    <tr>
+                        <td>{{ enquiry.sent | date ( "d/m/y" ) }}</td>
+                        <td>{{ enquiry.name | capitalize }}</td>
+                        <td>{{ enquiry.phone | slice(0, 20) | capitalize }}</td>
+                        <td>{{ enquiry.email | slice(0, 20) | lower }}</td>
+                        <td>{{ enquiry.body | slice(0, 20) }} ...</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('backend_enquiry_show', { 'id': enquiry.id }) }}" >Ver</a>
+                                </li>
+                                <li>
+                                    {% if is_granted('ROLE_ADMIN')%}
+                                        <a class="confirmation" href="{{ path('backend_enquiry_remove', { 'id': enquiry.id }) }}" >Eliminar</a>
+                                    {% endif %}
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+
+                    {% else %}
+                    <tr>
+                        <td colspan="6">No se han encontrado consultas</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% if paginador.Total() > 1 %}
+            <div class="pagination">
+                <ul>
+                    {% if paginador.Start() != 1 %}
+                        <li class="page-prev"><a href="{{ path('backend_enquiries',{'page': 1}) }}">1</a></li>
+                        {% endif %}
+                        {% if paginador.Start() > 2 %}
+                        <li>...</li>
+                        {% endif %}
+
+                    {% for i in paginador.Start()..paginador.End() %}
+                        <li><a class="{% if i == paginador.Current() %}active{% endif %}" href="{{ path('backend_enquiries',{'page': i}) }}" >{{ i }}</a></li>
+                        {% endfor %}
+
+                    {% if paginador.End() < paginador.Total()-1 %}
+                        <li>...</li>
+                        {% endif %}
+                        {% if paginador.End() != paginador.Total() %}
+                        <li class="page-prev"><a href="{{ path('backend_enquiries',{'page': paginador.Total()}) }}">{{ paginador.Total() }}</a></li>
+                        {% endif %}
+                </ul>
+            </div>
+        {% endif %}
+    </article>
+{% endblock %}

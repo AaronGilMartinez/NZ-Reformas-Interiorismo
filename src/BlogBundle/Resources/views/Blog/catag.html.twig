@@ -1,19 +1,38 @@
 {% extends 'BlogBundle::blog.html.twig' %}
 
-{% block title %}{{ catag.name }} | NZ Reformas{% endblock %}
+{% block title %}{% if catag.title %}{{ catag.title }}{% endif %}{% endblock %}
+
+{% block description %}{% if catag.description %}{{ catag.description }}{% endif %}{% endblock %}
+
+{% if paginador.Total() > 1 %}
+    {% if paginador.Current() > 1 %}
+        {% block extra %}<meta name="robots" content="noindex">{% endblock %}
+    {% endif %}
+{% endif %}
 
 {% block content %}
     <article>
+        <nav class="breadcrumbs">
+            <a href="{{ path('app_homepage') }}">Inicio</a>
+            <a href="{{ path('blog_homepage',{'page': '1' }) }}">Blog</a>
+        </nav>
         <header>
             <h1>{{ catag.name }}</h1>
+            {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')%}
+                {% if queEs %}
+                    <a href="{{ path('backend_category_edit', { 'id' : catag.id }) }}" ><b>Editar categoría</b></a>
+                {% else %}
+                    <a href="{{ path('backend_tag_edit', { 'id' : catag.id }) }}" ><b>Editar etiqueta</b></a>
+                {% endif%}
+                <br>
+            {% endif %}
         </header>
         {% for article in articles %}
             <section>
                 <h3><a href="{{ path('blog_article_show', { 'slug': article.slug }) }}">{{ article.title }}</a></h3>
-                {{ [article.article(300)] | join | raw }}... <a href="{{ path('blog_article_show', { 'slug': article.slug }) }}" class="read-more" >Leer más</a>
+                {{  article.article | striptags | slice(0, 300) }} ... <a href="{{ path('blog_article_show', { 'slug': article.slug }) }}" class="read-more" >Leer más</a>
                 <hr>
             </section>
-
         {% else %}
             <p>NO hay entradas en NZ Blog relacionadas con <strong>{{ catag.name }}</strong></p>
         {% endfor %}

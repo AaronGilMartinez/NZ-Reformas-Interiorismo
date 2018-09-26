@@ -1,0 +1,22 @@
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block extra %}<meta name="robots" content="noindex">{% endblock %}
+{% block title %}Editar proyecto | NZ Reformas{% endblock %}
+
+{% block content %}
+    <article>
+        <nav class="breadcrumbs">
+            <a href="{{ path('app_homepage') }}">Inicio</a>
+            <a href="{{ path('backend_homepage') }}" >Panel de control</a>
+            <a href="{{ path('backend_projects',{'page': 1}) }}" >Proyectos</a>
+        </nav>
+        <h1>Editar proyecto</h1>
+        {% include "BackendBundle:Project:form.html.twig" %}
+        <footer>
+            <a href="{{ path('app_back') }}" >Atrás</a>
+            {% if is_granted('ROLE_ADMIN')%}
+                <a class="right confirmation" href="{{ path('backend_project_remove', { 'id': project.id }) }}" >Eliminar</a>
+            {% endif %}
+        </footer>
+    </article>
+{% endblock %}

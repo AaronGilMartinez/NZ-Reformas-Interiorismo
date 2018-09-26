@@ -1,0 +1,129 @@
+{% extends 'AppBundle::main.html.twig' %}
+{% import "AppBundle:Static:share.html.twig" as share %}
+
+{% block title %}Colección de baños | NZ Reformas{% endblock %}
+{% block description %}{% endblock %}
+
+{% block content %}
+    <article>
+        <section class="zona-expo" id="coleccion-baños">
+            <nav class="breadcrumbs">
+                <a href="{{ path('app_homepage') }}">Inicio</a>
+                <a href="{{ path ('app_static',{'page': 'exposicion-de-reformas' }) }}">Exposición</a>
+            </nav>
+            <header>
+                <h1>Colección de baños</h1>
+            </header>
+            <p>
+                Esta zona de la exposición está solamente dedicada a los baños, todos de diferentes 
+                estilos y acabados. En la mayoría de ellos nos encontraremos un lavabo, inodoro y ducha, 
+                algunos disponen de más elementos como bidé, cambian su ducha por una bañera, tienen 
+                un mueble auxiliar, o un revestimiento peculiar... Vamos a repasar los detalles más 
+                importantes de cada uno de los seis baños que componen el conjunto:
+            </p>
+            <p>
+                En el primer baño nos encontramos un lavabo sin mueble y un inodoro suspendido con 
+                pulsador en pared, ambos resaltan la baldosa de diferentes patrones multicolor. 
+                Además el frente de la ducha está revestido con una baldosa imitación ladrillo color
+                blanco brillo, con lo que hace destacar aún más la baldosa.
+            </p>
+            <p>
+                En el siguiente baño también tenemos inodoro y bidé suspendidos, ambos con un estilo
+                más clásico. Con un aspecto similar a los sanitarios nos encontramos un mueble para 
+                lavabo con poza sobre encimera, y un auxiliar, ambos lacados en blanco brillo.</p>
+            <p>
+                Para el tercer baño también tenemos un mueble con poza sobre encimera, así como grifería 
+                encastrada en la pared, cuando normalmente esta en el mueble. Un último aspecto que 
+                puede pasar desapercibido es la baldosa. La pared del mueble solo se ha revestido
+                hasta la altura del grifo, y aunque parezca la misma en todo el baño, se ha utilizado
+                un tono más oscuro en el frente de la bañera. Con este juego de baldosas se rompe la
+                monotonía.
+            </p>
+            <p>
+                En el "cuarto" cuarto de baño, tenemos una solución a baños con muy poco espacio
+                disponible. Solo está equipado con un mini-mueble de baño, ducha e inodoro. El inodoro
+                es un poco especial, el cual está "orientado" al lado contrario de la pared pues queda
+                muy pegada a esta.
+            </p>
+            <p>
+                En el próximo baño hay muchos detalles pero nos quedamos con el más llamativo: el espejo 
+                retro-iluminado. Además del mueble con relieve cabe destacar la cenefa decorativa,
+                así como el plato de ducha de gresite, debe de ser curioso lavarse sobre piedra lavada
+                de río.
+            </p>
+            <p>
+                Por último pero no por ello menos importante tenemos un baño con un frente de ducha 
+                de color blanco con relieve, que también encontramos en la pared opuesta a la ducha,
+                detrás del lavabo. En el suelo se ha colocado una baldosa imitación madera en varios
+                colores. Se ha instalado esta baldosa porque tiene una mayor resistencia al agua y 
+                tiene un aspecto muy vistoso. Un último detalle de este baño es que el lavabo dispone
+                de dos grifos.
+            </p>
+            {% include "AppBundle:Static/expo/galerias:coleccion-banos.html.twig" %}
+            <nav>
+                <a class="left" href="{{ path ('app_static',{'page': 'exposicion-de-reformas' }) }}">
+                    <button type="button">Volver al mapa</button>
+                </a>
+            </nav>
+        </section>
+    </article>
+{% endblock %}
+
+{% block extraJS %}
+    <script type="text/javascript" >
+
+        function load(myimg) { // load larger img
+            var img = document.getElementById(myimg); // get img id
+            img.src = img.getAttribute("data-src"); // switch "data-src" to "src" on corresponding img
+            id = myimg.replace(/^\D+/g, ''); // get number id from img id ("#img-1") ready for arrow key nav
+            location.replace('#pic-' + id); // go to hashed url without affecting browser history
+            document.onkeydown = galleryNav; // start arrow key nav
+        }
+
+        var id = window.location.hash.substr(1).replace(/^\D+/g, ''); // get hash from url ("#pic-1") and get number id
+
+        if (id) {
+            load('img-' + id);
+        } // load larger img
+
+        function closeX() {
+            id = null;
+            location.replace('#close');
+        } // close larger img
+
+        function keyCheck(keyCodeNum) { /* #### - keyboard nav controls - #### */
+            var count = 0;
+            var num = document.getElementsByClassName('thumb');
+            for (var i = 0; i < num.length; i++) {
+                if (num[i].id.startsWith('img-')) {
+                    count++;
+                } // count big pics (".big-img") in #gallery
+            }
+            switch (keyCodeNum) { // setup key code actions
+                case 27: // esc key
+                    closeX();
+                    break;
+                case 37: // left key
+                    id--;
+                    id < 1 ? load('img-' + count) : load('img-' + id);
+                    break;
+                case 39: // right key
+                    id++;
+                    id > count ? load('img-1') : load('img-' + id);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        function galleryNav(event) { // tie keyboard nav controls to arrow key presses
+            var keyDown = event || window.event,
+                    key = (keyDown.which) ? keyDown.which : keyDown.keyCode;
+            if ((window.location.hash.substr(1)) !== 'close') {
+                keyCheck(key);
+            }
+            return false;
+        }
+
+    </script>
+{% endblock %}

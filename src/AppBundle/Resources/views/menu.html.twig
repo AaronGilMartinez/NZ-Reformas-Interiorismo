@@ -1,8 +1,21 @@
 <header class="navigation">
-    <div class="info" >        
-        <section>E-mail: <a href="{{ path ('app_contact') }}" >info@nzreformas.es</a></section>
-        <section>Teléfono: <a href="{{ path ('app_contact') }}" >976 56 55 24</a></section>
+    <div>
+        <ol class="flash" >
+            {% for tipo, mensajes in app.session.flashbag.all() %}
+                {% for mensaje in mensajes %}
+                    <li class="{{ tipo }}" >{{ mensaje }} <span class="close" >&times;</span></li>
+                    {% endfor %}
+                {% endfor %}
+        </ol>
+    </div>
+    <div class="info" >
         <section>
+            <i>E-mail: </i><a href="{{ path ('app_static',{'page': 'contacta-con-nosotros' }) }}" >info@nzreformas.es</a>
+        </section>
+        <section>
+            <i>Teléfono: </i><a href="{{ path ('app_static',{'page': 'contacta-con-nosotros' }) }}" >976 56 55 24</a>
+        </section>
+        <section class="social" >
             <a href="https://www.facebook.com/reformasintegraleszaragozanz/" target="_blank" >
                 <img src="{{ asset('bundles/app/images/icon/facebook.png')}}" alt="Facebook" title="Facebook" />
             </a>
@@ -16,39 +29,54 @@
     </div>
     <nav>
         <div class="nz" >
-            <img class="NZ" src="{{ asset('bundles/app/images/icon/nz.png')}}" alt="NZ Reformas" title="NZ Reformas" />
-        </div>
-
-        <a class="menu-button" href="javascript:void(0)" >
-            <img src="{{ asset('bundles/app/images/icon/menu.png')}}" alt="Menú" title="Menú" />
-        </a>
-
-        <ul>
-            <li class="back-button" >
+            <a href="{{ path('app_homepage') }}">
                 <img class="NZ" src="{{ asset('bundles/app/images/icon/nz.png')}}" alt="NZ Reformas" title="NZ Reformas" />
-                <a href="javascript:void(0)" >
-                    <img src="{{ asset('bundles/app/images/icon/left.png')}}" alt="Atrás" title="Atrás" />
+            </a>
+        </div>
+        <div id="menu-button" >
+            <img src="{{ asset('bundles/app/images/icon/menu.png')}}" alt="Menú" title="Menú" onclick="toggleMenu()" />
+        </div>
+        <ul id="menu" >
+            <li class="header" >
+                <a href="{{ path('app_homepage') }}">
+                    <img class="NZ" src="{{ asset('bundles/app/images/icon/nz.png')}}" alt="NZ Reformas" title="NZ Reformas" />
                 </a>
+                <img id="back" src="{{ asset('bundles/app/images/icon/left.png')}}" alt="Atrás" title="Atrás" onclick="toggleMenu()" />
             </li>
-            <li><a href="{{ path('app_homepage') }}">Inicio</a></li>
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <li class="more" ><a href="{{ path('backend_homepage') }}" >Panel de control</a>
+                    <ul>
+                        <li><a href="{{ path('backend_projects',{'page': 1}) }}" >Proyectos</a></li>
+                        <li><a href="{{ path('backend_galleries',{'page': 1}) }}" >Galerías</a></li>
+                        <li><a href="{{ path('backend_categories',{'page': 1}) }}" >Categorías</a></li>
+                        <li><a href="{{ path('backend_tags',{'page': 1}) }}" >Etiquetas</a></li>
+                        <li><a href="{{ path('backend_articles',{'page': 1}) }}" >Artículos</a></li>
+                        <li><a href="{{ path('backend_comments',{'page': 1}) }}" >Comentarios</a></li>
+                        <li><a href="{{ path('backend_enquiries',{'page': 1}) }}" >Consultas</a></li>
+                            {% if is_granted('ROLE_ADMIN')%}
+                            <li><a href="{{ path('backend_users') }}" >Usuarios</a></li>
+                            {% endif %}
+                    </ul>
+                </li>
+            {% endif %}
+            <li><a href="{{ path ('app_homepage') }}">Inicio</a></li>
             <li ><a href="{{ path ('app_static',{'page': 'servicios'}) }}" >Servicios</a></li>
+            <li class="new" ><a href="{{ path ('app_static',{'page': 'exposicion-de-reformas' }) }}">Exposición</a></li>
             <li class="more" ><a href="{{ path ('app_static',{'page': 'proyectos'}) }}" >Proyectos</a>
-                <ul >
+                <ul>
                     {% for project in projects %}
                         <li><a href="{{ path ('app_project',{'project': project.slug }) }}" >{{ project.name }}</a></li>
                         {% endfor %}
                 </ul>
             </li>
             <li><a href="{{ path ('app_static',{'page': 'empresa' }) }}">Empresa</a></li>
-            <li><a href="{{ path('blog_homepage',{'page': '1' }) }}">Blog</a></li>
-            <li ><a href="{{ path ('app_contact') }}" >Contacto</a></li>
-            <li class="button" ><a href="{{  path ('app_contact') }}" >Pedir presupuesto</a></li>
+            <li><a href="{{ path ('blog_homepage',{'page': '1' }) }}">Blog</a></li>
+            <li ><a href="{{ path ('app_static',{'page': 'contacta-con-nosotros' }) }}" >Contacto</a></li>
+            <li class="button" ><a href="{{ path ('app_static',{'page': 'pedir-presupuesto' }) }}" >Pedir presupuesto</a></li>
         </ul>
     </nav>
 </header>
 
-<div class="up">
-    <a href="javascript:void(0)" >
-        <img src="{{ asset('bundles/app/images/icon/up.png')}}" alt="Ir arriba" title="Ir arriba" />
-    </a>
+<div id="up">
+    <img src="{{ asset('bundles/app/images/icon/up.png')}}" alt="Ir arriba" title="Ir arriba" onclick="scrollUp()"/>
 </div>

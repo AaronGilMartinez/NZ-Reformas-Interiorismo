@@ -4,28 +4,33 @@
 {% block description %}Realizamos todo tipo de proyectos de reformas e interiorismo: viviendas, locales comerciales, 
     oficinas, comunidades de vecinos y grandes superficies.{% endblock %}
 
-{% block content %}
-    <article>
-        <h1>Proyectos</h1>
-        <ul class="even-odd">
-            {% for project in projects %}
-
-                <li>
-                    <div class="img-wrapper" >
-                        <a href="{{ path ('app_project',{'project': project.slug}) }}" >
-                            <img src="{{ asset( project.image ~ '.jpg')}}" alt="{{ project.name }}" title="{{ project.name }}" />
-                        </a>
-                    </div>                       
-                    <div class="text-wrapper" >
-                        <div class="text" >
-                            <h3><a href="{{ path ('app_project',{'project': project.slug}) }}" >
-                                    {{ project.name }}
-                                </a></h3>
-                            <p>{{ project.introduction }}</p>
+    {% block content %}
+        <article>
+            <nav class="breadcrumbs">
+                <a href="{{ path('app_homepage') }}">Inicio</a>
+            </nav>
+            <h1>Proyectos</h1>
+            {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')%}
+                <a href="{{ path('backend_project_new') }}" ><b>Añadir proyecto</b></a>
+            {% endif %}
+            <ul class="even-odd">
+                {% for project in projects %}
+                    <li>
+                        <div class="img-wrapper" >
+                            <a href="{{ path ('app_project',{'project': project.slug}) }}" >
+                                <img src="{{ asset( project.image.src )}}" alt="{{ project.name }}" title="{{ project.name }}" />
+                            </a>
                         </div>                       
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
-    </article>
-{% endblock %}
+                        <div class="text-wrapper" >
+                            <div class="text" >
+                                <h3><a href="{{ path ('app_project',{'project': project.slug}) }}" >
+                                        {{ project.name }}
+                                    </a></h3>
+                                <p>{{ project.introduction }}</p>
+                            </div>                       
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </article>
+    {% endblock %}

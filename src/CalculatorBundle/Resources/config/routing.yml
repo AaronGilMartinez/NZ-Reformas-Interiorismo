@@ -1,3 +1,0 @@
-budget_calculator_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: BudgetCalculatorBundle:Default:index }

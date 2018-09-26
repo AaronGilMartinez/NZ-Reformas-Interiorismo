@@ -1,0 +1,263 @@
+/* FOOTER */
+.footer {
+    border-top: 1px solid $medium-gray;
+    background: $dark-gray;
+    width: 100%;
+    text-align: center;
+
+    padding: 2em 4em 1em 4em;
+
+    @include media(max-width $tablet-screen) {
+        padding: 1em 2em 1em 2em;;
+    }
+
+    @include media(max-width $phone-screen) {
+        padding: 1em;
+    }
+
+    span#myBtn {
+        color: $medium-gray;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    img {
+        padding: 0.5em;
+    }
+
+    a {
+        color: $light-gray;
+    }
+
+    h2, h3 {
+        color: $action-color;
+    }
+
+    p {
+        margin: 0;
+        color: $light-gray;
+        padding: 1em;
+    }
+
+    label {
+        color: $light-gray;
+    }
+
+    input[type="text"],input[type="email"], textarea {
+        background-color: lighten($dark-gray,15%);
+        color: $light-gray;
+    }
+
+    .footer-wrapper {
+        @include clearfix;
+
+        section {
+            padding-bottom: 1em;
+            @include clearfix;
+
+            .address { 
+                @include span-columns(3);
+                @include omega();
+                position: relative;
+                overflow: hidden;
+                background: black;
+                height: 200px;
+                padding: 1em;
+
+                color: $medium-gray;
+
+                @include media(max-width $normal-screen) {
+                    @include span-columns(12);
+                    height: auto;
+                }
+            }
+
+            a{
+                img{
+                    width: 50px;
+                    height: 50px;
+                }
+
+            }
+
+            .GMap {
+                @include span-columns(9);
+                @include omega();
+                position: relative;
+                overflow: hidden;
+                border: 1px solid black;
+                height: 200px;      
+
+
+                @include media(max-width $normal-screen) {
+                    @include span-columns(12);
+                }
+
+                iframe {
+                    position: absolute;
+                    top:0;
+                    right: 0;
+                    width: 100%;
+                    height: 100%;
+                    border: 0;
+                }                
+            }
+
+            .info {
+                @include span-columns(8);
+                position: relative;
+                overflow: hidden;
+                padding: 1em;
+                border-radius: 10px;
+                border: 1px solid #bbb;
+
+                @include media(max-width $normal-screen) {
+                    @include span-columns(12);
+                    margin-bottom: 2em;
+                }
+
+                .title {
+                    font-size: 3em;
+
+                    @include media(max-width $tablet-screen) {
+                        font-size: 2em;
+                    }
+                }
+
+                .subtitle, .phone, .email {
+                    font-size: 2em;
+
+                    @include media(max-width $tablet-screen) {
+                        font-size: 1.2em;
+                    }
+                }
+
+                .title, .subtitle {
+                    color: $light-gray;
+                }
+
+                .phone, .email {
+                    color: $action-color;
+                }
+
+                &::after {
+                    content: "";
+                    background: (url('/bundles/app/images/servicios/dibujando.jpg'));
+                    display: block;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 1;
+                    opacity: 0.2;
+                    background-repeat: no-repeat;
+                    background-position: 50% 0;
+                    -ms-background-size: cover;
+                    -o-background-size: cover;
+                    -moz-background-size: cover;
+                    -webkit-background-size: cover;
+                    background-size: cover; 
+                }
+            }
+
+            .form {
+
+                @include span-columns(4);
+
+                @include media(max-width $normal-screen) {
+                    @include span-columns(12);
+                }
+
+                form {
+                    padding: 0 1em 3em 1em;
+
+                    input {
+                        text-align: center;
+                    }
+                }
+            }
+
+            &.navigation {
+                @include span-columns(12);
+
+                nav {
+
+                    ul {
+                        padding: 2em;
+
+                        @include media(max-width $tablet-screen) {
+                            padding: 1em;
+                        }
+
+                        li {
+                            display: inline;
+                            padding: 1em;
+
+                            @include media(max-width $tablet-screen) {
+                                display: block;
+                            }
+
+                            a {
+                                font-size: 1.5em;
+                                line-height: 1em;
+                                color: $light-gray;
+                                text-transform: uppercase;
+
+                                @include media(max-width $normal-screen) {
+                                    font-size: 1.2em;                    
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#cookies {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 0.5em 2em;
+    background: rgba(0,0,0,0.85);
+    color: $light-gray;
+    font-size: 0.9em;
+    border-top-right-radius: 5px;
+
+    span {
+        @include appearance(none);
+        -webkit-font-smoothing: antialiased;
+        background-color: $action-color;
+        border-radius: $base-border-radius;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        display: inline-block;
+        line-height: 1;
+        padding: 0.2em .2em;
+        white-space: nowrap;
+        border: solid 1px $action-color; 
+
+        &:hover,
+            &:focus {
+            background-color: darken($action-color, 10%);
+            color: #fff;
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+    }
+
+    @include media(max-width $normal-screen) {
+        padding: 0.25em 1em;
+    }
+
+    @include media(max-width $tablet-screen) {
+        padding: 0.25em 0.5em;
+    }
+
+}

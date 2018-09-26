@@ -1,0 +1,22 @@
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block extra %}<meta name="robots" content="noindex">{% endblock %}
+{% block title %}Editar galería | NZ Reformas{% endblock %}
+
+{% block content %}
+    <article>
+        <nav class="breadcrumbs">
+            <a href="{{ path('app_homepage') }}">Inicio</a>
+            <a href="{{ path('backend_homepage') }}" >Panel de control</a>
+            <a href="{{ path('backend_galleries',{'page': 1}) }}" >Galerías</a>
+        </nav>
+        <h1>Editar galería</h1>
+        {% include "BackendBundle:Gallery:form.html.twig" %}
+        <footer>
+            <a href="{{ path('app_back') }}" >Atrás</a>
+            {% if is_granted('ROLE_ADMIN')%}
+                <a class="right confirmation" href="{{ path('backend_gallery_remove', { 'id': gallery.id }) }}" >Eliminar</a>
+            {% endif %}
+        </footer>
+    </article>
+{% endblock %}

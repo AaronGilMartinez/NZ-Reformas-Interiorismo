@@ -1,30 +1,47 @@
 app_homepage:
-    pattern: /
+    path: /
     defaults: { _controller: AppBundle:Page:inicio }
+
+app_back:
+    path: /back
+    defaults: { _controller: AppBundle:Page:back }
+    methods: [GET]    
     
 app_sitemap:
-    pattern: /sitemap.{_format}
+    path: /sitemap.{_format}
     defaults: { _controller: AppBundle:Sitemap:sitemap , _format: xml }
     requirements: 
         _format : xml
-        
+
+app_oferta:
+    path: /oferta
+    defaults: { _controller: AppBundle:Page:oferta }
+    requirements:
+    methods:  [POST]
+    
 app_contact:
-    pattern: /contacto
+    path: /{page}
     defaults: { _controller: AppBundle:Page:contact }
     requirements:
     methods:  [POST]
 
 app_static:
-    pattern: /{page}
+    path: /{page}
     defaults: { _controller: AppBundle:Page:static }
+    methods:  [GET]
+    
+app_expo:
+    path: /exposicion-de-reformas/{page}
+    defaults: { _controller: AppBundle:Page:expo }
     methods:  [GET]
 
 app_project:
-    pattern: /proyectos/{project}
+    path: /proyectos/{project}
     defaults: { _controller: AppBundle:Page:project }
     methods:  [GET]
 
 app_gallery:
-    pattern: /proyectos/{project}/{gallery}
+    path: /proyectos/{project}/{gallery}
     defaults: { _controller: AppBundle:Page:gallery }
     methods:  [GET]
+

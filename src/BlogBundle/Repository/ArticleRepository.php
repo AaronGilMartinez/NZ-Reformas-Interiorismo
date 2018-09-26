@@ -10,7 +10,7 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class ArticleRepository extends EntityRepository {
 
-    public function getLatestArticles($page, $limit = 10) {
+    public function getLatestArticles($page = 1, $limit = 10) {
         $qb = $this->createQueryBuilder('a')
                 ->select('a, c')
                 ->leftJoin('a.comments', 'c')
@@ -33,7 +33,7 @@ class ArticleRepository extends EntityRepository {
         );
     }
 
-    public function getArticlesForTag($tag, $page, $limit = 20) {
+    public function getArticlesForTag($tag, $page, $limit = 10) {
         $qb = $this->createQueryBuilder('a')
                 ->join('a.tags', 't', 'WITH', 't.id = :tag_id')
                 ->addOrderBy('a.created', 'DESC')
@@ -56,7 +56,7 @@ class ArticleRepository extends EntityRepository {
         );
     }
 
-    public function getArticlesForCategory($category, $page, $limit = 20) {
+    public function getArticlesForCategory($category, $page, $limit = 10) {
         $qb = $this->createQueryBuilder('a')
                 ->where('a.category = :category_id')
                 ->addOrderBy('a.created', 'DESC')
@@ -79,11 +79,14 @@ class ArticleRepository extends EntityRepository {
         );
     }
 
-    public function getArticlesOrderedByDate() {
-        $articles = $this->createQueryBuilder('a')
+    public function getArticlesOrderedByDate($limit = null) {
+        $qb = $this->createQueryBuilder('a')
                 ->OrderBy('a.created', 'DESC');
-        
-        return $articles->getQuery()->getResult();
-    }
 
+        if ($limit) {
+            $qb->setMaxResults($limit);
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }

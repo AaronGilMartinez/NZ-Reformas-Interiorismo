@@ -13,6 +13,9 @@
                 No hay categorías
             {% endfor %}
         </ul>
+        {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')%}
+            <a href="{{ path('backend_category_new') }}" ><b>Añadir categoría</b></a>
+        {% endif%}
     </section>
     <section>
         <h3>Nube de etiquetas</h3>
@@ -23,6 +26,11 @@
         {% else %}
             No hay etiquetas
         {% endfor %}
+        {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')%}
+            <code>
+                <a href="{{ path('backend_tag_new') }}" ><b>Añadir etiqueta</b></a>
+            </code>
+        {% endif%}
     </section>
 
     <section>

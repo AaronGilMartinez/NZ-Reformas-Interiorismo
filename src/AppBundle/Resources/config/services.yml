@@ -1,1 +1,11 @@
+# APP
 services:
+    
+    AppBundle\Service\Util:
+            
+    app.doctrine_slugify_listener:
+        class: AppBundle\Listener\SlugifyListener
+        arguments: [ '@AppBundle\Service\Util' ]
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }

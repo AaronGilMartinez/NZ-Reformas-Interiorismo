@@ -1,20 +1,27 @@
 <?php
 
-// src/AppBundle/Entity/Gallery.php
+// src/AppBundle/Entity/Project.php
 
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ProjectRepository")
  * @ORM\Table(name="project")
  */
 class Project {
 
     /**
      * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
      * @ORM\Column(type="string")
      */
     protected $name;
@@ -23,29 +30,49 @@ class Project {
      * @ORM\Column(type="string")
      */
     protected $slug;
-
+    
     /**
      * @ORM\Column(type="string")
      */
-    protected $image;
-    
+    protected $path;
+
     /**
-     * @ORM\Column(type="text")
+     * @ORM\OneToOne(targetEntity="Image", cascade={"all"})
+     * @Assert\Type(type="AppBundle\Entity\Image")
+     * @Assert\Valid()
+     */
+    protected $image;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $introduction;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="Gallery", mappedBy="project")
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $content;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Gallery", mappedBy="project", cascade={"all"})
      */
     protected $galleries;
 
     public function __construct() {
         $this->galleries = new ArrayCollection();
+    }
+
+    public function __toString() {
+        return $this->name;
+    }
+
+    public function getId() {
+        return $this->id;
     }
 
     /**
@@ -55,7 +82,7 @@ class Project {
      */
     public function setName($name) {
         $this->name = $name;
-        $this->setSlug($this->name);
+        $this->setSlug($name);
     }
 
     /**
@@ -74,7 +101,7 @@ class Project {
      * @param string $slug
      */
     public function setSlug($slug) {
-        $this->slug = $this->slugify($slug);
+        $this->slug = $slug;
     }
 
     /**
@@ -106,24 +133,20 @@ class Project {
         return $this->galleries;
     }
 
-    /**
-     * Set image
-     *
-     * @param string $image
-     */
-    public function setImage($image) {
+    public function setImage(\AppBundle\Entity\Image $image) {
         $this->image = $image;
     }
-
+    
     /**
-     * Get image
-     *
-     * @return string
+     * Get galleries
+     * 
+     * @return Image
+     * 
      */
     public function getImage() {
         return $this->image;
     }
-    
+
     /**
      * Get introduction
      *
@@ -160,30 +183,39 @@ class Project {
         $this->description = $description;
     }
 
-    public function slugify($text) {
-        // sustituye caracteres de espaciado o dígitos con un -
-        $text = preg_replace('#[^\\pL\d]+#u', '-', $text);
-
-        // recorta espacios en ambos extremos
-        $text = trim($text, '-');
-
-
-        // translitera
-        if (function_exists('iconv')) {
-            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
-        }
-
-        // cambia a minúsculas
-        $text = strtolower($text);
-
-        // elimina caracteres indeseables
-        $text = preg_replace('#[^-\w]+#', '', $text);
-
-        if (empty($text)) {
-            return 'n-a';
-        }
-
-        return $text;
+    /**
+     * Get content
+     *
+     * @return
+     */
+    public function getContent() {
+        return $this->content;
     }
 
+    /**
+     * Set content
+     *
+     * @param text $content
+     */
+    public function setContent($content) {
+        $this->content = $content;
+    }
+    
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath() {
+        return $this->path;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     */
+    public function setPath($path) {
+        $this->path = $path;
+    }
 }

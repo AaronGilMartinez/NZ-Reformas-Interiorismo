@@ -16,20 +16,23 @@ class CatagController extends Controller {
         $category = $em->getRepository('BlogBundle:Category')->findOneBySlug($slug);
 
         $tag = $em->getRepository('BlogBundle:Tag')->findOneBySlug($slug);
-
+        
         if (!$tag) {
             $catag = $category;
             $articles = $em->getRepository('BlogBundle:Article')->getArticlesForCategory($catag, $page);
+            $what = true;
         } else {
             $catag = $tag;
             $articles = $em->getRepository('BlogBundle:Article')->getArticlesForTag($catag, $page);
+            $what = false;
         }
         $paginador = new Paginador($articles['total_pages'], $articles['current_page']);
 
         return $this->render('BlogBundle:Blog:catag.html.twig', array(
                     'articles' => $articles['paginated'],
                     'catag' => $catag,
-                    'paginador' => $paginador));
+                    'paginador' => $paginador,
+                    'queEs' => $what));
     }
 
 }

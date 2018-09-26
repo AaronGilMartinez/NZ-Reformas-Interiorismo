@@ -4,7 +4,7 @@ namespace BlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class sidebarController extends Controller {
+class SidebarController extends Controller {
 
     public function showAction() {
         $em = $this->getDoctrine()->getManager();

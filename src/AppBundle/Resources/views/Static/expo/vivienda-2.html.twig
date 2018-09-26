@@ -1,0 +1,118 @@
+{% extends 'AppBundle::main.html.twig' %}
+{% import "AppBundle:Static:share.html.twig" as share %}
+
+{% block title %}Vivienda 2 | NZ Reformas{% endblock %}
+{% block description %}{% endblock %}
+
+{% block content %}
+    <article>
+        <section class="zona-expo" id="vivienda-2">
+            <nav class="breadcrumbs">
+                <a href="{{ path('app_homepage') }}">Inicio</a>
+                <a href="{{ path ('app_static',{'page': 'exposicion-de-reformas' }) }}">Exposición</a>
+            </nav>
+            <header>
+                <h1>Vivienda 2</h1>
+            </header>
+            <p>
+                Aquí tenemos un ejemplo claro de vivienda contemporánea: funcional, sencilla y amplia.
+            </p>
+            <p>
+                Comenzamos por el salón y la cocina, que se fusionan dando lugar a un espacio diáfano.
+                Los tonos claros de los muebles, paredes y suelo crean una sensación de amplitud y 
+                luminosidad. 
+            </p>
+            <p>
+                Si avanzamos nos encontramos con un cuarto de baño sencillo con un pequeño mueble de
+                lavabo, un inodoro a suelo con cisterna empotrada y una ducha con plato de resina y 
+                mampara de cristal. Este baño está enfocado a la mínima expresión, pues no todo el 
+                mundo dispone del mismo espacio. Por último, al avanzar por la vivienda accedemos a 
+                un dormitorio con papel decorativo en el frontal de la cama y mesillas de noche a 
+                ambos lados de esta. En frente se plantea un espacio práctico formado por una mesa 
+                de trabajo suspendida y un armario empotrado.
+            </p>
+            <p>
+                Aunque no lo parezca, el suelo de la casa es de baldosa con acabado imitación madera.
+                Cada baldosa simula una lama de madera de gran formato, obteniendo un efecto de 
+                elevado realismo. Gracias a este material conseguimos un ambiente cálido pero más 
+                resistente, lo que garantiza más tiempo de uso sin mantenimiento.
+            </p>
+            <p>
+                Lo más interesante de esta vivienda es que la totalidad de los muebles son de diseño
+                propio, planteándose formas sencillas con líneas rectas y unos colores con texturas 
+                acogedoras. Disponemos de especialistas que pueden realizar los muebles a la carta, 
+                contando con una libertad total de diseño, además de unas calidades y precios 
+                competitivos.
+            </p>
+            {% include "AppBundle:Static/expo/galerias:vivienda-2.html.twig" %}
+            <nav>
+                <a class="left" href="{{ path ('app_expo',{'page': 'vivienda-1' }) }}">
+                    <button type="button">Vivienda 1</button>
+                </a>
+                <a class="right" href="{{ path ('app_expo',{'page': 'vivienda-3' }) }}">
+                    <button type="button">Vivienda 3</button>
+                </a>
+            </nav>
+        </section>
+        {{ share.social( app.request.uri ) }}
+    </article>
+{% endblock %}
+
+{% block extraJS %}
+    <script type="text/javascript" >
+
+        function load(myimg) { // load larger img
+            var img = document.getElementById(myimg); // get img id
+            img.src = img.getAttribute("data-src"); // switch "data-src" to "src" on corresponding img
+            id = myimg.replace(/^\D+/g, ''); // get number id from img id ("#img-1") ready for arrow key nav
+            location.replace('#pic-' + id); // go to hashed url without affecting browser history
+            document.onkeydown = galleryNav; // start arrow key nav
+        }
+
+        var id = window.location.hash.substr(1).replace(/^\D+/g, ''); // get hash from url ("#pic-1") and get number id
+
+        if (id) {
+            load('img-' + id);
+        } // load larger img
+
+        function closeX() {
+            id = null;
+            location.replace('#close');
+        } // close larger img
+
+        function keyCheck(keyCodeNum) { /* #### - keyboard nav controls - #### */
+            var count = 0;
+            var num = document.getElementsByClassName('thumb');
+            for (var i = 0; i < num.length; i++) {
+                if (num[i].id.startsWith('img-')) {
+                    count++;
+                } // count big pics (".big-img") in #gallery
+            }
+            switch (keyCodeNum) { // setup key code actions
+                case 27: // esc key
+                    closeX();
+                    break;
+                case 37: // left key
+                    id--;
+                    id < 1 ? load('img-' + count) : load('img-' + id);
+                    break;
+                case 39: // right key
+                    id++;
+                    id > count ? load('img-1') : load('img-' + id);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        function galleryNav(event) { // tie keyboard nav controls to arrow key presses
+            var keyDown = event || window.event,
+                    key = (keyDown.which) ? keyDown.which : keyDown.keyCode;
+            if ((window.location.hash.substr(1)) !== 'close') {
+                keyCheck(key);
+            }
+            return false;
+        }
+
+    </script>
+{% endblock %}

@@ -1,0 +1,146 @@
+{% extends 'AppBundle::main.html.twig' %}
+{% import "AppBundle:Static:share.html.twig" as share %}
+
+{% block title %}Baño TOP | NZ Reformas{% endblock %}
+{% block description %}{% endblock %}
+
+{% block content %}
+    <article>
+        <nav class="breadcrumbs">
+            <a href="{{ path('app_homepage') }}">Inicio</a>
+            <a href="{{ path ('app_static',{'page': 'exposicion-de-reformas' }) }}">Exposición</a>
+        </nav>
+        <section class="zona-expo" id="baño-TOP" >
+            <header>
+                <h1>Baño TOP</h1>
+            </header>
+            <p>
+                En esta zona de la exposición se dedica al baño TOP, es una reforma de baño completa y 
+                nuestra opción más asequible sin dejar de lado la calidad. Este ejemplo de baño solo 
+                muestra el resultado final, y lo normal es cambiar la instalación de fontanería o 
+                electricidad. Disponemos de profesionales de todos los gremios así que podemos cubrir 
+                cualquier tipo de reforma.
+            </p>
+            <p>
+                La idea del baño es simple, se han elegido materiales sencillos y los elementos mínimos:
+                lavabo, inodoro y ducha. Lo primero por destacar es la baldosa, se ha colocado una baldosa
+                de color claro con formato apaisado en paredes, y un formato regular en el suelo con un 
+                tono más oscuro. Esta idea es muy común y en la mayoría de propuestas de baños y cocinas
+                se plantea juego de dos tonos de baldosa para dar contraste. Además se ha colocado en el
+                frente de ducha una baldosa con un patrón aportar variedad.
+            </p>
+            <p>
+                Para lavabo se han elegido un mueble con dos cajones, y un armario auxiliar, ambos 
+                acabados en madera. Se pueden combinar diferentes acabados, además de incluir la poza,
+                el espejo y el aplique de luz. 
+            </p>
+            <p>
+                En el inodoro encontramos la opción más modesta, inodoro a suelo con cisterna exterior. 
+                Disponemos de muchos estilos de inodoro, así como la opción de colocar el pulsador 
+                empotrado en la pared para ahorrar espacio, instalar un inodoro suspendido o inodoros 
+                para personas con movilidad reducida. 
+            </p>
+            <p>
+                Se ha escogido ducha con plato de resina y mampara de cristal corredera, ya que es 
+                una opción muy cómoda y eficiente. Una solución muy solicitada es el cambio de bañera
+                por plato de ducha por la accesibilidad que proporciona.
+            </p>
+            <p>
+                Cuando alguien se plantea reforma alguna parte de la casa lo primero que piensa es 
+                en renovar el baño. No solo es una obra con un plazo de ejecución bastante reducido,
+                sino que además es una de las partes más importantes de una vivienda y de las que más
+                uso recibe, de modo que una reforma de baño es siempre muy agradecida. 
+            </p>
+            <ul class="gallery" >
+                <li>
+                    <a onclick="load('img-1')" >
+                        <noscript><a href="{{ asset('/bundles/app/images/exposicion/baños/baño-top/baño-top.jpg')}}" target="_blank"></noscript>
+                            <img class="zoom" src="{{ asset('bundles/app/images/icon/zoom.png')}}" title="Ampliar" alt="Ampliar" >
+                            <img class="thumb" src="{{ asset('/bundles/app/images/exposicion/baños/baño-top/baño-top-thumb.jpg')}}" title="Imagen no disponible" alt="Imagen no disponible" />
+                        </a>
+                        <div id="pic-1" class="overlay" >
+                            <a onclick="location.replace('#close')" class="close" title="Close" ><img src="{{ asset('bundles/app/images/icon/close.png')}}" title="Cerrar" alt="Cerrar" ></a>
+                            <img id="img-1" data-src="{{ asset('/bundles/app/images/exposicion/baños/baño-top/baño-top.jpg')}}" title="Title" alt="Alt" />
+                        </div>
+                </li>
+                <li>
+                    <a onclick="load('img-1')" >
+                        <noscript><a href="{{ asset('/bundles/app/images/exposicion/baños/baño-top/baño-top.jpg')}}" target="_blank"></noscript>
+                            <img class="zoom" src="{{ asset('bundles/app/images/icon/zoom.png')}}" title="Ampliar" alt="Ampliar" >
+                            <img class="thumb" src="{{ asset('/bundles/app/images/exposicion/baños/baño-top/baño-top.jpg')}}" title="Imagen no disponible" alt="Imagen no disponible" />
+                        </a>
+                        <div id="pic-1" class="overlay" >
+                            <a href="#" onclick="location.replace('#close')" class="close" title="Close"><img src="{{ asset('bundles/app/images/icon/close.png')}}" title="Cerrar" alt="Cerrar" ></a>
+                            <img id="img-31" data-src="{{ asset('/bundles/app/images/exposicion/baños/baño-top/baño-top.jpg')}}" title="Title" alt="Alt" />
+                        </div>
+                </li>
+            </ul>
+            <nav>
+                <a class="left" href="{{ path ('app_static',{'page': 'exposicion-de-reformas' }) }}">
+                    <button type="button">Volver al mapa</button>
+                </a>
+            </nav>
+        </section>
+    </article>
+{% endblock %}
+
+{% block extraJS %}
+    <script type="text/javascript" >
+
+        function load(myimg) { // load larger img
+            var img = document.getElementById(myimg); // get img id
+            img.src = img.getAttribute("data-src"); // switch "data-src" to "src" on corresponding img
+            id = myimg.replace(/^\D+/g, ''); // get number id from img id ("#img-1") ready for arrow key nav
+            location.replace('#pic-' + id); // go to hashed url without affecting browser history
+            document.onkeydown = galleryNav; // start arrow key nav
+        }
+
+        var id = window.location.hash.substr(1).replace(/^\D+/g, ''); // get hash from url ("#pic-1") and get number id
+
+        if (id) {
+            load('img-' + id);
+        } // load larger img
+
+        function closeX() {
+            console.log("CloseX");
+            id = null;
+            location.replace('#close');
+        } // close larger img
+
+        function keyCheck(keyCodeNum) { /* #### - keyboard nav controls - #### */
+            var count = 0;
+            var num = document.getElementsByClassName('thumb');
+            for (var i = 0; i < num.length; i++) {
+                if (num[i].id.startsWith('img-')) {
+                    count++;
+                } // count big pics (".big-img") in #gallery
+            }
+            switch (keyCodeNum) { // setup key code actions
+                case 27: // esc key
+                    console.log("Escape");
+                    closeX();
+                    break;
+                case 37: // left key
+                    id--;
+                    id < 1 ? load('img-' + count) : load('img-' + id);
+                    break;
+                case 39: // right key
+                    id++;
+                    id > count ? load('img-1') : load('img-' + id);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        function galleryNav(event) { // tie keyboard nav controls to arrow key presses
+            var keyDown = event || window.event,
+                    key = (keyDown.which) ? keyDown.which : keyDown.keyCode;
+            if ((window.location.hash.substr(1)) !== 'close') {
+                keyCheck(key);
+            }
+            return false;
+        }
+
+    </script>
+{% endblock %}

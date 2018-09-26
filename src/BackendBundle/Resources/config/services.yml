@@ -1,0 +1,25 @@
+# BACKEND
+
+services:
+    login_listener:
+        class: BackendBundle\Listener\LoginListener
+        arguments: 
+            - "@doctrine.orm.entity_manager"
+        tags:
+            - { name: kernel.event_listener, event: security.interactive_login }
+        
+    image_type_extension:
+        class: BackendBundle\Form\Extension\ImageTypeExtension
+        tags:
+            - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FileType }
+    
+    backend.file_uploader:
+        class: BackendBundle\Service\FileUploader
+        arguments: ['%upload_directory%', '@AppBundle\Service\Util' ]
+    
+    backend.doctrine_image_listener:
+        class: BackendBundle\Listener\ImageUploadListener
+        arguments: ["@backend.file_uploader"]
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }

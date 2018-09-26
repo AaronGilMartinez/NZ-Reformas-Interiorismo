@@ -1,0 +1,11 @@
+{
+  "name": "nzreformas",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://AaronGilMartinez@github.com/AaronGilMartinez/NZ-Reformas-Interiorismo.git",
+  "author": "Aaron Gil Martinez <since1991a@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.20.1"
+  }
+}

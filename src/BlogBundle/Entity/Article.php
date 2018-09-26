@@ -6,6 +6,7 @@ namespace BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="BlogBundle\Repository\ArticleRepository")
@@ -22,9 +23,19 @@ class Article {
     protected $id;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",unique=true)
      */
-    protected $title;
+    protected $name;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $title = null;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $description = null;
 
     /**
      * @ORM\Column(type="string")
@@ -37,10 +48,12 @@ class Article {
     protected $article;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image", cascade={"all"})
+     * @Assert\Type(type="AppBundle\Entity\Image")
+     * @Assert\Valid()
      */
     protected $image;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="articles")
      * @ORM\JoinColumn(name="category", referencedColumnName="id")
@@ -48,15 +61,15 @@ class Article {
     protected $category;
 
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="article")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="article", cascade={"all"})
      */
     protected $comments;
 
     /**
      * @ORM\ManyToMany(targetEntity="Tag", inversedBy="articles")
      * @ORM\JoinTable(name="tags_articles")
-     **/
-    private $tags;
+     * */
+    private $tags = null;
 
     /**
      * @ORM\Column(type="datetime")
@@ -79,15 +92,30 @@ class Article {
     }
 
     /**
-     * Set title
+     * Set name
      *
-     * @param string $title
+     * @param string $name
      * 
      */
-    public function setTitle($title) {
-        $this->title = $title;
-        $this->setSlug($this->title);
+    public function setName($name) {
+        $this->name = $name;
+        $this->setSlug($name);
     }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     * 
+     */
+    public function getName() {
+        return $this->name;
+    }
+
+    public function __toString() {
+        return $this->getTitle();
+    }
+
     /**
      * Get title
      *
@@ -98,8 +126,32 @@ class Article {
         return $this->title;
     }
 
-    public function __toString() {
-        return $this->getTitle();
+    /**
+     * Set title
+     *
+     * @param string $title
+     */
+    public function setTitle($title) {
+        $this->title = $title;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     * 
+     */
+    public function getDescription() {
+        return $this->description;
+    }
+
+    /**
+     * Set article
+     *
+     * @param string $description
+     */
+    public function setDescription($description) {
+        $this->description = $description;
     }
 
     /**
@@ -117,18 +169,13 @@ class Article {
      * @return string 
      * 
      */
-    public function getArticle($length = null) {
-        if (false === is_null($length) && $length > 0)
-            return substr($this->article, 0, $length);
-        else
-            return $this->article;
+    public function getArticle() {
+        return $this->article;
     }
 
     /**
      * Set image
      *
-     * @param string $image
-     * 
      */
     public function setImage($image) {
         $this->image = $image;
@@ -137,8 +184,6 @@ class Article {
     /**
      * Get image
      *
-     * @return string 
-     * 
      */
     public function getImage() {
         return $this->image;
@@ -150,7 +195,7 @@ class Article {
      * @param \BlogBundle\Entity\Category $category
      * 
      */
-    public function setCategory(\BlogBundle\Entity\Category $category = null) {
+    public function setCategory(\BlogBundle\Entity\Category $category) {
         $this->category = $category;
     }
 
@@ -253,7 +298,7 @@ class Article {
      * @return Article
      */
     public function setSlug($slug) {
-        $this->slug = $this->slugify($slug);
+        $this->slug = $slug;
     }
 
     /**
@@ -263,32 +308,6 @@ class Article {
      */
     public function getSlug() {
         return $this->slug;
-    }
-
-    public function slugify($text) {
-        // sustituye caracteres de espaciado o dígitos con un -
-        $text = preg_replace('#[^\\pL\d]+#u', '-', $text);
-
-        // recorta espacios en ambos extremos
-        $text = trim($text, '-');
-
-
-        // translitera
-        if (function_exists('iconv')) {
-            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
-        }
-
-        // cambia a minúsculas
-        $text = strtolower($text);
-
-        // elimina caracteres indeseables
-        $text = preg_replace('#[^-\w]+#', '', $text);
-
-        if (empty($text)) {
-            return 'n-a';
-        }
-
-        return $text;
     }
 
     public function __construct() {

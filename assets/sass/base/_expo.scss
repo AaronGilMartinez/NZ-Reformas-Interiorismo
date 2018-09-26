@@ -1,0 +1,152 @@
+/* EXPO */
+.leyenda{
+    @include outer-container;
+    @include clearfix;
+
+    ul {
+        @include span-columns(2);
+
+        @include media(max-width $normal-screen) {
+            @include span-columns(6);
+            @include omega;
+            margin-bottom: 1em;
+        }
+
+        @include media(max-width $phone-screen) {
+            @include span-columns(12);
+            @include omega;
+        }
+
+        li {
+            color: $medium-gray;
+
+            a {
+                font-weight: bold;
+                font-size: 1.1em;
+            }
+        }
+
+        &.viviendas {
+            li {
+
+                a {
+                    color: Green;
+                }
+            }
+        }
+
+        &.cocinas {
+            li {
+                a {
+                    color: LightSkyBlue;
+                }
+            }
+        }
+
+        &.corners {
+            li {
+                a {
+                    color: DarkOrchid;
+                }
+            }
+        }
+
+        &.expositores {
+            li {
+                a {
+                    color: DarkOrange;
+                }
+            }
+        }
+
+        &.baños {
+            li {
+                a {
+                    color: Red;
+                }
+            }
+        }
+
+        &.oficinas {
+            li {
+                a {
+                    color: blue;
+                }
+            }
+        }
+    }
+}
+section#map {
+    text-align: center;
+
+    span.more {
+        margin: 0.5em;
+        font-size: 1.2em;
+        font-style: italic;
+        display: block;
+
+        @include media(max-width $tablet-screen) {
+            font-size: 1em;
+        }
+
+        @include media(max-width $phone-screen) {
+            font-size: 1em;
+        }
+    }
+}
+.zona-expo {
+
+    position: relative;
+    overflow: hidden;
+
+    p, h1, h2, h3, ul, nav{
+        padding: 1em 2em;
+        position: relative;
+        margin: 0;
+        background: rgba(255,255,255,0.6);
+    }
+}
+
+#vivienda-1 {
+    @include background(url("/bundles/app/images/exposicion/viviendas/vivienda-1/fondo.jpg"));
+}
+
+#vivienda-2 {
+    @include background(url("/bundles/app/images/exposicion/viviendas/vivienda-2/fondo.jpg"));
+}
+
+#vivienda-3 {
+    @include background(url("/bundles/app/images/exposicion/viviendas/vivienda-3/fondo.jpg"));
+}
+
+#vivienda-4 {
+    @include background(url("/bundles/app/images/exposicion/viviendas/vivienda-4/fondo.jpg"));
+}
+
+#vivienda-5 {
+    @include background(url("/bundles/app/images/exposicion/viviendas/vivienda-5/fondo.jpg"));
+}
+
+#cocina-escaparate {
+    @include background(url("/bundles/app/images/exposicion/cocinas/cocina-escaparate/fondo.jpg"));
+}
+
+#cocina-entrada {
+    @include background(url("/bundles/app/images/exposicion/cocinas/cocina-entrada/fondo.jpg"));
+}
+
+#cocina-TOP {
+    @include background(url("/bundles/app/images/exposicion/cocinas/cocina-TOP/fondo.jpg"));
+}  
+
+#coleccion-baños {
+    @include background(url("/bundles/app/images/exposicion/baños/coleccion-baños/fondo.jpg"));
+}
+
+#baño-TOP {
+    @include background(url("/bundles/app/images/exposicion/baños/baño-top/fondo.jpg"));
+}
+
+#expositor-baldosas {
+    @include background(url("/bundles/app/images/exposicion/expositores/baldosa/fondo.jpg"));
+}

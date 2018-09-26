@@ -1,4 +1,0 @@
-services:
-#    budget_calculator.example:
-#        class: Budget\CalculatorBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]

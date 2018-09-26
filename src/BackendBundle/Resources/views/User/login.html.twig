@@ -1,0 +1,22 @@
+{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+    {% set usuario = app.user %}
+    <a href="#">{{ app.user.Username }}</a><br>
+    <a href="{{ path('backend_user_logout') }}">Cerrar sesión</a>            
+{% else %}
+    <span id="myBtn" >Área privada</span>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Formulario de acceso</h2>
+            <form action="{{ path('backend_user_login_check') }}" method="post">
+                <label for="username">Usuario:</label>
+                <input type="text" id="username" name="_username" value="{{ last_username | default('') }}" />
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="_password" />
+                <input type="checkbox" id="no_cerrar" name="_remember_me" checked />
+                <label for="no_cerrar">No cerrar sesión</label>
+                <input type="submit" name="login" value="Acceder" />
+            </form>
+        </div>
+    </div>
+{% endif %}

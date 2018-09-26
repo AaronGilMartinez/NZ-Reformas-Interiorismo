@@ -1,0 +1,124 @@
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block title %}Oferta | NZ Reformas{% endblock %}
+{% block description %}La mega oferla{% endblock %}
+{% block extra %}<meta name="robots" content="noindex">{% endblock %}
+
+{% block content %}
+    <article class="landing">
+        <section class="info">
+            <h1>Ofertón</h1>
+            <h2>La mega oferta de NZ</h2>
+
+            <ul>
+                <li>
+                    <h3>La gran ventaja 1</h3>
+                </li>
+                <li>
+                    <h3>La gran ventaja 2</h3>
+                </li>
+                <li>
+                    <h3>La gran ventaja 3</h3>
+                </li>
+                <li>
+                    <h3>La gran ventaja 4</h3>
+                </li>
+            </ul>
+        </section>
+        <section class="form">
+            {% for flashMessage in app.session.flashbag.get('msg') %}
+                {{ flashMessage }}
+            {% endfor %}
+            <form action="{{ path('app_contact',{'page': 'contacto' })  }}" method="post" {{ form_start(form) }} >
+                {{ form_errors(form) }}
+
+                {{ form_row(form.name) }}
+                {{ form_row(form.phone, {
+                        'attr': {'placeholder': 'Facilitar su teléfono podría agilizar el proceso. ¡Gracias!'} })}}
+                {{ form_row(form.email) }}
+                <div class="asunto">
+                    {{ form_row(form.subject, {
+                    'attr': { 
+                        'placeholder': 'Si ves este campo, dejálo en blanco',
+                    } })}}
+                </div>
+                {{ form_row(form.body) }}
+
+                {{ form_rest(form) }}
+                <input type="submit" value="Enviar" />
+            </form>
+        </section>
+        <section class="legal">
+            <p>
+               Le informamos que los datos que nos remita a través de este formulario electrónico 
+               quedarán incorporados en los sistemas de información de CONSTRUCCIONES NAVASCUES 
+               ZALAYA S.L. (NZ REFORMAS). Dicha comunicación se utilizará exclusivamente para 
+               atender su petición. Mediante la indicación de sus datos, y de conformidad con lo 
+               establecido en el artículo 6 de la L.O.P.D., Ud. otorga su consentimiento inequívoco 
+               a CONSTRUCCIONES NAVASCUES ZALAYA S.L. (NZ REFORMAS), para que proceda, en cumplimiento
+               de los fines mencionados en el apartado anterior, al tratamiento de los datos 
+               personales facilitados. No obstante, en cualquier momento usted podrá ejercitar los 
+               derechos de acceso, rectificación, oposición y, en su caso, cancelación, en: 
+               CONSTRUCCIONES NAVASCUES ZALAYA S.L. POL. IND. EL PORTAZGO NAVES 58-59 - 50011 - 
+               ZARAGOZA - ZARAGOZA o al email: ncgrupo@telefonica.net
+            </p>
+        </section>
+    </article>
+{% endblock %}
+
+{% block footer %}
+        <footer class="footer">
+            <div class="footer-wrapper" >
+                <section class="navigation">
+                    <nav>
+                        <ul>
+                            <li><a href="{{ path('app_homepage') }}">Inicio</a></li>
+                            <li><a href="{{ path ('app_static',{'page': 'servicios'}) }}" >Servicios</a></li>
+                            <li class="new" ><a href="{{ path ('app_static',{'page': 'proyectos'}) }}" >Proyectos</a></li>
+                            <li><a href="{{ path ('app_static',{'page': 'exposicion' }) }}">Exposición</a></li>
+                            <li><a href="{{ path ('app_static',{'page': 'empresa'}) }}">Empresa</a></li>
+                            <li><a href="{{ path('blog_homepage',{'page': '1' }) }}">Blog</a></li>
+                            <li><a href="{{ path ('app_static',{'page': 'contacta-con-nosotros' }) }}" >Contacto</a></li>
+                        </ul>
+                    </nav>
+                </section>
+                <ul>
+                    <li>
+                        <a href="{{ path ('app_static',{'page': 'aviso-legal'}) }}" target="_blank" >Aviso Legal</a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path ('app_static',{'page': 'politica-privacidad'}) }}" target="_blank" >Política de privacidad</a>
+                    </li>
+                    <li>
+                        <a href="{{ path ('app_static',{'page': 'politica-cookies'}) }}" target="_blank" >Política de cookies</a>
+                    </li>
+                    <li>
+                        <a href="{{ path ('app_sitemap') }}" target="_blank" >Sitemap</a>
+                    </li>
+                </ul>
+                <img src="{{ asset('bundles/app/images/icon/navascues-zalaya.png')}}" alt="Construcciones Navascués Zalaya S.L." title="Construcciones Navascués Zalaya S.L." />
+            </div>
+        </footer>
+    {% endblock %}
+
+{% block extraJS %}
+    <!-- Google Code for Visita pagina contacto Conversion Page -->
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        var google_conversion_id = 1001147318;
+        var google_conversion_language = "en";
+        var google_conversion_format = "3";
+        var google_conversion_color = "ffffff";
+        var google_conversion_label = "UD2tCP2LrG0Qtpex3QM";
+        var google_remarketing_only = false;
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+    </script>
+    <noscript>
+    <div style="display:inline;">
+        <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/1001147318/?label=UD2tCP2LrG0Qtpex3QM&amp;guid=ON&amp;script=0"/>
+    </div>
+    </noscript>
+{% endblock %}

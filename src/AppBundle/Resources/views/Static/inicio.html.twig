@@ -1,137 +1,225 @@
 {% extends 'AppBundle::main.html.twig' %}
 
-{% block title %}NZ Reformas e Interiorismo{% endblock %}
-{% block description %}Realizamos Reformas en Zaragoza. Contamos con más de 20 años de experiencia, 
-    y financiación directa sin bancos. Solicita presupuesto sin compromiso.{% endblock %}
+{% block title %}Empresas de reformas en Zaragoza | NZ Reformas{% endblock %}
+{% block urlCanonical %}https://www.nzreformas.es{% endblock %}
+{% block keywords %}reformas comunidades, reformas pisos, empresas de reformas, reformas locales, reformas zaragoza, reformas cocinas, reformas baños{% endblock %}
+{% block description %}Empresa de reformas en Zaragoza. Ofrecemos financiación directa sin bancos con más de 20 años de experiencia. Solicita presupuesto sin compromiso.{% endblock %}
 
-    {% block extra %}
-        {% javascripts '@AppBundle/Resources/public/js/slider.js' %}
-        <script async src="{{ asset_url }}"></script>
-        {% endjavascripts %}
-    {% endblock %}
 
-    {% block content %}
+{% block content %}
 
-        <div class="container" >
-            <div class="slider" >
-                <ul>
-                    <li>
-                        <img class="resized" src="{{ asset('bundles/app/images/presentacion/reformas-de-pisos-high.jpg') }}" alt="Reformas de pisos" title="Reformas de pisos" />
-                        <div class="content"><a href="{{ path ('app_project',{'project': 'reformas-de-pisos' }) }}" >Reformas de pisos</a></div>
-                    </li>
-                    <li>
-                        <img class="resized" src="{{ asset('bundles/app/images/presentacion/reformas-de-banos-high.jpg') }}" alt="Reformas de baños" title="Reformas de baños" />
-                        <div class="content"><a href="{{ path ('app_project',{'project': 'reformas-de-banos' }) }}" >Reformas de baños</a></div>
-                    </li>
-                    <li>
-                        <img class="resized" src="{{ asset('bundles/app/images/presentacion/reformas-de-cocinas-high.jpg') }}" alt="Reformas de cocinas" title="Reformas de cocinas" />
-                        <div class="content"><a href="{{ path ('app_project',{'project': 'reformas-de-cocinas' }) }}" >Reformas de cocinas</a></div>
-                    </li>
-                    <li>
-                        <img class="resized" src="{{ asset('bundles/app/images/presentacion/rehabilitacion-de-edificios-high.jpg') }}" alt="Rehabilitación de edificios" title="Rehabilitación de edificios" />
-                        <div class="content"><a href="{{ path ('app_project',{'project': 'rehabilitacion-de-edificios' }) }}" >Rehabilitación de edificios</a></div>
-                    </li>
-                    <li>
-                        <img class="resized" src="{{ asset('bundles/app/images/presentacion/oficina-high.jpg') }}" alt="Oficina Construcciones Navascués Zalaya S.L." title="Oficina Construcciones Navascués Zalaya S.L." />
-                        <div class="content"><a href="{{ path ('app_static',{'page': 'empresa' }) }}" >Nuestra oficina, Construcciones Navascués Zalaya S.L.</a></div>
-                    </li>
-                </ul>
+    <div id="slider-outer">
+        <input type="radio" id="btn-goto-last" class="slide-check" name="slider">
+        <input type="radio" id="btn-1" class="slide-check" name="slider" checked="checked">
+        <input type="radio" id="btn-2" class="slide-check" name="slider">
+        <input type="radio" id="btn-3" class="slide-check" name="slider">
+        <input type="radio" id="btn-4" class="slide-check" name="slider">
+        <input type="radio" id="btn-5" class="slide-check" name="slider">
+        <input type="radio" id="btn-6" class="slide-check" name="slider">
+        <input type="radio" id="btn-goto-first" class="slide-check" name="slider">
+
+        <label for="btn-goto-last" id="arrow-goto-last" class="arrows" onclick="">
+            <img src="{{ asset('bundles/app/images/icon/left.png')}}" alt="Atrás" title="Atrás" />
+        </label>
+        <label for="btn-1" id="arrow-1" class="arrows" onclick="">
+            <img src="{{ asset('bundles/app/images/icon/left.png')}}" alt="Atrás" title="Atrás" />
+        </label>
+        <label for="btn-2" id="arrow-2" class="arrows" onclick="">
+            <img src="{{ asset('bundles/app/images/icon/left.png')}}" alt="Atrás" title="Atrás" />
+        </label>
+        <label for="btn-3" id="arrow-3" class="arrows" onclick="">
+            <img src="{{ asset('bundles/app/images/icon/left.png')}}" alt="Atrás" title="Atrás" />
+        </label>
+        <label for="btn-4" id="arrow-4" class="arrows" onclick="">
+            <img src="{{ asset('bundles/app/images/icon/left.png')}}" alt="Atrás" title="Atrás" />
+        </label>
+        <label for="btn-5" id="arrow-5" class="arrows" onclick="">
+            <img src="{{ asset('bundles/app/images/icon/left.png')}}" alt="Atrás" title="Atrás" />
+        </label>
+        <label for="btn-6" id="arrow-6" class="arrows" onclick="">
+            <img src="{{ asset('bundles/app/images/icon/left.png')}}" alt="Atrás" title="Atrás" />
+        </label>
+        <label for="btn-goto-first" id="arrow-goto-first" class="arrows" onclick=""><img src="{{ asset('bundles/app/images/icon/left.png')}}" alt="Atrás" title="Atrás" />
+        </label>
+        <div id="slider">
+            <div class="slides">
+                <div> 
+                    <div>
+                        <img class="resized" src="{{ asset('bundles/app/images/presentacion/reformas-integrales-pisos-zaragoza-high.jpg') }}" 
+                             alt="Reformas integrales de pisos" title="Reformas integrales de pisos" />
+                        <span class="title">
+                            <a href="{{ path ('app_project',{'project': 'reformas-de-pisos' }) }}" >Reformas de pisos</a>&nbsp;&nbsp;>&nbsp;
+                            <a href="{{ path ('app_gallery',{'project': 'reformas-de-pisos','gallery': 'reforma-integral-en-gomez-de-avellaneda' }) }}" >Gómez de Avellaneda</a>
+                        </span>
+                    </div>
+                </div>
+                <div> 
+                    <div>
+                        <img class="resized" src="{{ asset('bundles/app/images/presentacion/reformas-de-cocinas-zaragoza-high.jpg') }}" 
+                             alt="Reformas de cocinas" title="Reformas de cocinas" />
+                        <span class="title">
+                            <a href="{{ path ('app_project',{'project': 'reformas-de-cocinas' }) }}" >Reformas cocinas Zaragoza</a>&nbsp;&nbsp;>&nbsp;
+                            <a href="{{ path ('app_gallery',{'project': 'reformas-de-cocinas','gallery': 'reforma-de-cocina-condes-de-aragon' }) }}" >Condes de Aragón</a>
+                        </span>
+                    </div>
+                </div>
+                <div> 
+                    <div>
+                        <img class="resized" src="{{ asset('bundles/app/images/presentacion/reformas-de-banos-zaragoza-high.jpg') }}" 
+                             alt="Reformas de baños" title="Reformas de baños" />
+                        <span class="title">
+                            <a href="{{ path ('app_project',{'project': 'reformas-de-banos' }) }}" >Reformas de baños</a>&nbsp;&nbsp;>&nbsp;
+                            <a href="{{ path ('app_gallery',{'project': 'reformas-de-banos','gallery': 'reforma-de-bano-sainz-de-varanda' }) }}" >Sainz de Varanda</a>
+                        </span>
+                    </div>
+                </div>
+                <div> 
+                    <div>
+                        <img class="resized" src="{{ asset('bundles/app/images/presentacion/reformas-integrales-zaragoza-high.jpg') }}"
+                             alt="Reformas integrales" title="Reformas integrales" />
+                        <span class="title">
+                            <a href="{{ path ('app_project',{'project': 'reformas-de-pisos' }) }}" >Reformas de pisos</a>&nbsp;&nbsp;>&nbsp;
+                            <a href="{{ path ('app_gallery',{'project': 'reformas-de-pisos','gallery': 'reforma-integral-vinedo-viejo' }) }}" >Viñedo viejo</a>
+                        </span>
+                    </div>
+                </div>
+                <div> 
+                    <div>
+                        <img class="resized" src="{{ asset('bundles/app/images/presentacion/reformas-cocinas-zaragoza-high.jpg') }}" 
+                             alt="Reformas cocinas" title="Reformas cocinas" />
+                        <span class="title">
+                            <a href="{{ path ('app_project',{'project': 'reformas-de-cocinas' }) }}" >Reformas de cocinas</a>&nbsp;&nbsp;>&nbsp;
+                            <a href="{{ path ('app_gallery',{'project': 'reformas-de-cocinas','gallery': 'reforma-de-cocina-portugal' }) }}" >Portugal</a>
+                        </span>
+                    </div>
+                </div>
+                <div> 
+                    <div>
+                        <img class="resized" src="{{ asset('bundles/app/images/presentacion/reformas-de-pisos-zaragoza-high.jpg') }}"
+                             alt="Reformas de pisos" title="Reformas de pisos" />
+                        <span class="title">
+                            <a href="{{ path ('app_project',{'project': 'reformas-de-pisos' }) }}" >Reformas de pisos</a>&nbsp;&nbsp;>&nbsp;
+                            <a href="{{ path ('app_gallery',{'project': 'reformas-de-pisos','gallery': 'reforma-integral-en-paseo-ruisenores' }) }}" >Ruiseñores</a>
+                        </span>
+                    </div>
+                </div>
+            </div><!-- closing ".slides" -->
+        </div><!-- closing "#slider" -->
+        <div class="ctrl">
+            <div>
+                <span id="stop-slider" class="btn-slider stop" title="Pausa">
+                    <img src="{{ asset('bundles/app/images/icon/pause.png')}}" alt="Pausa" title="Pausa" />
+                </span>
+                <span id="start-slider" class="btn-slider" title="Reproducir">
+                    <img src="{{ asset('bundles/app/images/icon/play.png')}}" alt="Reproducir" title="Reproducir" />
+                </span>
             </div>
         </div>
+    </div>
 
-        <header class="logo">
-            <img src="{{ asset('bundles/app/images/icon/nz-reformas.png') }}" title="Reformas en Zaragoza" alt="Reformas en Zaragoza" />
-        </header>
-        <article class="center" >
-            <h1>Reformas e Interiorismo</h1>
-            <h3>
-                Bienvenido a NZ Reformas, somos una empresa de reformas en Zaragoza.
-            </h3>
-            <p>
-                Realizamos todo tipo de reformas, demás de las típicas reformas de pisos: baño, 
-                cocina, cambios de suelo, cambio de puertas, instalación, diseño de espacios, ... 
-            </p>
-            <p>
-                También nos dedicamos a la reforma de locales comerciales, reparación de edificios y
-                zonas comunes en comunidades de vecinos, incluso impermeabilización de grandes 
-                superficies.
-            </p>
-        </article>
+    <header id="logo">
+        <img src="{{ asset('bundles/app/images/icon/nz-reformas.png') }}" title="Reformas en Zaragoza" alt="Reformas en Zaragoza" />
+    </header>
+    <article class="center" >
+        <h1>Empresas de Reformas en Zaragoza especializada en Interiorismo</h1>
+        <p>
+            En NZ, como una de las mejores <b>empresas de reformas en Zaragoza</b> especializadas en todo tipo de reformas de baños y cocinas trabajando en pisos y edificios, ponemos a disposición de nuestros clientes toda nuestra larga experiencia de años en el sector para ofrecer los mejores acabados con la mejor calidad, siempre utilizando materiales de primeras marcas con el fin de obtener la calidad que se espera de una <i>empresa de reformas</i> que se precie.
+        </p>
+        <p>
+            Realizamos todo tipo de reformas, demás de las típicas reformas de pisos: baño, cocina, cambios de suelo, cambio de puertas, instalación, diseño de espacios, ... 
+        </p>
+        <p>
+            También nos dedicamos a la <a href="https://www.nzreformas.es/proyectos/reformas-locales-zaragoza">reforma de locales en Zaragoza</a>, reparación de edificios y zonas comunes en comunidades de vecinos, incluso impermeabilización de grandes superficies.
+        </p>
+        <h2>
+            Bienvenido a NZ Reformas, somos una empresa de reformas en Zaragoza con experiencia en todo tipo de proyectos
+        </h2>
+    </article>
 
-        <ul class="trinity" >
-            <li>
-                <img src="{{ asset('bundles/app/images/icon/home.png') }}" title="Más de 20 años de experiencia" alt="Más de 20 años de experiencia" />
-                <h3>Más de 20 años de experiencia</h3>
-                <p>
-                    En NZ Reformas, somos expertos en Reformas, Rehabilitaciones e Interiorismo.
-                </p>
-            </li>
-            <li>
-                <img src="{{ asset('bundles/app/images/icon/savings.png') }}" title="Financiación sin bancos" alt="Financiación sin bancos" />
-                <h3>Financiación directa, "Sin Bancos"</h3>
-                <p>
-                    Podrá elegir la opción de financiación que mejor se adapte a sus necesidades.
-                </p>
-            </li>
-            <li>
-                <img src="{{ asset('bundles/app/images/icon/calculator.png') }}" title="Presupuesto sin compromiso" alt="Presupuesto sin compromiso" />
-                <h3>Presupuesto sin compromiso</h3>
-                <p>
-                    Solicite presupuesto y le daremos nuestra mejor oferta. Sin costes ni compromiso.
-                </p>
-            </li>
-        </ul>
-        <article class="center">
-            <h2>Interiorismo, algo más que decoración</h2>
+    <ul class="trinity" >
+        <li>
+            <img src="{{ asset('bundles/app/images/icon/home.png') }}" title="Más de 20 años de experiencia" alt="Más de 20 años de experiencia" />
+            <h3>Más de 20 años de experiencia</h3>
             <p>
-                Otro de nuestros servicios incluido en todos los proyectos es la distribución de 
-                espacios en interior, en otras palabras interiorismo.Planteamos cada proyecto 
-                exprimiendo cada posibilidad y desarrollando las opciones  más acordes a las 
-                necesidades del cliente.
+                En <a href="/blog/empresas-de-reformas-en-zaragoza">NZ Reformas</a>, somos expertos en Reformas, Rehabilitaciones e Interiorismo.
             </p>
-            <h3>
-                ¿Cómo hacemos esto?
-            </h3>
+        </li>
+        <li>
+            <img src="{{ asset('bundles/app/images/icon/savings.png') }}" title="Financiación sin bancos" alt="Financiación sin bancos" />
+            <h3>Financiación directa, "Sin Bancos"</h3>
             <p>
-                Se estudia la distribución del espacio a reformar en simulación 3D, así se obtiene 
-                una visión detallada sin obra. De esta manera el cliente puede tener una visión 
-                exacta del resultado final antes de empezar la reforma, y se pueden reftificar 
-                cambios, evitar imprevistos o despejar dudas respecto a las diferentes pisibilidades.
+                Podrá elegir la opción de financiación que mejor se adapte a sus necesidades.
             </p>
-        </article>
-        <ul class="stacked" >
-            <li>
-                <a href="{{ path ('app_project',{'project': 'reformas-de-pisos' }) }}" >
+        </li>
+        <li>
+            <img src="{{ asset('bundles/app/images/icon/calculator.png') }}" title="Presupuesto sin compromiso" alt="Presupuesto sin compromiso" />
+            <h3>Presupuesto sin compromiso</h3>
+            <p>
+                Solicite presupuesto y le daremos nuestra mejor oferta. Sin costes ni compromiso.
+            </p>
+        </li>
+    </ul>
+    <article class="center">
+        <h2>Interiorismo, algo más que decoración</h2>
+        <p>
+            Otro de nuestros servicios incluido en todos los proyectos es la distribución de 
+            espacios en interior, en otras palabras interiorismo. Planteamos cada proyecto 
+            exprimiendo cada posibilidad y desarrollando las opciones  más acordes a las 
+            necesidades del cliente.
+        </p>
+        <h3>
+            ¿Cómo hacemos esto?
+        </h3>
+        <p>
+            Se estudia la distribución del espacio a reformar en simulación 3D, así se obtiene 
+            una visión detallada sin obra. De esta manera el cliente puede tener una visión 
+            exacta del resultado final antes de empezar la reforma, y se pueden reftificar 
+            cambios, evitar imprevistos o despejar dudas respecto a las diferentes posibilidades.
+        </p>
+    </article>
+{% endblock %}
 
-                    <div class="bg" >
-                        <h3>Pisos</h3>
-                    </div>
-                    <img class="resized" src="{{ asset('bundles/app/images/presentacion/reformas-de-pisos-high.jpg') }}" title="Reformas de pisos" alt="Reformas de pisos" />
-                </a>
-            </li>
-            <li>
-                <a href="{{ path ('app_project',{'project': 'reformas-de-banos' }) }}" >
-                    <div class="bg" >
-                        <h3>Baños</h3>
-                    </div>
-                    <img class="resized" src="{{ asset('bundles/app/images/presentacion/reformas-de-banos-high.jpg') }}" title="Reformas de Baños" alt="Reformas de Baños" />
-                </a>
-            </li>
-            <li>
-                <a href="{{ path ('app_project',{'project': 'reformas-de-cocinas' }) }}" >
-                    <div class="bg" >
-                        <h3>Cocinas</h3>
-                    </div>
-                    <img class="resized" src="{{ asset('bundles/app/images/presentacion/reformas-de-cocinas-high.jpg') }}" title="Reformas de cocinas" alt="Reformas de cocinas" />
-                </a>
-            </li>
-            <li>
-                <a href="{{ path ('app_project',{'project': 'rehabilitacion-de-edificios' }) }}" >
-                    <div class="bg" >
-                        <h3>Edificios</h3>
-                    </div>
-                    <img class="resized" src="{{ asset('bundles/app/images/presentacion/rehabilitacion-de-edificios-high.jpg') }}" title="Reformas de comunidades" alt="Reformas de comunidades" />
-                </a>
-            </li>
-        </ul>
-    {% endblock %}
+{% block extraJS %}
+    <script>
+        document.documentElement.className = 'js';
+        function autoSlider(slider) {
+            var slides = document.getElementsByName(slider);
+            for (var i = 1; i < slides.length; ++i) { /* 'i = 1' to start from 2nd radio */
+                if (slides[i].checked == true) { /* 'jump = 2' to check 2nd to last radio then jump to 2nd, else increment */
+                    (navigator.appVersion.indexOf("MSIE 9") == -1) ? jump = 2 : jump = 3; /* 'jump = 3' for IE9s diff array length */
+                    (i == slides.length - jump) ? slides[1].checked = true : slides[i + 1].checked = true;
+                    break;
+                }
+            }
+        }
+        function startSlider() {
+            startSlides = setInterval(function () {
+                autoSlider('slider');
+            }, 3000);
+        }
+        function stopSlider() {
+            clearInterval(startSlides);
+        }
+        var arrow = document.getElementById('slider-outer').getElementsByTagName('label');
+        for (var i = 0; i < arrow.length; i++) {
+            arrow[i].onclick = function () {
+                stopSlider();
+                stopSliderCtrl.style.display = 'none';
+                startSliderCtrl.style.display = 'block';
+            }
+        }
+        var stopSliderCtrl = document.getElementById('stop-slider');
+        var startSliderCtrl = document.getElementById('start-slider');
+        stopSliderCtrl.onclick = function () {
+            stopSlider();
+            stopSliderCtrl.style.display = 'none';
+            startSliderCtrl.style.display = 'block';
+        }
+        startSliderCtrl.onclick = function () {
+            startSlider();
+            stopSliderCtrl.style.display = 'block';
+            startSliderCtrl.style.display = 'none';
+        }
+        startSlider();
+    </script>
+{% endblock %} 

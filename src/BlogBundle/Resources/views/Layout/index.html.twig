@@ -3,20 +3,38 @@
 
 {% block title %}NZ Blog | NZ Reformas{% endblock %}
 
+{% block description %}{% endblock %}
+
+{% block extra %}
+    {% if paginador.Current() != 1 %}
+        <meta name="robots" content="noindex" >
+    {% endif %}
+{% endblock %}
+
 {% block content %}
     <article>
-
+        <nav class="breadcrumbs">
+            <a href="{{ path('app_homepage') }}">Inicio</a>
+        </nav>
         <header>
             <h1>
                 <a href="{{ path('blog_homepage',{ 'page': 1 }) }}">NZ Blog</a>
             </h1>
         </header>
 
+        {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')%}
+            <a href="{{ path('backend_article_new') }}" ><b>Añadir artículo</b></a>
+        {% endif%}
         {% for article in articles %}
             <section>
-                <h2><a href="{{ path('blog_article_show', { 'slug': article.slug }) }}">{{ article.title }}</a></h2>    
-                <img src="{{ asset( ['bundles/blog/images/articles/', article.image] | join) }}" alt="{{ article.title }} No se ha encontrado la imagen" />
-                {{ [article.article(300)] | join | raw }} ...
+                <h2><a href="{{ path('blog_article_show', { 'slug': article.slug }) }}">{{ article.name }}</a></h2>
+                    {% if article.image %}
+                    <img src="{{ asset(article.image.src) }}" alt="{{ article.title }} No se ha encontrado la imagen" />
+                {% endif %}
+                {{  article.article | striptags | slice(0, 300) }} ... </br>
+                {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')%}
+                    <a href="{{ path('backend_article_edit', { 'id' : article.id }) }}" ><b>Editar</b></a>
+                {% endif%}
                 <hr>
             </section>
         {% else %}

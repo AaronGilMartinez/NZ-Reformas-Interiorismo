@@ -1,0 +1,32 @@
+{{ form_start(formulario) }}
+{% if form_errors(formulario) %}
+    <div class="alert alert-danger" role="alert" >{{ form_errors(formulario) }}</div>
+{% endif %}
+<div class="page-content">
+    <div class="primary-clean">
+        {{ form_row(formulario.name) }}
+        {{ form_row(formulario.slug) }}
+        {{ form_row(formulario.introduction) }}
+        {{ form_row(formulario.description) }}
+        {{ form_row(formulario.content) }}
+    </div>
+    <div class="secondary-clean">
+        {{ form_row(formulario.image) }}
+    </div>
+    <input type="submit" value="Enviar" />
+{{ form_end(formulario) }}
+
+<script type="text/javascript" >
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                image = input.parentElement.getElementsByTagName('img')[0];
+                image.setAttribute('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

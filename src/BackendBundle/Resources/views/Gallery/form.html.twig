@@ -1,0 +1,84 @@
+{% import "BackendBundle:Gallery:imagePrototype.html.twig" as img %}
+
+{{ form_start(formulario) }}
+{% if form_errors(formulario) %}
+    <div class="alert alert-danger" role="alert" >{{ form_errors(formulario) }}</div>
+{% endif %}
+<div class="page-content">
+    <div class="primary-clean">
+        {{ form_row(formulario.uploaded) }}
+        {{ form_row(formulario.name) }}
+        {{ form_row(formulario.slug) }}
+        {{ form_row(formulario.project) }}
+        {{ form_row(formulario.description) }}
+        {{ form_row(formulario.content) }}
+    </div>
+    <div class="secondary-clean">
+        {{ form_row(formulario.image) }}
+    </div>
+    <div class="single">
+        <ul class="collection gallery" id="images" data-prototype="{{ img.information_prototype(formulario.images.vars.prototype) | e }}">
+            {% for imagen in formulario.images %}
+                {{ img.information_prototype(imagen, loop.index ) }}
+            {% endfor %}
+            {% do formulario.images.setRendered %}
+        </ul>
+    </div>
+    <button type="button" onclick="addForm()" >Añadir imagen</button>
+    <input type="submit" value="Enviar" />
+</div>
+</div>
+{{ form_rest(formulario) }}
+{{ form_end(formulario) }}
+
+<script type="text/javascript" >
+    var index = {{ formulario.images.vars.value | length }};
+            function addForm() {
+                // Increases the index 
+                index++;
+                // Get the collection element 
+                var collection = document.getElementById("images");
+                // Get the prototype of collection, this will be the model of new items
+                var prototype = collection.getAttribute('data-prototype');
+                // Add a new button to add elements in the prototype
+                // New element with index and button
+                var newForm = prototype.replace(new RegExp("__image__", 'g'), index);
+                // adds de New element to collection
+                collection.insertAdjacentHTML('beforeend', newForm);
+            }
+    ;
+
+    function removeForm(index) {
+        // Get the collection element 
+        var collection = document.getElementById("images");
+        // Get the element of collection 
+        var image = document.getElementById("image-" + index);
+        // Delete the selected child
+        collection.removeChild(image);
+        showHide(index);
+    }
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                image = input.parentElement.getElementsByTagName('img')[0];
+                image.setAttribute('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function showHide(id) {
+        var modal = document.getElementById('modal-' + id);
+        console.log(modal);
+        if (modal.style.display === "none") {
+            modal.style.display = "block";
+        } else {
+            modal.style.display = "none";
+        }
+    }
+
+</script>

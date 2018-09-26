@@ -1,0 +1,277 @@
+backend_homepage:
+    path: /
+    defaults: { _controller: BackendBundle:Page:inicio }
+
+# USERS
+backend_users:
+    path: /users
+    defaults: { _controller: BackendBundle:User:list }
+
+backend_user_register:
+    path: /user/register
+    defaults: { _controller: BackendBundle:User:register }
+    
+backend_user_edit:
+    path: /user/edit/{id}
+    defaults: { _controller: BackendBundle:User:edit }
+
+backend_user_remove:
+    path: /user/remove/{id}
+    defaults: { _controller: BackendBundle:User:remove }
+    
+backend_user_login:
+    path: /login
+    defaults: { _controller: BackendBundle:User:login }
+
+backend_user_login_check:
+    path: /login-check
+
+backend_user_logout:
+    path: /logout
+    
+# ENQUIRIES
+backend_enquiries:
+    path: /enquiries/{page}
+    defaults:
+        _controller: BackendBundle:Enquiry:list
+    requirements:
+        methods: GET
+        page: \d+
+
+backend_enquiry_show:
+    path: /enquiry/show/{id}
+    defaults:
+        _controller: BackendBundle:Enquiry:show
+    requirements:
+        methods: GET
+        id: \d+
+
+backend_enquiry_remove:
+    path: /enquiry/remove/{id}
+    defaults:
+        _controller: BackendBundle:Enquiry:remove
+    requirements:
+        methods: GET
+        id: \d+
+        
+backend_enquiry_excel:
+    path: /enquiry/excel
+    defaults:
+        _controller: BackendBundle:Enquiry:excel
+
+# TAG
+backend_tags:
+    path: /tags/{page}
+    defaults:
+        _controller: BackendBundle:Tag:list
+    requirements:
+        methods: GET
+        page: \d+
+
+backend_tag_new:
+    path: /tag/new
+    defaults:
+        _controller: BackendBundle:Tag:new
+    requirements:
+        methods: GET
+
+backend_tag_show:
+    path: /tag/show/{id}
+    defaults:
+        _controller: BackendBundle:Tag:show
+    requirements:
+        methods: GET
+        id: \d+
+
+backend_tag_edit:
+    path: /tag/edit/{id}
+    defaults:
+        _controller: BackendBundle:Tag:edit
+    requirements:
+        methods: GET
+        id: \d+
+
+backend_tag_remove:
+    path: /tag/remove/{id}
+    defaults:
+        _controller: BackendBundle:Tag:remove
+    requirements:
+        methods: GET
+        id: \d+
+
+# CATEGORY
+backend_categories:
+    path: /category/{page}
+    defaults:
+        _controller: BackendBundle:Category:list
+    requirements:
+        methods: GET
+        page: \d+
+
+backend_category_new:
+    path: /category/new
+    defaults:
+        _controller: BackendBundle:Category:new
+    requirements:
+        methods: GET
+
+backend_category_show:
+    path: /category/show/{id}
+    defaults:
+        _controller: BackendBundle:Category:show
+    requirements:
+        methods: GET
+        id: \d+
+
+backend_category_edit:
+    path: /category/edit/{id}
+    defaults:
+        _controller: BackendBundle:Category:edit
+    requirements:
+        methods: GET
+        id: \d+
+
+backend_category_remove:
+    path: /category/remove/{id}
+    defaults:
+        _controller: BackendBundle:Category:remove
+    requirements:
+        methods: GET
+        id: \d+
+
+# ARTICLES
+backend_articles:
+    path: /article/{page}
+    defaults:
+        _controller: BackendBundle:Article:list
+    requirements:
+        methods: GET
+        page: \d+
+
+backend_article_new:
+    path: /article/new
+    defaults:
+        _controller: BackendBundle:Article:new
+    requirements:
+        methods: GET
+
+backend_article_show:
+    path: /article/show/{id}
+    defaults:
+        _controller: BackendBundle:Article:show
+    requirements:
+        methods: GET
+        id: \d+
+
+backend_article_edit:
+    path: /article/edit/{id}
+    defaults:
+        _controller: BackendBundle:Article:edit
+    requirements:
+        methods: GET
+        id: \d+
+
+backend_article_remove:
+    path: /article/remove/{id}
+    defaults:
+        _controller: BackendBundle:Article:remove
+    requirements:
+        methods: GET
+        id: \d+
+
+# PROJECTS
+backend_projects:
+    path: /project/{page}
+    defaults:
+        _controller: BackendBundle:Project:list
+    requirements:
+        methods: GET
+        page: \d+
+
+backend_project_new:
+    path: /project/new
+    defaults:
+        _controller: BackendBundle:Project:new
+    requirements:
+        methods: GET
+
+backend_project_show:
+    path: /project/show/{id}
+    defaults:
+        _controller: BackendBundle:Project:show
+    requirements:
+        methods: GET
+        id: \d+
+
+backend_project_edit:
+    path: /project/edit/{id}
+    defaults:
+        _controller: BackendBundle:Project:edit
+    requirements:
+        methods: GET
+        id: \d+
+
+backend_project_remove:
+    path: /project/remove/{id}
+    defaults:
+        _controller: BackendBundle:Project:remove
+    requirements:
+        methods: GET
+        id: \d+
+        
+# PROJECTS
+backend_galleries:
+    path: /gallery/{page}
+    defaults:
+        _controller: BackendBundle:Gallery:list
+    requirements:
+        methods: GET
+        page: \d+
+
+backend_gallery_new:
+    path: /gallery/new
+    defaults:
+        _controller: BackendBundle:Gallery:new
+    requirements:
+        methods: GET
+
+backend_gallery_show:
+    path: /gallery/show/{id}
+    defaults:
+        _controller: BackendBundle:Gallery:show
+    requirements:
+        methods: GET
+        id: \d+
+
+backend_gallery_edit:
+    path: /gallery/edit/{id}
+    defaults:
+        _controller: BackendBundle:Gallery:edit
+    requirements:
+        methods: GET
+        id: \d+
+
+backend_gallery_remove:
+    path: /gallery/remove/{id}
+    defaults:
+        _controller: BackendBundle:Gallery:remove
+    requirements:
+        methods: GET
+        id: \d+
+        
+# COMMENTS
+backend_comments:
+    path: /comments/{page}
+    defaults:
+        _controller: BackendBundle:Comment:list
+    requirements:
+        methods: GET
+        page: \d+
+
+backend_comment_remove:
+    path: /comment/remove/{id}
+    defaults:
+        _controller: BackendBundle:Comment:remove
+    requirements:
+        methods: GET
+        id: \d+

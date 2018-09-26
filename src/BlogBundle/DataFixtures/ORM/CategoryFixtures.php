@@ -15,14 +15,20 @@ class CategoryFixtures extends AbstractFixture implements OrderedFixtureInterfac
     public function load(ObjectManager $manager) {
         $category1 = new Category();
         $category1->setName('Reformas');
+        $category1->setTitle('Reformas | Categoria');
+        $category1->setDescription('Categoría de artículos, noticias y proyectos de reformas en Zaragoza de pisos y edificios tanto integrales como parciales.');
         $manager->persist($category1);
-        
+
         $category2 = new Category();
         $category2->setName('Rehabilitación');
+        $category1->setTitle('Rehabilitación de fachadas de edificios | Categoría');
+        $category1->setDescription('Categoría de artículos acerca de rehabilitación de fachadas de edificios y obras en Zaragoza.');
         $manager->persist($category2);
-        
+
         $category3 = new Category();
         $category3->setName('Interiorismo');
+        $category1->setTitle('Interiorismo | Categoría');
+        $category1->setDescription('Categoría de artículos sobre diseño e interiorismo  y proyectos realizados por nuestra empresa NZ Reformas en Zaragoza y alrededores.');
         $manager->persist($category3);
 
         $manager->flush();
@@ -32,8 +38,7 @@ class CategoryFixtures extends AbstractFixture implements OrderedFixtureInterfac
         $this->addReference('interiorismo', $category3);
     }
 
-    public function getOrder()
-    {
+    public function getOrder() {
         return 1;
     }
 

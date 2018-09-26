@@ -1,0 +1,30 @@
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block extra %}<meta name="robots" content="noindex">{% endblock %}
+{% block title %}Registro/Edición usuario | NZ Reformas{% endblock %}
+
+{% block content %}
+    <article>
+        <nav class="breadcrumbs">
+            <a href="{{ path('app_homepage') }}">Inicio</a>
+            <a href="{{ path('backend_homepage') }}" >Panel de control</a>
+            <a href="{{ path('backend_users',{'page': 1}) }}" >Usuarios</a>
+        </nav>
+        <header>
+            <h1>Editar/Añadir Usuario</h1>
+        </header>
+        {{ form_start(formulario) }}
+        {{ form_errors(formulario) }}
+        <fieldset>
+            {{ form_row(formulario.roles) }}
+            {{ form_row(formulario.username) }}
+            {{ form_row(formulario.email) }}
+            {{ form_row(formulario.password) }}
+        </fieldset>
+        {{ form_row(formulario.email) }}
+        {{ form_rest(formulario) }}
+        {{ form_end(formulario) }}
+    </form>
+</form>
+</article>
+{% endblock %}

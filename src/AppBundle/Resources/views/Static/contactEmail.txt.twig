@@ -1,6 +1,8 @@
 {{ enquiry.name  | capitalize }} ha realizado una consulta en el formulario de contacto de
 nzreformas.es el {{ "now" | date("Y-m-d H:i") }}.
 
+URL: {{ enquiry.url }}
+
 Responder a: {{ enquiry.email }}
 Telefono: {{ enquiry.phone }}
 Mensaje: {{ enquiry.body }}

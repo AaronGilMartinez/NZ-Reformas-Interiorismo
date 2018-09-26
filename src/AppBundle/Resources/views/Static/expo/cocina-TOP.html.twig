@@ -1,0 +1,117 @@
+{% extends 'AppBundle::main.html.twig' %}
+{% import "AppBundle:Static:share.html.twig" as share %}
+
+{% block title %}Cocina TOP | NZ Reformas{% endblock %}
+{% block description %}{% endblock %}
+
+{% block content %}
+    <article>
+        <nav class="breadcrumbs">
+            <a href="{{ path('app_homepage') }}">Inicio</a>
+            <a href="{{ path ('app_static',{'page': 'exposicion-de-reformas' }) }}">Exposición</a>
+        </nav>
+        <section class="zona-expo" id="cocina-TOP">
+            <header>
+                <h1>Cocina TOP</h1>
+            </header>
+            <p>
+                Esta es la cocina TOP, y esto significa que es nuestra mejor cocina en cuanto a relación
+                calidad/precio. Esta cocina suele ser la referencia que utilizamos para dar un precio
+                estimativo para presupuestos con reforma de cocina o cuando un cliente no tiene muy 
+                claro que calidades quiere. Es una cocina de calidad media a un precio bastante asequible.
+            </p>
+            <p>
+                A primera vista parece una cocina muy sencilla pero tiene todo lo imprescindible de 
+                cualquier cocina. La principal idea de esta cocina es estimular a los clientes de manera 
+                que vean esta cocina como un punto de partida, y a partir de este ir cambiando las opciones
+                que mejor se adapten a sus necesidades. Los muebles se encargan a medida, y estos se
+                dividen por módulos, cada módulos es un bloque de armarios o cajones de medidas estándar
+                , aunque se pueden encargar para medidas menos comunes. Además de forma se puede elegir
+                el acabado de los muebles, y el acabado de cada modulo es independiente de tal manera
+                que se pueden combinar diferentes acabados en una misma cocina, lo que nos proporciona
+                mucha flexibilidad.
+            </p>
+            <p>
+                Otro elemento destacable es la encimera. La encimera de esta cocina es de postformado,
+                una madera prensada cubierta por una melamina tratada con resinas, y es la opción más barata. 
+                Obviamente disponemos de más acabados y más tipos de encimeras que cubrimos en un 
+                espacio en la exposición dedicado exclusivamente a estas.
+            </p>
+            <p>
+                Además de muebles y encimeras, disponemos de una amplia gama de grifería tanto para
+                baños, como para cocinas. Por último solo me queda por nombrar que también suministramos
+                e instalamos electrodomésticos, y en esta cocina en concreto se han elegido modelos 
+                de la marca Fagor.
+            </p>
+            <p>
+                Gracias a esta conjunción de espacios de la exposición disponemos de todas las herramientas
+                para configurar totalmente la cocina ideal.
+            </p>
+            {% include "AppBundle:Static/expo/galerias:cocina-TOP.html.twig" %}
+            <nav>
+                <a class="left" href="{{ path ('app_static',{'page': 'exposicion-de-reformas' }) }}">
+                    <button type="button">Volver al mapa</button>
+                </a>
+            </nav>
+        </section>
+    </article>
+{% endblock %}
+
+{% block extraJS %}
+    <script type="text/javascript" >
+
+        function load(myimg) { // load larger img
+            var img = document.getElementById(myimg); // get img id
+            img.src = img.getAttribute("data-src"); // switch "data-src" to "src" on corresponding img
+            id = myimg.replace(/^\D+/g, ''); // get number id from img id ("#img-1") ready for arrow key nav
+            location.replace('#pic-' + id); // go to hashed url without affecting browser history
+            document.onkeydown = galleryNav; // start arrow key nav
+        }
+
+        var id = window.location.hash.substr(1).replace(/^\D+/g, ''); // get hash from url ("#pic-1") and get number id
+
+        if (id) {
+            load('img-' + id);
+        } // load larger img
+
+        function closeX() {
+            id = null;
+            location.replace('#close');
+        } // close larger img
+
+        function keyCheck(keyCodeNum) { /* #### - keyboard nav controls - #### */
+            var count = 0;
+            var num = document.getElementsByClassName('thumb');
+            for (var i = 0; i < num.length; i++) {
+                if (num[i].id.startsWith('img-')) {
+                    count++;
+                } // count big pics (".big-img") in #gallery
+            }
+            switch (keyCodeNum) { // setup key code actions
+                case 27: // esc key
+                    closeX();
+                    break;
+                case 37: // left key
+                    id--;
+                    id < 1 ? load('img-' + count) : load('img-' + id);
+                    break;
+                case 39: // right key
+                    id++;
+                    id > count ? load('img-1') : load('img-' + id);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        function galleryNav(event) { // tie keyboard nav controls to arrow key presses
+            var keyDown = event || window.event,
+                    key = (keyDown.which) ? keyDown.which : keyDown.keyCode;
+            if ((window.location.hash.substr(1)) !== 'close') {
+                keyCheck(key);
+            }
+            return false;
+        }
+
+    </script>
+{% endblock %}

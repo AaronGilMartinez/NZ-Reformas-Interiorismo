@@ -2,17 +2,31 @@
 {% extends 'BlogBundle::blog.html.twig' %}
 {% import "AppBundle:Static:share.html.twig" as share %}
 
-{% block title %}{{ article.title }}{% endblock %}
+{% block title %}{% if article.title %}{{ article.title }}{% endif %}{% endblock %}
+
+{% block description %}{% if article.description %}{{ article.description }}{% endif %}{% endblock %}
 
 {% block content %}
     <article>
+        <nav class="breadcrumbs">
+            <a href="{{ path('app_homepage') }}">Inicio</a>
+            <a href="{{ path('blog_homepage',{'page': '1' }) }}">Blog</a>
+        </nav>
         <section>
             <header>
-                <h1>{{ article.title }}</h1>
-                <date>Publicado el {{ article.created | date('d/m/Y') }}</date>
+                <h1>{{ article.name }}</h1>
+                {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')%}
+                    <a class="button" href="{{ path('backend_article_edit', { 'id' : article.id }) }}" ><b>Editar artículo</b></a>
+                    <br>
+                    <date>Publicado el {{ article.created | date('d/m/Y') }}</date>
+                    {% endif%}
             </header>
-            <img src="{{ asset( ['bundles/blog/images/articles/', article.image] | join) }}" alt="{{ article.title }}" title="{{ article.title }}" />
             {{ article.article | raw }}
+            {% if article.image %}
+                {% if article.image.src %}
+                    <img src="{{ asset(article.image.src) }}" alt="{{ article.title }}" title="{{ article.title }}" />
+                {% endif %}
+            {% endif %}
             <h3>Categoria</h3>
             <h3><a href="{{ path('blog_catag_show', { 'slug': category.slug,'page': 1 }) }}" >{{ category.name }}</a></h3>
             <h3>Etiquetas</h3>
@@ -27,7 +41,7 @@
             <h2>Comentarios</h2>
             {% include 'BlogBundle:Comment:index.html.twig' with { 'comments': comments } %}
 
-            {% render controller('BlogBundle:Comment:new' , { 'slug': article.slug }) %}
+            {{ render(controller('BlogBundle:Comment:new' , { 'slug': article.slug })) }}
         </section>
     </article>
 

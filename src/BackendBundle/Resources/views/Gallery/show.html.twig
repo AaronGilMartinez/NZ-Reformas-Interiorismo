@@ -1,0 +1,46 @@
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block extra %}<meta name="robots" content="noindex">{% endblock %}
+{% block title %}Ver galería | NZ Reformas{% endblock %}
+
+{% block content %}
+    <article>
+        <nav class="breadcrumbs">
+            <a href="{{ path('app_homepage') }}">Inicio</a>
+            <a href="{{ path('backend_homepage') }}" >Panel de control</a>
+            <a href="{{ path('backend_galleries',{'page': 1}) }}" >Galerías</a>
+        </nav>
+        <header>
+            <a class="right" href="{{ path('backend_gallery_edit', { 'id': gallery.id }) }}" >Editar</a>
+        </header>
+        <label>Nombre</label>: <i><h2>{{ gallery.name | capitalize }}</h2></i>
+        <label>Proyecto</label>: <i><h3>{{ gallery.project | capitalize }}</h3></i>
+        <label>Subida</label>: <i><h3>{{ gallery.uploaded | date('d/m/Y') }}</h3></i>
+        <label>ID</label>: <i><h3>{{ gallery.id }}</h3></i>
+        <label>Slug</label>: <i><h3>{{ gallery.slug | lower }}</h3></i>
+        <label>Imagen</label>: <br>
+        {% if gallery.image %}
+            <img src="{{ asset( gallery.image.src ) }}" width="200" height="200"  /><br>
+        {% endif%}
+        <label>Descripción</label>:<i><p>{{ gallery.description | capitalize }}</p></i>
+        <label>Contenido</label>:<i><p>{{ gallery.content | capitalize }}</p></i>
+
+        <ul class="gallery">
+            {% for imagen in gallery.images %}
+                {% if imagen.src %}
+                    <li>
+                        <img class="thumb" src="{{ asset( imagen.thumb )}}" /><br>
+                        <b>Title</b>: <i>{{ imagen.title }}</i><br>
+                        <b>Alt</b>: <i>{{ imagen.alt | capitalize }}</i><br>
+                        <b>Descripción</b>: <i>{{ imagen.description | capitalize }}</i>
+                    </li>
+                {% endif%}
+            {% endfor %}
+        </ul>
+
+        <footer>
+            <a href="{{ path('app_back') }}" >Atrás</a>
+            <a class="right confirmation" href="{{ path('backend_gallery_remove', { 'id': gallery.id }) }}" >Eliminar</a>
+        </footer>
+    </article>
+{% endblock %}

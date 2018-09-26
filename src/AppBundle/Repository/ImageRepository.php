@@ -10,6 +10,7 @@ class ImageRepository extends EntityRepository {
     public function getImagesFromGallery ($gallery) {
          $qb = $this->createQueryBuilder('i')
                 ->where('i.gallery = :gallery')
+                ->orderBy('i.id', 'ASC')
                 ->setParameter('gallery', $gallery->getName());
 
         return $qb->getQuery() ->getResult();

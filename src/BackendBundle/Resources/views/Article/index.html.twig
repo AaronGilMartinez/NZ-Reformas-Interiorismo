@@ -1,0 +1,83 @@
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block extra %}<meta name="robots" content="noindex">{% endblock %}
+{% block title %}Artículos | NZ Reformas{% endblock %}
+
+{% block content %}
+    <article>
+        <header>
+            <nav class="breadcrumbs">
+                <a href="{{ path('app_homepage') }}">Inicio</a>
+                <a href="{{ path('backend_homepage') }}" >Panel de control</a>
+                <a href="{{ path('backend_articles',{'page': 1}) }}" >Artículos</a>
+            </nav>
+            <h1>Artículos</h1>
+        </header>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Fecha (creación)</th>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Texto</th>
+                    <th><a href="{{ path('backend_article_new') }}" >Añadir</a></th>
+                </tr>
+                {% for article in articles %}
+                    <tr>
+                        <td>{{ article.created | date('d/m/Y') }}</td>
+
+                        <td>{% if article.image %}
+                            <img src="{{ asset(article.image.src )}}" width=100 />
+                        {% else %}
+                            Sin imagen
+                            {% endif %}</td>
+                            <td>{{ article.name | capitalize }}</td>
+                            <td>{{ article.article | striptags | slice(0, 100) }} ...</td>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('backend_article_show', { 'id': article.id }) }}" >Ver</a>
+                                    </li>            
+                                    <li>        
+                                        <a href="{{ path('backend_article_edit', { 'id': article.id }) }}" >Editar</a>
+                                    </li>            
+                                    <li>
+                                        <a class="confirmation" href="{{ path('backend_article_remove', { 'id': article.id }) }}" >Eliminar</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="6">No se han encontrado artículos</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                        {% if paginador.Total() > 1 %}
+                            <div class="pagination">
+                                <ul>
+                                    {% if paginador.Start() != 1 %}
+                                        <li class="page-prev"><a href="{{ path('backend_articles',{'page': 1}) }}">1</a></li>
+                                        {% endif %}
+                                        {% if paginador.Start() > 2 %}
+                                        <li>...</li>
+                                        {% endif %}
+
+                                    {% for i in paginador.Start()..paginador.End() %}
+                                        <li><a class="{% if i == paginador.Current() %}active{% endif %}" href="{{ path('backend_articles',{'page': i}) }}" >{{ i }}</a></li>
+                                        {% endfor %}
+
+                                    {% if paginador.End() < paginador.Total()-1 %}
+                                        <li>...</li>
+                                        {% endif %}
+                                        {% if paginador.End() != paginador.Total() %}
+                                        <li class="page-prev"><a href="{{ path('backend_articles',{'page': paginador.Total()}) }}">{{ paginador.Total() }}</a></li>
+                                        {% endif %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    </article>
+                    {% endblock %}

@@ -23,8 +23,7 @@ class ArticleController extends Controller {
             
             $category = $article->getCategory();
 
-            $comments = $em->getRepository('BlogBundle:Comment')
-                    ->getCommentsForArticle($article->getId());
+            $comments = $em->getRepository('BlogBundle:Comment')->getCommentsForArticle($article->getId());
 
             return $this->render('BlogBundle:Blog:article.html.twig', array(
                         'article' => $article,

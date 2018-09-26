@@ -1,0 +1,85 @@
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block extra %}<meta name="robots" content="noindex">{% endblock %}
+{% block title %}Galerías | NZ Reformas{% endblock %}
+
+{% block content %}
+    <article>
+        <nav class="breadcrumbs">
+            <a href="{{ path('app_homepage') }}">Inicio</a>
+            <a href="{{ path('backend_homepage') }}" >Panel de control</a>
+        </nav>
+        <header>
+            <h1>Galerías</h1>
+        </header>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Subida</th>
+                    <th>Nombre</th>
+                    <th>Imagen</th>
+                    <th>Descripción</th>
+                    <th><a href="{{ path('backend_gallery_new') }}" >Añadir</a></th>
+                </tr>
+                {% for gallery in galleries %}
+                    <tr>
+                        <td>{{ gallery.uploaded | date('d/m/Y') }}</td>
+                        <td>{{ gallery.name | capitalize }}</td>
+                        <td>
+                            {% if gallery.image %}
+                                <img src="{{ asset( gallery.image.src )}}" width=100 />
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if gallery.description %}
+                                {{ gallery.description | striptags | slice(0, 50) }} ...
+                            {% else %}-{% endif%}
+                        </td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('backend_gallery_show', { 'id': gallery.id }) }}" >Ver</a>
+                                </li>            
+                                <li>        
+                                    <a href="{{ path('backend_gallery_edit', { 'id': gallery.id }) }}" >Editar</a>
+                                </li>            
+                                <li>
+                                    <a class="confirmation" href="{{ path('backend_gallery_remove', { 'id': gallery.id }) }}" >Eliminar</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="4">No se han encontrado galerías</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% if paginador.Total() > 1 %}
+            <div class="pagination">
+                <ul>
+                    {% if paginador.Start() != 1 %}
+                        <li class="page-prev"><a href="{{ path('backend_galleries',{'page': 1}) }}">1</a></li>
+                        {% endif %}
+                        {% if paginador.Start() > 2 %}
+                        <li>...</li>
+                        {% endif %}
+
+                    {% for i in paginador.Start()..paginador.End() %}
+                        <li><a class="{% if i == paginador.Current() %}active{% endif %}" href="{{ path('backend_galleries',{'page': i}) }}" >{{ i }}</a></li>
+                        {% endfor %}
+
+                    {% if paginador.End() < paginador.Total()-1 %}
+                        <li>...</li>
+                        {% endif %}
+                        {% if paginador.End() != paginador.Total() %}
+                        <li class="page-prev"><a href="{{ path('backend_galleries',{'page': paginador.Total()}) }}">{{ paginador.Total() }}</a></li>
+                        {% endif %}
+                </ul>
+            </div>
+        {% endif %}
+    </article>
+{% endblock %}

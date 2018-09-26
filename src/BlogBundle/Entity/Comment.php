@@ -1,10 +1,12 @@
 <?php
+
 // src/BlogBundle/Entity/Comment.php
 
 namespace BlogBundle\Entity;
 
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Blank;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,6 +27,11 @@ class Comment {
      * @ORM\Column(type="string")
      */
     protected $name;
+
+    /** ES UNA TRAMPA!!! para spammers
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $subject;
 
     /**
      * @ORM\Column(type="text")
@@ -64,8 +71,7 @@ class Comment {
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -75,8 +81,7 @@ class Comment {
      * @param string $name
      * @return Comment
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -87,8 +92,7 @@ class Comment {
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -98,8 +102,7 @@ class Comment {
      * @param string $comment
      * @return Comment
      */
-    public function setComment($comment)
-    {
+    public function setComment($comment) {
         $this->comment = $comment;
 
         return $this;
@@ -110,9 +113,26 @@ class Comment {
      *
      * @return string 
      */
-    public function getComment()
-    {
+    public function getComment() {
         return $this->comment;
+    }
+
+    /**
+     * Get subject
+     *
+     * @return text 
+     */
+    public function getSubject() {
+        return $this->subject;
+    }
+
+    /**
+     * Set subject
+     *
+     * @param string $subject
+     */
+    public function setSubject($subject) {
+        $this->subject = $subject;
     }
 
     /**
@@ -121,8 +141,7 @@ class Comment {
      * @param boolean $approved
      * @return Comment
      */
-    public function setApproved($approved)
-    {
+    public function setApproved($approved) {
         $this->approved = $approved;
 
         return $this;
@@ -133,8 +152,7 @@ class Comment {
      *
      * @return boolean 
      */
-    public function getApproved()
-    {
+    public function getApproved() {
         return $this->approved;
     }
 
@@ -144,8 +162,7 @@ class Comment {
      * @param \DateTime $created
      * @return Comment
      */
-    public function setCreated($created)
-    {
+    public function setCreated($created) {
         $this->created = $created;
 
         return $this;
@@ -156,8 +173,7 @@ class Comment {
      *
      * @return \DateTime 
      */
-    public function getCreated()
-    {
+    public function getCreated() {
         return $this->created;
     }
 
@@ -167,8 +183,7 @@ class Comment {
      * @param \DateTime $updated
      * @return Comment
      */
-    public function setUpdated($updated)
-    {
+    public function setUpdated($updated) {
         $this->updated = $updated;
 
         return $this;
@@ -179,8 +194,7 @@ class Comment {
      *
      * @return \DateTime 
      */
-    public function getUpdated()
-    {
+    public function getUpdated() {
         return $this->updated;
     }
 
@@ -190,8 +204,7 @@ class Comment {
      * @param \BlogBundle\Entity\Article $article
      * @return Comment
      */
-    public function setArticle(\BlogBundle\Entity\Article $article = null)
-    {
+    public function setArticle(\BlogBundle\Entity\Article $article = null) {
         $this->article = $article;
 
         return $this;
@@ -202,18 +215,18 @@ class Comment {
      *
      * @return \BlogBundle\Entity\Article 
      */
-    public function getArticle()
-    {
+    public function getArticle() {
         return $this->article;
     }
-    
-     public static function loadValidatorMetadata(ClassMetadata $metadata)
-    {
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata) {
         $metadata->addPropertyConstraint('name', new NotBlank(array(
             'message' => 'Tienes que introducir un nombre'
         )));
         $metadata->addPropertyConstraint('comment', new NotBlank(array(
             'message' => 'Tienes que introducir un comentario'
         )));
+        $metadata->addPropertyConstraint('subject', new Blank());
     }
+
 }

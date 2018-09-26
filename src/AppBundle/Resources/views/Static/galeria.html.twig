@@ -7,26 +7,38 @@
 {% block content %}
     <article>
         <header>
+            <nav class="breadcrumbs">
+                <a href="{{ path('app_homepage') }}">Inicio</a>
+                <a href="{{ path ('app_static',{'page': 'proyectos'}) }}" >Proyectos</a>
+                <a href="{{ path ('app_project',{'project': gallery.project.slug} ) }}" >{{ gallery.project.name }}</a>
+                <a>{{ gallery.name }}</a>
+            </nav>
             <h1>{{ gallery.name }}</h1>
         </header>
-
         <section>
+            {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')%}
+                <a class="button" href="{{ path('backend_gallery_edit', { 'id' : gallery.id }) }}" ><b>Editar galería</b></a>
+            {% endif%}
             <p>
-                {{ gallery.description }}
+                {{ gallery.description | raw }}
             </p>
             <ul class="gallery" >
                 {% for image in gallery.images %}
                     <li>
                         <a onclick="load('img-{{ loop.index }}')" >
-                            <noscript><a href="{{ asset(image.src ~ '.jpg')}}" target="_blank"></noscript>
+                            <noscript><a href="{{ asset(image.src )}}" target="_blank"></noscript>
                                 <img class="zoom" src="{{ asset('bundles/app/images/icon/zoom.png')}}" title="Ampliar" alt="Ampliar" >
-                                <img class="thumb" src="{{ asset( image.src ~ '-thumb.jpg')}}" title="Imagen no disponible" alt="Imagen no disponible" />
+                                <img class="thumb" src="{{ asset( image.thumb )}}" title="Imagen no disponible" alt="Imagen no disponible" />
                             </a>
                             <div id="pic-{{ loop.index }}" class="overlay" >
-                                <a onclick="location.replace('#close')" class="close" title="Close"><img src="{{ asset('bundles/app/images/icon/close.png')}}" title="Cerrar" alt="Cerrar" ></a>
+                                <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+                                <a class="pin" href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" data-pin-custom="true" >
+                                    <img src="{{ asset('bundles/app/images/icon/share-pinterest.png')}}" title="Pinéalo" alt="Pinéalo">
+                                </a>
+                                <a onclick="closeImg()" class="close" title="Close"><img src="{{ asset('bundles/app/images/icon/close.png')}}" title="Cerrar" alt="Cerrar" ></a>
                                 <a onclick="load('img-{% if loop.first %}{{ loop.length }}{% else %}{{ loop.index - 1 }}{% endif %}')" class="prev" ><img src="{{ asset('bundles/app/images/icon/left.png')}}" title="Anterior" alt="Anterior" ></a>
-                                <a onclick="load('img-{% if loop.last %}1{% else %}{{ loop.index + 1 }}{% endif %}')" class="next" ><img src="{{ asset('bundles/app/images/icon/right.png')}}" title="Siguiente" alt="Siguiente" ></a>
-                                <img id="img-{{ loop.index }}" data-src="{{ asset(image.src ~ '.jpg')}}" title="{{ image.title }}" alt="{{ image.alt }}" />
+                                <a onclick="load('img-{% if loop.last %}1{% else %}{{ loop.index + 1 }}{% endif %}')" class="next" ><img src="{{ asset('bundles/app/images/icon/left.png')}}" title="Siguiente" alt="Siguiente" ></a>
+                                <img id="img-{{ loop.index }}" data-src="{{ asset(image.src )}}" title="{{ image.title }}" alt="{{ image.alt }}" />
                                 {% if image.description %}
                                     <div class="img-desc" >
                                         {{ image.description | capitalize }}
@@ -36,16 +48,69 @@
                     </li>
                 {% endfor %}
             </ul>
+            {% if gallery.content %}
+                 {{ gallery.content | raw }}
+            {% endif %}    
         </section>
         {{ share.social( app.request.uri ) }}
     </article>
 {% endblock %}
 
 {% block extraJS %}
-    function load(myimg) { // load larger img
-    var img = document.getElementById(myimg); // get img id
-    img.src = img.getAttribute("data-src"); // switch "data-src" to "src" on corresponding img
-    id = myimg.replace(/^\D+/g, ''); // get number id from img id ("#img-1")
-    location.replace('#pic-' + id); // go to hashed url without affecting browser history
-    }
+    <script type="text/javascript" >
+
+        function load(myimg) { // load larger img
+            var img = document.getElementById(myimg); // get img id
+            img.src = img.getAttribute("data-src"); // switch "data-src" to "src" on corresponding img
+            id = myimg.replace(/^\D+/g, ''); // get number id from img id ("#img-1") ready for arrow key nav
+            window.location.replace('#pic-' + id); // go to hashed url without affecting browser history
+            document.onkeydown = galleryNav; // start arrow key nav
+        }
+
+        var id = window.location.hash.substr(1).replace(/^\D+/g, ''); // get hash from url ("#pic-1") and get number id
+
+        if (id) {
+            load('img-' + id);
+        } // load larger img
+
+        function closeImg() {
+            id = null;
+            window.location.hash = '';
+        } // close larger img
+
+        function keyCheck(keyCodeNum) { /* #### - keyboard nav controls - #### */
+            var count = 0;
+            var num = document.getElementsByClassName('thumb');
+            for (var i = 0; i < num.length; i++) {
+                if (num[i].id.startsWith('img-')) {
+                    count++;
+                } // count big pics (".big-img") in #gallery
+            }
+            switch (keyCodeNum) { // setup key code actions
+                case 27: // esc key
+                    closeImg();
+                    break;
+                case 37: // left key
+                    id--;
+                    id < 1 ? load('img-' + count) : load('img-' + id);
+                    break;
+                case 39: // right key
+                    id++;
+                    id > count ? load('img-1') : load('img-' + id);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        function galleryNav(event) { // tie keyboard nav controls to arrow key presses
+            var keyDown = event || window.event,
+                    key = (keyDown.which) ? keyDown.which : keyDown.keyCode;
+            if ((window.location.hash.substr(1)) !== 'close') {
+                keyCheck(key);
+            }
+            return false;
+        }
+
+    </script>
 {% endblock %}

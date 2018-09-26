@@ -1,0 +1,114 @@
+{% extends 'AppBundle::main.html.twig' %}
+{% import "AppBundle:Static:share.html.twig" as share %}
+
+{% block title %}Cocina escaparate | NZ Reformas{% endblock %}
+{% block description %}{% endblock %}
+
+{% block content %}
+    <article>
+        <nav class="breadcrumbs">
+            <a href="{{ path('app_homepage') }}">Inicio</a>
+            <a href="{{ path ('app_static',{'page': 'exposicion-de-reformas' }) }}">Exposición</a>
+        </nav>
+        <section class="zona-expo" id="cocina-escaparate">
+            <header>
+                <h1>Cocina escaparate</h1>
+            </header>
+            <p>
+                Aquí tenemos la primera de las cocinas que encontramos nada más entrar en la exposición.
+                Es una cocina con acabados de tonos claros y con isla.
+            </p>
+            <p>
+                Quizás el elemento más llamativo de la cocina sea la isla, la cual está revestida con
+                un material porcelánico imitación mármol. Al ser un material porcelánico tiene una 
+                mayor resistencia y mejor mantenimiento que el propio mármol, y a su vez mantiene el
+                estilo clásico que transmite este material. Además la encimera de la isla tiene tres
+                características reseñables, que son el vuelo a modo de mesa, la vitro-cerámica en el
+                centro como núcleo de la cocina y el lateral opuesto al vuelo, el cual está revestido
+                con otra pieza de encimera. Para aprovechar el máximo espacio se han instalado dos 
+                módulos caceroleros en la parte delantera y trasera. 
+            </p>
+            <p>
+                En el frente de cocina nos encontramos encimera y fregadero en dos tonos de gris a 
+                juego con la baldosa (porcelánica también), y un frente de cristal lacobel rojo para
+                dar un toque de color. Para amueblar la cocina se han elegido módulos de color blanco
+                brillo a juego con la isla con tirador finger-pull. Se pueden apreciar los tiradores
+                tanto en los muebles del frente como en los armarios de la nevera y en los caceroleros
+                de la isla. Gracias al color de los muebles y unos tiradores tan discretos obtenemos
+                un diseño muy limpio.
+            </p>
+            <p>
+                Por último cabe destacar un detalle que se nos puede pasar por alto pero muy 
+                interesante, y es la puerta de aluminio que se encuentra entre el frente y la nevera.
+                Esta puerta posee rotura de puente térmico, dado que muchas cocinas disponen terraza
+                o galería, gracias a esta tecnología se elimina la condensación por diferencia de 
+                temperatura, además de lograr un ahorro energético considerable.
+            </p>
+            {% include "AppBundle:Static/expo/galerias:cocina-escaparate.html.twig" %}
+            <nav>
+                <a class="left" href="{{ path ('app_static',{'page': 'exposicion-de-reformas' }) }}">
+                    <button type="button">Volver al mapa</button>
+                </a>
+            </nav>
+        </section>
+    </article>
+{% endblock %}
+
+{% block extraJS %}
+    <script type="text/javascript" >
+
+        function load(myimg) { // load larger img
+            var img = document.getElementById(myimg); // get img id
+            img.src = img.getAttribute("data-src"); // switch "data-src" to "src" on corresponding img
+            id = myimg.replace(/^\D+/g, ''); // get number id from img id ("#img-1") ready for arrow key nav
+            location.replace('#pic-' + id); // go to hashed url without affecting browser history
+            document.onkeydown = galleryNav; // start arrow key nav
+        }
+
+        var id = window.location.hash.substr(1).replace(/^\D+/g, ''); // get hash from url ("#pic-1") and get number id
+
+        if (id) {
+            load('img-' + id);
+        } // load larger img
+
+        function closeX() {
+            id = null;
+            location.replace('#close');
+        } // close larger img
+
+        function keyCheck(keyCodeNum) { /* #### - keyboard nav controls - #### */
+            var count = 0;
+            var num = document.getElementsByClassName('thumb');
+            for (var i = 0; i < num.length; i++) {
+                if (num[i].id.startsWith('img-')) {
+                    count++;
+                } // count big pics (".big-img") in #gallery
+            }
+            switch (keyCodeNum) { // setup key code actions
+                case 27: // esc key
+                    closeX();
+                    break;
+                case 37: // left key
+                    id--;
+                    id < 1 ? load('img-' + count) : load('img-' + id);
+                    break;
+                case 39: // right key
+                    id++;
+                    id > count ? load('img-1') : load('img-' + id);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        function galleryNav(event) { // tie keyboard nav controls to arrow key presses
+            var keyDown = event || window.event,
+                    key = (keyDown.which) ? keyDown.which : keyDown.keyCode;
+            if ((window.location.hash.substr(1)) !== 'close') {
+                keyCheck(key);
+            }
+            return false;
+        }
+
+    </script>
+{% endblock %}

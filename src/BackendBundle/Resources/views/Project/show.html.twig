@@ -1,0 +1,31 @@
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block extra %}<meta name="robots" content="noindex">{% endblock %}
+{% block title %}Ver proyecto | NZ Reformas{% endblock %}
+
+
+{% block content %}
+    <article>
+        <nav class="breadcrumbs">
+            <a href="{{ path('app_homepage') }}">Inicio</a>
+            <a href="{{ path('backend_homepage') }}" >Panel de control</a>
+            <a href="{{ path('backend_projects',{'page': 1}) }}" >Proyectos</a>
+        </nav>
+        <header>
+            <a class="right" href="{{ path('backend_project_edit', { 'id': project.id }) }}" >Editar</a>
+        </header>
+            <label>ID</label>: <i><h2>{{ project.id }}</h2></i>
+        <label>Nombre</label>: <i><h3>{{ project.name | capitalize }}</h3></i>
+        <label>Slug</label>: <i><h3>{{ project.slug | lower }}</h3></i>
+        <label>Intro</label>:<i><p>{{ project.introduction | capitalize }}</p></i>
+        <label>Description</label>:<i>{{ project.description | raw }}</i>
+        <label>Contenido</label>:<i>{{ project.content | raw }}</i>
+        <label>Imagen</label>: {% if project.image %}<br>
+        <img src="{{ asset( project.image.src )}}" />
+        {% endif%}
+            <footer>
+                <a href="{{ path('app_back') }}" >Atrás</a>
+                <a class="right confirmation" href="{{ path('backend_project_remove', { 'id': project.id }) }}" >Eliminar</a>
+            </footer>
+        </article>
+        {% endblock %}

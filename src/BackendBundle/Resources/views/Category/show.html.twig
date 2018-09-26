@@ -1,0 +1,26 @@
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block extra %}<meta name="robots" content="noindex">{% endblock %}
+{% block title %}Ver Categoría | NZ Reformas{% endblock %}
+
+{% block content %}
+    <article>
+        <nav class="breadcrumbs">
+            <a href="{{ path('app_homepage') }}">Inicio</a>
+            <a href="{{ path('backend_homepage') }}" >Panel de control</a>
+            <a href="{{ path('backend_categories',{'page': 1}) }}" >Categorías</a>
+        </nav>
+        <header>
+            <h1>Categoría ID: {{ category.id }}</h1>
+            <a class="right" href="{{ path('backend_category_edit', { 'id': category.id }) }}" >Editar</a>
+        </header>
+            <label>Nombre</label>: <i><h2>{{ category.name | capitalize }}</h2></i>
+            <label>Slug</label>: <i><h2>{{ category.slug | lower }}</h2></i>
+            <label>Title</label>: <i><h2>{{ category.title | capitalize }}</h2></i>
+            <label>Description</label>: <i><h2>{{ category.description | capitalize }}</h2></i>
+        <footer>
+            <a href="{{ path('app_back') }}" >Atrás</a>
+            <a class="right confirmation" href="{{ path('backend_category_remove', { 'id': category.id }) }}" >Eliminar</a>
+        </footer>
+    </article>
+{% endblock %}

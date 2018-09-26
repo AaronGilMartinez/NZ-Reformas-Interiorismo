@@ -1,12 +1,21 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: @BlogBundle/Resources/config/config.yml }
-    - { resource: @AppBundle/Resources/config/config.yml }
+    - { resource: "@BlogBundle/Resources/config/config.yml" }
+    - { resource: "@AppBundle/Resources/config/config.yml" }
+    - { resource: "@BackendBundle/Resources/config/config.yml" }
+
+parameters:
+    upload_directory: '%kernel.root_dir%/../web/'
+    google_javascript_API: AIzaSyCA3AYDNntCXV9MA5TcrUP1RaFVpfqiU38
     
 framework:
     esi:             true
-    #translator:      { fallbacks: ["%locale%"] }
+    default_locale:  "es"
+    #translator:      
+        #fallbacks: ["%locale%"]
+        #paths:
+        #    - "%kernel.root_dir%/Resources/translations"
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -17,36 +26,25 @@ framework:
     templating:
         engines: ['twig']
         #assets_version: SomeVersionScheme
-    default_locale:  "es"
-    trusted_proxies: ~
-    session:         ~
+    
+    session:
+        handler_id:  session.handler.native_file
+        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
     fragments:       ~
     http_method_override: true
-
-# Assetic Configuration
-assetic:
-    debug:          "%kernel.debug%"
-    use_controller: true
-    bundles:        [AppBundle]
-    filters:
-        cssrewrite: ~
-        sass: ~
-        jpegoptim:
-            bin: "%kernel.root_dir%/Resources/jpegoptim/jpegoptim.exe"
-            max: 60
-            apply_to: "\.jpg$"
-        uglifyjs2:
-            bin: "%kernel.root_dir%/Resources/uglifyjs/uglifyjs"
-        uglifycss:
-            bin: "%kernel.root_dir%/Resources/uglifycss/uglifycss"
-    twig:
-        functions:
-            jpegoptim: { output: images-opt/*.jpg }
-            
+ 
+sensio_framework_extra:
+    router:
+        annotations: false
+ 
 # Twig Configuration
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form_themes:      
+        - "form/fields.html.twig"
+    globals:
+        google_API: "%google_javascript_API%"
 
 # Doctrine Configuration
 doctrine:
@@ -58,12 +56,6 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
-        # if using pdo_sqlite as your database driver:
-        #   1. add the path in parameters.yml
-        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
-        #   2. Uncomment database_path in parameters.yml.dist
-        #   3. Uncomment next line:
-        #     path:     "%database_path%"
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
@@ -83,9 +75,3 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
-
-doctrine_migrations:
-    dir_name: %kernel.root_dir%/DoctrineMigrations
-    namespace: Application\Migrations
-    table_name: migration_versions
-    name: Application Migrations

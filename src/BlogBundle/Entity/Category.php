@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="category")
  */
 class Category {
-    
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -22,24 +22,33 @@ class Category {
      * @ORM\Column(type="string")
      */
     protected $name;
-    
+
     /**
      * @ORM\Column(type="string")
      */
     protected $slug;
     
     /**
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="category")
+     * @ORM\Column(type="string", nullable=true)
      */
-    protected $articles;
-    
+    protected $title = null;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $description = null;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Article", mappedBy="category", cascade={"all"})
+     */
+    protected $articles = null;
+
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -48,11 +57,10 @@ class Category {
      *
      * @param string $name
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
-        
-        $this->setSlug($this->name);
+
+        $this->setSlug($name);
     }
 
     /**
@@ -60,15 +68,52 @@ class Category {
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
-    
+
     public function __toString() {
         return $this->getName();
     }
     
+    /**
+     * Get title
+     *
+     * @return string 
+     * 
+     */
+    public function getTitle() {
+        return $this->title;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     */
+    public function setTitle($title) {
+        $this->title = $title;
+    }
+    
+    /**
+     * Get description
+     *
+     * @return string 
+     * 
+     */
+    public function getDescription() {
+        return $this->description;
+    }
+
+    /**
+     * Set article
+     *
+     * @param string $description
+     */
+    public function setDescription($description) {
+        $this->description = $description;
+    }
+
     /**
      * Add article
      * 
@@ -78,7 +123,7 @@ class Category {
     public function addArticle(\BlogBundle\Entity\Article $article) {
         $this->articles[] = $article;
     }
-    
+
     /**
      * Get articles
      * 
@@ -88,7 +133,7 @@ class Category {
     public function getArticles() {
         return $this->articles;
     }
-    
+
     /**
      * Set slug
      *
@@ -96,7 +141,7 @@ class Category {
      * 
      */
     public function setSlug($slug) {
-        $this->slug = $this->slugify($slug);
+        $this->slug = $slug;
     }
 
     /**
@@ -109,34 +154,8 @@ class Category {
         return $this->slug;
     }
 
-    public function slugify($text) {
-        // sustituye caracteres de espaciado o dígitos con un -
-        $text = preg_replace('#[^\\pL\d]+#u', '-', $text);
-
-        // recorta espacios en ambos extremos
-        $text = trim($text, '-');
-
-
-        // translitera
-        if (function_exists('iconv')) {
-            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
-        }
-
-        // cambia a minúsculas
-        $text = strtolower($text);
-
-        // elimina caracteres indeseables
-        $text = preg_replace('#[^-\w]+#', '', $text);
-
-        if (empty($text)) {
-            return 'n-a';
-        }
-
-        return $text;
-    }
-    
     public function __construct() {
         $this->articles = new ArrayCollection();
     }
-    
+
 }

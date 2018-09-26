@@ -5,6 +5,7 @@
 namespace BlogBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * @ORM\Entity(repositoryClass="BlogBundle\Entity\CommentRepository")
@@ -34,6 +35,27 @@ class CommentRepository extends EntityRepository {
             $qb->setMaxResults($limit);
 
         return $qb->getQuery()->getResult();
+    }
+
+    public function getCommentsByDate($page = 1, $limit = 10) {
+        $qb = $this->createQueryBuilder('c')
+                ->addOrderBy('c.created', 'DESC');
+
+        $paginated = new Paginator($qb, $fetchJoinCollection = true);
+
+        $totalItems = count($paginated);
+        $pagesCount = ceil($totalItems / $limit);
+
+        $paginated
+                ->getQuery()
+                ->setFirstResult($limit * ($page - 1))
+                ->setMaxResults($limit);
+
+        return array(
+            'total_pages' => $pagesCount,
+            'paginated' => $paginated,
+            'current_page' => $page
+        );
     }
 
 }

@@ -1,0 +1,18 @@
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block extra %}<meta name="robots" content="noindex">{% endblock %}
+
+{% block content %}
+    <article>
+        <nav class="breadcrumbs">
+            <a href="{{ path('app_homepage') }}">Inicio</a>
+            <a href="{{ path('backend_homepage') }}" >Panel de control</a>
+            <a href="{{ path('backend_galleries',{'page': 1}) }}" >Galerías</a>
+        </nav>
+        <h1>Galería nueva</h1>
+        {% include "BackendBundle:Gallery:form.html.twig" %}
+        <footer>
+            <a href="{{ path('app_back') }}" >Atrás</a>
+        </footer>
+    </article>
+{% endblock %}

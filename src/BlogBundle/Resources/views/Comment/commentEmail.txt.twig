@@ -1,0 +1,6 @@
+{{ comment.name  | capitalize }} ha realizado una comentario en el artículo del blog
+de nzreformas.es el {{ "now" | date("Y-m-d H:i") }}.
+
+Comentario: {{ comment.comment }}
+
+{{ app.request.getSchemeAndHttpHost() ~  path('blog_article_show', { 'slug': comment.article.slug }) }}#{{ comment.id }}

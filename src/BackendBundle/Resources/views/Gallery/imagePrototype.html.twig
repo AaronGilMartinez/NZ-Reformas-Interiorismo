@@ -1,0 +1,19 @@
+{% macro information_prototype(image, index) %}
+    {% set index = index | default('__image__') %}
+    <li id="image-{{ index }}" >
+        {#<a onclick="showHide({{ index }})" href="javascript:void(0);"  >
+            <img id="{{ index }}" class="thumb" src="/{{ image.file.vars.image_url }}" onclick="showHide({{ index }})"/>
+        </a>
+        <div id="modal-{{ index }}" class="modal" >
+            <div class="modal-content">
+                <span class="close" onclick="showHide({{ index }})" >&times;</span>#}
+                {{ form_row(image.file) }}
+                {{ form_row(image.path) }}
+                {{ form_row(image.alt) }}
+                {{ form_row(image.title) }}
+                {{ form_row(image.description) }}
+                <button type="button" class="right confirmation" onclick="removeForm({{ index }})" >Borrar</button>
+            {#</div>
+        </div>#}
+    </li>
+{% endmacro %}

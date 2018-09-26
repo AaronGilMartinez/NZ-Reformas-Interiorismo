@@ -8,17 +8,20 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use BlogBundle\Entity\Article;
+use AppBundle\Entity\Image;
 
 class PresupuestosReformasZaragozaFixtures extends AbstractFixture implements OrderedFixtureInterface {
 
     public function load(ObjectManager $manager) {
         $article = new Article();
-        $article->setTitle('Presupuestos de reformas en Zaragoza para modificar nuestros espacios');
+        $article->setTitle('Los mejores presupuestos de reformas en Zaragoza');
+        $article->setDescription('Obtén los mejores presupuestos de reformas en Zaragoza para tus proyectos con total garantía de calidad y sin compromiso.');
+        $article->setName('Presupuestos de reformas en Zaragoza para modificar nuestros espacios');
         $article->setArticle('<p>En toda remodelación o rehabilitación, ya sea de un negocio 
             particular o de una vivienda, es importante tener en cuenta algunos aspectos como el 
             volumen de inversión a realizar para contemplar realmente el coste que tendrá realizar 
-            la adaptación de los espacios. Por ello es importante solicitar diversos presupuestos de
-            reformas en Zaragoza, para contrastar y así escoger el que mejor se adapte a nuestras 
+            la adaptación de los espacios. Por ello es importante solicitar diversos <b>presupuestos de
+            reformas en Zaragoza</b>, para contrastar y así escoger el que mejor se adapte a nuestras 
             posibilidades.</p>
 
             <p>Es por ello que en NZ Reformas, se realizan presupuestos de reformas en Zaragoza, 
@@ -30,7 +33,7 @@ class PresupuestosReformasZaragozaFixtures extends AbstractFixture implements Or
             sus espacios y haciendo que todo ello acabe siendo un nuevo entorno.</p>
 
             <p>En NZ Reformas, disponemos de todo lo necesario para convertir un espacio antiguo en 
-            uno nuevo, realizando presupuestos de reformas en Zaragoza, adaptando todo lo necesario 
+            uno nuevo, realizando <a href="/">presupuestos de reformas en Zaragoza</a>, adaptando todo lo necesario 
             para que los espacios cumplan con los requisitos que desean los clientes. Y así poder 
             disfrutar de su nuevo hogar u oficina, con los nuevos materiales utilizados, 
             convirtiendo en realidad todos los requisitos que servirán para mejorar las necesidades 
@@ -44,7 +47,13 @@ class PresupuestosReformasZaragozaFixtures extends AbstractFixture implements Or
             (976 56 55 24) y le proporcionaremos el presupuesto o presupuestos de reformas en 
             Zaragoza, así como el asesoramiento que pueda necesitar para proporcionarle todo lo que 
             nuestros clientes puedan requerir para conseguir su nuevo espacio de trabajo o personal.</p>');
-        $article->setImage('presupuestos-reformas-zaragoza.jpg');
+        $imagen = new Image();
+        $imagen->setPath('bundles/blog/images/articles/');
+        $imagen->setFile('presupuestos-reformas-zaragoza.jpg');
+        $imagen->setTitle($article->getName());
+        $imagen->setAlt($article->getName());
+        $article->setImage($imagen);
+        $article->setSlug('presupuestos-de-reformas-en-zaragoza');
         $article->setCategory($this->getReference('reformas'));
         $article->addTag($this->getReference('diseno-de-interiores'));
         $article->addTag($this->getReference('precio-de-reforma'));
@@ -52,11 +61,10 @@ class PresupuestosReformasZaragozaFixtures extends AbstractFixture implements Or
         $article->addTag($this->getReference('inversion-en-el-hogar'));
         $article->addTag($this->getReference('presupuesto-de-reforma'));
         $article->addTag($this->getReference('zaragoza'));
-        
-        
-        $article->setCreated(new \DateTime());
+
+
+        $article->setCreated(new \DateTime('2016-12-20 13:59:41'));
         $article->setUpdated($article->getCreated());
-        $manager->persist($article);
 
         $manager->persist($article);
 

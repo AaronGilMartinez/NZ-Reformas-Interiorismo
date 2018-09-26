@@ -1,0 +1,24 @@
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block extra %}<meta name="robots" content="noindex">{% endblock %}
+
+{% block content %}
+    <article>
+        <header>
+            <h1>Formulario de registro</h1>
+        </header>
+        {{ form_start(formulario) }}
+        {{ form_errors(formulario) }}
+        <fieldset>
+            {{ form_row(formulario.roles) }}
+            {{ form_row(formulario.username) }}
+            {{ form_row(formulario.email) }}
+            {{ form_row(formulario.password) }}
+        </fieldset>
+        {{ form_row(formulario.email) }}
+        {{ form_rest(formulario) }}
+        {{ form_end(formulario) }}
+    </form>
+</form>
+</article>
+{% endblock %}

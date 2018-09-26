@@ -4,104 +4,108 @@
 {% block description %}NZ Reformas ofrece servicios para la realización proyectos de reformas. Presupuestos sin 
     compromiso y ajustados a las necesidades del cliente.{% endblock %}
 
-{% block content %}
+    {% block content %}
+        <article>
+            <header>
+                <nav class="breadcrumbs">
+                    <a href="{{ path('app_homepage') }}">Inicio</a>
+                </nav>
+                <h1>Servicios</h1>
+                <h2>Proyectos en NZ Reformas</h2>
+            </header>
+            <p>En NZ realizamos todo tipo de actuaciones, viviendas, comunidades y locales. No solo 
+                abarcamos todos los ámbitos, sino que también llevamos a cabo proyectos de todas las escalas, 
+				desde la <a href="/">reforma de pisos en Zaragoza</a> hasta el cambio de bañera por ducha.</p>
+            <p>
+                En el proceso de cualquier reforma se siguen las diferentes etapas. Primero el cliente 
+                contacta con  nosotros ya sea por telefono, por correo, vía web o en persona.Una vez 
+                tomados los datos del cliente (solo es el nombre, telefono y la dirección), se fija una 
+                fecha y una hora para que nuestros especialistas tomen medidas del  emplazamiento a 
+                reformar. Después se plantea un presupuesto partiendo de las calidades elegidas por el 
+                cliente, que en caso de no tener claro, se opta por calidades medias. Acto seguido se 
+                presenta el presupuesto al cliente y se explica detalladamente cada apartado, en este 
+                punto se barajan varias opciones, se aclaran dudas, y se hacen modificaciones.
+            </p>
+            <p>
+                No hay costes por el asesoramiento, y hasta que el que el presupuesto no es aprobado por
+                el cliente no hay compromisos. Una vez aprobado el presupuesto, se inician los trámites 
+                necesarios para la obra (licencias y permisos), los cuales gestionaremos nosotros. 
+                Entonces comienza la obra, la cual se lleva a cabo con la mayor brevedad posible, y 
+                ocasionando las menores molestias posibles.
+            </p>
+            <p>
+                Hay que tener en cuenta que ajustamos cada <a href="/pedir-presupuesto" >presupuesto de reformas</a> al máximo. Además disponemos de 
+                diferentes métodos de pago en plazos, acordes a la posibilidades del cliente, 
+                financiación directa "Sin Bancos". Esto supone una diferencia sustancial, se pueden 
+                plantear mejoras que no se tenian en cuenta por su elevado coste. Por esta razón es tan 
+                importante una planificación exacta, y nuestros especialistas han de visitar cada 
+                reforma para evitar cualquier imprevisto.
+            </p>
+            <ul class="grid">
+                <li>
+                    <img src="{{ asset('bundles/app/images/servicios/todo-tipo-de-reformas.jpg')}}" alt="Todo tipo de reformas" title="Todo tipo de reformas" />
+                    <section>
+                        <h3>Todo tipo de reformas</h3>
+                        <p>No importa si quiere reformar su vivienda, su negocio o comunidad de vecinos.</p>
+                    </section>
+                </li>
+                <li>
+                    <img src="{{ asset('bundles/app/images/servicios/presupuesto-sin-compromiso.jpg')}}" alt="Presupuesto sin compromiso" title="Presupuesto sin compromiso" />
+                    <section>
+                        <h3>Presupuesto sin compromiso</h3>
+                        <p>Puede pedir presupuesto sin compromiso y no tendra ningún coste.</p>
+                    </section>
+                </li>
+                <li>
+                    <img src="{{ asset('bundles/app/images/servicios/atencion-personalizada.jpg')}}" alt="Atención personalizada" title="Atención personalizada" />
+                    <section>
+                        <h3>Atención personalizada</h3>
+                        <p>Estudiaremos de forma detallada el proyecto de reforma deseada.</p>
+                    </section>
+                </li>
+                <li>
+                    <img src="{{ asset('bundles/app/images/servicios/desde-1992.jpg')}}" alt="Desde 1992" title="Desde 1992" />
+                    <section>
+                        <h3>Desde 1992</h3>
+                        <p>Ofrecemos nuestra experiencia como mejor aval para realizar su proyecto con nosotros.</p>
+                    </section>
+                </li>
+                <li>
+                    <img src="{{ asset('bundles/app/images/servicios/solucion-a-medida.jpg')}}" alt="Solución a medida" title="Solución a medida" />
+                    <section>
+                        <h3>Previsión del resultado final</h3>
+                        <p>Plantearemos diferentes soluciones al proyecto mediante simulación 3D.</p>
+                    </section>
+                </li>
+                <li>
+                    <img src="{{ asset('bundles/app/images/servicios/gran-variedad.jpg')}}" alt="Gran variedad" title="Gran variedad" />
+                    <section>
+                        <h3>La elección es suya</h3>
+                        <p>Bajo nuestro asesoramiento se realizará la solución de proyecto más adecuada.</p>
+                    </section>
+                </li>
+                <li>
+                    <img src="{{ asset('bundles/app/images/servicios/sin-preocupaciones.jpg')}}" alt="Sin preocupaciones" title="Sin preocupaciones" />
+                    <section>
+                        <h3>Sin preocupaciones</h3>
+                        <p>Nos encargamos de la gestión de los trámites legales necesarios.</p>
+                    </section>
+                </li>
+                <li>
+                    <img src="{{ asset('bundles/app/images/servicios/sin-molestias.jpg')}}" alt="Sin molestias" title="Sin molestias" />
+                    <section>
+                        <h3>Sin molestias</h3>
+                        <p>Rapidez en la coordinación y ejecución de la obra.</p>
+                    </section>
+                </li>
+                <li>
+                    <img src="{{ asset('bundles/app/images/servicios/facilidad-de-pago.jpg')}}" alt="Facilidad de pago" title="Facilidad de pago" />
+                    <section>
+                        <h3>Facilidad de pago</h3>
+                        <p>Dispone de diferentes varios métodos de pago, financiación directa "Sin Bancos".</p>
+                    </section>
+                </li>
+            </ul>
+        </article>
 
-    <article>
-        <header>
-            <h1>Servicios</h1>
-            <h2>¿Cómo realizamos los proyectos en NZ Reformas?</h2>
-        </header>
-        <p>
-            En el proceso de cualquier reforma se siguen las diferentes etapas. Primero el cliente 
-            contacta con  nosotros ya sea por la información de contacto, o el formulario de abajo. 
-            Una vez tomados los datos del cliente (solo es el nombre, telefono y la dirección), se 
-            fija una fecha y una hora para que nuestros especialistas tomen medidas del 
-            emplazamiento a reformar. Después se plantea un presupuesto partiendo de las calidades 
-            elegidas por el cliente, que en caso de no tener claro, se opta por calidades medias. 
-            Acto seguido se presenta el presupuesto al cliente y se explica detalladamente cada 
-            apartado, en este punto se barajan varias opciones, se aclaran dudas, y se hacen 
-            modificaciones.
-        </p>
-        <p>
-            No hay costes por el asesoramiento, y hasta que el que el presupuesto no es aprobado por
-            el cliente no hay compromisos. Una vez aprobado el presupuesto, se inician los trámites 
-            necesarios para la obra (licencias y permisos), los cuales gestionaremos nosotros. 
-            Entonces comienza la obra, la cual se lleva a cabo con la mayor brevedad posible, y 
-            ocasionando las menores molestias posibles.
-        </p>
-        <p>
-            Hay que tener en cuenta que ajustamos cada presupuesto al máximo. Además disponemos de 
-            diferentes métodos de pago en plazos, acordes a la posibilidades del cliente, 
-            financiación directa "Sin Bancos". Esto supone una diferencia sustancial, se pueden 
-            plantear mejoras que no se tenian en cuenta por su elevado coste. Por esta razón es tan 
-            importante una planificación exacta, y nuestros especialistas han de visitar cada 
-            reforma para evitar cualquier imprevisto.
-        </p>
-        <ul class="grid">
-            <li>
-                <img src="{{ asset('bundles/app/images/servicios/todo-tipo-de-reformas.jpg')}}" alt="Todo tipo de reformas" title="Todo tipo de reformas" />
-                <section>
-                    <h3>Todo tipo de reformas</h3>
-                    <p>No importa si quiere reformar su vivienda, su negocio o comunidad de vecinos.</p>
-                </section>
-            </li>
-            <li>
-                <img src="{{ asset('bundles/app/images/servicios/presupuesto-sin-compromiso.jpg')}}" alt="Presupuesto sin compromiso" title="Presupuesto sin compromiso" />
-                <section>
-                    <h3>Presupuesto sin compromiso</h3>
-                    <p>Puede pedir presupuesto sin compromiso y no tendra ningún coste.</p>
-                </section>
-            </li>
-            <li>
-                <img src="{{ asset('bundles/app/images/servicios/atencion-personalizada.jpg')}}" alt="Atención personalizada" title="Atención personalizada" />
-                <section>
-                    <h3>Atención personalizada</h3>
-                    <p>Estudiaremos de forma detallada el proyecto de reforma deseada.</p>
-                </section>
-            </li>
-            <li>
-                <img src="{{ asset('bundles/app/images/servicios/desde-1992.jpg')}}" alt="Desde 1992" title="Desde 1992" />
-                <section>
-                    <h3>Desde 1992</h3>
-                    <p>Ofrecemos nuestra experiencia como mejor aval para realizar su proyecto con nosotros.</p>
-                </section>
-            </li>
-            <li>
-                <img src="{{ asset('bundles/app/images/servicios/solucion-a-medida.jpg')}}" alt="Solución a medida" title="Solución a medida" />
-                <section>
-                    <h3>Previsión del resultado final</h3>
-                    <p>Plantearemos diferentes soluciones al proyecto mediante simulación 3D.</p>
-                </section>
-            </li>
-            <li>
-                <img src="{{ asset('bundles/app/images/servicios/gran-variedad.jpg')}}" alt="Gran variedad" title="Gran variedad" />
-                <section>
-                    <h3>La elección es suya</h3>
-                    <p>Bajo nuestro asesoramiento se realizará la solución de proyecto más adecuada.</p>
-                </section>
-            </li>
-            <li>
-                <img src="{{ asset('bundles/app/images/servicios/sin-preocupaciones.jpg')}}" alt="Sin preocupaciones" title="Sin preocupaciones" />
-                <section>
-                    <h3>Sin preocupaciones</h3>
-                    <p>Nos encargamos de la gestión de los trámites legales necesarios.</p>
-                </section>
-            </li>
-            <li>
-                <img src="{{ asset('bundles/app/images/servicios/sin-molestias.jpg')}}" alt="Sin molestias" title="Sin molestias" />
-                <section>
-                    <h3>Sin molestias</h3>
-                    <p>Rapidez en la coordinación y ejecución de la obra.</p>
-                </section>
-            </li>
-            <li>
-                <img src="{{ asset('bundles/app/images/servicios/facilidad-de-pago.jpg')}}" alt="Facilidad de pago" title="Facilidad de pago" />
-                <section>
-                    <h3>Facilidad de pago</h3>
-                    <p>Dispone de diferentes varios métodos de pago, financiación directa "Sin Bancos".</p>
-                </section>
-            </li>
-        </ul>
-    </article>
-
-{% endblock %}
+    {% endblock %}

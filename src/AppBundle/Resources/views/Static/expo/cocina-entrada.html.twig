@@ -1,0 +1,113 @@
+{% extends 'AppBundle::main.html.twig' %}
+{% import "AppBundle:Static:share.html.twig" as share %}
+
+{% block title %}Cocina entrada | NZ Reformas{% endblock %}
+{% block description %}{% endblock %}
+
+{% block content %}
+    <article>
+        <section class="zona-expo" id="cocina-entrada">
+            <nav class="breadcrumbs">
+                <a href="{{ path('app_homepage') }}">Inicio</a>
+                <a href="{{ path ('app_static',{'page': 'exposicion-de-reformas' }) }}">Exposición</a>
+            </nav>
+            <header>
+                <h1>Cocina entrada</h1>
+            </header>
+            <p>
+                En esta cocina encontraremos un estilo retro muy singular como combinación de diferentes
+                materiales y acabados en una misma zona.
+            </p>
+            <p>
+                Tenemos varios aspectos a comentar y los más llamativos están en la isla y el suelo.
+                En el suelo se ha colocado una baldosa porcelánica con forma hexagonal en tres tonos
+                de gris. En la isla se ha han utilizado muebles con acabado en madera con tiradores 
+                de acero inoxidable. Ahora vamos a lo interesante, en la encimera se han utilizado 
+                dos acabados distintos, por un lado grafito liso dónde está el fregadero bajo encimera
+                y por otro un madera marfil con una placa muy especial. La placa es una combinación de 
+                diferentes módulos conectados de tal manera que puedes hacer barbacoa o wok en la 
+                misma placa. Esta es una solución de Bosch llamada "placa dominó" y permite combinar
+                diferentes estilos de cocina, en esta placa en concreto tenemos inducción (eficiencia),
+                gas (profesionalidad), y parrilla (BBQ).
+            </p>
+            <p>
+                En el frente de cocina se han utilizado muebles con un acabado de color liso, y 
+                tiradores "finger-pull", distintos a los de la isla, más tradicionales. Si nos fijamos
+                en la pared, alrededor de los muebles se aprecia un frente decorativo con acabado de 
+                imitación ladrillo.
+            </p>
+            <p>
+                Como resultado de esta combinación de colores y texturas, tenemos una cocina muy 
+                variopinta, pero también conserva homogeneidad. Aunque tengamos diferentes acabados 
+                todos comparten un tono similar. Se aprecian un tono claro en muebles y encimera, otro
+                oscuro en la otra parte de la encimera y los fuegos, un color vivo en los módulos de
+                color rojo con brillo, y uno neutro en la baldosa hexagonal de color gris.
+            </p>
+            {% include "AppBundle:Static/expo/galerias:cocina-entrada.html.twig" %}
+            <nav>
+                <a class="left" href="{{ path ('app_static',{'page': 'exposicion-de-reformas' }) }}">
+                    <button type="button">Volver al mapa</button>
+                </a>
+            </nav>
+        </section>
+    </article>
+{% endblock %}
+
+{% block extraJS %}
+    <script type="text/javascript" >
+
+        function load(myimg) { // load larger img
+            var img = document.getElementById(myimg); // get img id
+            img.src = img.getAttribute("data-src"); // switch "data-src" to "src" on corresponding img
+            id = myimg.replace(/^\D+/g, ''); // get number id from img id ("#img-1") ready for arrow key nav
+            location.replace('#pic-' + id); // go to hashed url without affecting browser history
+            document.onkeydown = galleryNav; // start arrow key nav
+        }
+
+        var id = window.location.hash.substr(1).replace(/^\D+/g, ''); // get hash from url ("#pic-1") and get number id
+
+        if (id) {
+            load('img-' + id);
+        } // load larger img
+
+        function closeX() {
+            id = null;
+            location.replace('#close');
+        } // close larger img
+
+        function keyCheck(keyCodeNum) { /* #### - keyboard nav controls - #### */
+            var count = 0;
+            var num = document.getElementsByClassName('thumb');
+            for (var i = 0; i < num.length; i++) {
+                if (num[i].id.startsWith('img-')) {
+                    count++;
+                } // count big pics (".big-img") in #gallery
+            }
+            switch (keyCodeNum) { // setup key code actions
+                case 27: // esc key
+                    closeX();
+                    break;
+                case 37: // left key
+                    id--;
+                    id < 1 ? load('img-' + count) : load('img-' + id);
+                    break;
+                case 39: // right key
+                    id++;
+                    id > count ? load('img-1') : load('img-' + id);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        function galleryNav(event) { // tie keyboard nav controls to arrow key presses
+            var keyDown = event || window.event,
+                    key = (keyDown.which) ? keyDown.which : keyDown.keyCode;
+            if ((window.location.hash.substr(1)) !== 'close') {
+                keyCheck(key);
+            }
+            return false;
+        }
+
+    </script>
+{% endblock %}

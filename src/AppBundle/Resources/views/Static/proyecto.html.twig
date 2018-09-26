@@ -7,19 +7,32 @@
     <article>
         <section>
             <header>
+                <nav class="breadcrumbs">
+                    <a href="{{ path('app_homepage') }}">Inicio</a>
+                    <a href="{{ path ('app_static',{'page': 'proyectos'}) }}" >Proyectos</a>
+                </nav>
                 <h1>{{ project.name }}</h1>
             </header>
+            {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')%}
+                <a class="button" href="{{ path('backend_project_edit', { 'id' : project.id }) }}" ><b>Editar proyecto</b></a>
+            {% endif%}
             {{ project.description | raw }}
+            {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')%}
+                <a href="{{ path('backend_gallery_new') }}" ><b>Añadir galería</b></a>
+            {% endif %}
             <ul class="rounded-basic" >
-                {% for gallery in project.galleries %}
+                {% for gallery in orderedGalleries %}
                     <li>
                         <a href="{{ path ('app_gallery',{'project': project.slug,'gallery': gallery.slug}) }}" >
                             <h3>{{ gallery.name }}</h3>
-                            <img src="{{ asset( gallery.image ~ '.jpg')}}" title="{{ gallery.name }}" alt="{{ gallery.name }}" />
+                            <img src="{{ asset( gallery.image.src() )}}" title="{{ gallery.name }}" alt="{{ gallery.name }}" />
                         </a>
                     </li>
                 {% endfor %}
             </ul>
+            {% if project.content %}
+                 {{ project.content | raw }}
+            {% endif %}
         </section>
 
     </article>

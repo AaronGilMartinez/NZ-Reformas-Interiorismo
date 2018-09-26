@@ -1,6 +1,14 @@
 {# src/BlogBundle/Resources/views/Comment/form.html.twig #}
-
-<form action="{{ path('blog_comment_create', { 'slug' : comment.article.slug } ) }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
+<form action="{{ path('blog_comment_create', { 'slug' : comment.article.slug }) }}" method="post" >
+    {{ form_errors(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.comment) }}
+    <div class="asunto">
+        {{ form_row(form.subject, {
+                    'attr': { 
+                        'placeholder': 'Si ves este campo, dejálo en blanco',
+                } })}}
+    </div>
+    {{ form_rest(form) }}
     <input type="submit" value="Enviar">
 </form>

@@ -1,0 +1,43 @@
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block extra %}<meta name="robots" content="noindex">{% endblock %}
+
+
+{% block content %}
+    <article>
+        <header>
+            <h1>Listado de usuarios</h1>
+        </header>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Pivilegios</th>
+                    <th>E-Mail</th>
+                    <th>Última sesión</th>
+                    <th>Acciones</th>
+                </tr>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.roles | first }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.last | date ( "h:m:s - d/m/y" ) }}</td>
+                        <td>
+                            <a href="{{ path('backend_user_edit', { 'id': user.id }) }}" >Editar</a>
+                            <a href="{{ path('backend_user_remove', { 'id': user.id }) }}" >Eliminar</a>
+                        </td>
+                    </tr>
+                    <tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5">No se han encontrado usuarios</td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="5"><a href="{{ path('backend_user_register') }}" >Registrar usuario</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </article>
+{% endblock %}

@@ -4,185 +4,169 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\GalleryRepository")
  * @ORM\Table(name="gallery")
  */
 class Gallery {
-    
+
     /**
      * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $uploaded;
+
+    /**
      * @ORM\Column(type="string")
      */
     protected $name;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $slug;
 
     /**
      * @ORM\Column(type="string")
      */
+    protected $path;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Image", cascade={"all"})
+     * @Assert\Type(type="AppBundle\Entity\Image")
+     * @Assert\Valid()
+     */
     protected $image;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $description;
 
     /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $content;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Project", inversedBy="galleries")
-     * @ORM\JoinColumn(name="project", referencedColumnName="name")
      */
     protected $project;
 
     /**
-     * @ORM\OneToMany(targetEntity="Image", mappedBy="gallery")
+     * @ORM\ManyToMany(targetEntity="Image", cascade={"all"})
+     * @ORM\JoinTable(name="gallery_images",
+     *      joinColumns={@ORM\JoinColumn(name="gallery_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="image_id", referencedColumnName="id", unique=true)}
+     *      )
      */
     protected $images;
 
     public function __construct() {
         $this->images = new ArrayCollection();
-    }
-    
-    /**
-     * Set name
-     *
-     * @param string $name
-     */
-    public function setName($name) {
-        $this->name = $name;
-        $this->setSlug($this->name);
+        $this->uploaded = new \DateTime();
     }
 
-    /**
-     * Get name
-     *
-     * @return string 
-     */
+    public function __toString() {
+        return $this->name;
+    }
+
+    public function getId() {
+        return $this->id;
+    }
+
+    public function setUploaded($date) {
+        $this->uploaded = $date;
+    }
+
+    public function getUploaded() {
+        return $this->uploaded;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+        $this->setSlug($name);
+    }
+
     public function getName() {
         return $this->name;
     }
 
-    /**
-     * Set slug
-     *
-     * @param string $slug
-     */
     public function setSlug($slug) {
-        $this->slug = $this->slugify($slug);
+        $this->slug = $slug;
     }
 
-    /**
-     * Get slug
-     *
-     * @return string 
-     */
     public function getSlug() {
         return $this->slug;
     }
 
-    /**
-     * Set image
-     *
-     * @param string $image
-     */
     public function setImage($image) {
         $this->image = $image;
     }
 
-    /**
-     * Get image
-     *
-     * @return string
-     */
     public function getImage() {
         return $this->image;
     }
 
-    /**
-     * Get description
-     *
-     * @return text 
-     */
     public function getDescription() {
         return $this->description;
     }
 
-    /**
-     * Set description
-     *
-     * @param text $description
-     */
     public function setDescription($description) {
         $this->description = $description;
     }
 
-    /**
-     * Add image
-     * 
-     * @param Image $image
-     * 
-     */
-    public function addImage(\AppBundle\Entity\Image $image) {
+    public function getContent() {
+        return $this->content;
+    }
+
+    public function setContent($content) {
+        $this->content = $content;
+    }
+
+    public function addImage($image) {
         $this->images[] = $image;
     }
 
-    /**
-     * Get images
-     * 
-     * @return Image
-     * 
-     */
+    public function removeImage($image) {
+        $this->images->removeElement($image);
+    }
+
     public function getImages() {
         return $this->images;
     }
 
-    /**
-     * Get project
-     * 
-     * @return Project
-     * 
-     */
     public function getProject() {
         return $this->project;
     }
 
-    /**
-     * Set project
-     *
-     * @param Project $project
-     */
     public function setProject(\AppBundle\Entity\Project $project) {
         $this->project = $project;
     }
 
-    public function slugify($text) {
-        // sustituye caracteres de espaciado o dígitos con un -
-        $text = preg_replace('#[^\\pL\d]+#u', '-', $text);
-
-        // recorta espacios en ambos extremos
-        $text = trim($text, '-');
-
-
-        // translitera
-        if (function_exists('iconv')) {
-            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
-        }
-
-        // cambia a minúsculas
-        $text = strtolower($text);
-
-        // elimina caracteres indeseables
-        $text = preg_replace('#[^-\w]+#', '', $text);
-
-        if (empty($text)) {
-            return 'n-a';
-        }
-
-        return $text;
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath() {
+        return $this->path;
     }
 
+    /**
+     * Set path
+     *
+     * @param string $path
+     */
+    public function setPath($path) {
+        $this->path = $path;
+    }
 }

@@ -8,7 +8,7 @@ class DateBlogExtension extends \Twig_Extension {
 
     public function getFilters() {
         return array(
-            'created_ago' => new \Twig_Filter_Method($this, 'createdAgo'),
+            new \Twig_SimpleFilter('created_ago', array($this, 'createdAgo')),
         );
     }
 
@@ -21,19 +21,19 @@ class DateBlogExtension extends \Twig_Extension {
         if ($delta < 60) {
 // Segundos
             $time = $delta;
-            $duration = " hace " . $time . " segundo" .(($time > 1) ? "s" : "") ;
+            $duration = " hace " . $time . " segundo" . (($time > 1) ? "s" : "");
         } else if ($delta < 3600) {
 // Minutos
             $time = floor($delta / 60);
-            $duration = " hace " . $time . " minuto" .(($time > 1) ? "s" : "") ;
+            $duration = " hace " . $time . " minuto" . (($time > 1) ? "s" : "");
         } else if ($delta < 86400) {
 // Horas
             $time = floor($delta / 3600);
-            $duration = " hace " . $time . " hora" .(($time > 1) ? "s" : "") ;
+            $duration = " hace " . $time . " hora" . (($time > 1) ? "s" : "");
         } else {
 // Días
             $time = floor($delta / 86400);
-            $duration = " hace " . $time . " día" .(($time > 1) ? "s" : "") ;
+            $duration = " hace " . $time . " día" . (($time > 1) ? "s" : "");
         }
 
         return $duration;

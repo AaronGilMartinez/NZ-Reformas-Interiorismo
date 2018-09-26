@@ -1,0 +1,28 @@
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block extra %}<meta name="robots" content="noindex">{% endblock %}
+
+{% block content %}
+    <article>
+        <header>
+            <nav class="breadcrumbs">
+                <a href="{{ path('app_homepage') }}">Inicio</a>
+                <a href="{{ path('backend_homepage') }}" >Panel de control</a>
+                <a href="{{ path('backend_enquiries',{'page': 1}) }}" >Consultas</a>
+            </nav>
+            <h1>Ver consulta</h1>
+        </header>
+        <label>Fecha</label>: <i><h3>{{ enquiry.sent | date ( "d/m/y - H:m:s" ) }}</h3></i>
+        <label>URL</label>: <i><h3>{{ enquiry.url | lower }}</h3></i>
+        <label>Nombre</label>: <i><h3>{{ enquiry.name | capitalize }}</h3></i>
+        <label>E-Mail</label>: <i><h3>{{ enquiry.email | lower }}</h3></i>
+        <label>Teléfono</label>: <i><h3>{{ enquiry.phone | capitalize }}</h3></i>
+        <label>Mensaje</label>: <i><h3>{{ enquiry.body | capitalize }}</h3></i></p>
+    <footer>
+        <a href="{{ path('app_back') }}" >Atrás</a>
+        {% if is_granted('ROLE_ADMIN')%}
+            <a class="right confirmation" href="{{ path('backend_enquiry_remove', { 'id': enquiry.id }) }}" >Eliminar</a>
+        {% endif %}
+    </footer>
+</article>
+{% endblock %}

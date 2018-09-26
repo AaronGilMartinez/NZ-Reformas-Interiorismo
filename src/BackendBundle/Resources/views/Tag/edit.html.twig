@@ -1,0 +1,34 @@
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block extra %}<meta name="robots" content="noindex">{% endblock %}
+{% block title %}Editar etiqueta | NZ Reformas{% endblock %}
+
+{% block content %}
+    <article>
+         <nav class="breadcrumbs">
+            <a href="{{ path('app_homepage') }}">Inicio</a>
+            <a href="{{ path('backend_homepage') }}" >Panel de control</a>
+            <a href="{{ path('backend_tags',{'page': 1}) }}" >Etiquetas</a>
+        </nav>
+        <h1>Editar etiqueta</h1>
+        {{ form_start(formulario) }}
+        {% if form_errors(formulario) %}
+            <div class="alert alert-danger" role="alert" >{{ form_errors(formulario) }}</div>
+        {% endif %}
+        <ul>
+            <li>{{ form_row(formulario.name) }}</li>
+            <li>{{ form_row(formulario.slug) }}</i></li>
+            <li>{{ form_row(formulario.title) }}</i></li>
+            <li>{{ form_row(formulario.description) }}</i></li>
+            <li><input type="submit" value="Enviar" /></li>
+                {{ form_rest(formulario) }}
+        </ul>
+        {{ form_end(formulario) }}
+        <footer>
+            <a href="{{ path('app_back') }}" >Atrás</a>
+            {% if is_granted('ROLE_ADMIN')%}
+                <a class="right confirmation" href="{{ path('backend_tag_remove', { 'id': tag.id }) }}" >Eliminar</a>
+            {% endif %}
+        </footer>
+    </article>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block extra %}<meta name="robots" content="noindex">{% endblock %}
+{% block title %}Categorías | NZ Reformas{% endblock %}
+
+{% block content %}
+    <article>
+        <nav class="breadcrumbs">
+            <a href="{{ path('app_homepage') }}">Inicio</a>
+            <a href="{{ path('backend_homepage') }}" >Panel de control</a>
+        </nav>
+        <header>
+            <h1>Categorías</h1>
+        </header>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Slug</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th><a href="{{ path('backend_category_new') }}" >Añadir</a></th>
+                </tr>
+                {% for category in categories %}
+                    <tr>
+                        <td>{{ category.name }}</td>
+                        <td>{{ category.slug }}</td>
+                        <td>{{ category.title }}</td>
+                        <td>{{ category.description }}</td>
+                        <td>    
+                            <a href="{{ path('backend_category_show', { 'id': category.id }) }}" >Ver</a>
+                            <a href="{{ path('backend_category_edit', { 'id': category.id }) }}" >Editar</a>
+                            <a class="confirmation" href="{{ path('backend_category_remove', { 'id': category.id }) }}" >Eliminar</a>
+                        </td>
+                    </tr>
+                    <tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="6">No se han encontrado categorías</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% if paginador.Total() > 1 %}
+            <div class="pagination">
+                <ul>
+                    {% if paginador.Start() != 1 %}
+                        <li class="page-prev"><a href="{{ path('backend_categories',{'page': 1}) }}">1</a></li>
+                        {% endif %}
+                        {% if paginador.Start() > 2 %}
+                        <li>...</li>
+                        {% endif %}
+
+                    {% for i in paginador.Start()..paginador.End() %}
+                        <li><a class="{% if i == paginador.Current() %}active{% endif %}" href="{{ path('backend_categories',{'page': i}) }}" >{{ i }}</a></li>
+                        {% endfor %}
+
+                    {% if paginador.End() < paginador.Total()-1 %}
+                        <li>...</li>
+                        {% endif %}
+                        {% if paginador.End() != paginador.Total() %}
+                        <li class="page-prev"><a href="{{ path('backend_categories',{'page': paginador.Total()}) }}">{{ paginador.Total() }}</a></li>
+                        {% endif %}
+                </ul>
+            </div>
+        {% endif %}
+    </article>
+{% endblock %}

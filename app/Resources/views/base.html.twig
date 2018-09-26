@@ -1,43 +1,191 @@
 <!DOCTYPE html>
-{% spaceless %}
-    <html lang="es" >
-        <head>
-            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-            <meta name="robots" content="noindex" >
-            <link rel="icon" type="image/vnd.microsoft.icon" href="{{ asset('bundles/app/images/icon/favicon.ico') }}"/>
-            <title>{% block title %}{% endblock %}</title>
-            <meta name="description" content="{% block description %}{% endblock %}">
-            <link href='http://fonts.googleapis.com/css?family=Questrial|Sanchez:400italic,400' rel='stylesheet' type='text/css'>
-            {% stylesheets '@AppBundle/Resources/public/css/*.css' %}
-            <link href="{{ asset(asset_url) }}" type="text/css" rel="stylesheet">
-            {% endstylesheets %}
-            <script async src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-            {% javascripts '@AppBundle/Resources/public/js/min.js' %}
-            <script async src="{{ asset_url }}"></script>
-            {% endjavascripts %}
-            {% block extra %}
+{# spaceless #}
+<html lang="es" >
+    <head>
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+            ga('create', 'UA-70661929-2', 'auto');
+            ga('send', 'pageview');
+        </script>
+        <script>
+            gtag('config', 'AW-1001147318/g_HqCMLW4IABELaXsd0D', {
+                'phone_conversion_number': '976565524'
+            });
+        </script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+        <link rel="icon" type="image/vnd.microsoft.icon" href="{{ asset('bundles/app/images/icon/favicon.ico') }}"/>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="canonical" href="{% block urlCanonical %}{% endblock %}" />
+        <meta name="description" content="{% block description %}{% endblock %}">
+        <meta name="keywords" content="{% block keywords %}{% endblock %}">
+        {% block extra %}
+        {% endblock %}
+    </head>
+    <body onresize="resizeImages()" onscroll="toggleUp()">
+        {{ render(controller('AppBundle:Page:menu')) }}
+        <div class="page-content" >
+            {% block main %}
+                <main class="single">
+                    Contenido
+                </main>
             {% endblock %}
-        </head>
-        <body>
+        </div>
 
-            {{ render(controller('AppBundle:Page:menu')) }}
+        {% block footer %}
+            {{ render(controller('AppBundle:Page:footer')) }}
+        {% endblock %}
 
-            <div class="page-content" >
-                {% block main %}
-                    <main class="single">
-                        Contenido
-                    </main>
-                {% endblock %}
-            </div>
+        <div id="cookies" >
+            Este sitio utiliza cookies. Al acceder a esta página usted está aceptando el uso de las mismas. 
+            <a href="{{ path ('app_static',{'page': 'politica-cookies'}) }}" target="_blank" >Política de cookies</a>
+            <span onclick="crearCookie()">Aceptar</span>
+        </div>
 
-            {{ render(controller('AppBundle:page:footer')) }}
+        <script>
+            // Get the modal
+            var modal = document.getElementById('myModal');
+            // Get the button that opens the modal
+            var btn = document.getElementById("myBtn");
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+            var elems = document.getElementsByClassName('confirmation');
+            var closes = document.getElementsByClassName('close');
+            var cWindow = document.getElementById("cookies");
 
-            <script type="text/javascript" >
-                {% block extraJS %}
-                {% endblock %}
-            </script>
+            var confirmIt = function (e) {
+                if (!confirm('¿Seguro/a?'))
+                    e.preventDefault();
+            };
+            for (var i = 0, l = elems.length; i < l; i++) {
+                elems[i].addEventListener('click', confirmIt, false);
+            }
 
-        </body>
-    </html>
-{% endspaceless %}
+            var closeIt = function (e) {
+                e.target.parentNode.style.display = "none";
+            };
+            for (var i = 0, l = closes.length; i < l; i++) {
+                closes[i].addEventListener('click', closeIt, false);
+            }
+
+            function comprobarCookie() {
+                var name = "visitaAnterior";
+                valorCookie = decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + name.replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
+                if (valorCookie)
+                    cWindow.style.display = "none";
+
+            }
+
+            function crearCookie() {
+                var cookievalue = "true";
+                document.cookie = "visitaAnterior=" + encodeURIComponent(cookievalue);
+                cWindow.style.display = "none";
+            }
+
+            /*function initMap() {
+             var portazgo = {lat: 41.673448, lng: -0.9499062};
+             var map = new google.maps.Map(document.getElementById('map-1'), {
+             zoom: 15,
+             center: portazgo
+             });
+             var marker = new google.maps.Marker({
+             position: portazgo,
+             map: map,
+             icon: '{# asset('bundles/app/images/icon/nz-icon.png')#}',
+             title: 'NZ Reformas'
+             });
+             var villahermosa = {lat: 41.6458786, lng: -0.9088254};
+             var map = new google.maps.Map(document.getElementById('map-2'), {
+             zoom: 15,
+             center: villahermosa
+             });
+             var marker = new google.maps.Marker({
+             position: villahermosa,
+             map: map,
+             title: 'NZ Reformas',
+             icon: '{# asset('bundles/app/images/icon/nz-icon.png')#}'
+             });
+             }*/
+
+            function scrollUp() {
+                var scrollPos = window.scrollY || window.scollTop || document.getElementsByTagName("html")[0].scrollTop;
+                var botonMenu = document.getElementById('menu-button');
+                if (botonMenu.style.display === "none")
+                    altura = 85;
+                else
+                    altura = 0;
+                if (scrollPos !== altura) {
+                    window.scrollTo(0, 0); // horizontal and vertical scroll increments
+                }
+            }
+            function resizeImages() {
+                width = window.innerWidth;
+                images = document.getElementsByClassName('resized');
+                for (i = 0; i < images.length; i++) {
+                    url = images[i].src;
+                    if (width <= 480) {
+                        quality = "low.jpg";
+                    } else if (width > 480 && width <= 1024) {
+                        quality = "medium.jpg";
+                    } else {
+                        quality = "high.jpg";
+                    }
+
+                    images[i].src = url.replace(url.substring(url.lastIndexOf('-') + 1), quality);
+                }
+            }
+            function toggleMenu() {
+                document.getElementById('menu').classList.toggle('active');
+            }
+            function toggleUp() {
+                var botonIrArriba = document.getElementById('up');
+                var scrollPos = window.scrollY || window.scollTop || document.getElementsByTagName("html")[0].scrollTop;
+                if (scrollPos > 1000) {
+                    botonIrArriba.style.display = 'block';
+                } else {
+                    botonIrArriba.style.display = 'none';
+                }
+            }
+
+            // When the user clicks on the button, open the modal
+            btn.onclick = function () {
+                modal.style.display = "block";
+            };
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            };
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            };
+            toggleUp();
+            resizeImages();
+            comprobarCookie();
+        </script>
+        {#
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key={{ google_API }}&callback=initMap">
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Questrial|Sanchez:400italic,400' rel='stylesheet' type='text/css'>
+        #}
+        <link href="{{ asset('build/app.css') }}?v=2.2.6" type="text/css" rel="stylesheet">
+
+        {% block extraJS %}
+        {% endblock %} 
+    </body>
+</html>
+{# endspaceless #}

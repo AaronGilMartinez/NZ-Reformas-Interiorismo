@@ -1,0 +1,43 @@
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block extra %}<meta name="robots" content="noindex">{% endblock %}
+{% block title %}Ver artículo | NZ Reformas{% endblock %}
+
+{% block content %}
+    <article>
+        <nav class="breadcrumbs">
+            <a href="{{ path('app_homepage') }}">Inicio</a>
+            <a href="{{ path('backend_homepage') }}" >Panel de control</a>
+            <a href="{{ path('backend_articles',{'page': 1}) }}" >Artículos</a>
+        </nav>
+        <header>
+            <a href="{{ path('backend_article_edit', { 'id': article.id }) }}" >Editar</a>
+            <h1>Ver artículo</h1>
+        </header>
+        <label>Nombre</label>: <h2>{{ article.name | capitalize }}</h2> 
+        <label>ID</label>: <i><h3>{{ article.id }}</h3></i>
+        <label>Fecha de creación</label>: <i><h3>{{ article.created | date("m/d/Y") }}</h3></i>
+        <label>Última actualización</label>: <i><h3>{{ article.updated | date("m/d/Y") }}</h3></i>
+        <label>Slug</label>: <i><h3>{{ article.slug | lower }}</h3></i>
+        <label>Title</label>: <i><h3>{{ article.title | capitalize }}</h3></i>
+        <label>Description</label>:<i><p>{{ article.description | capitalize }}</p></i>
+        <label>Categoría</label>: <i><h3>{{ article.category | capitalize }}</h3></i>
+        <label>Etiquetas</label>:
+        {% for tag in article.tags %}
+            {{ tag }} |
+        {% else %}
+            Este artículo no tiene etiquetas.
+        {% endfor %}
+        <b>Articulo</b>: 
+        {{ article.article | raw }}
+        <b>Imagen</b>: {% if article.image %}
+        <img src="{{ asset( article.image.src ) }}" /><br>
+        {% else %}
+            Sin imagen
+            {% endif %}
+                <footer>
+                    <a href="{{ path('app_back') }}" >Atrás</a>
+                    <a class="right confirmation" href="{{ path('backend_article_remove', { 'id': article.id }) }}" >Eliminar</a>
+                </footer>
+            </article>
+            {% endblock %}

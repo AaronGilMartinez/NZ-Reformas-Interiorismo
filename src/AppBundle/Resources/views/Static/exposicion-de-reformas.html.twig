@@ -1,0 +1,189 @@
+{% extends 'AppBundle::main.html.twig' %}
+{% import "AppBundle:Static:share.html.twig" as share %}
+
+{% block title %}Exposición de reformas en zaragoza | NZ Reformas{% endblock %}
+{% block description %}{% endblock %}
+
+{% block content %}
+    <article>
+        <header>
+            <nav class="breadcrumbs">
+                <a href="{{ path('app_homepage') }}">Inicio</a>
+            </nav>
+            <h1>Exposición de reformas</h1>
+        </header>
+        <p>
+            NZ presenta su exposición de reformas, son 2000 m2 que abarcan todo tipo de reformas. 
+            Para mayor organización la exposición está estructurada por zonas que cubren distintos 
+            aspectos, desde los más generales a más específicos:
+        </p>
+        <section class="leyenda" >
+            <ul class="viviendas" >
+                <h3>Viviendas</h3>
+                <li>
+                    <a href="{{ path ('app_expo',{'page': 'vivienda-1' }) }}" >Vivienda 1</a>
+                </li>
+                <li>
+                    <a href="{{ path ('app_expo',{'page': 'vivienda-2' }) }}" >Vivienda 2</a>
+                </li>
+                <li>
+                    <a href="{{ path ('app_expo',{'page': 'vivienda-3' }) }}" >Vivienda 3</a>
+                </li>
+                <li>
+                    <a href="{{ path ('app_expo',{'page': 'vivienda-4' }) }}" >Vivienda 4</a>
+                </li>
+                <li>
+                    <a href="{{ path ('app_expo',{'page': 'vivienda-5' }) }}" >Vivienda 5</a>
+                </li>
+            </ul>
+            <ul class="cocinas">
+                <h3>Cocinas</h3>
+                <li>
+                    <a href="{{ path ('app_expo',{'page': 'cocina-escaparate' }) }}" >Escaparate</a>
+                </li>
+                <li>
+                    <a href="{{ path ('app_expo',{'page': 'cocina-entrada' }) }}" >Entrada</a>
+                </li>
+                <li>
+                    <a href="{{ path ('app_expo',{'page': 'cocina-TOP' }) }}" >Cocina TOP</a>
+                </li>
+            </ul>
+            <ul class="baños">
+                <h3>Baños</h3>
+                <li>
+                    <a href="{{ path ('app_expo',{'page': 'coleccion-banos' }) }}">Colección baños</a>
+                </li>
+                <li>
+                    <a href="{{ path ('app_expo',{'page': 'bano-TOP' }) }}" >Baño TOP</a>
+                </li>
+            </ul>
+            <ul class="expositores">
+                <h3>Expositores</h3>
+                <li>
+                    <a href="{{ path ('app_expo',{'page': 'expositor-baldosas' }) }}" >Expositor baldosas</a>
+                </li>
+                <li>
+                    Baldosas de gran formato
+                </li>
+                <li>
+                    Suelos
+                </li>
+                <li>
+                    Grifería
+                </li>
+            </ul>
+            <ul class="corners">
+                <h3>Corners</h3>
+                <li>
+                    Zona de Spa
+                </li>
+                <li>
+                    Armarios
+                </li>
+                <li>
+                    Encimeras
+                </li>
+                <li>
+                    Muebles de cocina
+                </li>
+                <li>
+                    Zona infantil
+                </li>
+
+            </ul>
+            <ul class="corners">
+                <h3>Corners</h3>
+                <li>
+                    Accesibilidad
+                </li>
+                <li>
+                    Piscinas y exterior
+                </li>
+                <li>
+                    Microcemento
+                </li>
+                <li>
+                    Puertas
+                </li>
+            </ul>
+        </section>
+        <section id="map" >
+            <span class="more">Pincha en las zonas de colores para saber más sobre sobre ese espacio.</span>
+            <img src="{{ asset('bundles/app/images/exposicion/plano-expo.png') }}" usemap="#expo-map"
+                 title="Exposición de reformas en Zaragoza" alt="Exposición de reformas en Zaragoza" />
+            <map id="expo-map" name="expo-map">
+                <area shape="poly" 
+                      coords="570,421,570,287,731,289,729,375,745,375,745,590,646,592,646,418" 
+                      href="{{ path ('app_expo',{'page': 'vivienda-1' }) }}" alt="Vivienda 1" title="Vivienda 1" />
+                <area shape="poly" 
+                      coords="732,288,734,371,750,374,750,591,879,595,879,424,851,424,852,358,835,358,837,286" 
+                      href="{{ path ('app_expo',{'page': 'vivienda-2' }) }}"  alt="Vivienda 2" title="Vivienda 2" />
+                <area shape="rect" 
+                      coords="1049,284,1285,480" 
+                      href="{{ path ('app_expo',{'page': 'vivienda-3' }) }}"  alt="Vivienda 3" title="Vivienda 3" />
+                <area shape="poly" 
+                      coords="983,634,983,722,1054,720,1054,822,1225,822,1225,634" 
+                      href="{{ path ('app_expo',{'page': 'vivienda-4' }) }}"  alt="Vivienda 4" title="Vivienda 4" />
+                <area shape="rect" 
+                      coords="1814,604,1999,824" 
+                      href="{{ path ('app_expo',{'page': 'vivienda-5' }) }}" alt="Vivienda 5" title="Vivienda 5" />
+                <area shape="rect" 
+                      coords="241,823,406,689" 
+                      href="{{ path ('app_expo',{'page': 'cocina-escaparate' }) }}" alt="Cocina escaparte" title="Cocina escaparate" />
+                <area shape="rect" 
+                      coords="467,519,578,593" 
+                      href="{{ path ('app_expo',{'page': 'cocina-entrada' }) }}" alt="Cocina entrada" title="Cocina entrada" />
+                <area shape="rect" 
+                      coords="1916,201,1999,367" 
+                      href="{{ path ('app_expo',{'page': 'cocina-TOP' }) }}" alt="Cocina TOP" title="Cocina TOP" />
+                <area shape="rect" 
+                      coords="1482,365,1841,422" 
+                      href="{{ path ('app_expo',{'page': 'coleccion-banos' }) }}" alt="Colección baños" title="Coleccion baños" />
+                <area shape="rect" 
+                      coords="1916,156,1998,203"
+                      href="{{ path ('app_expo',{'page': 'bano-TOP' }) }}" alt="Baño TOP" title="Baño TOP" />
+                <area shape="rect" 
+                      coords="406,687,937,825"
+                      href="{{ path ('app_expo',{'page': 'expositor-baldosas' }) }}" alt="Expositor baldosas" title="Expositor baldosas" />
+            </map>
+        </section>
+        {{ share.social( app.request.uri ) }}
+    </article>
+
+{% endblock %}
+
+{% block extraJS %}
+    <script type="text/javascript" >
+        window.onload = function () {
+            var ImageMap = function (map) {
+                var n,
+                        areas = map.getElementsByTagName('area'),
+                        len = areas.length,
+                        coords = [],
+                        previousWidth = 2000,
+                        image = document.getElementById("map").getElementsByTagName('img')[0];
+                for (n = 0; n < len; n++) {
+                    coords[n] = areas[n].coords.split(',');
+                }
+                this.resize = function () {
+                    var n, m, clen,
+                            x = image.width / previousWidth;
+
+                    for (n = 0; n < len; n++) {
+                        clen = coords[n].length;
+                        for (m = 0; m < clen; m++) {
+                            coords[n][m] *= x;
+                        }
+                        areas[n].coords = coords[n].join(',');
+                    }
+                    previousWidth = image.width;
+                    return true;
+                };
+                window.onresize = this.resize;
+            }
+            ,
+                    imageMap = new ImageMap(document.getElementById('expo-map'));
+            imageMap.resize();
+        }
+    </script>
+{% endblock %}

@@ -1,95 +1,86 @@
 {% extends 'AppBundle::main.html.twig' %}
 
 {% block title %}Política de Cookies | NZ Reformas{% endblock %}
+{% block description %}Políticas de la empresa de reformas en Zaragoza NZ Reformas. Teléfono: 976 56 55 24. Dirección: Calle Duquesa Villahermosa, 115 Local, 50009 Zaragoza{% endblock %}
 {% block extra %}<meta name="robots" content="noindex">{% endblock %}
 
 {% block content %}
     <article>
         <header>
+            <nav class="breadcrumbs">
+                <a href="{{ path('app_homepage') }}">Inicio</a>
+            </nav>
             <h1>Política de Cookies</h1>
         </header>
-        <p>
-            Cookie es un fichero que se descarga en su ordenador al acceder a determinadas páginas 
-            web. Las cookies permiten a una página web, entre otras cosas, almacenar y recuperar 
-            información sobre los hábitos de navegación de un usuario o de su equipo y, dependiendo 
-            de la información que contengan y de la forma en que utilice su equipo, pueden 
-            utilizarse para reconocer al usuario. El navegador del usuario memoriza cookies en el 
-            disco duro solamente durante la sesión actual ocupando un espacio de memoria mínimo y no
-            perjudicando al ordenador. Las cookies no contienen ninguna clase de información 
-            personal específica, y la mayoría de las mismas se borran del disco duro al finalizar la
-            sesión de navegador (las denominadas cookies de sesión).
-        </p>
-        <p>
-            La mayoría de los navegadores aceptan como estándar a las cookies y, con independencia 
-            de las mismas, permiten o impiden en los ajustes de seguridad las cookies temporales o 
-            memorizadas.
-        </p>
-        <p>
-            Cookies técnicas: Son aquellas que permiten al usuario la navegación a través de una 
-            página web, plataforma o aplicación y la utilización de las diferentes opciones o 
-            servicios que en ella existan como, por ejemplo, controlar el tráfico y la comunicación 
-            de datos, identificar la sesión, acceder a partes de acceso restringido, recordar los 
-            elementos que integran un pedido, realizar el proceso de compra de un pedido, realizar 
-            la solicitud de inscripción o participación en un evento, utilizar elementos de 
-            seguridad durante la navegación, almacenar contenidos para la difusión de vídeos o 
-            sonido o compartir contenidos a través de redes sociales.
-        </p>
-        <p>
-            Cookies de personalización: Son aquellas que permiten al usuario acceder al servicio con
-            algunas características de carácter general predefinidas en función de una serie de 
-            criterios en el terminal del usuario como por ejemplo serían el idioma, el tipo de 
-            navegador a través del cual accede al servicio, la configuración regional desde donde 
-            accede al servicio, etc.
-        </p>
-        <p>
-            Cookies sociales: Cookies de redes sociales externas, que se utilizan para que los 
-            visitantes puedan  interactuar con el contenido de diferentes plataformas sociales 
-            (Facebook, YouTube, Twitter, LinkedIn, etc.) y que se generan únicamente para los 
-            usuarios de dichas redes sociales. Las condiciones de utilización de estas cookies y la 
-            información recopilada se regula por la política de privacidad de la plataforma social 
-            correspondiente.
-        </p>
-        <p>
-            Cookies de análisis: Son aquellas que bien tratadas por nosotros o por terceros, nos 
-            permiten cuantificar el número de usuarios y así realizar la medición y análisis 
-            estadístico de la utilización que hacen los usuarios del servicio ofertado. Para ello se
-            analiza su navegación en nuestra página web con el fin de mejorar la oferta de productos
-            o servicios que le ofrecemos. 
-        </p>
-        <p>
-            Cookies de terceros: La Web de  NZ Reformas  puede utilizar servicios de terceros que, 
-            por cuenta de Opt-Media Marketing Solutions, recopilarán información con fines 
-            estadísticos, de uso del Site por parte del usuario y para la prestación de otros 
-            servicios relacionados con la actividad del Website y otros servicios de Internet.
-        </p>
-        <p>
-            En particular, este sitio Web utiliza Google Analytics, y Web Master Tools, servicios 
-            analíticos de web prestados por Google, Inc. con domicilio en los Estados Unidos con 
-            sede central en 1600 Amphitheatre Parkway, Mountain View, California 94043.  Para la 
-            prestación de estos servicios, estos utilizan cookies que recopilan la información, 
-            incluida la dirección IP del usuario, que será transmitida, tratada y almacenada por 
-            Google en los términos fijados en la Web Google.com. Incluyendo la posible transmisión 
-            de dicha información a terceros por razones de exigencia legal o cuando dichos terceros 
-            procesen la información por cuenta de Google.
-        </p>
-        <p>
-            El Usuario acepta expresamente, por la utilización de este Site, el tratamiento de la 
-            información recabada en la forma y con los fines anteriormente mencionados. Y así mismo 
-            reconoce conocer la posibilidad de rechazar el tratamiento de tales datos o información 
-            rechazando el uso de Cookies mediante la selección de la configuración apropiada a tal 
-            fin en su navegador. Si bien esta opción de bloqueo de Cookies en su navegador puede no 
-            permitirle el uso pleno de todas las funcionalidades del Website.
-        </p>
-        <p>
-            Puede usted permitir, bloquear o eliminar las cookies instaladas en su equipo mediante 
-            la configuración de las opciones del navegador instalado en su ordenador:
-        </p>
-        <ul class="cookies" >
-            <li><a href="https://support.google.com/chrome/answer/95647?hl=es" target="_blank" >Chrome</a></li>
-            <li><a href="http://windows.microsoft.com/es-es/windows7/how-to-manage-cookies-in-internet-explorer-9" target="_blank" >Explorer</a></li>
-            <li><a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-que-los-sitios-we" target="_blank" >Firefox</a></li>
-            <li><a href="https://support.apple.com/kb/ph5042?locale=es_ES" target="_blank" >Safari</a></li>
-        </ul>
+        <section>
+            <p>
+                CONSTRUCCIONES NAVASCUES ZALAYA S.L. (NZ REFORMAS), a través del presente documento,
+                recoge su Política de recogida y tratamiento de cookies, en cumplimiento de lo 
+                dispuesto en el artículo 22.2 de la Ley 34/2002, de 11 de julio, de Servicios de la 
+                Sociedad de la Información y de Comercio Electrónico (LSSICE).
+            </p>
+            <p>
+                Las cookies se almacenan en el equipo terminal del usuario (ordenador o dispositivo 
+                móvil) y recopilan información al visitar la página web www.nzreformas.es, con la 
+                finalidad de mejorar la usabilidad de las mismas, conocer los hábitos o necesidades 
+                de navegación de los usuarios para poder adaptarse a los mismos, así como obtener 
+                información con fines estadísticos. En el caso de aquellos usuarios que ya sean 
+                clientes de CONSTRUCCIONES NAVASCUES ZALAYA S.L. (NZ REFORMAS), la información 
+                recabada con las cookies servirá también para su identificación al acceder a las 
+                distintas herramientas que CONSTRUCCIONES NAVASCUES ZALAYA S.L. (NZ REFORMAS) pone a
+                su disposición para la gestión de los servicios.
+            </p>
+            <p>
+                La presente Política de Cookies será de aplicación a aquellos usuarios que 
+                voluntariamente visitan las páginas web de CONSTRUCCIONES NAVASCUES ZALAYA S.L. (NZ REFORMAS),
+                cumplimentan formularios de recogida de datos, acceden a las herramientas que 
+                CONSTRUCCIONES NAVASCUES ZALAYA S.L. (NZ REFORMAS) pone a disposición de sus clientes
+                para gestionar sus servicios, o utilizan cualquier otro servicio presente en el sitio
+                web que implique la comunicación de datos a CONSTRUCCIONES NAVASCUES ZALAYA S.L. (NZ REFORMAS),
+                o el acceso a datos por CONSTRUCCIONES NAVASCUES ZALAYA S.L. (NZ REFORMAS), para la 
+                prestación de sus servicios.
+            </p>
+            <p>
+                CONSTRUCCIONES NAVASCUES ZALAYA S.L. (NZ REFORMAS) informa a los usuarios de sus 
+                páginas web, de la existencia de cookies y pone a su disposición la presente 
+                Política con la finalidad de informarles acerca del uso y del objeto de las mismas. 
+                El hecho de continuar la navegación a través de sus páginas, supone el conocimiento 
+                y la aceptación de la presente Política por parte de dichos usuarios.
+            </p>
+            <p>
+                CONSTRUCCIONES NAVASCUES ZALAYA S.L. (NZ REFORMAS) utiliza los siguientes tipos de cookies:
+            </p>
+            <p>
+                Clasificadas por su titularidad:
+                *	Cookies propias: enviadas y gestionadas directamente por CONSTRUCCIONES NAVASCUES ZALAYA S.L..
+                *	Cookies de terceros: enviadas y gestionadas por un tercero ajeno a CONSTRUCCIONES NAVASCUES ZALAYA S.L., de forma anónima, con la finalidad de realizar estudios estadísticos de navegación por las páginas web de CONSTRUCCIONES NAVASCUES ZALAYA S.L..
+            </p>
+            <p>
+                Clasificadas por su finalidad:
+                *	Cookies técnicas y/o de personalización: facilitan la navegación, al identificar la sesión, permitir el acceso a herramientas de acceso restringido, además de configurar a medida las opciones disponibles. Posibilitan la prestación del servicio solicitado previamente por el usuario.
+                *	Cookies de análisis y/o publicidad: permiten conocer el número de visitas recibidas en las diferentes secciones de las páginas web, los hábitos y tendencias de sus usuarios y en consecuencia, poder mejorar la navegación y el servicio ofrecido por CONSTRUCCIONES NAVASCUES ZALAYA S.L. (fundamentalmente, Google Analytics), así como gestionar los espacios publicitarios incluidos en la página web visitada por el usuario. Recopila datos de forma anónima con la finalidad de obtener perfiles de navegación de los usuarios.
+            </p>
+            <p>
+                Clasificadas por su duración:
+                *	Cookies de sesión: recaban y almacenan los datos mientras el usuario accede a la página web.
+                *	Cookies persistentes: recaban y almacenan los datos en el terminal del usuario durante un periodo de tiempo variable en función de cuál sea la finalidad para la que han sido utilizadas.
+            </p>
+            <p>
+                El tiempo de conservación de las cookies dependerá del tipo de que se trate y siempre será el mínimo indispensable para cumplir su finalidad.
+            </p>
+            <p>
+                En cualquier caso, los usuarios pueden configurar su navegador, de manera que se deshabilite o bloquee la recepción de todas o algunas de las cookies. El hecho de no desear recibir estas cookies, no constituye un impedimento para poder acceder a la información de los sitios web de CONSTRUCCIONES NAVASCUES ZALAYA S.L. aunque el uso de algunos servicios podrá ser limitado. Si una vez otorgado el consentimiento para la recepción de cookies, se desease retirar éste, se deberán eliminar aquellas almacenadas en el equipo del usuario, a través de las opciones de los diferentes navegadores.
+            </p>
+            <p>
+                La forma de configurar los diferentes navegadores para ejercitar las acciones señaladas en los párrafos anteriores, se puede consultar en:
+            <ul>
+                <li><a href="https://support.google.com/chrome/answer/95647?hl=es" target="_blank" >Chrome</a></li>
+                <li><a href="https://support.microsoft.com/es-es/help/17442/windows-internet-explorer-delete-manage-cookies" target="_blank" >Explorer</a></li>
+                <li><a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-que-los-sitios-we" target="_blank" >Firefox</a></li>
+                <li><a href="https://support.apple.com/kb/ph5042?locale=es_ES" target="_blank" >Safari</a></li>
+            </ul>
+            </p>
+        </section>
         <p>
             Si tiene dudas sobre esta política de cookies, puede contactar con nosotros en 
             info@nzreformas.es

@@ -1,0 +1,86 @@
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block extra %}<meta name="robots" content="noindex">{% endblock %}
+{% block title %}Comentarios | NZ Reformas{% endblock %}
+
+
+{% block content %}
+    <article>
+        <nav class="breadcrumbs">
+            <a href="{{ path('app_homepage') }}">Inicio</a>
+            <a href="{{ path('backend_homepage') }}" >Panel de control</a>
+        </nav>
+        <header>
+            <h1>Comentarios</h1>
+        </header>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Nombre</th>
+                    <th>Comentario</th>
+                    <th>Artículo</th>
+                    <th>Acciones</th>
+                </tr>
+                {% for comment in comments %}
+                    <tr>
+                        <td>{{ comment.created | date ( "d/m/y" ) }}</td>
+                        <td>{{ comment.name | capitalize }}</td>
+                        <td>
+                            <a href="{{ path('blog_article_show', { 'slug': comment.article.slug }) }}#{{ comment.id }}" >
+                                {{ comment.comment }}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('blog_article_show', { 'slug': comment.article.slug }) }}" >
+                                {{ comment.article | capitalize }}
+                            </a>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('blog_article_show', { 'slug': comment.article.slug }) }}#{{ comment.id }}" >Ver</a>
+                                </li>
+                                <li>
+                                    {% if is_granted('ROLE_ADMIN')%}
+                                        <a class="confirmation" href="{{ path('backend_comment_remove', { 'id': comment.id }) }}" >Eliminar</a>
+                                    {% endif %}
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+
+                    {% else %}
+                    <tr>
+                        <td colspan="6">No se han encontrado comentarios</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% if paginador.Total() > 1 %}
+            <div class="pagination">
+                <ul>
+                    {% if paginador.Start() != 1 %}
+                        <li class="page-prev"><a href="{{ path('backend_comments',{'page': 1}) }}">1</a></li>
+                        {% endif %}
+                        {% if paginador.Start() > 2 %}
+                        <li>...</li>
+                        {% endif %}
+
+                    {% for i in paginador.Start()..paginador.End() %}
+                        <li><a class="{% if i == paginador.Current() %}active{% endif %}" href="{{ path('backend_comments',{'page': i}) }}" >{{ i }}</a></li>
+                        {% endfor %}
+
+                    {% if paginador.End() < paginador.Total()-1 %}
+                        <li>...</li>
+                        {% endif %}
+                        {% if paginador.End() != paginador.Total() %}
+                        <li class="page-prev"><a href="{{ path('backend_comments',{'page': paginador.Total()}) }}">{{ paginador.Total() }}</a></li>
+                        {% endif %}
+                </ul>
+            </div>
+        {% endif %}
+    </article>
+{% endblock %}

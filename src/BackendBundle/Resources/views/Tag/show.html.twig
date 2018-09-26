@@ -1,0 +1,27 @@
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block extra %}<meta name="robots" content="noindex">{% endblock %}
+{% block title %}Ver etiqueta | NZ Reformas{% endblock %}
+
+{% block content %}
+    <article>
+        <nav class="breadcrumbs">
+            <a href="{{ path('app_homepage') }}">Inicio</a>
+            <a href="{{ path('backend_homepage') }}" >Panel de control</a>
+            <a href="{{ path('backend_tags',{'page': 1}) }}" >Etiquetas</a>
+        </nav>
+        <header>
+            <h1>Ver etiqueta</h1>
+            <a class="right" href="{{ path('backend_tag_edit', { 'id': tag.id }) }}" >Editar</a>
+        </header>
+        <label>Tag ID</label>: <i><h2>{{ tag.id }}</h2></i>
+        <label>Nombre</label>: <i><h2>{{ tag.name | capitalize }}</h2></i>
+        <label>Slug</label>: <i><h3>{{ tag.slug | lower }}</h3></i>
+        <label>Title</label>: <i><h3>{{ tag.title | capitalize }}</h3></i>
+        <label>Description</label>: <i><p>{{ tag.description | capitalize }}</p></i>
+        <footer>
+            <a href="{{ path('app_back') }}" >Atrás</a>
+            <a class="right confirmation" href="{{ path('backend_tag_remove', { 'id': tag.id }) }}" >Eliminar</a>
+        </footer>
+    </article>
+{% endblock %}
