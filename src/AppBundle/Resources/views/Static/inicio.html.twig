@@ -5,9 +5,7 @@
 {% block keywords %}reformas comunidades, reformas pisos, empresas de reformas, reformas locales, reformas zaragoza, reformas cocinas, reformas baños{% endblock %}
 {% block description %}Empresa de reformas en Zaragoza. Ofrecemos financiación directa sin bancos con más de 20 años de experiencia. Solicita presupuesto sin compromiso.{% endblock %}
 
-
 {% block content %}
-
     <div id="slider-outer">
         <input type="radio" id="btn-goto-last" class="slide-check" name="slider">
         <input type="radio" id="btn-1" class="slide-check" name="slider" checked="checked">
@@ -16,6 +14,7 @@
         <input type="radio" id="btn-4" class="slide-check" name="slider">
         <input type="radio" id="btn-5" class="slide-check" name="slider">
         <input type="radio" id="btn-6" class="slide-check" name="slider">
+        <input type="radio" id="btn-7" class="slide-check" name="slider">
         <input type="radio" id="btn-goto-first" class="slide-check" name="slider">
 
         <label for="btn-goto-last" id="arrow-goto-last" class="arrows" onclick="">
@@ -39,6 +38,9 @@
         <label for="btn-6" id="arrow-6" class="arrows" onclick="">
             <img src="{{ asset('bundles/app/images/icon/left.png')}}" alt="Atrás" title="Atrás" />
         </label>
+        <label for="btn-7" id="arrow-7" class="arrows" onclick="">
+            <img src="{{ asset('bundles/app/images/icon/left.png')}}" alt="Atrás" title="Atrás" />
+        </label>
         <label for="btn-goto-first" id="arrow-goto-first" class="arrows" onclick=""><img src="{{ asset('bundles/app/images/icon/left.png')}}" alt="Atrás" title="Atrás" />
         </label>
         <div id="slider">
@@ -50,6 +52,16 @@
                         <span class="title">
                             <a href="{{ path ('app_project',{'project': 'reformas-de-pisos' }) }}" >Reformas de pisos</a>&nbsp;&nbsp;>&nbsp;
                             <a href="{{ path ('app_gallery',{'project': 'reformas-de-pisos','gallery': 'reforma-integral-en-gomez-de-avellaneda' }) }}" >Gómez de Avellaneda</a>
+                        </span>
+                    </div>
+                </div>
+                <div> 
+                    <div>
+                        <img class="resized" src="{{ asset('bundles/app/images/presentacion/reforma-cocina-dato-high.jpg') }}" 
+                             alt="Reformas cocinas Zaragoza" title="Reformas cocinas Zaragoza" />
+                        <span class="title">
+                            <a href="{{ path ('app_project',{'project': 'reformas-de-cocinas' }) }}" >Reformas cocinas Zaragoza</a>&nbsp;&nbsp;>&nbsp;
+                            <a href="{{ path ('app_gallery',{'project': 'reformas-de-cocinas','gallery': 'reforma-de-cocina-dato' }) }}" >Dato</a>
                         </span>
                     </div>
                 </div>

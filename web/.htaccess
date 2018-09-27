@@ -1,6 +1,6 @@
 RewriteEngine on
-RewriteCond %{HTTPS} !=on
-RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+#RewriteCond %{HTTPS} !=on
+#RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 # Use the front controller as index file. It serves as a fallback solution when
 # every other rewrite/redirect fails (e.g. in an aliased environment without
@@ -10,18 +10,19 @@ RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 DirectoryIndex app.php
 
 # Redirecciones
-Redirect 301 /user https://www.nzreformas.es
-Redirect 301 /rehabilitacion-fachadas https://www.nzreformas.es
-Redirect 301 /reformas-colegios https://www.nzreformas.es
-Redirect 301 /user/register https://www.nzreformas.es
-Redirect 301 /user/password https://www.nzreformas.es
-Redirect 301 /rehabilitacion-patios-comunidades https://www.nzreformas.es
-Redirect 301 /contacto https://www.nzreformas.es/pedir-presupuesto
-Redirect 301 /proyectos/reformas-de-cocinas https://www.nzreformas.es/proyectos/reformas-de-cocinas-zaragoza
-Redirect 301 /exposicion https://www.nzreformas.es/exposicion-de-reformas
+#Redirect 301 /proyectos https://www.nzreformas.es/obras-realizadas
+#Redirect 301 /user https://www.nzreformas.es
+#Redirect 301 /rehabilitacion-fachadas https://www.nzreformas.es
+#Redirect 301 /reformas-colegios https://www.nzreformas.es
+#Redirect 301 /user/register https://www.nzreformas.es
+#Redirect 301 /user/password https://www.nzreformas.es
+#Redirect 301 /rehabilitacion-patios-comunidades https://www.nzreformas.es
+#Redirect 301 /contacto https://www.nzreformas.es/pedir-presupuesto
+#Redirect 301 /proyectos/reformas-de-cocinas https://www.nzreformas.es/obras-realizadas/reformas-de-cocinas-zaragoza
+#Redirect 301 /exposicion https://www.nzreformas.es/exposicion-de-reformas
 # Redirect 301 /blog//1 https://www.nzreformas.es/blog/1
 
-RedirectMatch 301 ^/sites/default/files/pdf/(.*)$ http://www.nzreformas.es/proyectos
+#RedirectMatch 301 ^/sites/default/files/pdf/(.*)$ https://www.nzreformas.es/obras-realizadas
 
 # Disabling MultiViews prevents unwanted negotiation, e.g. "/app" should not resolve
 # to the front controller "/app.php" but be rewritten to "/app.php/app".
@@ -92,7 +93,7 @@ RedirectMatch 301 ^/sites/default/files/pdf/(.*)$ http://www.nzreformas.es/proye
 FileETag None
  
 RewriteCond %{QUERY_STRING} .
-RewriteRule ^(.+\.css) https://www.nzreformas.es/css/app_part_1_styles_1.css?v=2.2.4 [R=301,L]
+RewriteRule ^(.+\.css) http://www.nzreformas.es/css/app_part_1_styles_1.css?v=2.2.4 [R=301,L]
 
 <IfModule mod_expires.c>
 ExpiresActive On
